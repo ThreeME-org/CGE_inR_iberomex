@@ -1,0 +1,5 @@
+---
+title: "CGE_R_ibero"
+---
+
+![](Modelos%20de%20equilibrio_VF.pdf){fig-align="center"}
