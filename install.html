@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Workshop program information – CGEs in R - Workshop</title>
+<title>Software installation guide – CGEs in R - Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,11 +91,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./program.html" aria-current="page"> 
+    <a class="nav-link" href="./program.html"> 
 <span class="menu-text">Program</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./install.html"> 
+    <a class="nav-link active" href="./install.html" aria-current="page"> 
 <span class="menu-text">Get started</span></a>
   </li>  
   <li class="nav-item">
@@ -128,16 +128,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#tuesday-november-5th-2024" id="toc-tuesday-november-5th-2024" class="nav-link active" data-scroll-target="#tuesday-november-5th-2024">Tuesday, November 5th 2024</a>
+  <li><a href="#basic-sofware-installation" id="toc-basic-sofware-installation" class="nav-link active" data-scroll-target="#basic-sofware-installation">Basic sofware installation</a>
   <ul class="collapse">
-  <li><a href="#morning-session-from-9am-to-12am" id="toc-morning-session-from-9am-to-12am" class="nav-link" data-scroll-target="#morning-session-from-9am-to-12am">Morning session (from 9am to 12am)</a></li>
-  <li><a href="#afternoon-session-from-1pm-to-4pm" id="toc-afternoon-session-from-1pm-to-4pm" class="nav-link" data-scroll-target="#afternoon-session-from-1pm-to-4pm">Afternoon session (from 1pm to 4pm)</a></li>
+  <li><a href="#windows-systems" id="toc-windows-systems" class="nav-link" data-scroll-target="#windows-systems">Windows systems</a></li>
+  <li><a href="#macos-systems-m1-and-above" id="toc-macos-systems-m1-and-above" class="nav-link" data-scroll-target="#macos-systems-m1-and-above">MacOS systems (M1 and above)</a></li>
   </ul></li>
-  <li><a href="#wednesday-november-6th-2024" id="toc-wednesday-november-6th-2024" class="nav-link" data-scroll-target="#wednesday-november-6th-2024">Wednesday, November 6th 2024</a>
-  <ul class="collapse">
-  <li><a href="#morning-session-from-9am-to-12am-1" id="toc-morning-session-from-9am-to-12am-1" class="nav-link" data-scroll-target="#morning-session-from-9am-to-12am-1">Morning session (from 9am to 12am)</a></li>
-  <li><a href="#afternoon-session-from-1pm-to-4pm-1" id="toc-afternoon-session-from-1pm-to-4pm-1" class="nav-link" data-scroll-target="#afternoon-session-from-1pm-to-4pm-1">Afternoon session (from 1pm to 4pm)</a></li>
-  </ul></li>
+  <li><a href="#the-cge-in-r-github-repository" id="toc-the-cge-in-r-github-repository" class="nav-link" data-scroll-target="#the-cge-in-r-github-repository">The CGE in R github repository</a></li>
+  <li><a href="#r-package-installation" id="toc-r-package-installation" class="nav-link" data-scroll-target="#r-package-installation">R Package installation</a></li>
+  <li><a href="#further-readings" id="toc-further-readings" class="nav-link" data-scroll-target="#further-readings">Further readings</a></li>
   </ul>
 </nav>
 </nav>
@@ -150,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Workshop program information</h1>
+<h1 class="title">Software installation guide</h1>
 </div>
 
 
@@ -167,85 +165,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations.</p>
-<p>Over the course of the two days, we will alternate between theoretical and practical teaching on CGE models.</p>
-<p>Below is a provisional program for the workshop. Please note that it is subject to changes depending on progress made.</p>
-<section id="tuesday-november-5th-2024" class="level2">
-<h2 class="anchored" data-anchor-id="tuesday-november-5th-2024">Tuesday, November 5th 2024</h2>
-<section id="morning-session-from-9am-to-12am" class="level3">
-<h3 class="anchored" data-anchor-id="morning-session-from-9am-to-12am">Morning session (from 9am to 12am)</h3>
-<section id="theory-session-1" class="level4">
-<h4 class="anchored" data-anchor-id="theory-session-1">Theory Session 1</h4>
+<p>The following software must be installed in order to run the exercices. The following links contain versions that are current as of november 1st 2024, we highly recommend you upgrade existing software to those versions.</p>
+<section id="basic-sofware-installation" class="level2">
+<h2 class="anchored" data-anchor-id="basic-sofware-installation">Basic sofware installation</h2>
+<p>For your operating system, please install in sequence the following software:</p>
+<section id="windows-systems" class="level3">
+<h3 class="anchored" data-anchor-id="windows-systems">Windows systems</h3>
 <ul>
-<li>Introduction on the CGE models and their usage</li>
-<li>Introduction of the tools used and developed</li>
+<li>R (at least 4.4.1)</li>
+<li>Rtools 44</li>
+<li>R Studio (posit)</li>
+<li>Quarto (at least 1.6.32)</li>
 </ul>
 </section>
-<section id="practice-session-1" class="level4">
-<h4 class="anchored" data-anchor-id="practice-session-1">Practice Session 1</h4>
+<section id="macos-systems-m1-and-above" class="level3">
+<h3 class="anchored" data-anchor-id="macos-systems-m1-and-above">MacOS systems (M1 and above)</h3>
 <ul>
-<li>Technical installation (R, RStudio, Quarto)</li>
-<li>Introduction to Quarto</li>
-<li>Basic presentation of the structure of the simulation platform</li>
-</ul>
-</section>
-</section>
-<section id="afternoon-session-from-1pm-to-4pm" class="level3">
-<h3 class="anchored" data-anchor-id="afternoon-session-from-1pm-to-4pm">Afternoon session (from 1pm to 4pm)</h3>
-<section id="theory-session-2" class="level4">
-<h4 class="anchored" data-anchor-id="theory-session-2">Theory Session 2</h4>
-<ul>
-<li>Simple Walrsasian models and their properties</li>
-</ul>
-</section>
-<section id="practice-session-2" class="level4">
-<h4 class="anchored" data-anchor-id="practice-session-2">Practice Session 2</h4>
-<ul>
-<li>Simulating an existing Walrasian model</li>
-<li>Running a shock scenario</li>
-<li>Basic analysis of results</li>
+<li>R (at least 4.4.1)</li>
+<li>R Studio (posit)</li>
+<li>Quarto (at least 1.6.32)</li>
 </ul>
 </section>
 </section>
+<section id="the-cge-in-r-github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="the-cge-in-r-github-repository">The CGE in R github repository</h2>
+<p>The github repository is downloadable on the following <span style="white-space:nowrap">link :</span></p>
+<p>[REPO]</p>
+<p>For this workshop, please use the <code>ibero</code> branch. The <code>main</code> branch is used for development and will be updated beyond this workshop if you are interested in using this for your own work.</p>
 </section>
-<section id="wednesday-november-6th-2024" class="level2">
-<h2 class="anchored" data-anchor-id="wednesday-november-6th-2024">Wednesday, November 6th 2024</h2>
-<section id="morning-session-from-9am-to-12am-1" class="level3">
-<h3 class="anchored" data-anchor-id="morning-session-from-9am-to-12am-1">Morning session (from 9am to 12am)</h3>
-<section id="theory-session-3" class="level4">
-<h4 class="anchored" data-anchor-id="theory-session-3">Theory Session 3</h4>
+<section id="r-package-installation" class="level2">
+<h2 class="anchored" data-anchor-id="r-package-installation">R Package installation</h2>
+<p>In the repository, you will find in the folder <code>src</code> a file called <code>package_installation.R</code>. To minimize issues, we recommand running it in base R or through the terminal, instead of <strong>R Studio</strong>. Note that this script has no path dependencies and may thus be run without being within an <em>RProject</em>.</p>
+<p>Running this script will install a series of CRAN packages on your system as well as a couple package in development on GitHub:</p>
 <ul>
-<li>Neokeynesian models and their properties</li>
+<li><code>ofce</code>: in-house packages containing useful formatting functions (among others) and themes.</li>
+<li><code>tresthor</code>: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macrœconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE.</li>
+<li><code>ermeeth</code>: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.</li>
+<li><code>pegr</code>: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.</li>
 </ul>
+<p>For those last four package, if the automated installation fails, please use the <code>alt_github_package_install.R</code> script to install a version of them stored on the repository.</p>
 </section>
-<section id="practice-session-3" class="level4">
-<h4 class="anchored" data-anchor-id="practice-session-3">Practice Session 3</h4>
+<section id="further-readings" class="level2">
+<h2 class="anchored" data-anchor-id="further-readings">Further readings</h2>
+<p>This workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the <code>tidyverse</code>) and use Quarto to present your results under different format.</p>
+<p>At the very least we recommend learning how to use the <code>dplyr</code> R package to manipulate result databases and</p>
 <ul>
-<li>Simulating an existing Neokeynesian model</li>
-<li>Bringing modifications to an existing model</li>
-<li>Comparing two different models</li>
-</ul>
-</section>
-</section>
-<section id="afternoon-session-from-1pm-to-4pm-1" class="level3">
-<h3 class="anchored" data-anchor-id="afternoon-session-from-1pm-to-4pm-1">Afternoon session (from 1pm to 4pm)</h3>
-<section id="theory-session-4" class="level4">
-<h4 class="anchored" data-anchor-id="theory-session-4">Theory Session 4</h4>
-<ul>
-<li>Input/Output models</li>
-<li>More complex models</li>
-</ul>
-</section>
-<section id="practice-session-4" class="level4">
-<h4 class="anchored" data-anchor-id="practice-session-4">Practice Session 4</h4>
-<ul>
-<li>Multisector models: building a simple input/output model.</li>
-<li>Integrating an input/output model into an existing CGE model.</li>
+<li>Quarto []</li>
+<li>Tidyverse []</li>
+<li>ggplot2 cheatsheet []</li>
+<li>dplyr cheatsheet []</li>
 </ul>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

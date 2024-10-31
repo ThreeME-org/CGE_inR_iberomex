@@ -28,6 +28,41 @@
     "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team\nThe ThreeME team is in charge of developing the ThreeME model in the Department of Economics and Environment at the OFCE."
   },
   {
+    "objectID": "install.html",
+    "href": "install.html",
+    "title": "Software installation guide",
+    "section": "",
+    "text": "The following software must be installed in order to run the exercices. The following links contain versions that are current as of november 1st 2024, we highly recommend you upgrade existing software to those versions."
+  },
+  {
+    "objectID": "install.html#basic-sofware-installation",
+    "href": "install.html#basic-sofware-installation",
+    "title": "Software installation guide",
+    "section": "Basic sofware installation",
+    "text": "Basic sofware installation\nFor your operating system, please install in sequence the following software:\n\nWindows systems\n\nR (at least 4.4.1)\nRtools 44\nR Studio (posit)\nQuarto (at least 1.6.32)\n\n\n\nMacOS systems (M1 and above)\n\nR (at least 4.4.1)\nR Studio (posit)\nQuarto (at least 1.6.32)"
+  },
+  {
+    "objectID": "install.html#the-cge-in-r-github-repository",
+    "href": "install.html#the-cge-in-r-github-repository",
+    "title": "Software installation guide",
+    "section": "The CGE in R github repository",
+    "text": "The CGE in R github repository\nThe github repository is downloadable on the following link :\n[REPO]\nFor this workshop, please use the ibero branch. The main branch is used for development and will be updated beyond this workshop if you are interested in using this for your own work."
+  },
+  {
+    "objectID": "install.html#r-package-installation",
+    "href": "install.html#r-package-installation",
+    "title": "Software installation guide",
+    "section": "R Package installation",
+    "text": "R Package installation\nIn the repository, you will find in the folder src a file called package_installation.R. To minimize issues, we recommand running it in base R or through the terminal, instead of R Studio. Note that this script has no path dependencies and may thus be run without being within an RProject.\nRunning this script will install a series of CRAN packages on your system as well as a couple package in development on GitHub:\n\nofce: in-house packages containing useful formatting functions (among others) and themes.\ntresthor: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macrœconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE.\nermeeth: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.\npegr: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.\n\nFor those last four package, if the automated installation fails, please use the alt_github_package_install.R script to install a version of them stored on the repository."
+  },
+  {
+    "objectID": "install.html#further-readings",
+    "href": "install.html#further-readings",
+    "title": "Software installation guide",
+    "section": "Further readings",
+    "text": "Further readings\nThis workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the tidyverse) and use Quarto to present your results under different format.\nAt the very least we recommend learning how to use the dplyr R package to manipulate result databases and\n\nQuarto []\nTidyverse []\nggplot2 cheatsheet []\ndplyr cheatsheet []"
+  },
+  {
     "objectID": "S2_Simple_Models_R.html#software-installation-and-tutorial",
     "href": "S2_Simple_Models_R.html#software-installation-and-tutorial",
     "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
