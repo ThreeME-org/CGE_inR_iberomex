@@ -5,34 +5,32 @@ format:
     number-sections: false
 ---
 
-
 The following software must be installed in order to run the exercices. The following links contain versions that are current as of november 1st 2024, we highly recommend you upgrade existing software to those versions.
 
-## Basic sofware installation 
+## Basic sofware installation
 
 For your operating system, please install in sequence the following software:
 
 ### Windows systems
 
-- R (at least 4.4.1)
-- Rtools 44
-- R Studio (posit)
-- Quarto (at least 1.6.32)
+-   R (at least 4.4.1)
+-   Rtools 44
+-   R Studio (Posit)
+-   Quarto (at least 1.6.32)
 
 ### MacOS systems (M1 and above)
 
-- R (at least 4.4.1)
-- R Studio (posit)
-- Quarto (at least 1.6.32)
+-   R (at least 4.4.1)
+-   R Studio (posit)
+-   Quarto (at least 1.6.32)
 
 ## The CGE in R github repository
 
 The github repository is downloadable on the following link :
 
-[REPO]
+\[REPO\]
 
 For this workshop, please use the `ibero` branch. The `main` branch is used for development and will be updated beyond this workshop if you are interested in using this for your own work.
-
 
 ## R Package installation
 
@@ -40,26 +38,71 @@ In the repository, you will find in the folder `src` a file called `package_inst
 
 Running this script will install a series of CRAN packages on your system as well as a couple package in development on GitHub:
 
-  - `ofce`: in-house packages containing useful formatting functions (among others)  and themes.
-  - `tresthor`: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macroeconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE. 
-  - `ermeeth`: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.
-  - `pegr`: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.
-
+-   `ofce`: in-house packages containing useful formatting functions (among others) and themes.
+-   `tresthor`: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macroeconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE.
+-   `ermeeth`: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.
+-   `pegr`: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.
 
 For those last four package, if the automated installation fails, please use the `alt_github_package_install.R` script to install a version of them stored on the repository.
 
+### Installation using Base R
 
+- Open R 4.4.1
 
+  + On Windows, in the Start Menu, go to `R`, and select R 4.4.1
+  + On MacOS in the Applications folder, there should be and `R.app`
+  
+- Go to **File** --> **Open script**
+
+- Navigate to the `CGE_inR\src` folder to find the `package_installation.R` file
+- Select all the script (`ctrl` + `A` for Windows, `command` + `A` for MacOs)
+- Run it (through a right click to find the *Run* option or `ctrl` + `R` for Windows`command` + `return` for MacOs)
+
+- *If necessary* repeat the same procedure for the  `alt_github_package_install.R` file
+
+### Installation using the terminal
+
+- First locate the full path to the R script you want to run and make a note of it
+  + ie for Windows, it will start by `C:\` 
+  + for MacOS it will start with something like `/Users/`
+  
+Run the following commands in your terminal or command prompt
+
+```{r}
+#| eval: false
+#| title: Windows command prompt
+#| filename: "Windows command prompt"
+#| code-summary: "Windows command prompt for executing an R script"
+#| code-fold: true
+
+### say my script location is "C:\Users\Anissa\Documents\GitHub\CGE_in_R\src\package_installation.R"
+
+cd C:\Program files\R\R-4.4.1\bin
+Rscript.exe -e "source('C:/Users/Anissa/Documents/GitHub/CGE_in_R/src/package_installation.R')" # note the chage in direction for the slashes
+
+```
+
+```{r}
+#| eval: false
+#| title: MacOS Terminal
+#| filename: "MacOS Terminal"
+#| code-summary: "MacOS Terminal prompts for executing an R script"
+#| code-fold: true
+
+### say my script location is "/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R"
+
+Rscript -e  "source('/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R')" 
+
+```
+  
 
 ## Further readings
 
-This workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the `tidyverse`) and use Quarto to present your results under different format. 
+This workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the `tidyverse`) and use Quarto to present your results under different format.
 
-At the very least we recommend learning how to use the `dplyr` R package to manipulate result databases and 
+At the very least we recommend learning how to use the `dplyr` R package to manipulate result databases and
 
-  - Quarto []
-  - Tidyverse []
-  - ggplot2 cheatsheet []
-  - dplyr cheatsheet []
-
-
+-   Quarto \[\]
+-   Tidyverse \[\]
+-   ggplot2 cheatsheet \[\]
+-   dplyr cheatsheet \[\]
