@@ -1,8 +1,70 @@
 ---
 title: "Workshop program information"
 format:
-  ofce-html: default
+  ofce-html: 
+    number-sections: false
 
 ---
 
+The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations. 
 
+Over the course of the two days, we will alternate between theoretical and practical teaching on CGE models.
+
+Below is a provisional program for the workshop. Please note that it is subject to changes depending on progress made.
+
+
+## Tuesday, November 5th 2024
+
+### Morning session (from 9am to 12am)
+
+#### Theory Session 1 
+
+- Introduction on the CGE models and their usage
+- Introduction of the tools used and developed
+
+#### Practice Session 1 
+
+- Technical installation (R, RStudio, Quarto)
+- Introduction to Quarto
+- Basic presentation of the structure of the simulation platform
+
+
+### Afternoon session (from 1pm to 4pm)
+
+#### Theory Session 2 
+
+- Simple Walrsasian models and their properties
+
+#### Practice Session 2
+
+- Simulating an existing Walrasian model
+- Running a shock scenario
+- Basic analysis of results
+
+
+## Wednesday, November 6th 2024
+
+### Morning session (from 9am to 12am)
+
+#### Theory Session 3
+
+- Neokeynesian models and their properties
+
+#### Practice Session 3
+
+- Simulating an existing Neokeynesian model
+- Bringing modifications to an existing model
+- Comparing two different models
+
+
+### Afternoon session (from 1pm to 4pm)
+
+#### Theory Session 4
+
+- Input/Output models
+- More complex models
+
+#### Practice Session 4
+
+- Multisector models: building a simple input/output model.
+- Integrating an input/output model into an existing CGE model.
