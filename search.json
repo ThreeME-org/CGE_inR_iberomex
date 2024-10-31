@@ -1,9 +1,177 @@
 [
   {
+    "objectID": "program.html",
+    "href": "program.html",
+    "title": "Workshop program information",
+    "section": "",
+    "text": "The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations.\nOver the course of the two days, we will alternate between theoretical and practical teaching on CGE models.\nBelow is a provisional program for the workshop. Please note that it is subject to changes depending on progress made."
+  },
+  {
+    "objectID": "program.html#tuesday-november-5th-2024",
+    "href": "program.html#tuesday-november-5th-2024",
+    "title": "Workshop program information",
+    "section": "Tuesday, November 5th 2024",
+    "text": "Tuesday, November 5th 2024\n\nMorning session (from 9am to 12am)\n\nTheory Session 1\n\nIntroduction on the CGE models and their usage\nIntroduction of the tools used and developed\n\n\n\nPractice Session 1\n\nTechnical installation (R, RStudio, Quarto)\nIntroduction to Quarto\nBasic presentation of the structure of the simulation platform\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 2\n\nSimple Walrsasian models and their properties\n\n\n\nPractice Session 2\n\nSimulating an existing Walrasian model\nRunning a shock scenario\nBasic analysis of results"
+  },
+  {
+    "objectID": "program.html#wednesday-november-6th-2024",
+    "href": "program.html#wednesday-november-6th-2024",
+    "title": "Workshop program information",
+    "section": "Wednesday, November 6th 2024",
+    "text": "Wednesday, November 6th 2024\n\nMorning session (from 9am to 12am)\n\nTheory Session 3\n\nNeokeynesian models and their properties\n\n\n\nPractice Session 3\n\nSimulating an existing Neokeynesian model\nBringing modifications to an existing model\nComparing two different models\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 4\n\nInput/Output models\nMore complex models\n\n\n\nPractice Session 4\n\nMultisector models: building a simple input/output model.\nIntegrating an input/output model into an existing CGE model."
+  },
+  {
     "objectID": "contact.html",
     "href": "contact.html",
     "title": "Contact us",
     "section": "",
-    "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team"
+    "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team\nThe ThreeME team is in charge of developing the ThreeME model in the Department of Economics and Environment at the OFCE."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#software-installation-and-tutorial",
+    "href": "S2_Simple_Models_R.html#software-installation-and-tutorial",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Software installation and tutorial",
+    "text": "Software installation and tutorial\nPlease refer to the instruction page for this session to access the different links\nGithub (optional)\nR\nRtools43 (if using windows)\nQuarto"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#running-the-model-with-the-main.r-file.-for-this-training-session-the-main.r-file-is-called-main_isioa.r",
+    "href": "S2_Simple_Models_R.html#running-the-model-with-the-main.r-file.-for-this-training-session-the-main.r-file-is-called-main_isioa.r",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Running the model with the main.R file. For this training session the main.R file is called Main_ISIOA.R",
+    "text": "Running the model with the main.R file. For this training session the main.R file is called Main_ISIOA.R\nWarning: Open FIRST the file iioa_R_workshop_2023.Rproj from the ThreeME folder saved in your desktop\n\nOption 1: Click on the file in your file explorer. The path should be: …/GitHub/iioa_R_workshop_2023/iioa_R_workshop_2023.Rproj. This will open RStudio\nOption 2: Open RStudio, in the menu go to « file », then « open project », and follow the path above."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#scripts-in-the-main.r-file",
+    "href": "S2_Simple_Models_R.html#scripts-in-the-main.r-file",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Scripts in the main.R file",
+    "text": "Scripts in the main.R file\n\nsrc/functions.R : installs R and « home-made » packages to run the model\n\n\n# Load functions\nsource(\"src/functions.R\")\n\n\nconfiguration/config_training.R : It is the file where the main options to configure the simulation are loacted.\n\n\n# file.edit(\"configuration/config_training.R\")\nsource(\"configuration/config_training.R\")"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#model-1-one-equation",
+    "href": "S2_Simple_Models_R.html#model-1-one-equation",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Model 1: one equation",
+    "text": "Model 1: one equation\nThe model is found in Github/iioa_R_workshop_2023/src/model/training/01.1-eq.mdl . It is called in the « config_training.R » file in the section « Model files ».\nThe model we consider is a simple one with only one equation:\n\\[\\begin{equation}\n    Y_{t} = CH_{t} + I_{t} + G_{t}   \n  \\end{equation}\\]\n\nEndogenous variable:\nY: GDP\nExogenous variables:\nCH: Households Consumption\nI: Investment\nG: Public spendings\nCalibration :\nY = 100\nCH = 60\nI = 25\nG = 15"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#baseline-and-shock-scenarios-example-of-a-shock-on-g",
+    "href": "S2_Simple_Models_R.html#baseline-and-shock-scenarios-example-of-a-shock-on-g",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Baseline and shock scenarios: example of a shock on G",
+    "text": "Baseline and shock scenarios: example of a shock on G\n\nThe baseline and shock scenario are found in the config_training.R file in the section « Calibration scripts to use ».\n\nBaseline scenario is the reference scenario, the benchmark to which all the other scenarios will be compared.\n\nFound in : Github/iioa_R_workshop_2023/configuration/scenarii_calib/1_calib_baseline-steady.R\n\nShock scenarios are alternative scenarios that are compared to the baseline scenario.\n\nFound in : Github/iioa_R_workshop_2023/configuration/scenarii_calib/2_calib_shock_g.R\n\nWe introduce a shock on « G » of one GDP-point:\n\nG increases by 1 compared to the baseline since GDP (Y is calibrated to 100).\n\n\n\nshock_ch &lt;- mutate(selection,\n                    g =   ifelse(year &gt;= 2021, g + 1, g)\n                   )"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#your-turn-run-the-simulations-on-the-basic-model",
+    "href": "S2_Simple_Models_R.html#your-turn-run-the-simulations-on-the-basic-model",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Your turn: Run the simulations on the basic model",
+    "text": "Your turn: Run the simulations on the basic model\nRefer to the instruction page to run the one equation model, up to and including section 3."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#results-analysis-the-data_full-table",
+    "href": "S2_Simple_Models_R.html#results-analysis-the-data_full-table",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Results analysis: the data_full table",
+    "text": "Results analysis: the data_full table\n\nYou can have a look on your data in data_full\ndata_full is a table where you can see the values taken by your variables in the baseline scenario and in the shock scenario.\nit is a long format data.frame that can be manipulated to create other outputs, such as graphs and table. You may use ggplot2 to create graphs on it, or the simpleplot function that generates predefined ggplot objects tailored to those models and simulation outputs\n\nTo view it in R studio type in the console:\n\n\n\n    view(data_full)\n\n-   You can then filter by year or by variable."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#data_full-table",
+    "href": "S2_Simple_Models_R.html#data_full-table",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "data_full table",
+    "text": "data_full table\n\nFor three consecutive years\n\n\nA &lt;- data_full %&gt;% \n  filter(year %in% (c(2020,2021,2022))) %&gt;% \n  filter(variable %in% (c(\"CH\",\"Y\", \"G\"))) %&gt;% \n  #filter(variable != \"MU\") %&gt;% \n  select(-sector, -commodity) %&gt;% \n  rename(shock = scenario_name)\nflextable(A)\nvariables over two yearsyearvariableshockbaseline2,020Y1001002,020G15152,020CH60602,021Y1011002,021G16152,021CH60602,022Y1011002,022G16152,022CH6060"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#results-analysis-simpleplot-function",
+    "href": "S2_Simple_Models_R.html#results-analysis-simpleplot-function",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Results analysis: simpleplot function",
+    "text": "Results analysis: simpleplot function\n\nsimpleplot creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:\n\n\nView(ermeeth::simpleplot)\n\n\nThere are 4 options to plot a variable using simpleplot To select an option, we change the argument « transformation » in the simpleplot function:\nOption 1: plot the variable in level (transformation = « level » )\nOption 2: plot the variable in relative difference (transformation = « reldiff » )\nOption 3: plot the variable in difference (transformation = « diff » )\nOption 4: plot the variable in growth rate (transformation = « gr » )"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-level-option-1",
+    "href": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-level-option-1",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "simpleplot: plot the variable « Y » in level (Option 1)",
+    "text": "simpleplot: plot the variable « Y » in level (Option 1)\n\nTo plot the variable « Y » in level to the baseline scenario, set transformation = \"level\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"level\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (level)\", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)\n\n\n\nDashed line : Baseline simulation\nSolid line : Shock simulation\nlabel_series = \"GDP\" Changes the name of the variable « Y » into « GDP »"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
+    "href": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "simpleplot: plot the variable « Y » in relative difference (Option 2)",
+    "text": "simpleplot: plot the variable « Y » in relative difference (Option 2)\n\nThe relative difference in the shock compared to the baseline for variable Y is calculated using the following formula: \\[\\begin{equation}\nreldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1\n\\end{equation}\\]\nTo plot the variable « Y » in relative difference to the baseline scenario, set transformation = \"reldiff\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"reldiff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (percentage change)\", unit = \"percent\", decimal = 0.1, custom_x_breaks = 2)\n\n\n\nOnly one plot here ! This is the (relative) difference between the shock and the baseline"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
+    "href": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "simpleplot: plot the variable « Y » in absolute difference (Option 3)",
+    "text": "simpleplot: plot the variable « Y » in absolute difference (Option 3)\n\nThe absolute difference in the shock compared to the baseline for variable Y is calculated using the following formula:\nThe variation of Y is calculated using the following formula: \\[\\begin{equation}\ndiff_{t} = Y_{shock_t} - Y_{baseline_{t}}\n\\end{equation}\\]\nTo plot the variable « Y » in absolute difference to the baseline scenario, set transformation = \"diff\" as shown in the following code\n\n\nsimpleplot(data = data_full,  transformation = \"diff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (absolute change)\", unit = 1, decimal = 0.1)"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
+    "href": "S2_Simple_Models_R.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "simpleplot: plot the variable « Y » in growth rate (Option 4)",
+    "text": "simpleplot: plot the variable « Y » in growth rate (Option 4)\n\nThe growth rate (over time) of Y is calculated using the following formula: \\[\\begin{equation}\ngr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}\n\\end{equation}\\] \\[\\begin{equation}\ngr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}\n\\end{equation}\\]\nBy growth rate, we mean annual percentage change\nTo plot the variable « Y » in growth rate to the baseline scenario, set transformation = \"gr\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"gr\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (yearly percentage change)\", unit = \"percent\", decimal = 0.01)"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
+    "href": "S2_Simple_Models_R.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »",
+    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#your-turn-modify-the-quarto-markdown-file-to-add-suggested-plots",
+    "href": "S2_Simple_Models_R.html#your-turn-modify-the-quarto-markdown-file-to-add-suggested-plots",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Your turn: Modify the quarto markdown file to add suggested plots",
+    "text": "Your turn: Modify the quarto markdown file to add suggested plots\nSee section 4.1 of the instructions file for this session."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#calibration-error",
+    "href": "S2_Simple_Models_R.html#calibration-error",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Calibration error",
+    "text": "Calibration error\nChange the calibration for public expenditure and have a look at the calibration error.\n\nChange in the calibration file « 01.1-calib.mdl » the value of G. Put G := 26 instead of G : = 15\n\nSave the calibration file\n\nRun the main\n\nWhat do you notice?\n\nA message : « The following equations are not well calibrated for the baseline scenario »\n\nEven with an error in your calibration, the model shows the results. But they are different from the ones with no calibration error !!."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#now-lets-change-the-model-i-and-ch-become-endogenous",
+    "href": "S2_Simple_Models_R.html#now-lets-change-the-model-i-and-ch-become-endogenous",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Now let’s change the model: I and CH become endogenous",
+    "text": "Now let’s change the model: I and CH become endogenous\nIn the previous model we had only one equation:\n\nProduction\n\\[\\begin{equation}\nY_{t} = CH_{t} + I_{t} + G_{t}   \n  \\end{equation}\\]\n\nThe new file used for calibration is found in Github/iioa_R_workshop_2023/src/model/training/01.2-eq.mdl\nIn the new model, we add two other equations that make I and CH endogenous now (without changing the calibration).\n\nHouseholds consumption\n\\[\\begin{equation}\n  CH_{t} = 0.6 * Y_{t-1}   \n\\end{equation}\\]\nInvestment\n\\[\\begin{equation}\n  I_{t} = 0.25 * Y_{t}   \n\\end{equation}\\]"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#your-turn-generate-the-same-plots-with-the-new-model",
+    "href": "S2_Simple_Models_R.html#your-turn-generate-the-same-plots-with-the-new-model",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Your turn: generate the same plots with the new model",
+    "text": "Your turn: generate the same plots with the new model\nSee section 4.3 on the instruction page\nTo get your new results when changing in the config_training.R file the equations of the model from 01.1-eq.mdl to 01.2-eq.mdl, you need to:\n\nSave the config_training.R file.\n\nRun the main.R file.\n\nNow you can see changes in the values of your variables in data_full and visualize these changes in the plots."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#here-are-some-main-changes",
+    "href": "S2_Simple_Models_R.html#here-are-some-main-changes",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Here are some main changes:",
+    "text": "Here are some main changes:\n\nThe shape of the series look different (non linear shape) in the shock scenario\n\nThe baseline scenario is constant\n\nAll variables have different yearly values in the shock scenario whereas only G and Y changed in the previous model.\nFor the same shock, the % change in Y is different in the two models\nWe can see the contribution of each variable in GDP change. Public spendings is the component of GDP with the highest change compared to the baseline but it is households consumption that contributes most to change in GDP."
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#assuming-a-growing-economy",
+    "href": "S2_Simple_Models_R.html#assuming-a-growing-economy",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Assuming a growing economy",
+    "text": "Assuming a growing economy\n(see section 4.4 on the instruction page)\nChange in the « config_training.R » file the calibration of the model from 01.1-calib.mdl to 01.2-calib.mdl\nThe new file used for calibration is found in Github/iioa_R_workshop_2023/src/model/training/01.2-calib.mdl\nWhat changes from the previous model?\n\nThe calibration changes the shape of some series in the shock scenario\nVariables in the baseline scenario are not constant anymore"
+  },
+  {
+    "objectID": "S2_Simple_Models_R.html#next-steps",
+    "href": "S2_Simple_Models_R.html#next-steps",
+    "title": "11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R\n",
+    "section": "Next steps",
+    "text": "Next steps\n\nApplication of this knowledge to other models\nSimulation of small CGE models with prices\nWalrasian versus Keynesian closure\n\n\n\n\n\n11th International School of Input-Output Analysis\nModule 3: Dynamic Neo-Keynesian General Equilibrium Models in R\n\nSession 2: Construction and simulation of simple models in R"
   }
 ]
