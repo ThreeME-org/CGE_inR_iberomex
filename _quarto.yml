@@ -15,7 +15,7 @@ website:
     left:
       - href: program.qmd
         text: Program
-      - href: team.qmd
+      - href: install.qmd
         text: Get started 
       - href: team.qmd
         text: Lectures slides
