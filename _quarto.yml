@@ -1,19 +1,29 @@
 project:
   type: website
+  
+
 
 website:
-  title: "CGE_inR_iberomex"
+  title: "CGEs in R - Workshop"
   navbar:
+    logo: pics/ofce_m.png
+    logo-alt: "OFCE"
+    logo-href: "https://www.ofce.fr/"
+    right: 
+      - href: contact.qmd
+        text: Contact
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - href: program.qmd
+        text: Program
+      - href: team.qmd
+        text: Get started 
+      - href: team.qmd
+        text: Lectures slides
+      - href: team.qmd
+        text: Practical exercices
+    tools:
+      - icon: github
+        href: https://github.com/ThreeME-org/ISIOA_2023_CGEinR-open.git
 
 format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: true
-
-editor: visual
-
+  ofce-html: default
