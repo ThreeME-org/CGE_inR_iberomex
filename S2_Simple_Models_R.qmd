@@ -8,14 +8,7 @@ title: |
 author: "Frédéric Reynès and Anissa Saumtally"
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
- revealjs:
-  center: false
-  navigation-mode: linear
-  theme: [simple, www/presentation.scss]
-  width: 960
-  height: 530
-  pdfSeparateFragments: false
-  highlight-style: solarized
+ pres-revealjs: default
 transition: slide
 transition-speed: fast  
 params:
