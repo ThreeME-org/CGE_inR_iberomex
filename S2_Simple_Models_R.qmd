@@ -1,0 +1,565 @@
+---
+title: |
+  | [11th International School of Input-Output Analysis ]{style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;"}
+  | [Module 3:  Dynamic Neo-Keynesian General Equilibrium Models in R]{style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;"}
+  |
+  | [Session 2: Construction and simulation of simple models in R]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
+  |
+author: "Frédéric Reynès and Anissa Saumtally"
+date: "`r format(Sys.Date(), '%d %B %y')`"
+format: 
+ revealjs:
+  center: false
+  navigation-mode: linear
+  theme: [simple, www/presentation.scss]
+  width: 960
+  height: 530
+  pdfSeparateFragments: false
+  highlight-style: solarized
+transition: slide
+transition-speed: fast  
+params:
+  startyear: 2020
+  endyear: 2035
+  project_name: "introduction"
+  project_title: "Introduction to Software basics"
+  scenario_to_analyse: g
+  classification: c0_s0
+  compil: compil
+  Rsolver: Rsolver
+  githubrepo: iioa_R_workshop_2023
+  template_default: ofce
+---
+
+```{r setup, include=FALSE}
+
+work.dir <- stringr::str_remove(getwd(),"/0_documentation")
+knitr::opts_knit$set(root.dir = work.dir)
+
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	results = "hide"
+)
+```
+
+```{r}
+#| label:  Plots default options
+
+startyear <- params$startyear
+endyear <- params$endyear
+scenario_to_analyse <- params$scenario_to_analyse
+classification <- params$classification
+template_default <- params$template_default
+githubrepo <- params$githubrepo
+project_name <- params$project_name
+
+## SHOULD BE DELETED WHEN OPTION DE SIMPLEPLOT ERMEETH CHANGES:
+# scenario = scenario_to_analyse (and not scenario_name)
+scenario_name <- scenario_to_analyse
+
+```
+
+```{r, message=FALSE, warning=FALSE}
+#| label:  Required packages
+#| message: false
+#| warning: false
+
+
+
+# Load functions
+# source("src/functions.R")
+
+
+
+library("dplyr")
+library("flextable")
+library("ermeeth")
+#library("ggplot2")
+library("ggpubr")
+
+```
+
+```{r}
+#| label: load data and bridges
+
+data_full<-readRDS(file = file.path("data","output", paste0(project_name,".rds")))
+```
+
+# How to start?
+
+## Software installation and tutorial
+
+Please refer to the instruction page for this session to access the different links
+
+**Github** (optional)
+
+**R**
+
+**Rtools43 (if using windows)**
+
+**Quarto**
+
+# Run the model
+
+## Running the model with the `main.R` file. For this training session the main.R file is called `Main_ISIOA.R`
+
+[**Warning**: Open **FIRST** the file **`r githubrepo`.Rproj** from the ThreeME folder saved in your desktop]{style="color: red;"}
+
+-   Option 1: Click on the file in your file explorer. The path should be: [`r file.path("...","GitHub",githubrepo,"iioa_R_workshop_2023")`.Rproj]{style="color: blue;"}. This will open *RStudio*
+
+-   Option 2: Open **RStudio**, in the menu go to *"file"*, then *"open project"*, and follow the path above.
+
+## Scripts in the `main.R` file
+
+-   `src/functions.R` : installs R and "home-made" packages to run the model
+
+```{r}
+#| label: src file
+#| eval: false
+#| echo: true
+
+# Load functions
+source("src/functions.R")
+```
+
+-   `configuration/config_training.R` : It is the file where the main options to configure the simulation are loacted.
+
+```{r}
+#| label: config_file
+#| eval: false
+#| echo: true
+#| 
+# file.edit("configuration/config_training.R")
+source("configuration/config_training.R")
+```
+
+------------------------------------------------------------------------
+
+### the `config.R` file
+
+It sets the parameters of your scenario (name, timeframe...)
+
+```{r}
+#| label: options
+#| eval: false
+#| echo: true
+#| 
+# Parameters
+model_folder <- "training"
+iso3 <- "TRA"                                    %>% tolower()
+scenario <- "g"                          %>% tolower()
+classification <- "c0_s0"                      %>% tolower()
+
+
+
+# Input the base year used for the calibration
+baseyear <- 2020
+# Set the end of the sample
+lastyear <- 2035
+# Set the higher lag of the equation
+max_lags <- 3
+# Calculate first year of simulation
+firstyear <- baseyear - max_lags
+
+# Lists files (warning: if more than, place "lists.mdl" last)
+lists_files <- c(
+  "lists.mdl"
+)
+```
+
+------------------------------------------------------------------------
+
+It calls the following main files:
+
+`01.1-calib.mdl`: the calibration file used to initialize the variables\
+`01.1-eq.mdl`: includes all equations used in the model
+
+```{r}
+#| label:  calib and eq files file
+#| eval: false
+#| echo: true
+#| 
+# Calibration files (used to initialize variables)
+calib_files <- c(lists_files,
+  "01.1-calib.mdl"
+)
+
+# Model files 
+model_files = c(lists_files,
+  "01.1-eq.mdl"
+  )
+```
+
+`1_calib_baseline-steady.R` and `2_calib_shock\_` : the scenario calibration scripts to use
+
+```{r}
+#| label:  calib ascripts
+#| eval: false
+#| echo: true
+#| 
+
+## calib and eq files
+
+# Calibration scripts to use 
+calib_baseline <- file.path("configuration","scenarii_calib","1_calib_baseline-steady.R")
+calib_scenario <- file.path("configuration","scenarii_calib",paste0("2_calib_shock_",scenario,".R"))
+```
+
+------------------------------------------------------------------------
+
+-   `src/00_Run_Model.R` : where the model calibration is loaded, the model definition is compiled and the model is run
+
+```{r run}
+#| label: run threeme
+#| eval: false
+#| echo: true
+#| 
+
+##### Script running the model  in R
+source("src/00_Run_Model.R")
+```
+
+-   After you run the **quarto markdown**, your html result file `Results_project_date_time.html` is opened in default browser.
+
+```{r markdown, eval=FALSE,echo = TRUE}
+
+output_file = paste0("Results_",project_name,".html")
+
+quarto::quarto_render(input = file.path("results_one_equation_model.qmd"),
+                      output_file = output_file,
+                      output_format = "html",
+                      execute_params = list(project_name = project_name ,
+                                startyear = 2020 ,
+                                endyear = 2035)
+                      )
+browseURL(file.path(paste0(output_file) ))
+
+
+```
+
+# Simulation and results
+
+## Model 1: one equation
+
+The model is found in [`r file.path("Github", githubrepo, "src", "model", "training", "01.1-eq.mdl")`]{style="color: blue;"} . It is called in the "config_training.R" file in the section "Model files".
+
+The model we consider is a simple one with only one equation:
+
+\begin{equation}
+    Y_{t} = CH_{t} + I_{t} + G_{t}   
+  \end{equation}
+
+-   **Endogenous** variable:\
+    **Y**: GDP
+
+-   **Exogenous** variables:\
+    **CH**: Households Consumption\
+    **I**: Investment\
+    **G**: Public spendings
+
+-   **Calibration** :\
+    Y = 100\
+    CH = 60\
+    I = 25\
+    G = 15
+
+## Baseline and shock scenarios: example of a shock on G
+
+-   The baseline and shock scenario are found in the `config_training.R` file in the section "Calibration scripts to use".\
+-   **Baseline scenario** is the reference scenario, the benchmark to which all the other scenarios will be compared.
+
+Found in : [`r file.path("Github", githubrepo, "configuration","scenarii_calib", "1_calib_baseline-steady.R")`]{style="color: blue;"}
+
+-   **Shock scenarios** are alternative scenarios that are compared to the baseline scenario.
+
+Found in : [`r file.path("Github", githubrepo, "configuration","scenarii_calib", "2_calib_shock_g.R")`]{style="color: blue;"}
+
+-   We introduce a shock on "G" of one GDP-point:
+    -   G increases by **1** compared to the baseline since GDP (Y is calibrated to **100**).
+
+```{r File calib, echo=TRUE, eval=FALSE}
+shock_ch <- mutate(selection,
+                    g =   ifelse(year >= 2021, g + 1, g)
+                   )
+```
+
+------------------------------------------------------------------------
+
+-   Another equivalent way is to expressed it a percentage of y:
+
+```{r File calib 1, echo=TRUE, eval=FALSE}
+shock_ch <- mutate(selection,
+                    g =   ifelse(year >= 2021, g + 0.01*y[which(year == baseyear)], g)
+                  )
+```
+
+## Your turn: Run the simulations on the basic model
+
+Refer to the instruction page to run the one equation model, up to and including section 3.
+
+## Results analysis: the `data_full` table
+
+-   You can have a look on your data in `data_full`
+
+-   `data_full` is a table where you can see the values taken by your variables in the baseline scenario and in the shock scenario.
+
+-   it is a long format `data.frame` that can be manipulated to create other outputs, such as graphs and table. You may use `ggplot2` to create graphs on it, or the `simpleplot` function that generates predefined ggplot objects tailored to those models and simulation outputs
+
+    -   To view it in R studio type in the console:
+
+```{r  datafull, echo=TRUE, eval=FALSE}
+
+    view(data_full)
+
+```
+
+```         
+-   You can then filter by year or by variable.
+```
+
+------------------------------------------------------------------------
+
+-   You can also make tables:
+
+    -   For year: **`r endyear`**
+
+```{r}
+#| label: table_data_endyear
+#| tbl-cap: variables at end year
+#| echo: true
+#| results: asis
+#| 
+variables_selection = c("Y","CH","I", "G")
+selection <-  data_full %>% filter(variable %in% variables_selection, year %in% c(endyear)) %>% select(-sector, -commodity, -year) %>% arrange(variable)
+flextable(selection)
+
+```
+
+## `data_full` table
+
+-   For three consecutive years
+
+```{r}
+#| label: table_data_two_years
+#| tbl-cap: variables over two years
+#| echo: true
+#| results: asis
+#| 
+A <- data_full %>% 
+  filter(year %in% (c(2020,2021,2022))) %>% 
+  filter(variable %in% (c("CH","Y", "G"))) %>% 
+  #filter(variable != "MU") %>% 
+  select(-sector, -commodity) %>% 
+  rename(shock = scenario_name)
+flextable(A)
+
+```
+
+## Results analysis: `simpleplot` function
+
+-   `simpleplot` creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:
+
+```{r View simpleplot, echo=TRUE, eval=FALSE}
+View(ermeeth::simpleplot)
+```
+
+-   There are **4 options** to plot a variable using `simpleplot` To select an option, we change the argument "transformation" in the `simpleplot` function:
+
+    Option 1: plot the variable in **level** (transformation = "level" )\
+    Option 2: plot the variable in **relative difference** (transformation = "reldiff" )\
+    Option 3: plot the variable in **difference** (transformation = "diff" )\
+    Option 4: plot the variable in **growth rate** (transformation = "gr" )
+
+## `simpleplot`: plot the variable "Y" in [level]{style="color:red;"} (Option 1)
+
+-   To plot the variable "Y" in level to the baseline scenario, set `transformation = "level"` as shown in the following code:
+
+```{r simpleplot level Y, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "level", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (level)", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)
+
+```
+
+-   **Dashed** line : **Baseline** simulation
+-   **Solid** line : **Shock** simulation
+-   `label_series = "GDP"` Changes the name of the variable "Y" into "GDP"
+
+## `simpleplot`: plot the variable "Y" in [relative]{style="color:red;"} difference (Option 2)
+
+-   The **relative** difference in the shock compared to the baseline for variable Y is calculated using the following formula: \begin{equation}
+    reldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1
+    \end{equation}
+
+-   To plot the variable "Y" in relative difference to the baseline scenario, set `transformation = "reldiff"` as shown in the following code:
+
+```{r simpleplot reldiff, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "reldiff", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (percentage change)", unit = "percent", decimal = 0.1, custom_x_breaks = 2)
+
+```
+
+-   **Only one plot here !** This is the (relative) difference between the shock and the baseline
+
+## `simpleplot`: plot the variable "Y" in [absolute]{style="color:red;"} difference (Option 3)
+
+-   The **absolute** difference in the shock compared to the baseline for variable Y is calculated using the following formula:
+
+-   The variation of Y is calculated using the following formula: \begin{equation}
+    diff_{t} = Y_{shock_t} - Y_{baseline_{t}}
+    \end{equation}
+
+-   To plot the variable "Y" in absolute difference to the baseline scenario, set `transformation = "diff"` as shown in the following code
+
+```{r simpleplot diff GDP, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "diff", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (absolute change)", unit = 1, decimal = 0.1)
+
+```
+
+## *`simpleplot`*: plot the variable "Y" in [growth rate]{style="color:red;"} (Option 4)
+
+-   The growth rate (over time) of Y is calculated using the following formula: \begin{equation}
+    gr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}
+    \end{equation} \begin{equation}
+    gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
+    \end{equation}
+
+-   By growth rate, we mean annual percentage change
+
+-   To plot the variable "Y" in growth rate to the baseline scenario, set `transformation = "gr"` as shown in the following code:
+
+```{r simpleplot gr, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "gr", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (yearly percentage change)", unit = "percent", decimal = 0.01)
+
+```
+
+## Plot a graph with the contribution of "CH", "I" and "G" on "GDP"
+
+-   The contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \begin{equation}
+    \frac{Y_{shock}}{Y_{baseline}}-1= (\frac{CH_{shock}}{CH_{baseline}}-1)*(\frac{CH_{baseline}}{Y_{baseline}}) +
+    (\frac{I_{shock}}{I_{baseline}}-1)*(\frac{I_{baseline}}{Y_{baseline}}) +  (\frac{G_{shock}}{G_{baseline}}-1)*(\frac{G_{baseline}}{Y_{baseline}})
+    \end{equation}
+
+-   The relative change of Y is the weighed average of the relative change of its components
+
+```{r Graph GDP and contrib, echo=TRUE, fig.height=6, fig.width=14}
+contrib_comp <- c( "CH", "I", "G")
+contrib_comp_label <- c("Households consumption", "Investment", "Public spending")
+
+data_plot <-  contrib(data_full,"Y", contrib_comp, scenar = c("baseline",scenario_name))
+
+A <- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,
+             startyear = 2020, titleplot = "Contributions to change in GDP", line_tot = TRUE)
+
+B <- simpleplot(data_full,c("CH", "I", "G"), contrib_comp_label, startyear, endyear, titleplot = "Components of the GDP (in difference from baseline)")
+
+ggarrange(A,B,
+          labels = c("(a)", "(b)"),
+          hjust = -0.5, vjust = 1.5,
+          ncol = 2, nrow = 1,
+          widths = 2,  heights = 1)
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+
+ggarrange(A,B,
+          labels = c("(a)", "(b)"),
+          hjust = -0.5, vjust = 1.5,
+          ncol = 2, nrow = 1,
+          widths = 2,  heights = 1)
+
+```
+
+## Your turn: Modify the quarto markdown file to add suggested plots
+
+See section 4.1 of the instructions file for this session.
+
+## Calibration error
+
+Change the calibration for public expenditure and have a look at the calibration error.
+
+-   Change in the calibration file "01.1-calib.mdl" the value of G. Put **G := 26** instead of **G : = 15**\
+-   Save the calibration file\
+-   Run the main
+
+**What do you notice?**
+
+-   A message : "The following equations are not well calibrated for the baseline scenario"\
+-   Even with an error in your calibration, the model shows the results. **But they are different from the ones with no calibration error !!**.
+
+## Now let's change the model: I and CH become endogenous
+
+In the previous model we had only one equation:
+
+-   [Production]{style="color: blue;"}\
+    \begin{equation}
+    Y_{t} = CH_{t} + I_{t} + G_{t}   
+      \end{equation}
+
+The new file used for calibration is found in [`r file.path("Github", githubrepo, "src", "model", "training", "01.2-eq.mdl")`]{style="color: blue;"}
+
+In the new model, we add two other equations that make I and CH endogenous now (without changing the calibration).
+
+-   [Households consumption]{style="color: blue;"}
+
+    \begin{equation}
+      CH_{t} = 0.6 * Y_{t-1}   
+    \end{equation}
+
+-   [Investment]{style="color: blue;"}
+
+    \begin{equation}
+      I_{t} = 0.25 * Y_{t}   
+    \end{equation}
+
+------------------------------------------------------------------------
+
+-   Note that in the equation file, **time index is omitted**. For example in the equation of production we only write `Y = CH + I + G` while in $\LaTeX$ we write : \begin{equation} Y_{t} =  CH_{t} + I_{t} + G_{t}\end{equation}\
+
+-   Also, the past period is written `Y{-1}` while it is written in $\LaTeX$ as follows: $Y_{t-1}$
+
+## Your turn: generate the same plots with the new model
+
+See section 4.3 on the instruction page
+
+To get your new results when changing in the `config_training.R` file the equations of the model from **01.1-eq.mdl** to **01.2-eq.mdl**, you need to:
+
+-   Save the `config_training.R` file.\
+-   Run the `main.R` file.
+
+Now you can see changes in the values of your variables in data_full and visualize these changes in the plots.
+
+## Here are some main changes:
+
+-   The shape of the series look different (non linear shape) in the shock scenario\
+-   The baseline scenario is constant\
+-   All variables have different yearly values in the shock scenario whereas only G and Y changed in the previous model.
+-   For the same shock, the % change in Y is different in the two models
+-   We can see the contribution of each variable in GDP change. Public spendings is the component of GDP with the highest change compared to the baseline but it is households consumption that contributes most to change in GDP.
+
+## Assuming a growing economy
+
+(see section 4.4 on the instruction page)
+
+Change in the "config_training.R" file the calibration of the model from **01.1-calib.mdl** to **01.2-calib.mdl**
+
+The new file used for calibration is found in [`r file.path("Github", githubrepo, "src", "model", "training", "01.2-calib.mdl")`]{style="color: blue;"}
+
+What changes from the previous model?
+
+-   The calibration changes the shape of some series in the shock scenario
+-   Variables in the baseline scenario are not constant anymore
+
+# Thanks and next steps
+
+## Next steps
+
+-   Application of this knowledge to other models
+-   Simulation of small CGE models with prices
+-   Walrasian versus Keynesian closure
