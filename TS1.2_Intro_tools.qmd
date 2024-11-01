@@ -2,14 +2,15 @@
 title: |
   | [Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R]{style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;"}
   | [Universidad Iberoamericana Ciudad de México]{style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;"}
-  |
-  | [Session 2: Construction and simulation of simple models in R]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
+  | [Theory Session 1.2]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
+  | [Introduction of the tools used and developed]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
   |
 author: "Frédéric Reynès and Anissa Saumtally"
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
  pres-revealjs:
   toc-depth: 1
+  css: styles.css
 transition: slide
 transition-speed: fast  
 params:
@@ -101,12 +102,11 @@ Please refer to the instruction page for this session to access the different li
 
 `Main.R` script is built on four steps.
 
-
 ### Step 0: Setup
 
--  resets the `R` environment
--  loads the necessary libraries and custom functions
--  reads the simulation configurations (*input* and *output*) into the `config` list.
+-   resets the `R` environment
+-   loads the necessary libraries and custom functions
+-   reads the simulation configurations (*input* and *output*) into the `config` list.
 
 ```{r}
 #| eval: false
@@ -124,8 +124,8 @@ source(file.path("src","setup.R"))
 
 ### Step 1: Calibration bubble
 
-- **optional**: by default deactivated
-- Facilitate the calibration of scenarios
+-   **optional**: by default deactivated
+-   Facilitate the calibration of scenarios
 
 ```{r}
 #| eval: false
@@ -142,11 +142,11 @@ source(file.path("src","setup.R"))
 
 ```
 
----
+------------------------------------------------------------------------
 
 ### Step 2: Run simulations
 
-- runs the simulations based on the configuration specified in Step 0
+-   runs the simulations based on the configuration specified in Step 0
 
 ```{r}
 #| eval: false
@@ -155,15 +155,14 @@ source(file.path("src","setup.R"))
 data_full <- run_simulations(configuration = config)
 ```
 
-- function running all the necessary steps to simulate the model
-  - reading and interpreting `.mdl` blocks
-  - launching the solver. 
-  - returns a database containing simulation results of all the  scenarii specified in the configuration input
-  
+-   function running all the necessary steps to simulate the model
+    -   reading and interpreting `.mdl` blocks
+    -   launching the solver.
+    -   returns a database containing simulation results of all the scenarii specified in the configuration input
+
 ### Step 3: Produce selected result templates
 
-- **Optional** : will run predefined quarto templates to explore simulation results
-
+-   **Optional** : will run predefined quarto templates to explore simulation results
 
 ```{r}
 #| eval: false
@@ -175,15 +174,14 @@ produce_quartos(Show = TRUE)
 # cleanup_output() # 
 ```
 
-- Templates chosen in the config_output file
-- Activating the `Show` argument by selecting `TRUE` will display automatically the results in your web browser 
+-   Templates chosen in the config_output file
+-   Activating the `Show` argument by selecting `TRUE` will display automatically the results in your web browser
 
----
+------------------------------------------------------------------------
 
 ### Step 4: Render your own quarto document
 
-- **optional**:  to render a user-made quarto file to view and analyze your results.
-
+-   **optional**: to render a user-made quarto file to view and analyze your results.
 
 ```{r}
 #| eval: false
@@ -199,20 +197,17 @@ produce_quartos(Show = TRUE)
 
 In order to use it :
 
-  - create, edit and save your own `.qmd` file (ie `my_quarto.qmd`). **Save it at the root of the folder**
-  - replace `wp.qmd` by `my_quarto.qmd` in the script line
-  - execute the line to render the file.
-  - the rendered output is found in the `results/quarto_render` folder.
-
+-   create, edit and save your own `.qmd` file (ie `my_quarto.qmd`). **Save it at the root of the folder**
+-   replace `wp.qmd` by `my_quarto.qmd` in the script line
+-   execute the line to render the file.
+-   the rendered output is found in the `results/quarto_render` folder.
 
 # How to configure a simulation?
 
-
 Simulations are specified through two files:
 
-  - `config_input`: to specify the parameters of the simulation
-  - `config_output`: to specify output templates to produce and analyse the simulation results 
-  
+-   `config_input`: to specify the parameters of the simulation
+-   `config_output`: to specify output templates to produce and analyse the simulation results
 
 ## Structure of the `config_input` file
 
@@ -220,38 +215,33 @@ Simulations are specified through two files:
 
 The first section defines the basic parameters that need to be adapted for each simulation :
 
-  - `iso3`: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question          
-  - `classification`: if using a ThreeME model number of commodities and sectors with the following format `cx_sy` where `x` is the number of commodities and `x` the number of sectors. Check that the desired classification exists in the mdl files
-  - `model_folder`: the folder where to find the `mdl` files (either `training` or `threeme` usually)
-  - `project_name`: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only
-  - `scenario_baseline` : Name of the baseline scenario. By default it is "baseline-steady". It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables.  All scenarii files are located in configuration/scenarii_calib
-  - `scenario`: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the `configuration/scenarii_calib` folders. Scenario naes must be alphanumeric and underscores in lowercase only. See [this page](how_to_calibrate.html)  for more info on scenario calibration. The `scenario` parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.: 
-  
+-   `iso3`: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question\
+-   `classification`: if using a ThreeME model number of commodities and sectors with the following format `cx_sy` where `x` is the number of commodities and `x` the number of sectors. Check that the desired classification exists in the mdl files
+-   `model_folder`: the folder where to find the `mdl` files (either `training` or `threeme` usually)
+-   `project_name`: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only
+-   `scenario_baseline` : Name of the baseline scenario. By default it is "baseline-steady". It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables. All scenarii files are located in configuration/scenarii_calib
+-   `scenario`: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the `configuration/scenarii_calib` folders. Scenario naes must be alphanumeric and underscores in lowercase only. See [this page](how_to_calibrate.html) for more info on scenario calibration. The `scenario` parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.:
+
 ```{r}
 #| eval: false
 #| echo: true
   scenario = c("ct1", "expg1") |> 
   set_names(c("Increase of carbon tax  ","Increase in government spending of 1% of GDP"))
 ```
-  
 
-  - `baseyear`: Input the base year used for the calibration data 
-  - `lastyear`: Last year of the simulations
-  - `shockyear`: year of the shock. This is an optional parameter that can be called upon when calibrating shocks
-  - `max_lags`: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.
-  - `firstyear`: By default this is `baseyear - max_lags` (rarely needs to be modified)
-  - `automated_shocks`: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (*needs further documentation*)
- - `variables_to_keep`: Vector of variables to keep in the output. Input an empty vector (`c()`) in order to keep all variables.
+-   `baseyear`: Input the base year used for the calibration data
+-   `lastyear`: Last year of the simulations
+-   `shockyear`: year of the shock. This is an optional parameter that can be called upon when calibrating shocks
+-   `max_lags`: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.
+-   `firstyear`: By default this is `baseyear - max_lags` (rarely needs to be modified)
+-   `automated_shocks`: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (*needs further documentation*)
+-   `variables_to_keep`: Vector of variables to keep in the output. Input an empty vector (`c()`) in order to keep all variables.
 
 ### Model file lists
 
-The second sections contains `mdl` file lists. In three parts, there is:
-  - `list_files` : basic files (maily for ThreeME, does not need to be modified)
-  - `calib_files`: `mdl` files that contain data calibration equations
-  - `model_files`: `mdl` files that contain the models equations. 
-  
-`mdl` files are usually organised by blocs. For ThreeME some are required to function but other can be activated or switched out with alternate versions to test out different model structures. Usually, an `mdl` file that starts with **Exception** is a model block that will be specific to a shock or scenario that requires additional equations to function. `ENDOFLINE.mdl` is an empty `mdl` that must be inserted last in the vector.
+The second sections contains `mdl` file lists. In three parts, there is: - `list_files` : basic files (maily for ThreeME, does not need to be modified) - `calib_files`: `mdl` files that contain data calibration equations - `model_files`: `mdl` files that contain the models equations.
 
+`mdl` files are usually organised by blocs. For ThreeME some are required to function but other can be activated or switched out with alternate versions to test out different model structures. Usually, an `mdl` file that starts with **Exception** is a model block that will be specific to a shock or scenario that requires additional equations to function. `ENDOFLINE.mdl` is an empty `mdl` that must be inserted last in the vector.
 
 ```{r}
 #| eval: false
@@ -280,9 +270,7 @@ model_files = c(lists_files,
 )
 ```
 
-
-GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 
 -   `configuration/config_training.R` : It is the file where the main options to configure the simulation are loacted.
 
