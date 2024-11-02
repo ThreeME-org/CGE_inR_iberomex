@@ -21,7 +21,7 @@ For your operating system, please install in sequence the following software:
 ### MacOS systems (M1 and above)
 
 -   R (at least 4.4.1)
--   R Studio (posit)
+-   R Studio (Posit)
 -   Quarto (at least 1.6.32)
 
 ## The CGE in R github repository

@@ -19,7 +19,7 @@ website:
         text: Get started 
       - href: team.qmd
         text: Lectures slides
-      - href: team.qmd
+      - href: Exercises_short.qmd
         text: Practical exercices
     tools:
       - icon: github

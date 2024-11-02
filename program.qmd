@@ -51,6 +51,7 @@ Below is a provisional program for the workshop. Please note that it is subject 
 -   Simulating an existing Neokeynesian model
 -   Bringing modifications to an existing model
 -   Comparing two different models
+-   More complicated shock scenarii
 
 ### Afternoon session (from 1pm to 4pm)
 

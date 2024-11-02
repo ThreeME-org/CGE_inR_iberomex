@@ -1,0 +1,11 @@
+---
+title: "neo keynesian and running shocks"
+format: revealjs
+---
+
+## objectives
+
+create modify shocks
+create new shocks
+multiple shocks analysis
+compare 2 different models

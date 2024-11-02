@@ -1,0 +1,579 @@
+---
+title: "CGE in R platform"
+subtitle: "Practical sessions - Supporting materials "
+author: 
+  - Frédéric Reynès 
+  - Anissa Saumtally
+format: pres-revealjs
+toc: false
+eval: false
+---
+
+
+Running your first simulation and getting the results with the one equation model
+presenting the datafull output database 
+
+
+# Introduction 
+
+## Foreword: codename *Ermeeth*
+
+<br>
+
+- The CGE platform presented today is the a suite of scripts and packages initially developed to run the ThreeME model in R
+- This platform is versatile as even the simplest models can be run
+- Multiple system solvers from external applications can be mobilised to solve the model, 
+  + These session will only use a solver written in R that works well on small scale models
+- These practical sessions aim at giving you a preview of a workflow of model simulation and result analysis on simple models
+
+## A Standard workflow
+
+create/edit your model 
+
+create/edit your baseline and shock scenarios
+
+Prepare your config files
+
+Prepare your main file
+
+Prepare a simple .qmd output (or use a template!)
+
+Test it, fix errors (there is always something..)
+
+Run again.
+
+Develope more advance analysis to understand behaviours
+
+
+# Session 1 
+
+## Session objectives
+
+<br>
+
+- Full software installation
+- Downloading the repository
+- Discovering the CGE in R simulation platform 
+  + Navigating the repository structure
+  + Main files presentation
+  + Simulation output information
+  + Quarto introduction 
+- Making sure everything runs!
+
+## Download links
+
+<br>
+
+- Please go to [https://ThreeME-org.github.io/CGE_inR_iberomex/install]() 
+  + Download and install the 3/4 softwares linked
+  + Download the repository  off GitHub (no account necessary)
+  + Package installation 
+  
+- What are you installing ?
+  + R is the basic R langage software
+  + RStudio provides a user-friendly IDE to run R]
+  + Rtools for Windows adds advanced functionalities to R[^1]. 
+  + Quarto is a markdown-based software used to combine code elements and text in order to produce reports that depend on code output.
+  
+  
+  [^1]: Rtools version must match the R version installed
+  
+- Run the `main_test.R` script to make sure it all works.
+
+
+    
+
+# CGE in R basics
+
+## Basic folder strucure presentation 
+
+- The `Main_xx.R` file: this is the main simulation file
+
+- The `configuration` folder contains:
+  + `config_input_xx.R`: file used to prepare the simulation parameters
+  + `config_output_xx.R`: file used to specify the quarto result templates to be used
+  + `scenarii_calib` folder: folder contains the script to prepare the simulation scenarios (baseline and shocks)
+  
+- The `data` folder with the `output` subfolder: where are stored the simulation results as `rds` files.
+
+- The `results` folder contains the pre-programmed quarto templates. Can be used to store your own results.
+
+- The `src` folder contains a few system files and scripts, many of which are not directly of interest to users, with the exception of:
+  + `model`: contains the model files (`.mdl`), that is the equations and data calibration for models. Users may modify or add `mdl` files to suit the specifics of their simulations.
+  + `functions_src`: contains user-made, not yet packaged functions. Users may create their own functions and store them in this folder to call upon them automatically.
+  + `setup.R`: loads packages and user-made functions 
+
+## LIVE DEMO
+
+## Complete Exercise 1 
+
+Installation and tests {#sec-1_1}
+
+-   Follow the installation instructions specified in *Get Started*
+
+-   Run the file `main_test.R` to check if everything is working properly
+
+-   Familiriaze yourself with the folder structure by locating the following files:
+
+    -   `Main.R`
+    -   `config_input_MODEL.R` and `config_output.R`
+    -   `1_calib_baseline.R`
+    -   `01-1-eq_one_equation_model.mdl`
+
+## the `Main.R` file
+
+`Main.R` script is built on four steps.
+
+### Step 0: Setup
+
+-   resets the `R` environment
+-   loads the necessary libraries and custom functions
+-   reads the simulation configurations (*input* and *output*) into the `config` list.
+
+```{r}
+#| eval: false
+#| echo: true
+
+## 0. Setup
+rm(list = ls())
+source(file.path("src","setup.R"))
+
+
+  config <- readconfig(input_config_file = file.path("configuration", "config_input_XXX.R") ,
+                      output_config_file = file.path("configuration", "config_output_XXX.R")
+                     )
+```
+
+------------------------------------------------------------------------
+
+### Step 1: Calibration bubble (**OPTIONAL**)
+
+-   **optional**: by default deactivated
+-   Facilitates the calibration of scenarios
+
+```{r}
+#| eval: false
+#| echo: true
+
+## 1. OPTIONAL Prepare the baseline and/or shock calibration files by uncommenting the lines
+
+# ## >>>>>>> uncomment start
+# calibration_bubble <- calibration_environment(baseline_calibration = FALSE)
+# list2env(calibration_bubble, envir = globalenv())
+# ### You may now open the relevant scenario config file to edit and test it
+# rm(list = names(calibration_bubble))
+# ## <<<<<<< uncomment end
+
+```
+
+------------------------------------------------------------------------
+
+### Step 2: Run simulations
+
+-   runs the simulations based on the configuration specified in Step 0
+
+```{r}
+#| eval: false
+#| echo: true
+#| 
+data_full <- run_simulations(configuration = config)
+```
+
+-   function running all the necessary steps to simulate the model
+    -   reading and interpreting `.mdl` blocks
+    -   launching the solver.
+    -   returns a database containing simulation results of all the scenarii specified in the configuration input
+
+------------------------------------------------------------------------
+
+### Step 3: Produce selected result templates (**OPTIONAL**)
+
+-   **Optional** : will run predefined quarto templates to explore simulation results
+
+```{r}
+#| eval: false
+#| echo: true
+#| 
+## 3. Produce results via quarto templates
+
+produce_quartos(Show = TRUE)
+```
+
+-   Templates are selected in the `config_output` file
+-   Activating the `Show` argument by selecting `TRUE` will display automatically the results in your web browser
+
+------------------------------------------------------------------------
+
+### Step 4: Render your own quarto document
+
+-   **optional**: to render a user-made quarto file to view and analyze your results.
+
+```{r}
+#| eval: false
+#| echo: true
+## 4. Run your own quarto here
+
+# quarto::quarto_render("wp.qmd")
+
+
+```
+
+
+In order to use it :
+
+-   create, edit and save your own `.qmd` file (ie `my_quarto.qmd`). **Save it at the root of the folder**
+-   replace `wp.qmd` by `my_quarto.qmd` in the script line
+-   execute the line to render the file.
+
+
+## Complete Exercise 2 (part 1) 
+
+-   Create a copy of the `Main.R` file (call it `Main_one_eq.R` for example) in the root folder
+
+-   On your new `Main` file, call the the config files : `config_input_one_eq.R`, and `config_output_one_eq.R`.
+
+-   Run the simulation and generate the results from templates.
+
+    -   From the results, what do you think happens in this shock scenario?
+
+
+## The output database : `data_full`
+
+
+The structure of output simulations is standardised as a simple `data.frame` object with standardised column names in order to facilitate the usage of functions and templates on the outputs. 
+
+```{r}
+#| echo: false
+#| eval: true
+#| include: false
+
+library(tidyverse)
+# data_full <- readRDS("sampledata/standard_shocks.rds") |> filter(variable %in% c("GDP","LF","PVA", "PCH", "PY", "PX", "DISPINC_AT","EMS","I","X","W","CH","PM","M","I_SNF","PYM","PCI","C_L","F_L_Q","F_L_NQ","VA_SM","DISPINC_AT"))
+# saveRDS(data_full, file = "standard_shocks_lite.rds")
+data_full <- readRDS("sampledata/standard_shocks_lite.rds") 
+```
+
+
+Below is a random sample of the `data_full` database created from the `run_simulations()` command.
+
+```{r}
+#| eval: true
+#| title: data_full
+#| filename: "bridge_c17_s17.R"
+#| code-summary: "data_full (random sample)"
+#| code-fold: true
+
+slice_sample(.data = data_full,n = 10)
+
+```
+
+By default the table is sorted by variable, year and scenario in this order.
+
+
+```{r}
+#| eval: true
+#| title: data_full
+#| filename: "bridge_c17_s17.R"
+#| code-summary: "data_full (default ordered sample)"
+#| code-fold: true
+
+
+
+head(data_full)
+```
+
+## Data columns 
+
+`data_full` is made up of 8 columns:
+
+::: panel-tabset
+
+
+### `variable`
+
+type `[string]`
+
+This column contains the name of the variables. The variables names are always alphanumerical characters (including underscores) in UPPERCASE.
+
+### `year`
+
+type `[integer]`
+
+This column contains the year of the observation. It serves as the time series identifier, which does not necessarily have to be a calendar year. It could be identified by sequence of integer in any range (ie 1 to 10). The name `year` is a mainly a legacy feature.
+
+### `sector`
+
+type `[string]`
+
+This is a ThreeME specific item that can be used by any model using a similar list system to identify sectors. This is only a label variable. Its value is by default `NA` unless the `variable` is considered to be a sector specific variable, in which case the value reported will be either the sector code or the sector name if a `codenames` file has been properly configured.
+
+### `commodity`
+
+type `[string]`
+
+This is a ThreeME specific item that can be used by any model using a similar list system to identify commodities. This is only a label variable. Its value is by default `NA` unless the `variable` is considered to be a commodity specific variable, in which case the value reported will be either the commodity code or the commodity name if a `codenames` file has been properly configured.
+
+### `scenario`
+
+type `[string]`
+
+This is the (short) name of the scenario, as specified in the `scenario` argument of the `config_input` file. 
+
+### `values_ref`
+
+type `[numeric]`
+
+This column contains the chosen reference scenario value. The reference scenario is the one specified in the `scenario_baseline` argument in the `config_input`.[^2]
+
+[^2]: On an unmodified `data_full` from the simulations, for the *baseline* scenario the values in `values` and `values_ref` are equal.
+
+
+
+### `values`
+
+type `[numeric]`
+
+This column contains simulated value for the observation. This is where the main outputs are found.
+
+
+### `index_scen`
+
+type `[dummy]`
+
+This variable takes the value **1** if the scenario is baseline or **0** otherwise. It's main purpose is to quickly filter out the *baseline* scenario from the database. The information given for this variable is essentially redundant with the information from the `scenario` column.
+
+:::
+
+
+## Understanding the observations (rows of  `data_full`)
+
+<br>
+
+`data_full` is organised as a long-form `data.frame`, that is all the model variables are listed in a single columns, as well as all the observations values.
+
+
+**The minimum observation identifier variables are : the `variable`, the `year` and the `scenario`**
+
+
+## Complete Exercise 2 (part 2)
+
+-   Look into the data_full database (you can do this in the `Main_one_eq.R` file)
+
+    -   Create a variable rel_diff that computes the relative difference.
+    -   Create a new data.frame that contains the GDP (`Y`) growth rate for the baseline and the shock scenario.
+    -   Export as a `.csv` files this database
+
+-   Locate where the `.rds` file containing all the simulations results from this project (project name `one_eq`) can be found
+
+-   Create a quarto `.qmd` file that :
+
+    -   loads the results from those simulations (project name `one_eq`)
+    -   computes the GDP growth rate for the baseline and shock scenarios
+    -   makes a graph comparing those two series
+
+-   In the `config_input_one_eq.R`, change the equation `.mdl` file to use `0-2-eq_basic_mod.mdl` file.
+
+    -   Re-run the simulations and the outputs created.
+    -   What has changed?
+
+
+
+# Practical Session 2
+
+## `config_input` 
+
+
+## `mdl` equation files
+
+## `mdl` calib data files
+
+Add example of failure to calibrate properly
+
+## Complete Exercise 3
+
+
+# Results visualisation functions
+
+
+## Results analysis: `simpleplot` function
+
+-   `simpleplot` creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:
+
+```{r View simpleplot, echo=TRUE, eval=FALSE}
+View(ermeeth::simpleplot)
+```
+
+-   There are **4 options** to plot a variable using `simpleplot` To select an option, we change the argument "transformation" in the `simpleplot` function:
+
+    Option 1: plot the variable in **level** (transformation = "level" )\
+    Option 2: plot the variable in **relative difference** (transformation = "reldiff" )\
+    Option 3: plot the variable in **difference** (transformation = "diff" )\
+    Option 4: plot the variable in **growth rate** (transformation = "gr" )
+
+## `simpleplot`: plot the variable "Y" in [level]{style="color:red;"} (Option 1)
+
+-   To plot the variable "Y" in level to the baseline scenario, set `transformation = "level"` as shown in the following code:
+
+```{r simpleplot level Y, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "level", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (level)", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)
+
+```
+
+-   **Dashed** line : **Baseline** simulation
+-   **Solid** line : **Shock** simulation
+-   `label_series = "GDP"` Changes the name of the variable "Y" into "GDP"
+
+## `simpleplot`: plot the variable "Y" in [relative]{style="color:red;"} difference (Option 2)
+
+-   The **relative** difference in the shock compared to the baseline for variable Y is calculated using the following formula: \begin{equation}
+    reldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1
+    \end{equation}
+
+-   To plot the variable "Y" in relative difference to the baseline scenario, set `transformation = "reldiff"` as shown in the following code:
+
+```{r simpleplot reldiff, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "reldiff", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (percentage change)", unit = "percent", decimal = 0.1, custom_x_breaks = 2)
+
+```
+
+-   **Only one plot here !** This is the (relative) difference between the shock and the baseline
+
+## `simpleplot`: plot the variable "Y" in [absolute]{style="color:red;"} difference (Option 3)
+
+-   The **absolute** difference in the shock compared to the baseline for variable Y is calculated using the following formula:
+
+-   The variation of Y is calculated using the following formula: \begin{equation}
+    diff_{t} = Y_{shock_t} - Y_{baseline_{t}}
+    \end{equation}
+
+-   To plot the variable "Y" in absolute difference to the baseline scenario, set `transformation = "diff"` as shown in the following code
+
+```{r simpleplot diff GDP, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "diff", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (absolute change)", unit = 1, decimal = 0.1)
+
+```
+
+## *`simpleplot`*: plot the variable "Y" in [growth rate]{style="color:red;"} (Option 4)
+
+-   The growth rate (over time) of Y is calculated using the following formula: \begin{equation}
+    gr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}
+    \end{equation} \begin{equation}
+    gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
+    \end{equation}
+
+-   By growth rate, we mean annual percentage change
+
+-   To plot the variable "Y" in growth rate to the baseline scenario, set `transformation = "gr"` as shown in the following code:
+
+```{r simpleplot gr, echo=TRUE, fig.height=6, fig.width=14}
+simpleplot(data = data_full,  transformation = "gr", series = "Y", label_series = "GDP", startyear = 2020, endyear = 2035, 
+           titleplot = "Gross Domestic Product (yearly percentage change)", unit = "percent", decimal = 0.01)
+
+```
+
+## Plot a graph with the contribution of "CH", "I" and "G" on "GDP"
+
+-   The contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \begin{equation}
+    \frac{Y_{shock}}{Y_{baseline}}-1= (\frac{CH_{shock}}{CH_{baseline}}-1)*(\frac{CH_{baseline}}{Y_{baseline}}) +
+    (\frac{I_{shock}}{I_{baseline}}-1)*(\frac{I_{baseline}}{Y_{baseline}}) +  (\frac{G_{shock}}{G_{baseline}}-1)*(\frac{G_{baseline}}{Y_{baseline}})
+    \end{equation}
+
+-   The relative change of Y is the weighed average of the relative change of its components
+
+```{r Graph GDP and contrib, echo=TRUE, fig.height=6, fig.width=14}
+contrib_comp <- c( "CH", "I", "G")
+contrib_comp_label <- c("Households consumption", "Investment", "Public spending")
+
+data_plot <-  contrib(data_full,"Y", contrib_comp, scenar = c("baseline",scenario_name))
+
+A <- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,
+             startyear = 2020, titleplot = "Contributions to change in GDP", line_tot = TRUE)
+
+B <- simpleplot(data_full,c("CH", "I", "G"), contrib_comp_label, startyear, endyear, titleplot = "Components of the GDP (in difference from baseline)")
+
+ggarrange(A,B,
+          labels = c("(a)", "(b)"),
+          hjust = -0.5, vjust = 1.5,
+          ncol = 2, nrow = 1,
+          widths = 2,  heights = 1)
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+
+ggarrange(A,B,
+          labels = c("(a)", "(b)"),
+          hjust = -0.5, vjust = 1.5,
+          ncol = 2, nrow = 1,
+          widths = 2,  heights = 1)
+
+```
+
+## making tables
+
+## TeXdoc
+
+- TeXdoc is function that reads `mdl` files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.
+  
+```{r}
+#| eval: false
+
+# 4. Compile the documentation of the model from equations
+
+teXdoc(sources   = c("02.1-eq.mdl"),
+            exo       = c("02.1-exovar.mdl"),
+            base.path = file.path("src","model","training"),
+            out       = "model-eq",
+            out.path  = "results_side_files")
+
+
+make_eq_qmd(preface = file.path("results_side_files",  "model-eq_preface.tex"),
+            maintex = file.path("results_side_files", "model-eq.tex"),
+            out.dir = "results_side_files" )
+
+
+```
+
+
+## Complete Exercise 4
+
+
+
+
+# Practical Session 3
+
+## Complete Exercise 5 
+
+It's ok if not the last question
+
+
+## Making 2_calib_shock files
+
+## Possibly changing the baseline calibration 1_calib_baseline
+
+## Exercise 6 part 1
+
+Look at graphs with multiple scenarios
+
+## Exercise 6 part 2
+
+# Practical Session 4
+
+## Lists `.mdl` file
+
+## Sector specific equations
+
+## Do Exercise 7 part 1
+
+
+## Graphs for sectors
+
+## Do Exercise 7 part 2
+
+
+
