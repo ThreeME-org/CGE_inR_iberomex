@@ -1,5 +1,5 @@
 ---
-title: "Exercises"
+title: "Practical Sessions supporting materials"
 crossref:
         fig-prefix: figure
         tbl-prefix: tableau
@@ -9,6 +9,9 @@ format:
   ofce-html:
     number-sections: true
 ---
+
+
+<iframe class="slide-deck" src="Practical_Sessions.html" width ="100%" height ="500"></iframe>
 
 :::: panel-tabset
 
