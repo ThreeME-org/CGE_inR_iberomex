@@ -1,1 +1,7 @@
 /* css styles */
+
+/* add scrollable slides */
+.reveal .slides section {
+    max-height: 90vh; /* Adjust as needed */
+    overflow-y: auto;
+}
