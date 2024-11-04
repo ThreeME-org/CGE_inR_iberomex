@@ -1,21 +1,16 @@
 ---
-title: |
-  | [Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R]{style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;"}
-  | [Universidad Iberoamericana Ciudad de México]{style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;"}
-  | [Theory Session 1.1]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
-  | [Introduction to CGE models and their usage]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
-  |
+title: Introduction to CGE models and their usage
+subtitle:  |
+  | [Universidad Iberoamericana Ciudad de México]{style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
+  | [Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R]{style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
 author: "Frédéric Reynès and Anissa Saumtally"
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
   pres-revealjs:
-    # theme: custom.css
     toc-depth: 1
     css: styles.css
 transition: slide
 transition-speed: fast  
-
-  
 ---
 
 ```{r setup, include=FALSE}
