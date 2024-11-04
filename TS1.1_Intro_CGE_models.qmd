@@ -78,8 +78,6 @@ knitr::opts_chunk$set(
 
     -   Production costs integrate intermediary consumption (material and energy), labor and capital costs
 
-## A neo-keynesian CGE model
-
 -   Wages are determined by a **Wage Setting (WS) curve**
 
     -   Phillips curve: wages increase with inflation and decrease with unemployment
@@ -97,11 +95,20 @@ knitr::opts_chunk$set(
 
 ## Macroeconomic versus multisector CGE models
 
-Computable General Equilibrium (CGE) models are widely used in economic policy analysis. 
+CGE models are widely used in economic policy analysis. Two type of analyses:
 
-**Macroeconomic CGE models** focus on understanding how an entire economy responds to shocks or policy changes, such as fiscal or monetary policy adjustments, trade policies, or large-scale events like natural disasters. They analyze key economic indicators like GDP, inflation, employment, and investment, aiming to capture interdependencies among aggregate economic variables.
+-   **Macroeconomic CGE models** focus on understanding how an entire economy responds to shocks or policy changes
 
-**Multisector CGE models**, on the other hand, break down the economy into specific sectors (e.g., agriculture, industry, services) to analyze the effects of policy changes or shocks on each sector individually. This version is particularly useful in trade policy, environmental regulation, or energy policy, as it highlights how impacts may vary across sectors, thereby allowing for targeted policy insights.
+    -   e.g. fiscal, monetary, trade, innovation policies
+    -   they aim to capture interdependencies between aggregate economic variables and key economic indicators
+        -   e.g.  GDP, inflation, employment, and investment
+
+-   **Multisector CGE models** break down the economy into several sectors to analyze the effects of policy changes or shocks on each sector individually
+
+    -   e.g. energy, agriculture, industry, services
+    -   main applications: trade policy, environmental regulation, energy policy, large-scale events like natural disasters
+    -   highlight how impacts may vary across sectors
+    -   allow for simulating sector specific policy
 
 
 ## Examples of applications of the R package
@@ -114,13 +121,17 @@ Computable General Equilibrium (CGE) models are widely used in economic policy a
 
 ### Large size models
 
--   Multi-sector ThreeME models : open source model ThreeME (www.threeme.org)
+-   Multi-sector ThreeME models
+
+    -   Open source model
+
+    -   www.threeme.org
 
 -   Econometric models (Opale and Mesange)
 
     -   Quarterly models for short term forcast
 
-### Overview of ThreeME
+## Overview of ThreeME
 
 -   **M**ulti-sector **M**acroeconomic **M**odel for the **E**valuation of **E**nvironmental and **E**nergy policy.
 
@@ -130,10 +141,10 @@ Computable General Equilibrium (CGE) models are widely used in economic policy a
 
 -   ThreeME is **neo-Keynesian general equilibrium** model.
 
+<!-- FRED: add ThreeME here? -->
 
 
-
-# Micro-economic foundations
+# Micro-economic foundations of CGE models
 
 ## Behavior equations versus identities
 
@@ -155,26 +166,14 @@ Computable General Equilibrium (CGE) models are widely used in economic policy a
 
 -   The **maximisation program** is:
 
-    <center>
-
-    \begin{equation}
-     max_y Π(y) = p(y).y - c(y)
-    \end{equation}
-
-</center>
+$$max_y Π(y) = p(y).y - c(y)$$
 
 where $y$ is the production or demand adressed to the compagny, $\pi(y)$ is the profit of the compagny, $p(y)$ its price and $c(y)$ the production cost. We assume $p′(y)$ \< 0, $c′(y)$ \> 0 and $c′′(y)$ \> 0
 
 
 -   The result of the **program maximization defines the optimum price** that is equal to a markup over the production costs:
 
-    <center>
-
-\begin{equation}
-p(y)= [1+ m^{up}].c'(y) 
-\end{equation}
-
-</center>
+$$p(y)= [1+ m^{up}].c'(y)$$ 
 
 where the markup is: \begin{equation} m^{up}= 1/(\epsilon -1) \end{equation} and $\epsilon$ the (absolute) price elasticity of demand
 
@@ -182,9 +181,9 @@ where the markup is: \begin{equation} m^{up}= 1/(\epsilon -1) \end{equation} and
 
 -   Given that production costs equal total factor payments, the **optimal price is therefore equal to the cost of capital and labor**:
 
-<center>\begin{equation}
-p(y).y= w.L+ p(\delta+r).K
-\end{equation}</center>
+$$p(y).y= w.L+ p(\delta+r).K$$
+
+## Behavior equations
 
 ### **Households consumption**
 
@@ -192,32 +191,29 @@ p(y).y= w.L+ p(\delta+r).K
 
 -   We assume that households wish to use a fixed share of their total income for consumption
 
-    \begin{equation}
-    CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}
-    \end{equation}
+$$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 
--   The consumer maximize its utility by allocating the income of a given period over several periods.\
-    The **maximization program** is:
+    -   Can be derive from alternative theoretical model of consumption.
 
-\begin{equation}
-    max_{c_i} U(c_1, c_2, ... c_n)=\sum_{i=1}^{n} (\phi_i.c_i^{\frac{\rho-1}{\rho}})^{\frac{\rho}{\rho-1}} 
-\end{equation}
+-   For instance: let us assume that the consumer maximize its (CES) utility by allocating the income of a given period over several periods.
+    
+The **maximization program** is:
 
-\begin{equation}
-   \ s.t \ \sum_{i=1}^{n} p_i.c_i = R
-\end{equation} where $\rho$ is the elasticity of substitution, $c_i$ the consumption of good $i$ and $R$ total income.
+$$max_{c_i} U(c_1, c_2, ... c_n)=\sum_{i=1}^{n} (\phi_i.c_i^{\frac{\rho-1}{\rho}})^{\frac{\rho}{\rho-1}}$$ 
+$$\ s.t \ \sum_{i=1}^{n} p_i.c_i = R$$
+where $\rho$ is the elasticity of substitution, $c_i$ the consumption of good in period $i$ and $R$ total income.
 
 The resolution of this program gives the relationship between households consumption and total income :
 
-\begin{equation}
- p_i.c_i= (\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}.R  
-\end{equation} where $(\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}$ is the consumption share.
+$$p_i.c_i= (\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}.R$$
+where $(\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}$ is the consumption share.
 
 Considering only two periods: $i=1$ (present) and $i=2$ (future) and assuming a CES function with $\rho=1$, we find that **consumption is a constant share of income**:
 
-\begin{equation*}
-p_1.c_1 = \phi_1.R  
-\end{equation*} with $\phi_1$ = (1-$\sigma$) and $\sigma$ the propensity to save.
+$$p_1.c_1 = \phi_1.R$$
+with $\phi_1$ = (1-$\sigma$) and $\sigma$ the propensity to save.
+
+## Behavior equations
 
 ### **Demand for production factors**
 
@@ -225,38 +221,88 @@ p_1.c_1 = \phi_1.R
 
 -   Assuming a CES production function, the constrained cost minimization program is:
 
-<center>\begin{equation}
-min_{x_i} (\sum_{i=1}^{n} p_i.x_i) \\
-s.t \\  Q= Q(x_i) = (\sum_{i=1}^{n} \Phi_i.x_i^{(\frac{\rho-1}{\rho})})^{(\frac{\rho}{\rho-1})}
-\end{equation}</center>
+$$min_{x_i} (\sum_{i=1}^{n} p_i.x_i)$$
 
+$$\ s.t. \ Q= Q(x_i) = (\sum_{i=1}^{n} \Phi_i.x_i^{(\frac{\rho-1}{\rho})})^{(\frac{\rho}{\rho-1})}$$
 where $\rho$ is the elasticity of substitution between inputs.
 
 -   The resolution of the program derives demand for factors expressed as follows:\
     **Labor demand**:
 
-    <center>
-
-\begin{equation}
- L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  
-\end{equation}
-
-</center>
+$$L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}$$  
 
 **Capital demand**:
 
-<center>\begin{equation}
+$$ K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} $$
+
+
+## Behavior equations
+
+### **CES function**
+
+The Constant Elasticity of Substitution (CES) production function proposed by Arrow et al. (1961) offers flexibility in modeling substitutability between production factors
+
+
+$$Y = \left(\tilde{\varphi_1} X_1^{\frac{\eta - 1}{\eta}} + \tilde{\varphi}_2 X_2^{\frac{\eta - 1}{\eta}}\right)^{\frac{\eta}{\eta - 1}}$$
+
+where:
+
+- $Y$ the output,
+
+- $\tilde\varphi_1$ and $\tilde\varphi_2$ respectively the weights for inputs $X_1$ and $X_2$,
+
+- $\eta$ the Elasticity of Substitution (ES) taking possibly any value between $]0;+\infty[$
+
+
+The CES function enables the representation of varying degrees of substitutability:
+
+  -   perfect complementarity $\eta = 0$ (Leontief function)
+  -   perfect substitutability $\eta \rightarrow \infty$
+  -   Cobb-Douglas function where the ES is unitary $\eta = 1$.
+
+
+```{r}
+#| label: fig-ces
+#| fig-cap: CES function for various elasticity of substitution
+#| echo: true
+#| code-fold: true
+#| eval: false
+
+library(ggplot2)
+# CES Function: Q^((eta-1)/eta) = phi1*X1^((eta-1)/eta) + phi2*X2^((eta-1)/eta)
+
+# Interpolation step (for ggplot)
+step <- 1000
   
- K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} 
-\end{equation}</center>
+# Inverse CES function: X1 = f(Q,X2)
+X1 <- function(X2, eta) {
+  # Calibration of the parameters of the CES function
+  Q <- 1
+  phi1 <- 0.5
+  phi2 <- 0.5
+
+  ((Q^((eta-1)/eta) - phi2*X2^((eta-1)/eta))/phi1)^(eta/(eta-1)) 
+  }
+
+plot_CES_for_various_elasticity <- ggplot(data.frame(x = c(0,5)), aes(x=x)) +
+  stat_function(fun = X1, args = list(eta = 0.1)  , aes(colour = "0.1"), n = step*1000) +
+  stat_function(fun = X1, args = list(eta = 0.5)  , aes(colour = "0.5"), n = step) +
+  stat_function(fun = X1, args = list(eta = 0.999), aes(colour = "1"  ), n = step, lwd = 1) +
+  stat_function(fun = X1, args = list(eta = 1.6)    , aes(colour = "1.6"  ), n = step) +
+  stat_function(fun = X1, args = list(eta = 20)   , aes(colour = "20" ), n = step) +
+  scale_colour_manual(name = expression(eta), values = c("red", "blue", "black", "green", "grey")) +
+  ylim(0,2.5) +
+  theme(legend.position = "bottom") +
+  labs(y = "X1", x = "X2")
+
+plot_CES_for_various_elasticity
+```
 
 ## Identities and defnitions
 
 ### **Production**
 
-\begin{equation}
-Y = CH + I + G
-\end{equation}
+$$Y = CH + I + G$$
 
 -   Market equilibrium condition between supply and demand\
 -   Accountancy equation that states that everything that is being produced (total supply) is “consumed”, either as household’s consumption, investment or government spending (total demand)
@@ -267,9 +313,7 @@ Y = CH + I + G
 
 -   Given an initial capital stock (at $t-1$), the change in capital stock defines the capital stock in $t$:
 
-\begin{equation}
-\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}
-\end{equation}
+$$\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}$$
 
 -   The change in capital stock :
     -   Increases with the investment made in the previous period ($I_{t-1}$)\
@@ -281,15 +325,15 @@ Y = CH + I + G
 
 We assume that the cost of capital is defined as the user cost of capital (or real rental price of capital services or the costs of holding capital) :
 
-\begin{equation}
-    c^{K} = p(\delta + r) \\
-\end{equation}
+$$c^{K} = p(\delta + r)$$
 
 where $\delta$ is the depreciation rate of capital, $r$ the interest rate and $p$ the price of the investment.
 
 -   This equation may have several interpretations:
     -   It reflects the opportunity cost of holding capital, that is the cost of not been able to invest an existing financial wealth into another asset
     -   It assumes that capital is financed through bank credit and that the reimbursement of the debt corresponds to the depreciation of capital
+
+# Macroeconomic closure
 
 ## Some definitions
 
@@ -337,45 +381,32 @@ We compare the results for two contrasting model closures:
 The model is based on a set of **7 equations** with **7 endogenous variables**:
 
 -   [Investment]{style="color: blue;"}\
-    \begin{equation}
-     I = Y - CH - G  
-      \end{equation}
+    $$I = Y - CH - G$$  
+
 
 -   [Production]{style="color: blue;"}\
-    \begin{equation}
-    Y . p = w . L + p . \left( \delta + r \right) . K
-    \end{equation}
+    $$Y . p = w . L + p . \left( \delta + r \right) . K$$
 
 -   [Households'consumption]{style="color: blue;"}\
-    \begin{equation}
-    CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}
-    \end{equation}
+    $$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 
 -   [Wage ]{style="color: blue;"}\
-    \begin{equation}
-    w + L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  + w
-    \end{equation}
+    $$w + L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  + w$$
 
 -   [Interest rate ]{style="color: blue;"}\
-    \begin{equation}
-    r + K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} + r
-    \end{equation}
+    $$r + K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} + r$$
 
 -   [Capital (from accumulation equation)]{style="color: blue;"}\
-    \begin{equation}
-    \varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}
-    \end{equation}
+    $$\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}$$
 
 -   [Price]{style="color: blue;"}\
-    \begin{equation}
-    p=1
-    \end{equation}
+    $$p=1$$
 
 -   The price equation defines the price as *numéraire* (equal to 1). The price can therefore be seen as an **exogenous variable**. The model could be written as a set of **6 equations** with **6 endogenous variables**.
 
 ## Comments on the Walrasian model closure
 
--   **Endogenous variables**: $Y$, $I$, $CH$, $K$, $w$, $r$\
+-   **Endogenous variables**: $Y$, $I$, $CH$, $K$, $w$, $r$
 -   **Exogenous variables**: $G$, $L$, $p$, $PROG^{L}$, $PROG^{K}$
     -   **Parameters**: $\rho$, $\varphi^{L}$, $\varphi^{K}$, $\delta$, $\sigma$
 -   Production is determined by the "price equation" because the price is set to 1 (*numéraire*) and is therefore an exogenous variable.
@@ -392,51 +423,39 @@ The model is based on a set of **6 equations** with **6 endogenous variables**:
 
 -   [Production]{style="color: blue;"}
 
-\begin{equation}
-Y = CH + I + G
-\end{equation}
+$$Y = CH + I + G$$
 
 -   [Price]{style="color: blue;"}
 
-\begin{equation}
-p . Y = w . L + p . \left( \delta + r \right) . K^{n}
-\end{equation}
+$$p . Y = w . L + p . \left( \delta + r \right) . K^{n}$$
 
 -   [Households consumption]{style="color: blue;"}
 
-\begin{equation}
-CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}
-\end{equation}
+$$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 
 -   [Labor]{style="color: blue;"}
 
-\begin{equation}
-L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}
-\end{equation}
+$$L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}$$
 
 -   [Capital (notional level from cost minimization of a CES function ) ]{style="color: blue;"}
 
-\begin{equation}
-K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)}
-\end{equation}
+$$K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)}$$
 
 -   [Capital (effective level from capital accumulation)]{style="color: blue;"}
 
-\begin{equation}
-\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}
-\end{equation}
+$$\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}$$
 
 -   [Investment]{style="color: blue;"}
 
-\begin{equation}
-\varDelta \left(\operatorname{log} I\right) = \varDelta \left(\operatorname{log} K^{n}_{t-1}\right) + \alpha^{I,Kn} . \operatorname{log} \frac{K^{n}_{t-1}}{K_{t-1}}
-\end{equation}
+$$\varDelta \left(\operatorname{log} I\right) = \varDelta \left(\operatorname{log} K^{n}_{t-1}\right) + \alpha^{I,Kn} . \operatorname{log} \frac{K^{n}_{t-1}}{K_{t-1}}$$
 
 ## Comments on the Keynesian model closure
 
 -   In the Keynesian closure, the wage and the interest rate are exogenous whereas labor and capital are endogenous
 -   To represent the slow adjustment of price and quantities, it is convenient to distinguish between notional and effective level\
 -   The notional levels are mentioned with the underscore (superscript) “n” in the model They refer to the level of price, consumption, labor and capital the producer and the consumer would like to reach immediately if there were no adjustment constraint
+
+# Multisector models
 
 ## Data: Supply-Use (SU) and Input-Output (IO) tables
 
