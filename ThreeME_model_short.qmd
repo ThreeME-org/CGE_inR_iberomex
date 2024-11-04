@@ -1,11 +1,10 @@
 ---
 title: |
-  | [Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R]{style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;"}
-  | [Universidad Iberoamericana Ciudad de México]{style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;"}
-  | [Theory Session 1.1]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
-  | [Introduction to CGE models and their usage]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
+  | [Seminar XXXX]{style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;"}
+  | [Place]{style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;"}
+  | [A short presentation of ThreeME]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
   |
-author: "Frédéric Reynès and Anissa Saumtally"
+author: "ThreeME Team"
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
   pres-revealjs:
@@ -29,7 +28,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## The ThreeME model
+## The ThreeME model   {.scrollable}
 
 -   **M**ulti-sector **M**acroeconomic **M**odel for the **E**valuation of **E**nvironmental and **E**nergy policy
 
@@ -45,41 +44,39 @@ knitr::opts_chunk$set(
     -   To avoid usual criticisms on models: black-box, impossible to verify independently the results, too few users
     -   Make application to other countries and by other institutions easier: EU, Mexico & Indonesia (AFD); Tunisia (UNEP), UK (OECD), Luxembourg (Statec), DG Trésor
 
-## Multisector model
+## Multisector model   {.scrollable}
 
 -   n sectors (e.g. France: n = 37; Tunisia: n = 21, Mexico: n = 24, Luxembourg: n = 26)
 
 -   Allows to analyze the effect of transfer of activities from one sector to another on:
 
-    -   Employment, due to different labor intensity
-    -   Investment, due to different capital intensity
-    -   Energy consumption, due to different energy intensity
-    -   Trade balance, due to different propensity to import and export
+    -   **Employment**, due to different labor intensity
+    -   **Investment**, due to different capital intensity
+    -   **Energy consumption**, due to different energy intensity
+    -   **Trade balance**, due to different propensity to import and export
 
-## Example of sectoral decomposition
+### Example of sectoral decomposition
 
--   The economy is disaggregated into 27 sectors, with in particular:
+-   The economy is disaggregated into **27 sectors**, with in particular:
 
     -   4 transport sectors
-    -   12 energy sectors
-        -   Of which 10 technologies for the production of electricity
+    -   12 energy sectors of which 10 technologies for the production of electricity
         
--   And 23 commodities
+-   and **23 commodities**
 
-    -   A commodity can be produced by several sectors
-        -   Ex: electricity
+    -   A commodity can be produced by several sectors. E.g. electricity
         
--   The disaggregation is a compromise between the availability of the national account and energy data and the objective of the model
+-   The **disaggregation is a compromise** between the availability of the national account and energy data and the objective of the model
 
 -   Several sectors have to be disaggregated
 
     -   Electricity and gas
     -   Transport
 
-## Example of sectoral decomposition
+## Example of sectoral decomposition  {.scrollable}
 ![](pictures/desagregation.jpg){fig-align="center" width="80%"}
 
-## Focus on energy
+## Focus on energy   {.scrollable}
 
 -   The energy disaggregation allows for analyzing the energy behavior of economic agents:
 
@@ -95,9 +92,9 @@ knitr::opts_chunk$set(
         -   Substitution between transports
         -   Substitution between goods
 
-## Type of simulation of the economic and environmental impact
+## Type of simulation of the economic and environmental impact   {.scrollable}
 
--   Energy transition policies
+-   **Energy transition policies**
 
     -   Fiscal policies:
         -   Carbon tax with or without redistribution of the tax revenue
@@ -109,11 +106,11 @@ knitr::opts_chunk$set(
         -   In buildings, public transport, etc.
         -   Impact of applying a new standard for buildings, or appliances
         
--   External shock
+-   **External shock**
 
     -   Increase in international oil/gas price
 
-## CGE model
+## CGE model   {.scrollable}
 
 -   **Computable:** numerical simulation
 -   **General:** take into account the interactions between markets.
@@ -131,7 +128,7 @@ knitr::opts_chunk$set(
 
 ![](pictures/schema.png){fig-align="center" width="80%"}
 
-## What does "general equilibrium" mean?
+## What does ***general equilibrium*** mean?   {.scrollable}
 
 -   General Equilibrium relates to a state where supply is equal to demand in all markets
 -   2 main approaches to insure this state:
@@ -143,12 +140,12 @@ knitr::opts_chunk$set(
         
         -   Static model
     -   **Neo-Keynesian** models
-        -   Demand determines supply
+        -   Demand determines supply in the short run
         -   Price and quantities are rigid and adjust slowly
         -   Disequilibrium between notional (optimal) supply and the actual supply in the short run
         -   Dynamic model: transition to the long run
 
-## A neo-keynesian CGE model
+## A neo-keynesian CGE model   {.scrollable}
 
 -   **Slow adjustment** of price and quantity
 
@@ -160,8 +157,6 @@ knitr::opts_chunk$set(
 -   **Prices** are defined as a mark-up over the firm's production costs
 
     -   Production costs integrate intermediary consumption (material and energy), labor and capital costs
-
-## A neo-keynesian CGE model
 
 -   Wages are determined by a **Wage Setting (WS) curve**
 
@@ -175,7 +170,7 @@ knitr::opts_chunk$set(
     -   It is defined by the Central Bank
     -   "Taylor" reaction function: increases with inflation, decreases with unemployment
 
-## Key properties of ThreeME
+## Key properties of ThreeME   {.scrollable}
 
 -   **General equilibrium effects**
 
@@ -192,7 +187,7 @@ knitr::opts_chunk$set(
     -   The financing through bank credit does not necessary lead to an increase of the interest rate
     -   The augmentation of investment in one sector is not necessary achieved through a decrease of investment in other sectors
 
-## The value-added compared to existing models
+## The value-added compared to existing models   {.scrollable}
 
 -   Sectorial disaggregation
 
@@ -211,7 +206,7 @@ knitr::opts_chunk$set(
 
     -   Allows for studying transition and disequilibrium phases (such underemployment)
 
-## The value-added compared to existing models
+## The value-added compared to existing models   {.scrollable}
 
 -   Hybrid modelling
 
@@ -225,7 +220,7 @@ knitr::opts_chunk$set(
 
 ![](pictures/schema2.png){fig-align="center" width="80%"}
 
-## Data: Supply-Use (SU) and Input-Output (IO) tables
+## Data: Supply-Use (SU) and Input-Output (IO) tables   {.scrollable}
 
 -   SU table says how much a given commodities is supplied by a given sector (Supply)
 
@@ -237,7 +232,7 @@ knitr::opts_chunk$set(
 
 ![](pictures/Simplified_SU_IO.png){fig-align="center" width="80%"}
 
-## Equilibrium between Supply and Demand (use)
+## Equilibrium between Supply and Demand (use)   {.scrollable}
 
 -   GDP = VA = Y -- CI = C + I + X - M
 
