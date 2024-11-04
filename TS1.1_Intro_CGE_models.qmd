@@ -111,7 +111,7 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
     -   allow for simulating sector specific policy
 
 
-## Examples of applications of the R package
+## Examples of applications of our R package
 
 ### Small size models
 
@@ -121,19 +121,20 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
 
 ### Large size models
 
--   Multi-sector ThreeME models
-
-    -   Open source model
-
-    -   www.threeme.org
-
 -   Econometric models (Opale and Mesange)
 
     -   Quarterly models for short term forcast
 
+-   Multi-sector models
+
+    -   e.g. open source ThreeME model
+
+    -   www.threeme.org
+
+
 ## Overview of ThreeME
 
--   **M**ulti-sector **M**acroeconomic **M**odel for the **E**valuation of **E**nvironmental and **E**nergy policy.
+### **M**ulti-sector **M**acroeconomic **M**odel for the **E**valuation of **E**nvironmental and **E**nergy policy.
 
 -   Open source model
 
@@ -141,8 +142,24 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
 
 -   ThreeME is **neo-Keynesian general equilibrium** model.
 
-<!-- FRED: add ThreeME here? -->
+-   Designed to study scenario involving transfers of activities from one sector to another
 
+### Type of simulation of the economic and environmental impact
+-   **Energy transition policies**
+
+    -   Fiscal policies:
+        -   Carbon tax with or without redistribution of the tax revenue
+        -   Phasing out subsidies on (fossil fuel) energy
+        -   Bonus-malus for cars: subsidies on green cars financed by a tax on other cars
+    -   Change in the electricity production mix
+        -   Ex: more RES in the mix
+    -   Impact of green investment
+        -   In buildings, public transport, etc.
+        -   Impact of applying a new standard for buildings, or appliances
+        
+-   **External shock**
+
+    -   Increase in international oil/gas price
 
 # Micro-economic foundations of CGE models
 
@@ -193,7 +210,7 @@ $$p(y).y= w.L+ p(\delta+r).K$$
 
 $$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 
-    -   Can be derive from alternative theoretical model of consumption.
+-   Can be derive from alternative theoretical model of consumption.
 
 -   For instance: let us assume that the consumer maximize its (CES) utility by allocating the income of a given period over several periods.
     
@@ -261,9 +278,14 @@ The CES function enables the representation of varying degrees of substitutabili
   -   Cobb-Douglas function where the ES is unitary $\eta = 1$.
 
 
+---
+### **CES function for various elasticities of substitution**
+
+![](pictures/plot_CES_for_various_elasticity.png){width="100%"}
+
 ```{r}
 #| label: fig-ces
-#| fig-cap: CES function for various elasticity of substitution
+#| fig-cap: CES function for various elasticities of substitution
 #| echo: true
 #| code-fold: true
 #| eval: false
@@ -296,7 +318,10 @@ plot_CES_for_various_elasticity <- ggplot(data.frame(x = c(0,5)), aes(x=x)) +
   labs(y = "X1", x = "X2")
 
 plot_CES_for_various_elasticity
+
+ggsave("plot_CES_for_various_elasticity.png", plot = plot_CES_for_various_elasticity, width = 6, height = 4, dpi = 300)
 ```
+
 
 ## Identities and defnitions
 
