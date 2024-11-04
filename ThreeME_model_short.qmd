@@ -1,14 +1,13 @@
 ---
 title: |
-  | [Seminar XXXX]{style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;"}
-  | [Place]{style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;"}
   | [A short presentation of ThreeME]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
-  |
+subtitle:  |
+  | [Place]{style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
+  | [Seminar XXXX]{style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
 author: "ThreeME Team"
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
   pres-revealjs:
-    # theme: custom.css
     toc-depth: 1
     css: styles.css
 transition: slide
