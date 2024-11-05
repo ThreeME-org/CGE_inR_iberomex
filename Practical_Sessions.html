@@ -698,16 +698,16 @@ Anissa Saumtally
 <div class="cell" title="data_full" data-filename="bridge_c17_s17.R">
 <div class="cell-output cell-output-stdout">
 <pre><code>   variable year sector commodity   values_ref scenario       values index_scen
-1         W 2050   &lt;NA&gt;      &lt;NA&gt; 1.111083e+02 baseline 1.111083e+02          1
-2       C_L 2021   &lt;NA&gt;      &lt;NA&gt; 5.847079e+01      ct1 5.845938e+01          0
-3        CH 2041   &lt;NA&gt;      &lt;NA&gt; 1.738239e+06      ct1 1.725376e+06          0
-4       PCH 2047   &lt;NA&gt;      &lt;NA&gt; 1.741024e+00      ct1 1.781771e+00          0
-5       PVA 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00 baseline 1.195093e+00          1
-6       PCI 2036   &lt;NA&gt;      &lt;NA&gt; 1.400241e+00      ct1 1.428650e+00          0
-7        PY 2023   &lt;NA&gt;      &lt;NA&gt; 1.082432e+00 baseline 1.082432e+00          1
-8         W 2036   &lt;NA&gt;      &lt;NA&gt; 7.325625e+01 baseline 7.325625e+01          1
-9        PY 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00 baseline 1.485947e+00          1
-10      PVA 2042   &lt;NA&gt;      &lt;NA&gt; 1.576899e+00      ct1 1.608437e+00          0</code></pre>
+1       EMS 2033   &lt;NA&gt;      &lt;NA&gt; 5.307232e+02 baseline 5.307232e+02          1
+2       C_L 2038   &lt;NA&gt;      &lt;NA&gt; 9.696282e+01      ct1 9.878361e+01          0
+3        CH 2026   &lt;NA&gt;      &lt;NA&gt; 1.442192e+06 baseline 1.442192e+06          1
+4       C_L 2034   &lt;NA&gt;      &lt;NA&gt; 8.608333e+01 baseline 8.608333e+01          1
+5         M 2031   &lt;NA&gt;      &lt;NA&gt; 8.757236e+05 baseline 8.757236e+05          1
+6        PY 2031   &lt;NA&gt;      &lt;NA&gt; 1.268242e+00 baseline 1.268242e+00          1
+7       PCH 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00      ct1 1.520550e+00          0
+8       C_L 2019   &lt;NA&gt;      &lt;NA&gt; 5.509293e+01 baseline 5.509293e+01          1
+9         W 2030   &lt;NA&gt;      &lt;NA&gt; 6.127953e+01      ct1 6.219361e+01          0
+10       PM 2038   &lt;NA&gt;      &lt;NA&gt; 1.456811e+00 baseline 1.456811e+00          1</code></pre>
 </div>
 </div>
 <p>By default the table is sorted by variable, year and scenario in this order.</p>
@@ -1031,8 +1031,85 @@ Anissa Saumtally
 <h2><code>mdl</code> Data calibration files</h2>
 <p><br></p>
 <ul>
-<li>Data calibration files are used to determine the value at the baseyear of endogenous variables, and the default values of exogenous variables</li>
+<li><p>Data calibration files are used to determine the value at the baseyear of endogenous variables, and the default values of exogenous variables.</p></li>
+<li><p>Can enter numbers or equations (for the trends)</p></li>
+<li><p>The program will check if the calibration is properly balanced</p></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="do">## Long term equilibrium</span></span>
+<span id="cb14-2"><a></a><span class="co"># Growth rate of labor productivity</span></span>
+<span id="cb14-3"><a></a>GR_PROD_L <span class="sc">:</span><span class="er">=</span> <span class="fl">0.01</span></span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a><span class="co"># Growth rate of population</span></span>
+<span id="cb14-6"><a></a>GR_POP <span class="sc">:</span><span class="er">=</span> <span class="fl">0.005</span></span>
+<span id="cb14-7"><a></a></span>
+<span id="cb14-8"><a></a><span class="co"># Growth rate of prices (Inflation)</span></span>
+<span id="cb14-9"><a></a>GR_PRICE <span class="sc">:</span><span class="er">=</span> <span class="fl">0.02</span></span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a><span class="co"># Long-term growth</span></span>
+<span id="cb14-12"><a></a>mu <span class="sc">:</span><span class="er">=</span> (<span class="dv">1</span> <span class="sc">+</span> GR_PROD_L)<span class="sc">*</span>(<span class="dv">1</span> <span class="sc">+</span> GR_POP) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-13"><a></a>GR_nml <span class="sc">:</span><span class="er">=</span> (<span class="dv">1</span><span class="sc">+</span>mu) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> GR_PRICE) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-14"><a></a>GR_w_nml <span class="sc">:</span><span class="er">=</span> (<span class="dv">1</span> <span class="sc">+</span> GR_PROD_L) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> GR_PRICE) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-15"><a></a></span>
+<span id="cb14-16"><a></a></span>
+<span id="cb14-17"><a></a><span class="do">## Parameter of the models</span></span>
+<span id="cb14-18"><a></a></span>
+<span id="cb14-19"><a></a><span class="do">##! Capital depreciation ratio</span></span>
+<span id="cb14-20"><a></a>delta <span class="sc">:</span><span class="er">=</span> <span class="fl">0.05</span></span>
+<span id="cb14-21"><a></a></span>
+<span id="cb14-22"><a></a><span class="do">##! Elasticity of substitution between capital and labor (CES function)</span></span>
+<span id="cb14-23"><a></a>rho <span class="sc">:</span><span class="er">=</span> <span class="fl">0.1</span></span>
+<span id="cb14-24"><a></a></span>
+<span id="cb14-25"><a></a><span class="do">##! Adjustment parameter of investment to notional capital</span></span>
+<span id="cb14-26"><a></a>alpha_I_Kn <span class="sc">:</span><span class="er">=</span> <span class="fl">0.1</span></span>
+<span id="cb14-27"><a></a></span>
+<span id="cb14-28"><a></a><span class="do">## Variables calibrated on real data</span></span>
+<span id="cb14-29"><a></a></span>
+<span id="cb14-30"><a></a><span class="do">##! Interest rate</span></span>
+<span id="cb14-31"><a></a>r <span class="sc">:</span><span class="er">=</span> <span class="fl">0.1</span></span>
+<span id="cb14-32"><a></a></span>
+<span id="cb14-33"><a></a><span class="do">##! Price </span></span>
+<span id="cb14-34"><a></a>p <span class="sc">:</span><span class="er">=</span> <span class="dv">1</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> GR_PRICE)<span class="sc">^</span>(<span class="sc">@</span>year <span class="sc">-</span> %baseyear)</span>
+<span id="cb14-35"><a></a></span>
+<span id="cb14-36"><a></a><span class="co"># Labor</span></span>
+<span id="cb14-37"><a></a>L <span class="sc">:</span><span class="er">=</span>  <span class="dv">1000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> GR_POP)<span class="sc">^</span>(<span class="sc">@</span>year <span class="sc">-</span> %baseyear)</span>
+<span id="cb14-38"><a></a></span>
+<span id="cb14-39"><a></a><span class="co"># Production</span></span>
+<span id="cb14-40"><a></a>Y <span class="sc">:</span><span class="er">=</span> <span class="dv">100</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> mu)<span class="sc">^</span>(<span class="sc">@</span>year <span class="sc">-</span> %baseyear)</span>
+<span id="cb14-41"><a></a></span>
+<span id="cb14-42"><a></a><span class="co"># Investment</span></span>
+<span id="cb14-43"><a></a>I <span class="sc">:</span><span class="er">=</span>  <span class="dv">20</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> mu)<span class="sc">^</span>(<span class="sc">@</span>year <span class="sc">-</span> %baseyear)</span>
+<span id="cb14-44"><a></a></span>
+<span id="cb14-45"><a></a><span class="co"># Public spending</span></span>
+<span id="cb14-46"><a></a>G <span class="sc">:</span><span class="er">=</span>  <span class="dv">15</span>  <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> mu)<span class="sc">^</span>(<span class="sc">@</span>year <span class="sc">-</span> %baseyear)</span>
+<span id="cb14-47"><a></a></span>
+<span id="cb14-48"><a></a><span class="do">## Calibration derived from equations</span></span>
+<span id="cb14-49"><a></a><span class="co"># Consumption</span></span>
+<span id="cb14-50"><a></a>CH <span class="sc">:</span><span class="er">=</span> Y <span class="sc">-</span> I <span class="sc">-</span> G</span>
+<span id="cb14-51"><a></a></span>
+<span id="cb14-52"><a></a><span class="co"># Wage</span></span>
+<span id="cb14-53"><a></a>w<span class="sc">*</span>L <span class="sc">:</span><span class="er">=</span> p<span class="sc">*</span>Y <span class="sc">-</span> p<span class="sc">*</span>(delta <span class="sc">+</span> r)<span class="sc">*</span>K</span>
+<span id="cb14-54"><a></a></span>
+<span id="cb14-55"><a></a><span class="co"># Long-term savings rate</span></span>
+<span id="cb14-56"><a></a>(<span class="dv">1</span> <span class="sc">-</span> sigma) <span class="sc">:</span><span class="er">=</span> p <span class="sc">*</span> CH <span class="sc">/</span> (w<span class="sc">*</span>L <span class="sc">+</span> p<span class="sc">*</span>r<span class="sc">*</span>K)</span>
+<span id="cb14-57"><a></a></span>
+<span id="cb14-58"><a></a><span class="co"># Capital Stock</span></span>
+<span id="cb14-59"><a></a>K <span class="sc">:</span><span class="er">=</span> I <span class="sc">/</span> (delta <span class="sc">+</span> mu)</span>
+<span id="cb14-60"><a></a></span>
+<span id="cb14-61"><a></a>K_n <span class="sc">:</span><span class="er">=</span> K</span>
+<span id="cb14-62"><a></a></span>
+<span id="cb14-63"><a></a><span class="do">##! Labor technical progress (CES function)</span></span>
+<span id="cb14-64"><a></a>PROG_L <span class="sc">:</span><span class="er">=</span> Y <span class="sc">/</span> L </span>
+<span id="cb14-65"><a></a></span>
+<span id="cb14-66"><a></a><span class="do">##! Capital technical progress (CES function)</span></span>
+<span id="cb14-67"><a></a>PROG_K <span class="sc">:</span><span class="er">=</span> Y <span class="sc">/</span> K</span>
+<span id="cb14-68"><a></a></span>
+<span id="cb14-69"><a></a><span class="co"># Labour share in production function</span></span>
+<span id="cb14-70"><a></a>Phi_L <span class="sc">:</span><span class="er">=</span> w <span class="sc">*</span> L <span class="sc">/</span> (p <span class="sc">*</span> Y)</span>
+<span id="cb14-71"><a></a></span>
+<span id="cb14-72"><a></a><span class="co"># Capital share in production function</span></span>
+<span id="cb14-73"><a></a>Phi_K <span class="sc">:</span><span class="er">=</span> p <span class="sc">*</span> (r <span class="sc">+</span> delta) <span class="sc">*</span> K <span class="sc">/</span> (p <span class="sc">*</span> Y)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="calibration-error" class="slide level2">
 <h2>Calibration error</h2>
@@ -1142,7 +1219,7 @@ Anissa Saumtally
 <li><code>simpleplot</code> creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">View</span>(ermeeth<span class="sc">::</span>simpleplot)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">View</span>(ermeeth<span class="sc">::</span>simpleplot)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>There are <strong>4 options</strong> to plot a variable using <code>simpleplot</code> To select an option, we change the argument « transformation » in the <code>simpleplot</code> function:</p>
@@ -1158,8 +1235,8 @@ Option 4: plot the variable in <strong>growth rate</strong> (transformation = «
 <li>To plot the variable « Y » in level to the baseline scenario, set <code>transformation = "level"</code> as shown in the following code:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"level"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb15-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (level)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">1</span>, <span class="at">percent_label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"level"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb16-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (level)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">1</span>, <span class="at">percent_label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><strong>Dashed</strong> line : <strong>Baseline</strong> simulation</li>
@@ -1176,8 +1253,8 @@ reldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/
 <li><p>To plot the variable « Y » in relative difference to the baseline scenario, set <code>transformation = "reldiff"</code> as shown in the following code:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"reldiff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb16-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"reldiff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb17-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><strong>Only one plot here !</strong> This is the (relative) difference between the shock and the baseline</li>
@@ -1193,8 +1270,8 @@ diff_{t} = Y_{shock_t} - Y_{baseline_{t}}
 <li><p>To plot the variable « Y » in absolute difference to the baseline scenario, set <code>transformation = "diff"</code> as shown in the following code</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"diff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb17-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (absolute change)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"diff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb18-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (absolute change)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="simpleplot-plot-the-variable-y-in-growth-rate-option-4" class="slide level2 scrollable">
@@ -1214,8 +1291,8 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <li><p>To plot the variable « Y » in growth rate to the baseline scenario, set <code>transformation = "gr"</code> as shown in the following code:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"gr"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb18-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (yearly percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.01</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"gr"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb19-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (yearly percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.01</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp" class="slide level2">
@@ -1228,21 +1305,21 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <li><p>The relative change of Y is the weighed average of the relative change of its components</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>contrib_comp <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>)</span>
-<span id="cb19-2"><a></a>contrib_comp_label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Households consumption"</span>, <span class="st">"Investment"</span>, <span class="st">"Public spending"</span>)</span>
-<span id="cb19-3"><a></a></span>
-<span id="cb19-4"><a></a>data_plot <span class="ot">&lt;-</span>  <span class="fu">contrib_longformat</span>(data_full,<span class="st">"Y"</span>, contrib_comp, <span class="at">scenar =</span> <span class="fu">c</span>(<span class="st">"baseline"</span>,scenario_name))</span>
-<span id="cb19-5"><a></a></span>
-<span id="cb19-6"><a></a>A <span class="ot">&lt;-</span> <span class="fu">contrib.plot</span>(data_plot, <span class="at">series =</span> contrib_comp,<span class="at">label_series =</span> contrib_comp_label,</span>
-<span id="cb19-7"><a></a>             <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">titleplot =</span> <span class="st">"Contributions to change in GDP"</span>, <span class="at">line_tot =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb19-8"><a></a></span>
-<span id="cb19-9"><a></a>B <span class="ot">&lt;-</span> <span class="fu">simpleplot</span>(data_full,<span class="fu">c</span>(<span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>), contrib_comp_label, startyear, endyear, <span class="at">titleplot =</span> <span class="st">"Components of the GDP (in difference from baseline)"</span>)</span>
-<span id="cb19-10"><a></a></span>
-<span id="cb19-11"><a></a><span class="fu">ggarrange</span>(A,B,</span>
-<span id="cb19-12"><a></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"(a)"</span>, <span class="st">"(b)"</span>),</span>
-<span id="cb19-13"><a></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>,</span>
-<span id="cb19-14"><a></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,</span>
-<span id="cb19-15"><a></a>          <span class="at">widths =</span> <span class="dv">2</span>,  <span class="at">heights =</span> <span class="dv">1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>contrib_comp <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>)</span>
+<span id="cb20-2"><a></a>contrib_comp_label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Households consumption"</span>, <span class="st">"Investment"</span>, <span class="st">"Public spending"</span>)</span>
+<span id="cb20-3"><a></a></span>
+<span id="cb20-4"><a></a>data_plot <span class="ot">&lt;-</span>  <span class="fu">contrib_longformat</span>(data_full,<span class="st">"Y"</span>, contrib_comp, <span class="at">scenar =</span> <span class="fu">c</span>(<span class="st">"baseline"</span>,scenario_name))</span>
+<span id="cb20-5"><a></a></span>
+<span id="cb20-6"><a></a>A <span class="ot">&lt;-</span> <span class="fu">contrib.plot</span>(data_plot, <span class="at">series =</span> contrib_comp,<span class="at">label_series =</span> contrib_comp_label,</span>
+<span id="cb20-7"><a></a>             <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">titleplot =</span> <span class="st">"Contributions to change in GDP"</span>, <span class="at">line_tot =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-8"><a></a></span>
+<span id="cb20-9"><a></a>B <span class="ot">&lt;-</span> <span class="fu">simpleplot</span>(data_full,<span class="fu">c</span>(<span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>), contrib_comp_label, startyear, endyear, <span class="at">titleplot =</span> <span class="st">"Components of the GDP (in difference from baseline)"</span>)</span>
+<span id="cb20-10"><a></a></span>
+<span id="cb20-11"><a></a><span class="fu">ggarrange</span>(A,B,</span>
+<span id="cb20-12"><a></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"(a)"</span>, <span class="st">"(b)"</span>),</span>
+<span id="cb20-13"><a></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>,</span>
+<span id="cb20-14"><a></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,</span>
+<span id="cb20-15"><a></a>          <span class="at">widths =</span> <span class="dv">2</span>,  <span class="at">heights =</span> <span class="dv">1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summary-tables" class="slide level2">
@@ -1258,17 +1335,17 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <div class="cell">
 <details class="code-fold">
 <summary>table_macro arguments</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>table_macro <span class="ot">&lt;-</span> <span class="cf">function</span>(data,</span>
-<span id="cb20-2"><a></a>                        <span class="at">shock =</span> <span class="st">"ct1"</span>,</span>
-<span id="cb20-3"><a></a>                        <span class="at">relative_variation =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-4"><a></a>                        <span class="at">level_diff =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-5"><a></a>                        <span class="at">percent_diff =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-6"><a></a>                        <span class="at">order =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-7"><a></a>                        <span class="at">time_vector =</span> <span class="cf">if</span>(<span class="fu">exists</span>(<span class="st">"time_waypoints"</span>)){time_waypoints}<span class="cf">else</span>{<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">60</span>)},</span>
-<span id="cb20-8"><a></a>                        <span class="at">end_year =</span> <span class="dv">2050</span>,</span>
-<span id="cb20-9"><a></a>                        <span class="at">shock_year =</span> <span class="dv">2021</span>,</span>
-<span id="cb20-10"><a></a>                        <span class="at">digits_numb =</span> <span class="dv">2</span></span>
-<span id="cb20-11"><a></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>table_macro <span class="ot">&lt;-</span> <span class="cf">function</span>(data,</span>
+<span id="cb21-2"><a></a>                        <span class="at">shock =</span> <span class="st">"ct1"</span>,</span>
+<span id="cb21-3"><a></a>                        <span class="at">relative_variation =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-4"><a></a>                        <span class="at">level_diff =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-5"><a></a>                        <span class="at">percent_diff =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-6"><a></a>                        <span class="at">order =</span> <span class="cn">NULL</span>,</span>
+<span id="cb21-7"><a></a>                        <span class="at">time_vector =</span> <span class="cf">if</span>(<span class="fu">exists</span>(<span class="st">"time_waypoints"</span>)){time_waypoints}<span class="cf">else</span>{<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">60</span>)},</span>
+<span id="cb21-8"><a></a>                        <span class="at">end_year =</span> <span class="dv">2050</span>,</span>
+<span id="cb21-9"><a></a>                        <span class="at">shock_year =</span> <span class="dv">2021</span>,</span>
+<span id="cb21-10"><a></a>                        <span class="at">digits_numb =</span> <span class="dv">2</span></span>
+<span id="cb21-11"><a></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1285,16 +1362,16 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <div class="cell">
 <details class="code-fold">
 <summary>TeXdoc syntax</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">teXdoc</span>(     <span class="at">sources   =</span> <span class="fu">c</span>(<span class="st">"02.1-eq.mdl"</span>),</span>
-<span id="cb21-2"><a></a>            <span class="at">exo       =</span> <span class="fu">c</span>(<span class="st">"02.1-exovar.mdl"</span>),</span>
-<span id="cb21-3"><a></a>            <span class="at">base.path =</span> <span class="fu">file.path</span>(<span class="st">"src"</span>,<span class="st">"model"</span>,<span class="st">"training"</span>),</span>
-<span id="cb21-4"><a></a>            <span class="at">out       =</span> <span class="st">"model-eq"</span>,</span>
-<span id="cb21-5"><a></a>            <span class="at">out.path  =</span> <span class="st">"results_side_files"</span>)</span>
-<span id="cb21-6"><a></a></span>
-<span id="cb21-7"><a></a></span>
-<span id="cb21-8"><a></a><span class="fu">make_eq_qmd</span>(<span class="at">preface =</span> <span class="fu">file.path</span>(<span class="st">"results_side_files"</span>,  <span class="st">"model-eq_preface.tex"</span>),</span>
-<span id="cb21-9"><a></a>            <span class="at">maintex =</span> <span class="fu">file.path</span>(<span class="st">"results_side_files"</span>, <span class="st">"model-eq.tex"</span>),</span>
-<span id="cb21-10"><a></a>            <span class="at">out.dir =</span> <span class="st">"results_side_files"</span> )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">teXdoc</span>(     <span class="at">sources   =</span> <span class="fu">c</span>(<span class="st">"02.1-eq.mdl"</span>),</span>
+<span id="cb22-2"><a></a>            <span class="at">exo       =</span> <span class="fu">c</span>(<span class="st">"02.1-exovar.mdl"</span>),</span>
+<span id="cb22-3"><a></a>            <span class="at">base.path =</span> <span class="fu">file.path</span>(<span class="st">"src"</span>,<span class="st">"model"</span>,<span class="st">"training"</span>),</span>
+<span id="cb22-4"><a></a>            <span class="at">out       =</span> <span class="st">"model-eq"</span>,</span>
+<span id="cb22-5"><a></a>            <span class="at">out.path  =</span> <span class="st">"results_side_files"</span>)</span>
+<span id="cb22-6"><a></a></span>
+<span id="cb22-7"><a></a></span>
+<span id="cb22-8"><a></a><span class="fu">make_eq_qmd</span>(<span class="at">preface =</span> <span class="fu">file.path</span>(<span class="st">"results_side_files"</span>,  <span class="st">"model-eq_preface.tex"</span>),</span>
+<span id="cb22-9"><a></a>            <span class="at">maintex =</span> <span class="fu">file.path</span>(<span class="st">"results_side_files"</span>, <span class="st">"model-eq.tex"</span>),</span>
+<span id="cb22-10"><a></a>            <span class="at">out.dir =</span> <span class="st">"results_side_files"</span> )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>The output generated are <span class="math inline">\(\LaTeX\)</span> files as well as <code>.qmd</code> that may be included in other reports, found in the <code>results\quarto_render</code> folder:</p>
@@ -1548,9 +1625,9 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1200,
 
-        height: 700,
+        height: 750,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
