@@ -453,6 +453,7 @@ Anissa Saumtally
 </section>
 <section id="a-standard-workflow-on-the-ermeeth-project-platform" class="slide level2">
 <h2>A standard workflow on the Ermeeth project platform</h2>
+<p><br></p>
 <ul>
 <li><p>create/edit your model</p></li>
 <li><p>create/edit your baseline and shock scenarios</p></li>
@@ -508,7 +509,7 @@ Anissa Saumtally
 <h2>Download links</h2>
 <p><br></p>
 <ul>
-<li>Please go to <a href="">https://ThreeME-org.github.io/CGE_inR_iberomex/install</a>
+<li>Please go to (https://ThreeME-org.github.io/CGE_inR_iberomex/install)[]
 <ul>
 <li>Download and install the 3/4 softwares linked</li>
 <li>Download the repository off GitHub (no account necessary)</li>
@@ -526,7 +527,18 @@ Anissa Saumtally
 <aside><ol class="aside-footnotes"><li id="fn1"><p>Rtools version must match the R version installed</p></li></ol></aside></section>
 <section id="quarto-introduction" class="slide level2">
 <h2>Quarto introduction</h2>
-<p>For these works, we heavily re</p>
+<p>For result analysis, we use <a href="https://quarto.org/docs/guide/">Quarto</a>. It’s a markdownbased format that allows to easily integrate code and text with additional syntax for more complex content, like code blocks, citations, and equations, which makes it accessible for both technical and non-technical users.</p>
+<ul>
+<li><p><strong>Open-source Publishing Tool</strong>: Quarto is an open-source, next-generation publishing tool that allows users to create and publish documents, reports, presentations, websites, blogs, and more.</p></li>
+<li><p><strong>Supports Multiple Formats</strong>: It seamlessly integrates with a variety of output formats, including HTML, PDF (typst, <span class="math inline">\(\LaTeX\)</span>), Word, and ePub, making it versatile for creating different types of content.</p></li>
+<li><p><strong>Multiple programming languages </strong>: While it has strong support for R and Python, Quarto also works well with other programming languages.</p></li>
+<li><p><strong>Data Visualization and Analysis</strong>: It enables the integration of live code, allowing users to generate and update visualizations and analyses directly in the document, which is ideal for reproducible research.</p></li>
+<li><p><strong>Customizable and Extensible</strong>: With options for custom styling, templates, and themes,</p></li>
+</ul>
+</section>
+<section id="live-demo" class="slide level2 center">
+<h2>LIVE DEMO</h2>
+<p><strong>Basic steps to creating a quarto file</strong></p>
 </section>
 <section id="basic-folder-strucure-presentation" class="slide level2 scrollable">
 <h2>Basic folder strucure presentation</h2>
@@ -548,7 +560,7 @@ Anissa Saumtally
 </ul></li>
 </ul>
 </section>
-<section id="live-demo" class="slide level2">
+<section id="live-demo-1" class="slide level2 center">
 <h2>LIVE DEMO</h2>
 <p><strong>Overview of the project folder structure</strong></p>
 </section>
@@ -686,16 +698,16 @@ Anissa Saumtally
 <div class="cell" title="data_full" data-filename="bridge_c17_s17.R">
 <div class="cell-output cell-output-stdout">
 <pre><code>   variable year sector commodity   values_ref scenario       values index_scen
-1       EMS 2041   &lt;NA&gt;      &lt;NA&gt; 5.862922e+02 baseline 5.862922e+02          1
-2        PX 2020   &lt;NA&gt;      &lt;NA&gt; 1.020000e+00 baseline 1.020000e+00          1
-3       PCH 2048   &lt;NA&gt;      &lt;NA&gt; 1.775845e+00      ct1 1.817390e+00          0
-4        PY 2033   &lt;NA&gt;      &lt;NA&gt; 1.319479e+00 baseline 1.319479e+00          1
-5        CH 2044   &lt;NA&gt;      &lt;NA&gt; 1.804375e+06 baseline 1.804375e+06          1
-6       GDP 2034   &lt;NA&gt;      &lt;NA&gt; 2.948188e+06 baseline 2.948188e+06          1
-7         W 2025   &lt;NA&gt;      &lt;NA&gt; 5.280897e+01      ct1 5.323521e+01          0
-8        PY 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00      ct1 1.516045e+00          0
-9         M 2021   &lt;NA&gt;      &lt;NA&gt; 7.732314e+05      ct1 7.707969e+05          0
-10      EMS 2030   &lt;NA&gt;      &lt;NA&gt; 5.112705e+02      ct1 4.724036e+02          0</code></pre>
+1         W 2050   &lt;NA&gt;      &lt;NA&gt; 1.111083e+02 baseline 1.111083e+02          1
+2       C_L 2021   &lt;NA&gt;      &lt;NA&gt; 5.847079e+01      ct1 5.845938e+01          0
+3        CH 2041   &lt;NA&gt;      &lt;NA&gt; 1.738239e+06      ct1 1.725376e+06          0
+4       PCH 2047   &lt;NA&gt;      &lt;NA&gt; 1.741024e+00      ct1 1.781771e+00          0
+5       PVA 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00 baseline 1.195093e+00          1
+6       PCI 2036   &lt;NA&gt;      &lt;NA&gt; 1.400241e+00      ct1 1.428650e+00          0
+7        PY 2023   &lt;NA&gt;      &lt;NA&gt; 1.082432e+00 baseline 1.082432e+00          1
+8         W 2036   &lt;NA&gt;      &lt;NA&gt; 7.325625e+01 baseline 7.325625e+01          1
+9        PY 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00 baseline 1.485947e+00          1
+10      PVA 2042   &lt;NA&gt;      &lt;NA&gt; 1.576899e+00      ct1 1.608437e+00          0</code></pre>
 </div>
 </div>
 <p>By default the table is sorted by variable, year and scenario in this order.</p>
@@ -757,15 +769,282 @@ Anissa Saumtally
 <p><br></p>
 <p><code>data_full</code> is organised as a long-form <code>data.frame</code>, that is all the model variables are listed in a single columns, as well as all the observations values.</p>
 <p><strong>The minimum observation identifier variables are : the <code>variable</code>, the <code>year</code> and the <code>scenario</code></strong></p>
+<ul>
+<li>to extract data use <code>dplyr::filter</code></li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>data_full <span class="sc">|&gt;</span> <span class="fu">filter</span>(variable <span class="sc">%in%</span> <span class="st">"CH"</span>) <span class="sc">|&gt;</span>  <span class="fu">filter</span>(scenario <span class="sc">%in%</span> <span class="st">"ct1"</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>to create new variable, transform the data in <em>wide format</em>, make your transformations, and turn it back into <em>long format</em> [Advanced, for next session]</li>
+</ul>
 </section>
-<section id="config_input" class="slide level2">
-<h2><code>config_input</code></h2>
+<section id="config_input-to-specify-the-parameters-of-the-simulation" class="slide level2 center">
+<h2><code>config_input</code>: to specify the parameters of the simulation</h2>
+<ul>
+<li>To configure the simulation, use the <code>config_input_MODEL.R</code> found in the <code>configuration</code> folder.</li>
+</ul>
+<p><code>config_input_MODEL.R</code> is meant to be a template, so it is advised to make a copy for your own usage.</p>
+</section>
+<section id="config_input-structure-of-the-file---basic-parameters" class="slide level2 scrollable">
+<h2><code>config_input</code>: Structure of the file - Basic parameters</h2>
+<p>The first section of the <code>config_input</code> file contains the basic parameters that need to be adapted for each simulation :</p>
+<ul>
+<li><code>iso3</code>: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question<br>
+</li>
+<li><code>classification</code>: if using a ThreeME model number of commodities and sectors with the following format <code>cx_sy</code> where <code>x</code> is the number of commodities and <code>x</code> the number of sectors. Check that the desired classification exists in the mdl files</li>
+<li><code>model_folder</code>: the folder where to find the <code>mdl</code> files (either <code>training</code> or <code>threeme</code> usually)</li>
+<li><code>project_name</code>: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only</li>
+<li><code>scenario_baseline</code> : Name of the baseline scenario. By default it is « baseline-steady ». It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables. All scenarii files are located in configuration/scenarii_calib</li>
+<li><code>scenario</code>: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the <code>configuration/scenarii_calib</code> folders. Scenario naes must be alphanumeric and underscores in lowercase only. The <code>scenario</code> parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.:</li>
+</ul>
+<ul>
+<li><code>baseyear</code>: Input the base year used for the calibration data</li>
+<li><code>lastyear</code>: Last year of the simulations</li>
+<li><code>shockyear</code>: year of the shock. This is an optional parameter that can be called upon when calibrating shocks</li>
+<li><code>max_lags</code>: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.</li>
+<li><code>firstyear</code>: By default this is <code>baseyear - max_lags</code> (rarely needs to be modified)</li>
+<li><code>automated_shocks</code>: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (<em>needs further documentation</em>)</li>
+<li><code>variables_to_keep</code>: Vector of variables to keep in the output. Input an empty vector (<code>c()</code>) in order to keep all variables.</li>
+</ul>
+</section>
+<section id="config_input-structure-of-the-file---model-file-lists" class="slide level2">
+<h2><code>config_input</code>: Structure of the file - Model file lists</h2>
+<p>The second sections contains <code>mdl</code> file lists. In three parts, there are:</p>
+<ul>
+<li><code>list_files</code> : basic files (maily for ThreeME, does not need to be modified)</li>
+<li><code>calib_files</code>: <code>mdl</code> files that contain data calibration equations</li>
+<li><code>model_files</code>: <code>mdl</code> files that contain the models equations.</li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Training model</a></li><li><a href="#tabset-2-2">ThreeME model</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>lists_files <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-2"><a></a>  <span class="st">"lists.mdl"</span> </span>
+<span id="cb9-3"><a></a>)</span>
+<span id="cb9-4"><a></a></span>
+<span id="cb9-5"><a></a><span class="do">## Calibration files</span></span>
+<span id="cb9-6"><a></a>calib_files <span class="ot">&lt;-</span> <span class="fu">c</span>(lists_files,</span>
+<span id="cb9-7"><a></a>                 <span class="st">"03.1-calib.mdl"</span>,     <span class="co"># Close economy</span></span>
+<span id="cb9-8"><a></a>                 <span class="st">"03.2-calib.mdl"</span>,     <span class="co"># Open economy</span></span>
+<span id="cb9-9"><a></a>                 </span>
+<span id="cb9-10"><a></a>                 <span class="st">"ENDOFLINE.mdl"</span>       <span class="co"># ALL VERSIONS: empty file</span></span>
+<span id="cb9-11"><a></a>                 </span>
+<span id="cb9-12"><a></a>)</span>
+<span id="cb9-13"><a></a></span>
+<span id="cb9-14"><a></a><span class="co"># Model files </span></span>
+<span id="cb9-15"><a></a>model_files <span class="ot">=</span> <span class="fu">c</span>(lists_files,</span>
+<span id="cb9-16"><a></a>                </span>
+<span id="cb9-17"><a></a>                <span class="st">"03.1-eq.mdl"</span>,         <span class="co"># Close economy </span></span>
+<span id="cb9-18"><a></a>                <span class="st">"03.2-eq.mdl"</span>,         <span class="co"># Close economy</span></span>
+<span id="cb9-19"><a></a>                </span>
+<span id="cb9-20"><a></a>                <span class="st">"ENDOFLINE.mdl"</span>        <span class="co"># ALL VERSIONS: empty file</span></span>
+<span id="cb9-21"><a></a>                </span>
+<span id="cb9-22"><a></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="do">## Lists files (warning: if more than one, place "lists.mdl" last)</span></span>
+<span id="cb10-2"><a></a>lists_files <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb10-3"><a></a>    <span class="fu">str_c</span>(<span class="st">"R_lists_"</span>, iso3,<span class="st">"_"</span>,classification, <span class="st">".mdl"</span>),             <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-4"><a></a>    <span class="st">"lists.mdl"</span>                                                     <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-5"><a></a>  )</span>
+<span id="cb10-6"><a></a></span>
+<span id="cb10-7"><a></a><span class="do">## Calibration files (used to initialize variables)</span></span>
+<span id="cb10-8"><a></a>calib_files <span class="ot">=</span> <span class="fu">c</span>(lists_files,</span>
+<span id="cb10-9"><a></a>  <span class="fu">str_c</span>(<span class="st">"data/R_Calibration_"</span>, iso3,<span class="st">"_"</span>,classification,<span class="st">"_"</span>,baseyear, <span class="st">".mdl"</span>),   <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-10"><a></a>  <span class="st">"data/parameters.mdl"</span>,                     <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-11"><a></a>     </span>
+<span id="cb10-12"><a></a>  <span class="do">## Calibration of elasticity of substitutions (Producer)</span></span>
+<span id="cb10-13"><a></a>  <span class="st">"data/elasticities.mdl"</span>,                   <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-14"><a></a>  <span class="st">"data/Exception_NestedCES_data.mdl"</span>,     <span class="co"># NESTED CES (PRODUCER) VERSION</span></span>
+<span id="cb10-15"><a></a>  <span class="st">"data/round0.mdl"</span>,                         <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-16"><a></a>  <span class="st">"data/Prices_data.mdl"</span>,                    <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-17"><a></a>  <span class="st">"data/SU_data.mdl"</span>,                        <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-18"><a></a>  <span class="st">"data/Special_data.mdl"</span>,                   <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-19"><a></a>  <span class="st">"data/Other_data.mdl"</span>,                     <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-20"><a></a>  <span class="st">"data/Exception_taxes_prices_data.mdl"</span>,    <span class="co"># ALL VERSIONS (when commodity tax rate per user)</span></span>
+<span id="cb10-21"><a></a>  </span>
+<span id="cb10-22"><a></a>  <span class="do">## Optional Consumer blocks</span></span>
+<span id="cb10-23"><a></a>  <span class="co"># "data/Exception_ConsumerNested_data.mdl",  # NESTED CES (CONSUMER) VERSION</span></span>
+<span id="cb10-24"><a></a></span>
+<span id="cb10-25"><a></a>  <span class="st">"data/Exception_Other_data.mdl"</span>,           <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-26"><a></a>  <span class="co"># "data/Exception_energybalance_simple.mdl",  # ALL VERSIONS: Only net energy production (Y_TOE). Gross primary energy </span></span>
+<span id="cb10-27"><a></a>  </span>
+<span id="cb10-28"><a></a>  <span class="st">"ENDOFLINE.mdl"</span>                          <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-29"><a></a>)</span>
+<span id="cb10-30"><a></a></span>
+<span id="cb10-31"><a></a><span class="co"># Model files </span></span>
+<span id="cb10-32"><a></a>model_files <span class="ot">=</span> <span class="fu">c</span>(lists_files,</span>
+<span id="cb10-33"><a></a>  <span class="st">"SU.mdl"</span>,                     <span class="co"># ALL VERSIONS </span></span>
+<span id="cb10-34"><a></a>  <span class="st">"Prices.mdl"</span>,                 <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-35"><a></a>  <span class="st">"Producer.mdl"</span>,               <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-36"><a></a>  <span class="st">"Consumer.mdl"</span>,               <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-37"><a></a>  <span class="st">"Government.mdl"</span>,             <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-38"><a></a>  <span class="st">"Trade_inter.mdl"</span>,            <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-39"><a></a>  <span class="st">"Demography.mdl"</span>,             <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-40"><a></a>  <span class="st">"Adjustments.mdl"</span>,            <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-41"><a></a>  <span class="st">"Verif.mdl"</span>,                  <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-42"><a></a>  <span class="st">"ghg_emissions.mdl"</span>,          <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-43"><a></a>  </span>
+<span id="cb10-44"><a></a>  <span class="co"># Option energy balance blocks</span></span>
+<span id="cb10-45"><a></a>  <span class="st">"energybalance.mdl"</span>,          <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-46"><a></a></span>
+<span id="cb10-47"><a></a>  <span class="do">## Exception files ALWAYS at the end because of the @overs</span></span>
+<span id="cb10-48"><a></a>  <span class="co"># "Exception_taxes_prices.mdl",           # ALL VERSIONS</span></span>
+<span id="cb10-49"><a></a>  <span class="st">"Exception_taxes_prices_new.mdl"</span>,           <span class="co"># New version where taxes are divided by different users</span></span>
+<span id="cb10-50"><a></a>  <span class="co"># "Exception_NestedCES.mdl",            # NESTED CES (PRODUCER) VERSION</span></span>
+<span id="cb10-51"><a></a>  <span class="co"># "Exception_ConsumerNested.mdl",       # NESTED CES (CONSUMER) VERSION</span></span>
+<span id="cb10-52"><a></a></span>
+<span id="cb10-53"><a></a>  <span class="st">"Exception_Other.mdl"</span>,                   <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-54"><a></a>  </span>
+<span id="cb10-55"><a></a>  </span>
+<span id="cb10-56"><a></a>  <span class="st">"ENDOFLINE.mdl"</span>                          <span class="co"># ALL VERSIONS</span></span>
+<span id="cb10-57"><a></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="config_output-to-specify-output-templates-to-analyse-the-simulation-resutls" class="slide level2">
+<h2><code>config_output</code>: to specify output templates to analyse the simulation resutls</h2>
+<p><br></p>
+<p><code>config_output.R</code> is used to produce pre-programmed result templates. The templates are located in the <code>results/quarto_templates</code>.</p>
+<p>-Quarto templates are not meant to be rendered directly due to their location in the folder, which makes accessing dependencies rather complicated. Instead, to use templates, we use the function <code>produce_quartos()</code> that calls upon the parameters found in the <code>config_output</code> file.</p>
+<ul>
+<li><p>To configure the simulation, use the <code>config_output_MODEL.R</code> found in the <code>configuration</code> folder.</p></li>
+<li><p><code>config_output_MODEL.R</code> is meant to be a template, so it is advised to make a copy for your own usage.</p></li>
+</ul>
+</section>
+<section id="config_output---file-structure" class="slide level2">
+<h2><code>config_output</code> - File Structure</h2>
+<p>Divided in two parts:</p>
+<h4 id="designation-of-templates-to-produce">designation of templates to produce</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Templates to call</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>quartos_to_render <span class="ot">&lt;-</span><span class="fu">list</span>(</span>
+<span id="cb11-2"><a></a>  </span>
+<span id="cb11-3"><a></a>  <span class="at">basic_results =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-4"><a></a>  <span class="at">texdoc =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-5"><a></a>  <span class="at">model_info =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-6"><a></a>  <span class="at">sectoral_results =</span> <span class="cn">FALSE</span></span>
+<span id="cb11-7"><a></a>  </span>
+<span id="cb11-8"><a></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<h4 id="templates-parameters">Templates parameters</h4>
+<p>For each template available, each parameters from their respective YAML is listed and can be modified as such. Objects from the input configuration can be used by simply stating their name as in the example for <code>basic_results</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Templates parameters</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>quartos_parameters <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb12-2"><a></a>  </span>
+<span id="cb12-3"><a></a>  <span class="at">basic_results =</span> <span class="fu">list</span>(</span>
+<span id="cb12-4"><a></a>    <span class="at">project_name =</span> project_name,</span>
+<span id="cb12-5"><a></a>    <span class="at">startyear =</span> <span class="dv">2019</span>,</span>
+<span id="cb12-6"><a></a>    <span class="at">shockyear =</span> shockyear,</span>
+<span id="cb12-7"><a></a>    <span class="at">endyear =</span> lastyear,</span>
+<span id="cb12-8"><a></a>    <span class="at">scenarios =</span> <span class="fu">unname</span>(scenario)  <span class="co"># List of scenarii to be plotted</span></span>
+<span id="cb12-9"><a></a>  ),</span>
+<span id="cb12-10"><a></a>  </span>
+<span id="cb12-11"><a></a>  <span class="at">texdoc =</span> <span class="fu">list</span>(</span>
+<span id="cb12-12"><a></a>    </span>
+<span id="cb12-13"><a></a>    <span class="at">project_name =</span> project_name,</span>
+<span id="cb12-14"><a></a>    <span class="at">texdoc_mdls =</span> <span class="st">"default"</span>,</span>
+<span id="cb12-15"><a></a>    <span class="at">texdoc_exovar =</span> <span class="st">"03.2-exovar.mdl"</span>,</span>
+<span id="cb12-16"><a></a>    <span class="at">model_files =</span> model_files,</span>
+<span id="cb12-17"><a></a>    <span class="at">mdl_folder =</span> model_folder</span>
+<span id="cb12-18"><a></a>  ),</span>
+<span id="cb12-19"><a></a>  </span>
+<span id="cb12-20"><a></a>  <span class="at">model_info =</span> <span class="fu">list</span>(</span>
+<span id="cb12-21"><a></a>    <span class="at">baseyear =</span>  baseyear,</span>
+<span id="cb12-22"><a></a>    <span class="at">lastyear =</span> lastyear,</span>
+<span id="cb12-23"><a></a>    <span class="at">classification =</span> classification,</span>
+<span id="cb12-24"><a></a>    <span class="at">scenario_baseline =</span> scenario_baseline,</span>
+<span id="cb12-25"><a></a>    <span class="at">shocks =</span> scenario,</span>
+<span id="cb12-26"><a></a>    <span class="at">calib_files =</span> calib_files,</span>
+<span id="cb12-27"><a></a>    <span class="at">model_files =</span> model_files,</span>
+<span id="cb12-28"><a></a>    <span class="at">rsolver =</span>  Rsolver,</span>
+<span id="cb12-29"><a></a>    <span class="at">project_name =</span> project_name</span>
+<span id="cb12-30"><a></a>  ),</span>
+<span id="cb12-31"><a></a>  </span>
+<span id="cb12-32"><a></a>  </span>
+<span id="cb12-33"><a></a>  <span class="at">sectoral_results =</span> <span class="fu">list</span>(</span>
+<span id="cb12-34"><a></a>    <span class="at">project_name =</span> project_name</span>
+<span id="cb12-35"><a></a>  )</span>
+<span id="cb12-36"><a></a></span>
+<span id="cb12-37"><a></a>  </span>
+<span id="cb12-38"><a></a>  </span>
+<span id="cb12-39"><a></a>  )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="mdl-equation-files" class="slide level2">
 <h2><code>mdl</code> Equation files</h2>
+<p><br></p>
+<ul>
+<li>They contain the equations of the model</li>
+<li>can be organised in any order</li>
+<li>first variable that appears on the LHS is the endogenous variable determined by the model</li>
+<li>simple syntax</li>
+<li>can be organised in sections</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r code-overflow-scroll number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="do">##### Endogenous variables' equations</span></span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a><span class="do">##! Investement</span></span>
+<span id="cb13-4"><a></a>I <span class="ot">=</span> Y <span class="sc">-</span> CH <span class="sc">-</span> G</span>
+<span id="cb13-5"><a></a></span>
+<span id="cb13-6"><a></a><span class="do">##! Production (GDP)</span></span>
+<span id="cb13-7"><a></a>Y <span class="sc">*</span> p <span class="ot">=</span> w<span class="sc">*</span>L <span class="sc">+</span> p<span class="sc">*</span>(delta <span class="sc">+</span> r)<span class="sc">*</span>K</span>
+<span id="cb13-8"><a></a><span class="co"># Y = ((Phi_L * (L*PROG_L) ^ ((rho-1)/rho )) + (Phi_K * (K*PROG_K) ^ ((rho-1)/rho )))^(rho/(rho-1))</span></span>
+<span id="cb13-9"><a></a><span class="co"># Mettre alternative possible: Fonction de production directement</span></span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a><span class="do">##! Households'consumption</span></span>
+<span id="cb13-12"><a></a> CH <span class="ot">=</span> (<span class="dv">1</span> <span class="sc">-</span> sigma) <span class="sc">*</span> (w<span class="sc">*</span>L <span class="sc">+</span> p<span class="sc">*</span>r<span class="sc">*</span>K) <span class="sc">/</span> p</span>
+<span id="cb13-13"><a></a><span class="co"># d(log(CH)) = d(log(Y{-1}))</span></span>
+<span id="cb13-14"><a></a></span>
+<span id="cb13-15"><a></a><span class="do">##! Wage (from cost minimization assuming a CES function)</span></span>
+<span id="cb13-16"><a></a>w <span class="sc">+</span> L <span class="ot">=</span> ((Y <span class="sc">/</span> PROG_L) <span class="sc">*</span> ((Phi_L) <span class="sc">^</span> rho) <span class="sc">*</span> (w<span class="sc">/</span>(p <span class="sc">*</span> PROG_L)) <span class="sc">^</span> (<span class="sc">-</span>rho)) <span class="sc">+</span> w</span>
+<span id="cb13-17"><a></a><span class="co"># w / (p * PROG_L) = Phi_L * (Y / (L * PROG_L)) ^ (1 / rho)</span></span>
+<span id="cb13-18"><a></a> </span>
+<span id="cb13-19"><a></a></span>
+<span id="cb13-20"><a></a><span class="do">##! Interest rate (from cost minimization assuming a CES function)</span></span>
+<span id="cb13-21"><a></a>r <span class="sc">+</span> K <span class="ot">=</span> ((Y <span class="sc">/</span> PROG_K) <span class="sc">*</span> ((Phi_K) <span class="sc">^</span> rho) <span class="sc">*</span> ((delta <span class="sc">+</span> r)<span class="sc">/</span>PROG_K) <span class="sc">^</span> (<span class="sc">-</span>rho)) <span class="sc">+</span> r</span>
+<span id="cb13-22"><a></a><span class="co"># (r + delta)/PROG_K  = Phi_K * (Y / (K * PROG_K)) ^ (1/rho)</span></span>
+<span id="cb13-23"><a></a></span>
+<span id="cb13-24"><a></a><span class="do">##! Capital (from accumulation equation)</span></span>
+<span id="cb13-25"><a></a><span class="fu">d</span>(K) <span class="ot">=</span> I{<span class="sc">-</span><span class="dv">1</span>} <span class="sc">-</span> delta <span class="sc">*</span> K{<span class="sc">-</span><span class="dv">1</span>}</span>
+<span id="cb13-26"><a></a></span>
+<span id="cb13-27"><a></a><span class="do">##! Price </span></span>
+<span id="cb13-28"><a></a>p <span class="ot">=</span> <span class="dv">1</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="mdl-data-calibration-files" class="slide level2">
 <h2><code>mdl</code> Data calibration files</h2>
+<p><br></p>
+<ul>
+<li>Data calibration files are used to determine the value at the baseyear of endogenous variables, and the default values of exogenous variables</li>
+</ul>
+</section>
+<section id="calibration-error" class="slide level2">
+<h2>Calibration error</h2>
+<p><br></p>
+<p>Change the calibration for public expenditure and have a look at the calibration error.</p>
+<ul>
+<li>Change in the calibration file « 01.1-calib.mdl » the value of G. Put <strong>G := 26</strong> instead of <strong>G : = 15</strong><br>
+</li>
+<li>Save the calibration file.</li>
+<li>Run the <code>main</code></li>
+</ul>
+<p><strong>What do you notice?</strong></p>
 </section>
 <section id="complete-exercise-2-part-2" class="slide level2">
 <h2>Complete Exercise 2 (part 2)</h2>
@@ -863,7 +1142,7 @@ Anissa Saumtally
 <li><code>simpleplot</code> creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">View</span>(ermeeth<span class="sc">::</span>simpleplot)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">View</span>(ermeeth<span class="sc">::</span>simpleplot)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>There are <strong>4 options</strong> to plot a variable using <code>simpleplot</code> To select an option, we change the argument « transformation » in the <code>simpleplot</code> function:</p>
@@ -879,8 +1158,8 @@ Option 4: plot the variable in <strong>growth rate</strong> (transformation = «
 <li>To plot the variable « Y » in level to the baseline scenario, set <code>transformation = "level"</code> as shown in the following code:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"level"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb9-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (level)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">1</span>, <span class="at">percent_label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"level"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb15-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (level)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">1</span>, <span class="at">percent_label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><strong>Dashed</strong> line : <strong>Baseline</strong> simulation</li>
@@ -897,8 +1176,8 @@ reldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/
 <li><p>To plot the variable « Y » in relative difference to the baseline scenario, set <code>transformation = "reldiff"</code> as shown in the following code:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"reldiff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb10-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"reldiff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb16-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>, <span class="at">custom_x_breaks =</span> <span class="dv">2</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><strong>Only one plot here !</strong> This is the (relative) difference between the shock and the baseline</li>
@@ -914,8 +1193,8 @@ diff_{t} = Y_{shock_t} - Y_{baseline_{t}}
 <li><p>To plot the variable « Y » in absolute difference to the baseline scenario, set <code>transformation = "diff"</code> as shown in the following code</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"diff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb11-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (absolute change)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"diff"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb17-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (absolute change)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="simpleplot-plot-the-variable-y-in-growth-rate-option-4" class="slide level2 scrollable">
@@ -935,8 +1214,8 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <li><p>To plot the variable « Y » in growth rate to the baseline scenario, set <code>transformation = "gr"</code> as shown in the following code:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"gr"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
-<span id="cb12-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (yearly percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.01</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">simpleplot</span>(<span class="at">data =</span> data_full,  <span class="at">transformation =</span> <span class="st">"gr"</span>, <span class="at">series =</span> <span class="st">"Y"</span>, <span class="at">label_series =</span> <span class="st">"GDP"</span>, <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">endyear =</span> <span class="dv">2035</span>, </span>
+<span id="cb18-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (yearly percentage change)"</span>, <span class="at">unit =</span> <span class="st">"percent"</span>, <span class="at">decimal =</span> <span class="fl">0.01</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp" class="slide level2">
@@ -949,36 +1228,85 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <li><p>The relative change of Y is the weighed average of the relative change of its components</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>contrib_comp <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>)</span>
-<span id="cb13-2"><a></a>contrib_comp_label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Households consumption"</span>, <span class="st">"Investment"</span>, <span class="st">"Public spending"</span>)</span>
-<span id="cb13-3"><a></a></span>
-<span id="cb13-4"><a></a>data_plot <span class="ot">&lt;-</span>  <span class="fu">contrib</span>(data_full,<span class="st">"Y"</span>, contrib_comp, <span class="at">scenar =</span> <span class="fu">c</span>(<span class="st">"baseline"</span>,scenario_name))</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>A <span class="ot">&lt;-</span> <span class="fu">contrib.plot</span>(data_plot, <span class="at">series =</span> contrib_comp,<span class="at">label_series =</span> contrib_comp_label,</span>
-<span id="cb13-7"><a></a>             <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">titleplot =</span> <span class="st">"Contributions to change in GDP"</span>, <span class="at">line_tot =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a>B <span class="ot">&lt;-</span> <span class="fu">simpleplot</span>(data_full,<span class="fu">c</span>(<span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>), contrib_comp_label, startyear, endyear, <span class="at">titleplot =</span> <span class="st">"Components of the GDP (in difference from baseline)"</span>)</span>
-<span id="cb13-10"><a></a></span>
-<span id="cb13-11"><a></a><span class="fu">ggarrange</span>(A,B,</span>
-<span id="cb13-12"><a></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"(a)"</span>, <span class="st">"(b)"</span>),</span>
-<span id="cb13-13"><a></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>,</span>
-<span id="cb13-14"><a></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,</span>
-<span id="cb13-15"><a></a>          <span class="at">widths =</span> <span class="dv">2</span>,  <span class="at">heights =</span> <span class="dv">1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>contrib_comp <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>)</span>
+<span id="cb19-2"><a></a>contrib_comp_label <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Households consumption"</span>, <span class="st">"Investment"</span>, <span class="st">"Public spending"</span>)</span>
+<span id="cb19-3"><a></a></span>
+<span id="cb19-4"><a></a>data_plot <span class="ot">&lt;-</span>  <span class="fu">contrib_longformat</span>(data_full,<span class="st">"Y"</span>, contrib_comp, <span class="at">scenar =</span> <span class="fu">c</span>(<span class="st">"baseline"</span>,scenario_name))</span>
+<span id="cb19-5"><a></a></span>
+<span id="cb19-6"><a></a>A <span class="ot">&lt;-</span> <span class="fu">contrib.plot</span>(data_plot, <span class="at">series =</span> contrib_comp,<span class="at">label_series =</span> contrib_comp_label,</span>
+<span id="cb19-7"><a></a>             <span class="at">startyear =</span> <span class="dv">2020</span>, <span class="at">titleplot =</span> <span class="st">"Contributions to change in GDP"</span>, <span class="at">line_tot =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-8"><a></a></span>
+<span id="cb19-9"><a></a>B <span class="ot">&lt;-</span> <span class="fu">simpleplot</span>(data_full,<span class="fu">c</span>(<span class="st">"CH"</span>, <span class="st">"I"</span>, <span class="st">"G"</span>), contrib_comp_label, startyear, endyear, <span class="at">titleplot =</span> <span class="st">"Components of the GDP (in difference from baseline)"</span>)</span>
+<span id="cb19-10"><a></a></span>
+<span id="cb19-11"><a></a><span class="fu">ggarrange</span>(A,B,</span>
+<span id="cb19-12"><a></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"(a)"</span>, <span class="st">"(b)"</span>),</span>
+<span id="cb19-13"><a></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">vjust =</span> <span class="fl">1.5</span>,</span>
+<span id="cb19-14"><a></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>,</span>
+<span id="cb19-15"><a></a>          <span class="at">widths =</span> <span class="dv">2</span>,  <span class="at">heights =</span> <span class="dv">1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="making-tables" class="slide level2">
-<h2>Making tables</h2>
+<section id="summary-tables" class="slide level2">
+<h2>Summary tables</h2>
+<p><br></p>
+<p>With the <code>dplyr</code> package, it can be easy to modify <code>data_full</code> in order to synthetize results.</p>
+<p><br> We provide two functions <code>table_macro()</code> and <code>table_reference()</code> that yield automated raw tables (<code>tibbles</code>) that can later on be formatted with packages such as <code>gt</code> or <code>flextable</code>.</p>
+<ul>
+<li><code>table_reference()</code> produces results for a given scenario independently (growth rates, levels…)</li>
+<li><code>table_macro()</code> produces results for a given scenario in relative to the <code>baseline</code> scenario</li>
+</ul>
+<p>See <code>basic_results</code> template for examples of usage.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>table_macro arguments</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>table_macro <span class="ot">&lt;-</span> <span class="cf">function</span>(data,</span>
+<span id="cb20-2"><a></a>                        <span class="at">shock =</span> <span class="st">"ct1"</span>,</span>
+<span id="cb20-3"><a></a>                        <span class="at">relative_variation =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-4"><a></a>                        <span class="at">level_diff =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-5"><a></a>                        <span class="at">percent_diff =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-6"><a></a>                        <span class="at">order =</span> <span class="cn">NULL</span>,</span>
+<span id="cb20-7"><a></a>                        <span class="at">time_vector =</span> <span class="cf">if</span>(<span class="fu">exists</span>(<span class="st">"time_waypoints"</span>)){time_waypoints}<span class="cf">else</span>{<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">60</span>)},</span>
+<span id="cb20-8"><a></a>                        <span class="at">end_year =</span> <span class="dv">2050</span>,</span>
+<span id="cb20-9"><a></a>                        <span class="at">shock_year =</span> <span class="dv">2021</span>,</span>
+<span id="cb20-10"><a></a>                        <span class="at">digits_numb =</span> <span class="dv">2</span></span>
+<span id="cb20-11"><a></a>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="texdoc" class="slide level2">
 <h2>TeXdoc</h2>
 <ul>
-<li>TeXdoc is function that reads <code>mdl</code> files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.
+<li><p>TeXdoc is function that reads <code>mdl</code> files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.</p>
 <ul>
 <li>Not perfect yet!</li>
 <li>Quite sensitive to how <code>mdl</code> files are written, especially when it come to sectionning text</li>
 </ul></li>
-<li>We added a functionnality that transforms the <code>tex</code> output into a <code>qmd</code> output that can be called upon</li>
+<li><p>We added a functionnality that transforms the <code>tex</code> output into a <code>qmd</code> output that can be called upon in qmd</p></li>
 </ul>
+<div class="cell">
+<details class="code-fold">
+<summary>TeXdoc syntax</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">teXdoc</span>(     <span class="at">sources   =</span> <span class="fu">c</span>(<span class="st">"02.1-eq.mdl"</span>),</span>
+<span id="cb21-2"><a></a>            <span class="at">exo       =</span> <span class="fu">c</span>(<span class="st">"02.1-exovar.mdl"</span>),</span>
+<span id="cb21-3"><a></a>            <span class="at">base.path =</span> <span class="fu">file.path</span>(<span class="st">"src"</span>,<span class="st">"model"</span>,<span class="st">"training"</span>),</span>
+<span id="cb21-4"><a></a>            <span class="at">out       =</span> <span class="st">"model-eq"</span>,</span>
+<span id="cb21-5"><a></a>            <span class="at">out.path  =</span> <span class="st">"results_side_files"</span>)</span>
+<span id="cb21-6"><a></a></span>
+<span id="cb21-7"><a></a></span>
+<span id="cb21-8"><a></a><span class="fu">make_eq_qmd</span>(<span class="at">preface =</span> <span class="fu">file.path</span>(<span class="st">"results_side_files"</span>,  <span class="st">"model-eq_preface.tex"</span>),</span>
+<span id="cb21-9"><a></a>            <span class="at">maintex =</span> <span class="fu">file.path</span>(<span class="st">"results_side_files"</span>, <span class="st">"model-eq.tex"</span>),</span>
+<span id="cb21-10"><a></a>            <span class="at">out.dir =</span> <span class="st">"results_side_files"</span> )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The output generated are <span class="math inline">\(\LaTeX\)</span> files as well as <code>.qmd</code> that may be included in other reports, found in the <code>results\quarto_render</code> folder:</p>
+<pre><code>- equation file
+- exogenous file
+- glossary file</code></pre>
+<p>To facilitate the usage, quarto template is available that can be called from <code>config_output</code></p>
+</section>
+<section id="live-demo-2" class="slide level2 center">
+<h2>Live Demo</h2>
+<p><strong>TeXdoc files</strong></p>
+<p><strong>TeXdoc quarto template</strong></p>
 </section>
 <section id="complete-exercise-4" class="slide level2 scrollable">
 <h2>Complete Exercise 4</h2>

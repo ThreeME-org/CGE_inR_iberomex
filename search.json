@@ -144,7 +144,7 @@
     "href": "Practical_Sessions.html#a-standard-workflow-on-the-ermeeth-project-platform",
     "title": "CGE in R - Practical sessions",
     "section": "A standard workflow on the Ermeeth project platform",
-    "text": "A standard workflow on the Ermeeth project platform\n\ncreate/edit your model\ncreate/edit your baseline and shock scenarios\nPrepare your config files\nPrepare your main file\nPrepare a simple .qmd output (or use a template!)\nTest it, fix errors (there is always something..)\nRun simulations again.\nDevelope more advance analysis to understand behaviours"
+    "text": "A standard workflow on the Ermeeth project platform\n\n\ncreate/edit your model\ncreate/edit your baseline and shock scenarios\nPrepare your config files\nPrepare your main file\nPrepare a simple .qmd output (or use a template!)\nTest it, fix errors (there is always something..)\nRun simulations again.\nDevelope more advance analysis to understand behaviours"
   },
   {
     "objectID": "Practical_Sessions.html#session-objectives",
@@ -158,14 +158,21 @@
     "href": "Practical_Sessions.html#download-links",
     "title": "CGE in R - Practical sessions",
     "section": "Download links",
-    "text": "Download links\n\n\nPlease go to https://ThreeME-org.github.io/CGE_inR_iberomex/install\n\nDownload and install the 3/4 softwares linked\nDownload the repository off GitHub (no account necessary)\nPackage installation\n\nWhat are you installing ?\n\nR is the basic R langage software\nRStudio provides a user-friendly IDE to run R]\nRtools for Windows adds advanced functionalities to R1.\nQuarto is a markdown-based software used to combine code elements and text in order to produce reports that depend on code output.\n\nRun the main_test.R script to make sure it all works.\n\nRtools version must match the R version installed"
+    "text": "Download links\n\n\nPlease go to (https://ThreeME-org.github.io/CGE_inR_iberomex/install)[]\n\nDownload and install the 3/4 softwares linked\nDownload the repository off GitHub (no account necessary)\nPackage installation\n\nWhat are you installing ?\n\nR is the basic R langage software\nRStudio provides a user-friendly IDE to run R]\nRtools for Windows adds advanced functionalities to R1.\nQuarto is a markdown-based software used to combine code elements and text in order to produce reports that depend on code output.\n\nRun the main_test.R script to make sure it all works.\n\nRtools version must match the R version installed"
   },
   {
     "objectID": "Practical_Sessions.html#quarto-introduction",
     "href": "Practical_Sessions.html#quarto-introduction",
     "title": "CGE in R - Practical sessions",
     "section": "Quarto introduction",
-    "text": "Quarto introduction\nFor these works, we heavily re"
+    "text": "Quarto introduction\nFor result analysis, we use Quarto. It’s a markdownbased format that allows to easily integrate code and text with additional syntax for more complex content, like code blocks, citations, and equations, which makes it accessible for both technical and non-technical users.\n\nOpen-source Publishing Tool: Quarto is an open-source, next-generation publishing tool that allows users to create and publish documents, reports, presentations, websites, blogs, and more.\nSupports Multiple Formats: It seamlessly integrates with a variety of output formats, including HTML, PDF (typst, \\(\\LaTeX\\)), Word, and ePub, making it versatile for creating different types of content.\nMultiple programming languages : While it has strong support for R and Python, Quarto also works well with other programming languages.\nData Visualization and Analysis: It enables the integration of live code, allowing users to generate and update visualizations and analyses directly in the document, which is ideal for reproducible research.\nCustomizable and Extensible: With options for custom styling, templates, and themes,"
+  },
+  {
+    "objectID": "Practical_Sessions.html#live-demo",
+    "href": "Practical_Sessions.html#live-demo",
+    "title": "CGE in R - Practical sessions",
+    "section": "LIVE DEMO",
+    "text": "LIVE DEMO\nBasic steps to creating a quarto file"
   },
   {
     "objectID": "Practical_Sessions.html#basic-folder-strucure-presentation",
@@ -175,8 +182,8 @@
     "text": "Basic folder strucure presentation\n\nThe Main_xx.R file: this is the main simulation file\nThe configuration folder contains:\n\nconfig_input_xx.R: file used to prepare the simulation parameters\nconfig_output_xx.R: file used to specify the quarto result templates to be used\nscenarii_calib folder: folder contains the script to prepare the simulation scenarios (baseline and shocks)\n\nThe data folder with the output subfolder: where are stored the simulation results as rds files.\nThe results folder contains the pre-programmed quarto templates. Can be used to store your own results.\nThe src folder contains a few system files and scripts, many of which are not directly of interest to users, with the exception of:\n\nmodel: contains the model files (.mdl), that is the equations and data calibration for models. Users may modify or add mdl files to suit the specifics of their simulations.\nfunctions_src: contains user-made, not yet packaged functions. Users may create their own functions and store them in this folder to call upon them automatically.\nsetup.R: loads packages and user-made functions"
   },
   {
-    "objectID": "Practical_Sessions.html#live-demo",
-    "href": "Practical_Sessions.html#live-demo",
+    "objectID": "Practical_Sessions.html#live-demo-1",
+    "href": "Practical_Sessions.html#live-demo-1",
     "title": "CGE in R - Practical sessions",
     "section": "LIVE DEMO",
     "text": "LIVE DEMO\nOverview of the project folder structure"
@@ -207,7 +214,7 @@
     "href": "Practical_Sessions.html#the-output-database-data_full",
     "title": "CGE in R - Practical sessions",
     "section": "The output database : data_full",
-    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1       EMS 2041   &lt;NA&gt;      &lt;NA&gt; 5.862922e+02 baseline 5.862922e+02          1\n2        PX 2020   &lt;NA&gt;      &lt;NA&gt; 1.020000e+00 baseline 1.020000e+00          1\n3       PCH 2048   &lt;NA&gt;      &lt;NA&gt; 1.775845e+00      ct1 1.817390e+00          0\n4        PY 2033   &lt;NA&gt;      &lt;NA&gt; 1.319479e+00 baseline 1.319479e+00          1\n5        CH 2044   &lt;NA&gt;      &lt;NA&gt; 1.804375e+06 baseline 1.804375e+06          1\n6       GDP 2034   &lt;NA&gt;      &lt;NA&gt; 2.948188e+06 baseline 2.948188e+06          1\n7         W 2025   &lt;NA&gt;      &lt;NA&gt; 5.280897e+01      ct1 5.323521e+01          0\n8        PY 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00      ct1 1.516045e+00          0\n9         M 2021   &lt;NA&gt;      &lt;NA&gt; 7.732314e+05      ct1 7.707969e+05          0\n10      EMS 2030   &lt;NA&gt;      &lt;NA&gt; 5.112705e+02      ct1 4.724036e+02          0\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
+    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1         W 2050   &lt;NA&gt;      &lt;NA&gt; 1.111083e+02 baseline 1.111083e+02          1\n2       C_L 2021   &lt;NA&gt;      &lt;NA&gt; 5.847079e+01      ct1 5.845938e+01          0\n3        CH 2041   &lt;NA&gt;      &lt;NA&gt; 1.738239e+06      ct1 1.725376e+06          0\n4       PCH 2047   &lt;NA&gt;      &lt;NA&gt; 1.741024e+00      ct1 1.781771e+00          0\n5       PVA 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00 baseline 1.195093e+00          1\n6       PCI 2036   &lt;NA&gt;      &lt;NA&gt; 1.400241e+00      ct1 1.428650e+00          0\n7        PY 2023   &lt;NA&gt;      &lt;NA&gt; 1.082432e+00 baseline 1.082432e+00          1\n8         W 2036   &lt;NA&gt;      &lt;NA&gt; 7.325625e+01 baseline 7.325625e+01          1\n9        PY 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00 baseline 1.485947e+00          1\n10      PVA 2042   &lt;NA&gt;      &lt;NA&gt; 1.576899e+00      ct1 1.608437e+00          0\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
   },
   {
     "objectID": "Practical_Sessions.html#data-columns",
@@ -221,28 +228,63 @@
     "href": "Practical_Sessions.html#understanding-the-observations-rows-of-data_full",
     "title": "CGE in R - Practical sessions",
     "section": "Understanding the observations (rows of data_full)",
-    "text": "Understanding the observations (rows of data_full)\n\ndata_full is organised as a long-form data.frame, that is all the model variables are listed in a single columns, as well as all the observations values.\nThe minimum observation identifier variables are : the variable, the year and the scenario"
+    "text": "Understanding the observations (rows of data_full)\n\ndata_full is organised as a long-form data.frame, that is all the model variables are listed in a single columns, as well as all the observations values.\nThe minimum observation identifier variables are : the variable, the year and the scenario\n\nto extract data use dplyr::filter\n\n\n\nCode\ndata_full |&gt; filter(variable %in% \"CH\") |&gt;  filter(scenario %in% \"ct1\")\n\n\n\nto create new variable, transform the data in wide format, make your transformations, and turn it back into long format [Advanced, for next session]"
   },
   {
-    "objectID": "Practical_Sessions.html#config_input",
-    "href": "Practical_Sessions.html#config_input",
+    "objectID": "Practical_Sessions.html#config_input-to-specify-the-parameters-of-the-simulation",
+    "href": "Practical_Sessions.html#config_input-to-specify-the-parameters-of-the-simulation",
     "title": "CGE in R - Practical sessions",
-    "section": "config_input",
-    "text": "config_input"
+    "section": "config_input: to specify the parameters of the simulation",
+    "text": "config_input: to specify the parameters of the simulation\n\nTo configure the simulation, use the config_input_MODEL.R found in the configuration folder.\n\nconfig_input_MODEL.R is meant to be a template, so it is advised to make a copy for your own usage."
+  },
+  {
+    "objectID": "Practical_Sessions.html#config_input-structure-of-the-file---basic-parameters",
+    "href": "Practical_Sessions.html#config_input-structure-of-the-file---basic-parameters",
+    "title": "CGE in R - Practical sessions",
+    "section": "config_input: Structure of the file - Basic parameters",
+    "text": "config_input: Structure of the file - Basic parameters\nThe first section of the config_input file contains the basic parameters that need to be adapted for each simulation :\n\niso3: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question\n\nclassification: if using a ThreeME model number of commodities and sectors with the following format cx_sy where x is the number of commodities and x the number of sectors. Check that the desired classification exists in the mdl files\nmodel_folder: the folder where to find the mdl files (either training or threeme usually)\nproject_name: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only\nscenario_baseline : Name of the baseline scenario. By default it is « baseline-steady ». It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables. All scenarii files are located in configuration/scenarii_calib\nscenario: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the configuration/scenarii_calib folders. Scenario naes must be alphanumeric and underscores in lowercase only. The scenario parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.:\n\n\nbaseyear: Input the base year used for the calibration data\nlastyear: Last year of the simulations\nshockyear: year of the shock. This is an optional parameter that can be called upon when calibrating shocks\nmax_lags: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.\nfirstyear: By default this is baseyear - max_lags (rarely needs to be modified)\nautomated_shocks: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (needs further documentation)\nvariables_to_keep: Vector of variables to keep in the output. Input an empty vector (c()) in order to keep all variables."
+  },
+  {
+    "objectID": "Practical_Sessions.html#config_input-structure-of-the-file---model-file-lists",
+    "href": "Practical_Sessions.html#config_input-structure-of-the-file---model-file-lists",
+    "title": "CGE in R - Practical sessions",
+    "section": "config_input: Structure of the file - Model file lists",
+    "text": "config_input: Structure of the file - Model file lists\nThe second sections contains mdl file lists. In three parts, there are:\n\nlist_files : basic files (maily for ThreeME, does not need to be modified)\ncalib_files: mdl files that contain data calibration equations\nmodel_files: mdl files that contain the models equations.\n\n\nTraining modelThreeME model\n\n\n\nlists_files &lt;- c(\n  \"lists.mdl\" \n)\n\n## Calibration files\ncalib_files &lt;- c(lists_files,\n                 \"03.1-calib.mdl\",     # Close economy\n                 \"03.2-calib.mdl\",     # Open economy\n                 \n                 \"ENDOFLINE.mdl\"       # ALL VERSIONS: empty file\n                 \n)\n\n# Model files \nmodel_files = c(lists_files,\n                \n                \"03.1-eq.mdl\",         # Close economy \n                \"03.2-eq.mdl\",         # Close economy\n                \n                \"ENDOFLINE.mdl\"        # ALL VERSIONS: empty file\n                \n)\n\n\n\n\n## Lists files (warning: if more than one, place \"lists.mdl\" last)\nlists_files = c(\n    str_c(\"R_lists_\", iso3,\"_\",classification, \".mdl\"),             # ALL VERSIONS\n    \"lists.mdl\"                                                     # ALL VERSIONS\n  )\n\n## Calibration files (used to initialize variables)\ncalib_files = c(lists_files,\n  str_c(\"data/R_Calibration_\", iso3,\"_\",classification,\"_\",baseyear, \".mdl\"),   # ALL VERSIONS\n  \"data/parameters.mdl\",                     # ALL VERSIONS\n     \n  ## Calibration of elasticity of substitutions (Producer)\n  \"data/elasticities.mdl\",                   # ALL VERSIONS\n  \"data/Exception_NestedCES_data.mdl\",     # NESTED CES (PRODUCER) VERSION\n  \"data/round0.mdl\",                         # ALL VERSIONS\n  \"data/Prices_data.mdl\",                    # ALL VERSIONS\n  \"data/SU_data.mdl\",                        # ALL VERSIONS\n  \"data/Special_data.mdl\",                   # ALL VERSIONS\n  \"data/Other_data.mdl\",                     # ALL VERSIONS\n  \"data/Exception_taxes_prices_data.mdl\",    # ALL VERSIONS (when commodity tax rate per user)\n  \n  ## Optional Consumer blocks\n  # \"data/Exception_ConsumerNested_data.mdl\",  # NESTED CES (CONSUMER) VERSION\n\n  \"data/Exception_Other_data.mdl\",           # ALL VERSIONS\n  # \"data/Exception_energybalance_simple.mdl\",  # ALL VERSIONS: Only net energy production (Y_TOE). Gross primary energy \n  \n  \"ENDOFLINE.mdl\"                          # ALL VERSIONS\n)\n\n# Model files \nmodel_files = c(lists_files,\n  \"SU.mdl\",                     # ALL VERSIONS \n  \"Prices.mdl\",                 # ALL VERSIONS\n  \"Producer.mdl\",               # ALL VERSIONS\n  \"Consumer.mdl\",               # ALL VERSIONS\n  \"Government.mdl\",             # ALL VERSIONS\n  \"Trade_inter.mdl\",            # ALL VERSIONS\n  \"Demography.mdl\",             # ALL VERSIONS\n  \"Adjustments.mdl\",            # ALL VERSIONS\n  \"Verif.mdl\",                  # ALL VERSIONS\n  \"ghg_emissions.mdl\",          # ALL VERSIONS\n  \n  # Option energy balance blocks\n  \"energybalance.mdl\",          # ALL VERSIONS\n\n  ## Exception files ALWAYS at the end because of the @overs\n  # \"Exception_taxes_prices.mdl\",           # ALL VERSIONS\n  \"Exception_taxes_prices_new.mdl\",           # New version where taxes are divided by different users\n  # \"Exception_NestedCES.mdl\",            # NESTED CES (PRODUCER) VERSION\n  # \"Exception_ConsumerNested.mdl\",       # NESTED CES (CONSUMER) VERSION\n\n  \"Exception_Other.mdl\",                   # ALL VERSIONS\n  \n  \n  \"ENDOFLINE.mdl\"                          # ALL VERSIONS\n)"
+  },
+  {
+    "objectID": "Practical_Sessions.html#config_output-to-specify-output-templates-to-analyse-the-simulation-resutls",
+    "href": "Practical_Sessions.html#config_output-to-specify-output-templates-to-analyse-the-simulation-resutls",
+    "title": "CGE in R - Practical sessions",
+    "section": "config_output: to specify output templates to analyse the simulation resutls",
+    "text": "config_output: to specify output templates to analyse the simulation resutls\n\nconfig_output.R is used to produce pre-programmed result templates. The templates are located in the results/quarto_templates.\n-Quarto templates are not meant to be rendered directly due to their location in the folder, which makes accessing dependencies rather complicated. Instead, to use templates, we use the function produce_quartos() that calls upon the parameters found in the config_output file.\n\nTo configure the simulation, use the config_output_MODEL.R found in the configuration folder.\nconfig_output_MODEL.R is meant to be a template, so it is advised to make a copy for your own usage."
+  },
+  {
+    "objectID": "Practical_Sessions.html#config_output---file-structure",
+    "href": "Practical_Sessions.html#config_output---file-structure",
+    "title": "CGE in R - Practical sessions",
+    "section": "config_output - File Structure",
+    "text": "config_output - File Structure\nDivided in two parts:\ndesignation of templates to produce\n\n\nTemplates to call\nquartos_to_render &lt;-list(\n  \n  basic_results = FALSE,\n  texdoc = FALSE,\n  model_info = TRUE,\n  sectoral_results = FALSE\n  \n)\n\n\nTemplates parameters\nFor each template available, each parameters from their respective YAML is listed and can be modified as such. Objects from the input configuration can be used by simply stating their name as in the example for basic_results.\n\n\nTemplates parameters\nquartos_parameters &lt;- list(\n  \n  basic_results = list(\n    project_name = project_name,\n    startyear = 2019,\n    shockyear = shockyear,\n    endyear = lastyear,\n    scenarios = unname(scenario)  # List of scenarii to be plotted\n  ),\n  \n  texdoc = list(\n    \n    project_name = project_name,\n    texdoc_mdls = \"default\",\n    texdoc_exovar = \"03.2-exovar.mdl\",\n    model_files = model_files,\n    mdl_folder = model_folder\n  ),\n  \n  model_info = list(\n    baseyear =  baseyear,\n    lastyear = lastyear,\n    classification = classification,\n    scenario_baseline = scenario_baseline,\n    shocks = scenario,\n    calib_files = calib_files,\n    model_files = model_files,\n    rsolver =  Rsolver,\n    project_name = project_name\n  ),\n  \n  \n  sectoral_results = list(\n    project_name = project_name\n  )\n\n  \n  \n  )"
   },
   {
     "objectID": "Practical_Sessions.html#mdl-equation-files",
     "href": "Practical_Sessions.html#mdl-equation-files",
     "title": "CGE in R - Practical sessions",
     "section": "mdl Equation files",
-    "text": "mdl Equation files"
+    "text": "mdl Equation files\n\n\nThey contain the equations of the model\ncan be organised in any order\nfirst variable that appears on the LHS is the endogenous variable determined by the model\nsimple syntax\ncan be organised in sections\n\n\n##### Endogenous variables' equations\n\n##! Investement\nI = Y - CH - G\n\n##! Production (GDP)\nY * p = w*L + p*(delta + r)*K\n# Y = ((Phi_L * (L*PROG_L) ^ ((rho-1)/rho )) + (Phi_K * (K*PROG_K) ^ ((rho-1)/rho )))^(rho/(rho-1))\n# Mettre alternative possible: Fonction de production directement\n\n##! Households'consumption\n CH = (1 - sigma) * (w*L + p*r*K) / p\n# d(log(CH)) = d(log(Y{-1}))\n\n##! Wage (from cost minimization assuming a CES function)\nw + L = ((Y / PROG_L) * ((Phi_L) ^ rho) * (w/(p * PROG_L)) ^ (-rho)) + w\n# w / (p * PROG_L) = Phi_L * (Y / (L * PROG_L)) ^ (1 / rho)\n \n\n##! Interest rate (from cost minimization assuming a CES function)\nr + K = ((Y / PROG_K) * ((Phi_K) ^ rho) * ((delta + r)/PROG_K) ^ (-rho)) + r\n# (r + delta)/PROG_K  = Phi_K * (Y / (K * PROG_K)) ^ (1/rho)\n\n##! Capital (from accumulation equation)\nd(K) = I{-1} - delta * K{-1}\n\n##! Price \np = 1"
   },
   {
     "objectID": "Practical_Sessions.html#mdl-data-calibration-files",
     "href": "Practical_Sessions.html#mdl-data-calibration-files",
     "title": "CGE in R - Practical sessions",
     "section": "mdl Data calibration files",
-    "text": "mdl Data calibration files"
+    "text": "mdl Data calibration files\n\n\nData calibration files are used to determine the value at the baseyear of endogenous variables, and the default values of exogenous variables"
+  },
+  {
+    "objectID": "Practical_Sessions.html#calibration-error",
+    "href": "Practical_Sessions.html#calibration-error",
+    "title": "CGE in R - Practical sessions",
+    "section": "Calibration error",
+    "text": "Calibration error\n\nChange the calibration for public expenditure and have a look at the calibration error.\n\nChange in the calibration file « 01.1-calib.mdl » the value of G. Put G := 26 instead of G : = 15\n\nSave the calibration file.\nRun the main\n\nWhat do you notice?"
   },
   {
     "objectID": "Practical_Sessions.html#complete-exercise-2-part-2",
@@ -305,21 +347,28 @@
     "href": "Practical_Sessions.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
     "title": "CGE in R - Practical sessions",
     "section": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »",
-    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
+    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib_longformat(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
   },
   {
-    "objectID": "Practical_Sessions.html#making-tables",
-    "href": "Practical_Sessions.html#making-tables",
+    "objectID": "Practical_Sessions.html#summary-tables",
+    "href": "Practical_Sessions.html#summary-tables",
     "title": "CGE in R - Practical sessions",
-    "section": "Making tables",
-    "text": "Making tables"
+    "section": "Summary tables",
+    "text": "Summary tables\n\nWith the dplyr package, it can be easy to modify data_full in order to synthetize results.\n We provide two functions table_macro() and table_reference() that yield automated raw tables (tibbles) that can later on be formatted with packages such as gt or flextable.\n\ntable_reference() produces results for a given scenario independently (growth rates, levels…)\ntable_macro() produces results for a given scenario in relative to the baseline scenario\n\nSee basic_results template for examples of usage.\n\n\ntable_macro arguments\ntable_macro &lt;- function(data,\n                        shock = \"ct1\",\n                        relative_variation = NULL,\n                        level_diff = NULL,\n                        percent_diff = NULL,\n                        order = NULL,\n                        time_vector = if(exists(\"time_waypoints\")){time_waypoints}else{c(1,2,3,5,10,30,60)},\n                        end_year = 2050,\n                        shock_year = 2021,\n                        digits_numb = 2\n)"
   },
   {
     "objectID": "Practical_Sessions.html#texdoc",
     "href": "Practical_Sessions.html#texdoc",
     "title": "CGE in R - Practical sessions",
     "section": "TeXdoc",
-    "text": "TeXdoc\n\nTeXdoc is function that reads mdl files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.\n\nNot perfect yet!\nQuite sensitive to how mdl files are written, especially when it come to sectionning text\n\nWe added a functionnality that transforms the tex output into a qmd output that can be called upon"
+    "text": "TeXdoc\n\nTeXdoc is function that reads mdl files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.\n\nNot perfect yet!\nQuite sensitive to how mdl files are written, especially when it come to sectionning text\n\nWe added a functionnality that transforms the tex output into a qmd output that can be called upon in qmd\n\n\n\nTeXdoc syntax\nteXdoc(     sources   = c(\"02.1-eq.mdl\"),\n            exo       = c(\"02.1-exovar.mdl\"),\n            base.path = file.path(\"src\",\"model\",\"training\"),\n            out       = \"model-eq\",\n            out.path  = \"results_side_files\")\n\n\nmake_eq_qmd(preface = file.path(\"results_side_files\",  \"model-eq_preface.tex\"),\n            maintex = file.path(\"results_side_files\", \"model-eq.tex\"),\n            out.dir = \"results_side_files\" )\n\n\nThe output generated are \\(\\LaTeX\\) files as well as .qmd that may be included in other reports, found in the results\\quarto_render folder:\n- equation file\n- exogenous file\n- glossary file\nTo facilitate the usage, quarto template is available that can be called from config_output"
+  },
+  {
+    "objectID": "Practical_Sessions.html#live-demo-2",
+    "href": "Practical_Sessions.html#live-demo-2",
+    "title": "CGE in R - Practical sessions",
+    "section": "Live Demo",
+    "text": "Live Demo\nTeXdoc files\nTeXdoc quarto template"
   },
   {
     "objectID": "Practical_Sessions.html#complete-exercise-4",
@@ -536,7 +585,14 @@
     "href": "TS1.1_Intro_CGE_models.html#overview-of-threeme",
     "title": "Introduction to CGE models and their usage",
     "section": "Overview of ThreeME",
-    "text": "Overview of ThreeME\nMulti-sector Macroeconomic Model for the Evaluation of Environmental and Energy policy.\n\nOpen source model\nDownload and documentation: https://www.threeme.org/\nThreeME is neo-Keynesian general equilibrium model.\nDesigned to study scenario involving transfers of activities from one sector to another\n\nType of simulation of the economic and environmental impact\n\nEnergy transition policies\n\nFiscal policies:\n\nCarbon tax with or without redistribution of the tax revenue\nPhasing out subsidies on (fossil fuel) energy\nBonus-malus for cars: subsidies on green cars financed by a tax on other cars\n\nChange in the electricity production mix\n\nEx: more RES in the mix\n\nImpact of green investment\n\nIn buildings, public transport, etc.\nImpact of applying a new standard for buildings, or appliances\n\n\nExternal shock\n\nIncrease in international oil/gas price"
+    "text": "Overview of ThreeME\n\nMulti-sector Macroeconomic Model for the Evaluation of Environmental and Energy policy.\n\nOpen source model\nDownload and documentation: https://www.threeme.org/\nThreeME is neo-Keynesian general equilibrium model.\nDesigned to study scenario involving transfers of activities from one sector to another"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#overview-of-threeme-types-of-simulations-of-the-economic-and-environmental-impacts",
+    "href": "TS1.1_Intro_CGE_models.html#overview-of-threeme-types-of-simulations-of-the-economic-and-environmental-impacts",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Overview of ThreeME: types of simulations of the economic and environmental impacts",
+    "text": "Overview of ThreeME: types of simulations of the economic and environmental impacts\n\nEnergy transition policies\n\nFiscal policies:\n\nCarbon tax with or without redistribution of the tax revenue\nPhasing out subsidies on (fossil fuel) energy\nBonus-malus for cars: subsidies on green cars financed by a tax on other cars\n\nChange in the electricity production mix\n\nEx: more RES in the mix\n\nImpact of green investment\n\nIn buildings, public transport, etc.\nImpact of applying a new standard for buildings, or appliances\n\n\nExternal shock\n\nIncrease in international oil/gas price"
   },
   {
     "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-versus-identities",
@@ -599,7 +655,7 @@
     "href": "TS1.1_Intro_CGE_models.html#macroeconomic-closure-1",
     "title": "Introduction to CGE models and their usage",
     "section": "Macroeconomic closure",
-    "text": "Macroeconomic closure\n\nA model is a way of explaining endogenous variables as function of exogenous variables.\n\nMaking a choice of what is to be determined within the model (endogenous variables) and what is to be considered external to the model (exogenous variables) is called the model closure. Why does the choice of the model closure matter?\n\nIt may define the direction of causality (which variables determine the others)\n\nIt may have important implications on the properties and results of the model\n\n\nWhat is the impact of an increase in public spending (multiplier of public expenditures) on the endogenous variables of the model depending on the choice of the closure ?\nWe compare the results for two contrasting model closures:\n\nThe Walrasian model\nThe Keynesian model"
+    "text": "Macroeconomic closure\n\nA model is a way of explaining endogenous variables as function of exogenous variables.\n\nMaking a choice of what is to be determined within the model (endogenous variables) and what is to be considered external to the model (exogenous variables) is called the model closure.\nWhy does the choice of the model closure matter ?\n\nIt may define the direction of causality (which variables determine the others)\nIt may have important implications on the properties and results of the model\n\n\nSimulation experiment: What is the impact of an increase in public spending (multiplier of public expenditures) on the endogenous variables of the model depending on the choice of the closure ?\nWe compare the results for two contrasting model closures:\n\nThe Walrasian model\nThe Keynesian model"
   },
   {
     "objectID": "TS1.1_Intro_CGE_models.html#walrasian-versus-keynesian-models",
@@ -635,6 +691,90 @@
     "title": "Introduction to CGE models and their usage",
     "section": "Comments on the Keynesian model closure",
     "text": "Comments on the Keynesian model closure\n\nIn the Keynesian closure, the wage and the interest rate are exogenous whereas labor and capital are endogenous\nTo represent the slow adjustment of price and quantities, it is convenient to distinguish between notional and effective level\n\nThe notional levels are mentioned with the underscore (superscript) « n » in the model They refer to the level of price, consumption, labor and capital the producer and the consumer would like to reach immediately if there were no adjustment constraint"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#introduction-to-a-new-macroeconomic-model-the-neo-keynesian-model",
+    "href": "TS1.1_Intro_CGE_models.html#introduction-to-a-new-macroeconomic-model-the-neo-keynesian-model",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Introduction to a new macroeconomic model: the Neo-Keynesian model",
+    "text": "Introduction to a new macroeconomic model: the Neo-Keynesian model\n\n\n\n\n\n\n\nWalrasian model\nNeo-Keynesian model\n\n\n\n\nPrices and quantities adjust instantaneously\nSlow adjustment of prices and quantities\n\n\nPerfect flexibility of price and quantities\nRigidity of price and quantities\n\n\nLaw of Say: production creates its own demand\nDemand determines supply, supply affects demand through different mechanisms\n\n\nSupply is at full capacity\nThe actual stock of capital may differ from the optimal one\n\n\nIncreasing production requires to increase the stock of capital\nNo full utilization of capacity (around 80%). Possibility to increase Y without increasing the stock of capital\n\n\nAfter a shock, a new equilibrium is found instantaneously\nAfter a shock, time to adjust to the new equilibrium levels"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#two-versions-of-the-neo-keynesian-model",
+    "href": "TS1.1_Intro_CGE_models.html#two-versions-of-the-neo-keynesian-model",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Two versions of the Neo-Keynesian model",
+    "text": "Two versions of the Neo-Keynesian model\nWe consider two versions of the model:\n\nClose economy : The model is found in  src/model/training/03.1-eq_neokeynes.mdl\nOpen economy : The model is found in  src/model/training/03.1-eq_neokeynes_exception_open.mdl\n\nThere are only small differences between both models, to which we will come back later. But first, let’s start by exploring the set of equations in the model considering a close economy."
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#models-and-corresponding-documentation",
+    "href": "TS1.1_Intro_CGE_models.html#models-and-corresponding-documentation",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Models and corresponding documentation",
+    "text": "Models and corresponding documentation\n\n\n\n\n\n\n\n\nModel\nDescription\nCorresponding chapter in the manual\n\n\n\n\n1.1\nModel with 1 equation 1 endogenous variable\n-\n\n\n1.2\nModel with 3 equations 3 endogenous variables\n-\n\n\n2.0\nMain equations of CGE models (not solvable)\nChapter 1: Introduction to CGE models\n\n\n2.1\nWalrasian closure\nChapter 2: A simple Walras CGE model\n\n\n2.2\nKeynesian closure\nChapter 3: A simple Keynesian CGE model\n\n\n3.1\nNeo-Keynesian closure (close economy)\nChapter 4: A simple Neo-Keynesian model\n\n\n3.2\nNeo-Keynesian closure (open economy)\nChapter 4: A simple Neo-Keynesian model\n\n\n-\nThreeME c4xs4\nUpcoming\n\n\n-\nThreeME c8xs8\nUpcoming"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#introduction",
+    "href": "TS1.1_Intro_CGE_models.html#introduction",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Introduction",
+    "text": "Introduction\nThe close economy model consists of a set of equations regarding:\n\nProducers\n\nConsumers\n\nGovernment and central bank\n\nLabor market\n\nAdjustments"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#producers-main-equations",
+    "href": "TS1.1_Intro_CGE_models.html#producers-main-equations",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Producers: main equations",
+    "text": "Producers: main equations\n\nProduction\n\n\\[\\begin{equation}\nY = CH + I + G\n\\end{equation}\\]\n\nNotional demand of factors\n\n\\[\\begin{equation}\nL^{n} = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho^{KL}} \\right) . \\left( \\frac{\\left( \\frac{w}{PROG^{L}} \\right)}{c^{Y}} \\right) ^ {\\left( -\\rho^{KL} \\right)}\n\\end{equation}\\]\n\\[\\begin{equation}\nK^{n} = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho^{KL}} \\right) . \\left( \\frac{\\left( \\frac{c^{K}}{PROG^{K}} \\right)}{c^{Y}} \\right) ^ {\\left( -\\rho^{KL} \\right)}\n\\end{equation}\\]\n\nInvestment\n\n\\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} I\\right) = \\alpha^{I,Kn} . \\varDelta \\left(\\operatorname{log} K^{n}\\right) + \\alpha^{I,I1} . \\varDelta \\left(\\operatorname{log} I_{t-1}\\right) + \\alpha^{I,KnK1} . \\operatorname{log} \\frac{K^{n}_{t-1}}{K_{t-1}} - \\alpha^{I,rK} . \\varDelta \\left(r - \\frac{\\varDelta \\left(p\\right)}{p_{t-1}}\\right)\n\\end{equation}\\]\n\nCapital stock \\[\\begin{equation}\nK = K_{t-1} \\; \\left( 1 - \\delta \\right) + I_{t-1}\n\\end{equation}\\]\nNotional production price \\[\\begin{equation}\np^{n} . Y = c^{Y} . Y . \\left( 1 + m^{up} + dm^{up} \\right)\n\\end{equation}\\]\nNotional mark-up \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} \\left(1 + m^{up,n}\\right)\\right) = \\rho^{mupn,Ln} . \\varDelta \\left(\\operatorname{log} \\frac{L^{n}}{L}\\right) + \\rho^{mupn,Kn} . \\varDelta \\left(\\operatorname{log} \\frac{K^{n}}{K}\\right)\n\\end{equation}\\]\nNotional unit cost production cost \\[\\begin{equation}\nc^{Y} . Y = w . L^{n} + c^{K} . K^{n}\n\\end{equation}\\]\nCapital cost \\[\\begin{equation}\nc^{K} . K = p^{K}_{t-1} \\; K_{t-1} \\; \\left( \\delta + r^{K}_{t-1} \\right)\n\\end{equation}\\]\nAverage price of the accumulated capital stock \\[\\begin{equation}\np^{K} . K = p^{K}_{t-1} \\; K_{t-1} \\; \\left( 1 - \\delta \\right) + p_{t-1} \\; I_{t-1}\n\\end{equation}\\]\nAverage interest rate paid on the debt \\[\\begin{equation}\nr^{K} . p^{K} . K = r^{K}_{t-1} \\; p^{K}_{t-1} \\; K_{t-1} \\; \\left( 1 - \\delta \\right) + p_{t-1} \\; I_{t-1} \\; r_{t-1}\n\\end{equation}\\]\nProfit of firms (before investment) \\[\\begin{equation}\nPROF = p . Y - w . L - c^{K} . K\n\\end{equation}\\]\nFirms’ savings \\[\\begin{equation}\nSAV^{F} = PROF - DIV - p . I\n\\end{equation}\\]\nFirms’ bank debt \\[\\begin{equation}\nDEBT^{F} = DEBT^{F}_{t-1} \\; \\left( 1 - \\varphi^{RD^{F}}_{t-1} \\right) - SAV^{F}\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#households-main-equations",
+    "href": "TS1.1_Intro_CGE_models.html#households-main-equations",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Households: main equations",
+    "text": "Households: main equations\n\nNotional households consumption \\[\\begin{equation}\nCH^{n} . p = \\left( 1 - \\sigma \\right) . INC . \\left( 1 - t^{inc} \\right)\n\\end{equation}\\]\nHouseholds’ income \\[\\begin{equation}\nINC = \\left( w . L + DIV \\right)\n\\end{equation}\\]\nNotional dividend for households \\[\\begin{equation}\nDIV^{n} = PROF\n\\end{equation}\\]\nNotional propensity to save equation  \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} \\left(1 - \\sigma^{n}\\right)\\right) = \\rho^{\\sigma,U} . \\varDelta \\left(U\\right) - \\rho^{\\sigma,p} . \\varDelta \\left(r - \\frac{\\varDelta \\left(p\\right)}{p_{t-1}}\\right) - \\rho^{\\sigma,DEBT} . \\varDelta \\left(\\operatorname{log} \\left(\\frac{DEBT^{G}}{\\left( p . Y \\right)}\\right)\\right)\n\\end{equation}\\]\nHouseholds’ savings \\[\\begin{equation}\nSAV^{H} = INC . \\left( 1 - t^{inc} \\right) - p . CH\n\\end{equation}\\]\nHouseholds’ total wealth \\[\\begin{equation}\nWEALTH = WEALTH_{t-1} + SAV^{H}\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#government-and-central-bank-main-equations",
+    "href": "TS1.1_Intro_CGE_models.html#government-and-central-bank-main-equations",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Government and Central Bank: main equations",
+    "text": "Government and Central Bank: main equations\n\nNotional interest rate of the Central Bank (Taylor reaction function) \\[\\begin{equation}\n\\varDelta \\left(r^{n}\\right) = \\rho^{rn,p} . \\varDelta \\left(\\frac{\\varDelta \\left(p\\right)}{p_{t-1}}\\right) - \\rho^{rn,U} . \\varDelta \\left(U\\right)\n\\end{equation}\\]\nNotional income tax rate \\[\\begin{equation}\n\\varDelta \\left(t^{inc,n}\\right) = \\rho . \\varDelta \\left(\\frac{DEBT^{G}}{\\left( p . Y \\right)}\\right)\n\\end{equation}\\]\nGovernment’s savings \\[\\begin{equation}\nSAV^{G} = t^{inc} . INC - p . G - DEBT^{G}_{t-1} \\; \\left( \\varphi^{RD^{G}}_{t-1} + r^{DEBT,G}_{t-1} \\right)\n\\end{equation}\\]\nAverage interest rate paid on the total Government’s debt \\[\\begin{equation}\n\\varDelta \\left(r^{DEBT,G}\\right) = \\varDelta \\left(r\\right)\n\\end{equation}\\]\nTotal Government’s debt \\[\\begin{equation}\nDEBT^{G} = DEBT^{G}_{t-1} \\; \\left( 1 - \\varphi^{RD^{G}}_{t-1} \\right) - SAV^{G}\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#labor-market-main-equations",
+    "href": "TS1.1_Intro_CGE_models.html#labor-market-main-equations",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Labor market: main equations",
+    "text": "Labor market: main equations\n\nNotional wage (WS or Phillips curve) \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} w^{n}\\right) = \\rho^{wn} + \\rho^{wn,pe} . \\varDelta \\left(\\operatorname{log} p^{e}\\right) + \\rho^{wn,PROGL} . \\varDelta \\left(\\operatorname{log} PROG^{L}\\right) - \\rho^{wn,U} . U - \\rho^{wn,dU} . \\varDelta \\left(U\\right)\n\\end{equation}\\]\nUnemployment rate \\[\\begin{equation}\nU = 1 - \\frac{L}{LF}\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#adjustments-introduction",
+    "href": "TS1.1_Intro_CGE_models.html#adjustments-introduction",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Adjustments: Introduction",
+    "text": "Adjustments: Introduction\n\nImportant feature of Neo-Keynesian models: hypothesis of slow adjustments of prices and quantities. Firms do not adjust instantaneously firms but gradually adjust their effective price and quantity to the optimal (notional of desired) level .\nSlow adjustment to the new optimum level after a shock in the economy for:\n\nprices: price setting (Carlton, 1986; Cecchetti, 1985), wage setting or the adjustment of the interest rate\n\nquantities: inputs (labor, capital, intermediate consumption), consumption of households (Tinbergen,1942)."
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#adjustments-minimizing-an-adjustment-cost-function",
+    "href": "TS1.1_Intro_CGE_models.html#adjustments-minimizing-an-adjustment-cost-function",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Adjustments: Minimizing an adjustment cost function",
+    "text": "Adjustments: Minimizing an adjustment cost function\n\nTo take into account that the changes in price are all the more costly that they are large propose to use quadratic adjustment cost models (Rotemberg, 1982).\n\nThe firm defines the optimal price as a trade-off between the cost of adjusting and the cost of not been adjusted.\n\n\\[\\begin{equation}\n  \\Gamma_t\\left(X_t\\right)-\\Gamma_t\\left(X_t^n\\right)=\\Gamma_t^{\\prime}\\left(X_t^n\\right)\\left(X_t-X_t^n\\right)+\\Gamma_t^{\\prime \\prime}\\left(X_t^n\\right)\\left(X_t-X_t^n\\right)^2\n\\end{equation}\\] The profit being maximum for \\(X_t^n, \\Gamma_t^{\\prime}\\left(X_t^n\\right)=0\\) and \\(\\Gamma_t^{\\prime \\prime}\\left(X_t^n\\right)&lt;0\\). As a first approximation, the adjustment cost, i.e. the loss of profit suffered by a company that is not in the optimum, is therefore: \\[\n  C_D=\\Gamma_t\\left(X_t^n\\right)-\\Gamma_t\\left(X_t\\right)=C_D\\left(X_t-X_t^n\\right)^2\n\\] Where: \\[\n  C_D=-\\Gamma_t^{\\prime \\prime}\\left(X_t^n\\right)\n\\] Suppose that the adjustment cost is proportional to the square of the speed of adjustment: \\[\n  C_A=c_A\\left(X_t-X_{t-1}\\right)^2\n\\] Where: \\[\n  c_A&gt;0\n\\] Minimizing the total cost function \\(\\left(C_t=C_D+C_A\\right)\\) is equivalent to solving: \\[\n  C_t^{\\prime}\\left(X_t\\right)=2 c_D\\left(X_t-X_t^n\\right)+2 c_A\\left(X_t-X_{t-1}\\right)=0\n\\] The condition of the second order \\(\\left(C_t^{\\prime \\prime}\\left(X_t\\right)&gt;0\\right)\\) being always verified, the optimal adjustment which minimizes the total cost has the following dynamic process: \\[\n  X_t=\\alpha X_t^n+(1-\\alpha) X_{t-1}\n\\] With: \\[\n  \\alpha=\\frac{c_D}{\\left(c_D+c_A\\right)}\n\\]\nWith this simple model, the average adjustment time is: \\[\n  \\frac{\\alpha}{(1-\\alpha)}=\\frac{c_D}{c_A}\n\\] The slower the adjustment, the higher the adjustment cost \\(c_A\\) compared to the cost of non being adjusted \\(c_D\\)."
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#adjustments-main-equations",
+    "href": "TS1.1_Intro_CGE_models.html#adjustments-main-equations",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Adjustments: main equations",
+    "text": "Adjustments: main equations\n\nWage \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} w\\right) = \\alpha^{W,Wn} . \\varDelta \\left(\\operatorname{log} w^{n}\\right) + \\alpha^{W,W1} . \\varDelta \\left(\\operatorname{log} w_{t-1}\\right) - \\alpha^{W,W1Wn1} . \\operatorname{log} \\frac{w_{t-1}}{w^{n}_{t-1}}\n\\end{equation}\\]\nProduction price \\[\\begin{equation}\n\\operatorname{log} p = \\alpha^{P,Pn} . \\operatorname{log} p^{n} + \\left( 1 - \\alpha^{P,Pn} \\right) . \\left( \\operatorname{log} p_{t-1} + \\varDelta \\left(\\operatorname{log} p^{e}\\right) \\right)\n\\end{equation}\\]\nExpected production price inflation \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} p^{e}\\right) = \\alpha^{Pe,Pe1} . \\varDelta \\left(\\operatorname{log} p^{e}_{t-1}\\right) + \\alpha^{Pe,P1} . \\varDelta \\left(\\operatorname{log} p_{t-1}\\right) + \\alpha^{Pe,Pn} . \\varDelta \\left(\\operatorname{log} p^{n}\\right)\n\\end{equation}\\]\nHouseholds final consumption \\[\\begin{equation}\n\\operatorname{log} CH = \\alpha^{CH,CHn} . \\operatorname{log} CH^{n} + \\left( 1 - \\alpha^{CH,CHn} \\right) . \\left( \\operatorname{log} CH_{t-1} + \\varDelta \\left(\\operatorname{log} CH^{e}\\right) \\right)\n\\end{equation}\\]\nExpected Households final consumption growth\n\n\\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} CH^{e}\\right) = \\alpha^{CHe,CHe1} . \\varDelta \\left(\\operatorname{log} CH^{e}_{t-1}\\right) + \\alpha^{CHe,CH1} . \\varDelta \\left(\\operatorname{log} CH_{t-1}\\right) + \\alpha^{CHe,CHn} . \\varDelta \\left(\\operatorname{log} CH^{n}\\right)\n\\end{equation}\\]\n\nLabor \\[\\begin{equation}\n\\operatorname{log} L = \\alpha^{L,Ln} . \\operatorname{log} L^{n} + \\left( 1 - \\alpha^{L,Ln} \\right) . \\left( \\operatorname{log} L_{t-1} + \\varDelta \\left(\\operatorname{log} L^{e}\\right) \\right)\n\\end{equation}\\]\nExpected labor growth \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} L^{e}\\right) = \\alpha^{Le,Le1} . \\varDelta \\left(\\operatorname{log} L^{e}_{t-1}\\right) + \\alpha^{Le,L1} . \\varDelta \\left(\\operatorname{log} L_{t-1}\\right) + \\alpha^{Le,Ln} . \\varDelta \\left(\\operatorname{log} L^{n}\\right)\n\\end{equation}\\]\nDividend for households \\[\\begin{equation}\n\\operatorname{log} DIV = \\alpha^{DIV,DIVn} . \\operatorname{log} DIV^{n} + \\left( 1 - \\alpha^{DIV,DIVn} \\right) . \\left( \\operatorname{log} DIV_{t-1} + \\varDelta \\left(\\operatorname{log} DIV^{e}\\right) \\right)\n\\end{equation}\\]\nExpected dividend for households \\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} DIV^{e}\\right) = \\alpha^{DIVe,DIVe1} . \\varDelta \\left(\\operatorname{log} DIV^{e}_{t-1}\\right) + \\alpha^{DIVe,DIV1} . \\varDelta \\left(\\operatorname{log} DIV_{t-1}\\right) + \\alpha^{DIVe,DIVn} . \\varDelta \\left(\\operatorname{log} DIV^{n}\\right)\n\\end{equation}\\]\nInterest rate of the Central Bank \\[\\begin{equation}\nr = \\alpha^{r} . r^{n} + \\left( 1 - \\alpha^{r} \\right) . r_{t-1}\n\\end{equation}\\]\nPropensity to save \\[\\begin{equation}\n\\sigma = \\alpha^{\\sigma} . \\sigma^{n} + \\left( 1 - \\alpha^{\\sigma} \\right) . \\sigma_{t-1}\n\\end{equation}\\]\nMark-up \\[\\begin{equation}\nm^{up} = \\alpha^{m,up} . m^{up,n} + \\left( 1 - \\alpha^{m,up} \\right) . m^{up}_{t-1}\n\\end{equation}\\]\nIncome taxe rate \\[\\begin{equation}\nt^{inc} = \\alpha^{t,inc} . t^{inc,n} + \\left( 1 - \\alpha^{t,inc} \\right) . t^{inc}_{t-1}\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "TS1.1_Intro_CGE_models.html#new-equations-for-open-economy",
+    "href": "TS1.1_Intro_CGE_models.html#new-equations-for-open-economy",
+    "title": "Introduction to CGE models and their usage",
+    "section": "New equations for open economy",
+    "text": "New equations for open economy\n\nProduction\n\n\\[Y + M = CH + I + G + X\\]\n\nAverage user price\n\n\\[p . \\left( Y + M \\right) = py . Y + pm . M\\]\n\nNotional production price  \\[py^{n} . Y = c^{Y} . Y . \\left( 1 + m^{up} + dm^{up} \\right)\\]\nInternational trade\n\nImports\n\\[M = \\left( Y + M \\right) . \\varphi^{M} . \\left( \\frac{pm}{p} \\right) ^ {\\left( -\\rho^{M} \\right)}\\]\nExports \\[X = WD . \\left( \\frac{py}{pw} \\right) ^ {\\left( -\\rho^{X} \\right)}\\]\nSaving of the Rest of the World\n\\[SAV^{ROW} = pm . M - py . X\\]"
   },
   {
     "objectID": "TS1.1_Intro_CGE_models.html#data-supply-use-su-and-input-output-io-tables",
