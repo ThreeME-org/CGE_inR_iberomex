@@ -25,6 +25,44 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Welcome {.center} 
+
+:::: {.columns}
+
+::: {.column width="33%" .center}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+![](pictures/ibero.png){fig-align="center" fig-width=30%  }
+:::
+
+::: {.column width="33%"}
+![](pictures/equide.jpg){fig-align="center" fig-width=30%}
+![](pictures/geolab.png){fig-align="center" fig-width=30%}
+
+![](pictures/centrud.png){fig-align="center" fig-width=30%}
+
+:::
+
+::: {.column width="33%"}
+
+<br>
+<br>
+
+![](pictures/ofce_m.png){fig-align="center" fig-width=30%}
+![](pictures/sciencespo.png){fig-align="center" fig-width=30%}
+
+![](pictures/Logohacienda.png){fig-align="center" fig-width=30%}
+![](pictures/AFD_logo.png){fig-align="center" fig-width=30%}
+:::
+
+::::
+
+
 # What is a CGE model?
 
 ## Definition {.scrollable}
