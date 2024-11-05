@@ -100,11 +100,32 @@ Rscript -e  "source('/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R')"
 
 ## Further readings
 
-This workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the `tidyverse`) and use Quarto to present your results under different format.
+This workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the `tidyverse`) and use [Quarto](https://quarto.org/docs/guide/)   to present your results under different format.
 
-At the very least we recommend learning how to use the `dplyr` R package to manipulate result databases and
+At the very least we recommend learning how to use the `dplyr` R package to manipulate result databases and reading through a basic [Quarto](https://quarto.org/docs/guide/)  introduction.
 
--   Quarto \[\]
--   Tidyverse \[\]
--   ggplot2 cheatsheet \[\]
--   dplyr cheatsheet \[\]
+
+::: {.panel-tabset}
+
+
+### quarto {.tabset}
+
+![](cheatsheets/quarto.pdf){width=100% height=800px}
+
+
+### dplyr {.tabset}
+
+![](cheatsheets/dplyr.pdf){width=100% height=800px}
+
+### ggplot2  {.tabset}
+
+![](cheatsheets/ggplot2.pdf){width=100% height=800px}
+
+:::
+
+
+
+
+
+
+
