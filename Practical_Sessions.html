@@ -15,7 +15,7 @@
 
   <meta name="author" content="Frédéric Reynès">
   <meta name="author" content="Anissa Saumtally">
-  <title>CGEs in R - Workshop – CGE in R platform</title>
+  <title>CGEs in R - Workshop – CGE in R - Practical sessions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -395,8 +395,9 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">CGE in R platform</h1>
-  <p class="subtitle">Practical sessions - Supporting materials</p>
+  <h1 class="title">CGE in R - Practical sessions</h1>
+  <p class="subtitle"></p><div class="line-block"><span style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;">Universidad Iberoamericana Ciudad de México</span><br>
+<span style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;">Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R</span></div><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -411,10 +412,7 @@ Anissa Saumtally
 </div>
 </div>
 
-</section>
-<section class="slide level2">
-
-<p>Running your first simulation and getting the results with the one equation model presenting the datafull output database</p>
+  <p class="date">mardi 5 novembre 2024</p>
 </section>
 <section>
 <section class="title-slide slide level1 agenda-slide center">
@@ -427,10 +425,7 @@ Anissa Saumtally
 <p>Introduction</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>CGE in R basics</p>
+<p>Practical Session 1</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
 <p>Practical Session 2</p>
@@ -439,15 +434,12 @@ Anissa Saumtally
 <p>Results visualisation functions</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 4</p>
+<p>Workshop day one completed !</p>
 </div>
 </div>
 </section>
-<section id="foreword-codename-ermeeth" class="slide level2">
-<h2>Foreword: codename <em>Ermeeth</em></h2>
+<section id="foreword-codename-ermeeth-project" class="slide level2">
+<h2>Foreword: codename <em>Ermeeth project</em></h2>
 <p><br></p>
 <ul>
 <li>The CGE platform presented today is the a suite of scripts and packages initially developed to run the ThreeME model in R</li>
@@ -459,20 +451,22 @@ Anissa Saumtally
 <li>These practical sessions aim at giving you a preview of a workflow of model simulation and result analysis on simple models</li>
 </ul>
 </section>
-<section id="a-standard-workflow" class="slide level2">
-<h2>A Standard workflow</h2>
-<p>create/edit your model</p>
-<p>create/edit your baseline and shock scenarios</p>
-<p>Prepare your config files</p>
-<p>Prepare your main file</p>
-<p>Prepare a simple .qmd output (or use a template!)</p>
-<p>Test it, fix errors (there is always something..)</p>
-<p>Run again.</p>
-<p>Develope more advance analysis to understand behaviours</p>
+<section id="a-standard-workflow-on-the-ermeeth-project-platform" class="slide level2">
+<h2>A standard workflow on the Ermeeth project platform</h2>
+<ul>
+<li><p>create/edit your model</p></li>
+<li><p>create/edit your baseline and shock scenarios</p></li>
+<li><p>Prepare your config files</p></li>
+<li><p>Prepare your main file</p></li>
+<li><p>Prepare a simple .qmd output (or use a template!)</p></li>
+<li><p>Test it, fix errors (there is always something..)</p></li>
+<li><p>Run simulations again.</p></li>
+<li><p>Develope more advance analysis to understand behaviours</p></li>
+</ul>
 </section></section>
 <section>
 <section class="title-slide slide level1 agenda-slide center">
-<h1>Session 1</h1>
+<h1>Practical Session 1</h1>
 <div class="agenda-heading">
 
 </div>
@@ -481,10 +475,7 @@ Anissa Saumtally
 <p>Introduction</p>
 </div>
 <div class="agenda-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>CGE in R basics</p>
+<p>Practical Session 1</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
 <p>Practical Session 2</p>
@@ -493,10 +484,7 @@ Anissa Saumtally
 <p>Results visualisation functions</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 4</p>
+<p>Workshop day one completed !</p>
 </div>
 </div>
 </section>
@@ -504,16 +492,16 @@ Anissa Saumtally
 <h2>Session objectives</h2>
 <p><br></p>
 <ul>
-<li>Full software installation</li>
-<li>Downloading the repository</li>
-<li>Discovering the CGE in R simulation platform
+<li><p>Full software installation</p></li>
+<li><p>Downloading the repository</p></li>
+<li><p>Discovering the CGE in R simulation platform</p>
 <ul>
 <li>Navigating the repository structure</li>
 <li>Main files presentation</li>
 <li>Simulation output information</li>
 <li>Quarto introduction</li>
 </ul></li>
-<li>Making sure everything runs!</li>
+<li><p>Making sure everything runs!</p></li>
 </ul>
 </section>
 <section id="download-links" class="slide level2">
@@ -535,38 +523,12 @@ Anissa Saumtally
 </ul></li>
 <li>Run the <code>main_test.R</code> script to make sure it all works.</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Rtools version must match the R version installed</p></li></ol></aside></section></section>
-<section>
-<section class="title-slide slide level1 agenda-slide center">
-<h1>CGE in R basics</h1>
-<div class="agenda-heading">
-
-</div>
-<div class="agenda">
-<div class="agenda-inactive agenda-pre-active">
-<p>Introduction</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-active">
-<p>CGE in R basics</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 2</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Results visualisation functions</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 4</p>
-</div>
-</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Rtools version must match the R version installed</p></li></ol></aside></section>
+<section id="quarto-introduction" class="slide level2">
+<h2>Quarto introduction</h2>
+<p>For these works, we heavily re</p>
 </section>
-<section id="basic-folder-strucure-presentation" class="slide level2">
+<section id="basic-folder-strucure-presentation" class="slide level2 scrollable">
 <h2>Basic folder strucure presentation</h2>
 <ul>
 <li><p>The <code>Main_xx.R</code> file: this is the main simulation file</p></li>
@@ -588,6 +550,7 @@ Anissa Saumtally
 </section>
 <section id="live-demo" class="slide level2">
 <h2>LIVE DEMO</h2>
+<p><strong>Overview of the project folder structure</strong></p>
 </section>
 <section id="complete-exercise-1" class="slide level2">
 <h2>Complete Exercise 1</h2>
@@ -649,7 +612,10 @@ Anissa Saumtally
 <li>runs the simulations based on the configuration specified in Step 0</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>data_full <span class="ot">&lt;-</span> <span class="fu">run_simulations</span>(<span class="at">configuration =</span> config)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="do">## 2. Running simulations</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a>data_full <span class="ot">&lt;-</span> <span class="fu">run_simulations</span>(<span class="at">configuration =</span> config)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>function running all the necessary steps to simulate the model
@@ -662,14 +628,15 @@ Anissa Saumtally
 </section>
 <section class="slide level2">
 
-<h3 id="step-3-produce-selected-result-templates-optional">Step 3: Produce selected result templates (<strong>OPTIONAL</strong>)</h3>
+<h3 id="step-3.a-produce-selected-result-templates-optional">Step 3.A: Produce selected result templates (<strong>OPTIONAL</strong>)</h3>
 <ul>
-<li><strong>Optional</strong> : will run predefined quarto templates to explore simulation results</li>
+<li><strong>Optional</strong>: will run predefined quarto templates to explore simulation results</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="do">## 3. Produce results via quarto templates</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="do">### 3.A Using templates </span></span>
 <span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a><span class="fu">produce_quartos</span>(<span class="at">Show =</span> <span class="cn">TRUE</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a></a><span class="fu">produce_quartos</span>(<span class="at">Show =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-4"><a></a><span class="fu">cleanup_output</span>(<span class="at">render_dir =</span> <span class="st">"."</span>) <span class="co"># to clean older html renders, keeping the last versions only</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Templates are selected in the <code>config_output</code> file</li>
@@ -678,20 +645,27 @@ Anissa Saumtally
 </section>
 <section class="slide level2">
 
-<h3 id="step-4-render-your-own-quarto-document">Step 4: Render your own quarto document</h3>
+<h3 id="step-3.b-render-your-own-quarto-document-optional">Step 3.B: Render your own quarto document (<strong>OPTIONAL</strong>)</h3>
 <ul>
-<li><strong>optional</strong>: to render a user-made quarto file to view and analyze your results.</li>
+<li><strong>Optional</strong>: to render a user-made quarto file to view and analyze your results.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="do">## 4. Run your own quarto here</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="co"># quarto::quarto_render("wp.qmd")</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="do">### 3.B Your own quarto file</span></span>
+<span id="cb5-2"><a></a>output_file <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"Results_"</span>,config<span class="sc">$</span>input<span class="sc">$</span>project_name,<span class="st">".html"</span>)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="at">input =</span> <span class="fu">file.path</span>(<span class="st">"my_quarto.qmd"</span>),</span>
+<span id="cb5-5"><a></a>                      <span class="at">output_file =</span> output_file,</span>
+<span id="cb5-6"><a></a>                      <span class="at">output_format =</span> <span class="st">"html"</span>,</span>
+<span id="cb5-7"><a></a>                      <span class="at">execute_params =</span> <span class="fu">list</span>(<span class="at">scenario =</span> config<span class="sc">$</span>input<span class="sc">$</span>scenario)</span>
+<span id="cb5-8"><a></a>                      )</span>
+<span id="cb5-9"><a></a></span>
+<span id="cb5-10"><a></a><span class="fu">browseURL</span>(<span class="fu">file.path</span>(<span class="st">"results/quarto_render/"</span>, output_file) )</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In order to use it :</p>
 <ul>
 <li>create, edit and save your own <code>.qmd</code> file (ie <code>my_quarto.qmd</code>). <strong>Save it at the root of the folder</strong></li>
-<li>replace <code>wp.qmd</code> by <code>my_quarto.qmd</code> in the script line</li>
 <li>execute the line to render the file.</li>
+<li><code>browseURL</code> line will open the rendered output in your web browser</li>
 </ul>
 </section>
 <section id="complete-exercise-2-part-1" class="slide level2">
@@ -712,16 +686,16 @@ Anissa Saumtally
 <div class="cell" title="data_full" data-filename="bridge_c17_s17.R">
 <div class="cell-output cell-output-stdout">
 <pre><code>   variable year sector commodity   values_ref scenario       values index_scen
-1        PX 2038   &lt;NA&gt;      &lt;NA&gt; 1.456811e+00      ct1 1.484612e+00          0
-2         M 2023   &lt;NA&gt;      &lt;NA&gt; 7.927222e+05      ct1 7.876107e+05          0
-3       PCI 2040   &lt;NA&gt;      &lt;NA&gt; 1.515666e+00 baseline 1.515666e+00          1
-4       PCH 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00 baseline 1.195093e+00          1
-5       PCI 2030   &lt;NA&gt;      &lt;NA&gt; 1.243374e+00      ct1 1.265650e+00          0
-6       PCI 2025   &lt;NA&gt;      &lt;NA&gt; 1.126162e+00      ct1 1.141243e+00          0
-7        LF 2046   &lt;NA&gt;      &lt;NA&gt; 3.152524e+04 baseline 3.152524e+04          1
-8        PM 2037   &lt;NA&gt;      &lt;NA&gt; 1.428246e+00 baseline 1.428246e+00          1
-9        PM 2034   &lt;NA&gt;      &lt;NA&gt; 1.345868e+00 baseline 1.345868e+00          1
-10       PY 2030   &lt;NA&gt;      &lt;NA&gt; 1.243374e+00      ct1 1.264149e+00          0</code></pre>
+1       C_L 2019   &lt;NA&gt;      &lt;NA&gt; 5.509293e+01      ct1 5.509293e+01          0
+2       PVA 2034   &lt;NA&gt;      &lt;NA&gt; 1.345868e+00 baseline 1.345868e+00          1
+3        CH 2029   &lt;NA&gt;      &lt;NA&gt; 1.497064e+06 baseline 1.497064e+06          1
+4        CH 2038   &lt;NA&gt;      &lt;NA&gt; 1.674527e+06 baseline 1.674527e+06          1
+5       EMS 2020   &lt;NA&gt;      &lt;NA&gt; 4.514329e+02 baseline 4.514329e+02          1
+6        PM 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00      ct1 1.195093e+00          0
+7       EMS 2031   &lt;NA&gt;      &lt;NA&gt; 5.176742e+02 baseline 5.176742e+02          1
+8         I 2049   &lt;NA&gt;      &lt;NA&gt; 8.313638e+05      ct1 8.227398e+05          0
+9         X 2024   &lt;NA&gt;      &lt;NA&gt; 7.636426e+05 baseline 7.636426e+05          1
+10      PCH 2042   &lt;NA&gt;      &lt;NA&gt; 1.576899e+00      ct1 1.613840e+00          0</code></pre>
 </div>
 </div>
 <p>By default the table is sorted by variable, year and scenario in this order.</p>
@@ -784,23 +758,32 @@ Anissa Saumtally
 <p><code>data_full</code> is organised as a long-form <code>data.frame</code>, that is all the model variables are listed in a single columns, as well as all the observations values.</p>
 <p><strong>The minimum observation identifier variables are : the <code>variable</code>, the <code>year</code> and the <code>scenario</code></strong></p>
 </section>
+<section id="config_input" class="slide level2">
+<h2><code>config_input</code></h2>
+</section>
+<section id="mdl-equation-files" class="slide level2">
+<h2><code>mdl</code> Equation files</h2>
+</section>
+<section id="mdl-data-calibration-files" class="slide level2">
+<h2><code>mdl</code> Data calibration files</h2>
+</section>
 <section id="complete-exercise-2-part-2" class="slide level2">
 <h2>Complete Exercise 2 (part 2)</h2>
 <ul>
 <li><p>Look into the data_full database (you can do this in the <code>Main_one_eq.R</code> file)</p>
 <ul>
 <li>Create a variable rel_diff that computes the relative difference.</li>
-<li>Create a new data.frame that contains the GDP (<code>Y</code>) growth rate for the baseline and the shock scenario.</li>
+<li>Compute a data.frame that contains the GDP (<code>Y</code>) growth rate for the baseline and the shock scenario.</li>
 <li>Export as a <code>.csv</code> files this database</li>
 </ul></li>
 <li><p>Locate where the <code>.rds</code> file containing all the simulations results from this project (project name <code>one_eq</code>) can be found</p></li>
-<li><p>Create a quarto <code>.qmd</code> file that :</p>
+<li><p>Create a quarto <code>qmd</code> file that :</p>
 <ul>
 <li>loads the results from those simulations (project name <code>one_eq</code>)</li>
-<li>computes the GDP growth rate for the baseline and shock scenarios</li>
+<li>computes the growth rate for the baseline and shock scenarios</li>
 <li>makes a graph comparing those two series</li>
 </ul></li>
-<li><p>In the <code>config_input_one_eq.R</code>, change the equation <code>.mdl</code> file to use <code>0-2-eq_basic_mod.mdl</code> file.</p>
+<li><p>In the <code>config_input_one_eq.R</code>, change the equation <code>.mdl</code> file to use <code>01.2-eq_basic_mod.mdl</code> file.</p>
 <ul>
 <li>Re-run the simulations and the outputs created.</li>
 <li>What has changed?</li>
@@ -818,10 +801,7 @@ Anissa Saumtally
 <p>Introduction</p>
 </div>
 <div class="agenda-inactive agenda-pre-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>CGE in R basics</p>
+<p>Practical Session 1</p>
 </div>
 <div class="agenda-active">
 <p>Practical Session 2</p>
@@ -830,25 +810,25 @@ Anissa Saumtally
 <p>Results visualisation functions</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 4</p>
+<p>Workshop day one completed !</p>
 </div>
 </div>
-</section>
-<section id="config_input" class="slide level2">
-<h2><code>config_input</code></h2>
-</section>
-<section id="mdl-equation-files" class="slide level2">
-<h2><code>mdl</code> equation files</h2>
-</section>
-<section id="mdl-calib-data-files" class="slide level2">
-<h2><code>mdl</code> calib data files</h2>
-<p>Add example of failure to calibrate properly</p>
 </section>
 <section id="complete-exercise-3" class="slide level2">
 <h2>Complete Exercise 3</h2>
+<ul>
+<li><p>Locate the Walras model equation et calibration files</p></li>
+<li><p>Make a copy of the <code>Main.R</code>, <code>config_input_MODEL.R</code> and <code>config_output_MODEL.R</code> files, with a relevant suffix (ie <code>Main_s.R</code>)</p></li>
+<li><p>Edit your newly created config_input file:</p>
+<ul>
+<li>Change the <code>project_name</code> argument to something more relevant</li>
+<li>Call the correct <code>mdl</code> files</li>
+<li>Call upon the correct configuration files in your new main file</li>
+<li>Keep the same shock scenario for now</li>
+</ul></li>
+<li><p>Run the simulations with the basic result template.</p></li>
+<li><p>Repeat the procedure, this time using the basic Keynes model files. Compare the outputs from the <code>basic_results</code> template.</p></li>
+</ul>
 </section></section>
 <section>
 <section class="title-slide slide level1 agenda-slide center">
@@ -861,10 +841,7 @@ Anissa Saumtally
 <p>Introduction</p>
 </div>
 <div class="agenda-inactive agenda-pre-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>CGE in R basics</p>
+<p>Practical Session 1</p>
 </div>
 <div class="agenda-inactive agenda-pre-active">
 <p>Practical Session 2</p>
@@ -873,12 +850,12 @@ Anissa Saumtally
 <p>Results visualisation functions</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 4</p>
+<p>Workshop day one completed !</p>
 </div>
 </div>
+</section>
+<section id="config_output-how-to-use-templates" class="slide level2">
+<h2><code>config_output</code>: How to use templates</h2>
 </section>
 <section id="results-analysis-simpleplot-function" class="slide level2">
 <h2>Results analysis: <code>simpleplot</code> function</h2>
@@ -941,7 +918,7 @@ diff_{t} = Y_{shock_t} - Y_{baseline_{t}}
 <span id="cb11-2"><a></a>           <span class="at">titleplot =</span> <span class="st">"Gross Domestic Product (absolute change)"</span>, <span class="at">unit =</span> <span class="dv">1</span>, <span class="at">decimal =</span> <span class="fl">0.1</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="simpleplot-plot-the-variable-y-in-growth-rate-option-4" class="slide level2">
+<section id="simpleplot-plot-the-variable-y-in-growth-rate-option-4" class="slide level2 scrollable">
 <h2><em><code>simpleplot</code></em>: plot the variable « Y » in <span style="color:red;">growth rate</span> (Option 4)</h2>
 <ul>
 <li><p>The growth rate (over time) of Y is calculated using the following formula: <span class="math display">\[\begin{equation}
@@ -950,6 +927,11 @@ gr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}
 gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 \end{equation}\]</span></p></li>
 <li><p>By growth rate, we mean annual percentage change</p></li>
+<li><p>The growth rate (over time) of Y is calculated using the following formula: <span class="math display">\[\begin{equation}
+gr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
+\end{equation}\]</span></p></li>
 <li><p>To plot the variable « Y » in growth rate to the baseline scenario, set <code>transformation = "gr"</code> as shown in the following code:</p></li>
 </ul>
 <div class="cell">
@@ -985,20 +967,39 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 </div>
 </section>
 <section id="making-tables" class="slide level2">
-<h2>making tables</h2>
+<h2>Making tables</h2>
 </section>
 <section id="texdoc" class="slide level2">
 <h2>TeXdoc</h2>
 <ul>
-<li>TeXdoc is function that reads <code>mdl</code> files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.</li>
+<li>TeXdoc is function that reads <code>mdl</code> files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.
+<ul>
+<li>Not perfect yet!</li>
+<li>Quite sensitive to how <code>mdl</code> files are written, especially when it come to sectionning text</li>
+</ul></li>
+<li>We added a functionnality that transforms the <code>tex</code> output into a <code>qmd</code> output that can be called upon</li>
 </ul>
 </section>
-<section id="complete-exercise-4" class="slide level2">
+<section id="complete-exercise-4" class="slide level2 scrollable">
 <h2>Complete Exercise 4</h2>
+<ul>
+<li><p>Create your quarto file and create graphs using shortcut plotting functions</p>
+<ul>
+<li><code>simple_plot()</code></li>
+<li><code>contrib_plot()</code></li>
+</ul></li>
+<li><p>Enable the use of the Texdoc template and model_info templates in the <code>config_output</code> to generate the equations list for your model.</p></li>
+<li><p>Include the equation index generated by TeXdoc in your newly created <code>.qmd</code></p></li>
+<li><p>Create a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:</p></li>
+<li><p><em>Identify the year of the shock</em></p></li>
+<li><p><em>identify the year that correspond to <span class="math inline">\(t+2\)</span>, <span class="math inline">\(t+3\)</span>, <span class="math inline">\(t+10\)</span> and <span class="math inline">\(t+50\)</span> where <span class="math inline">\(t\)</span> is the year of the initial shock.</em></p></li>
+<li><p><em>Create a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired</em></p></li>
+<li><p><em>reorginize your data.frame to format nicely</em></p></li>
+<li><p>Use your new <code>.qmd</code> to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.</p></li>
+</ul>
 </section></section>
-<section>
 <section class="title-slide slide level1 agenda-slide center">
-<h1>Practical Session 3</h1>
+<h1>Workshop day one completed !</h1>
 <div class="agenda-heading">
 
 </div>
@@ -1007,10 +1008,7 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <p>Introduction</p>
 </div>
 <div class="agenda-inactive agenda-pre-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>CGE in R basics</p>
+<p>Practical Session 1</p>
 </div>
 <div class="agenda-inactive agenda-pre-active">
 <p>Practical Session 2</p>
@@ -1019,82 +1017,32 @@ gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
 <p>Results visualisation functions</p>
 </div>
 <div class="agenda-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-inactive agenda-post-active">
-<p>Practical Session 4</p>
+<p>Workshop day one completed !</p>
 </div>
 </div>
-</section>
-<section id="complete-exercise-5" class="slide level2">
-<h2>Complete Exercise 5</h2>
-<p>It’s ok if not the last question</p>
-</section>
-<section id="making-2_calib_shock-files" class="slide level2">
-<h2>Making 2_calib_shock files</h2>
-</section>
-<section id="possibly-changing-the-baseline-calibration-1_calib_baseline" class="slide level2">
-<h2>Possibly changing the baseline calibration 1_calib_baseline</h2>
-</section>
-<section id="exercise-6-part-1" class="slide level2">
-<h2>Exercise 6 part 1</h2>
-<p>Look at graphs with multiple scenarios</p>
-</section>
-<section id="exercise-6-part-2" class="slide level2">
-<h2>Exercise 6 part 2</h2>
-</section></section>
-<section>
-<section class="title-slide slide level1 agenda-slide center">
-<h1>Practical Session 4</h1>
-<div class="agenda-heading">
-
-</div>
-<div class="agenda">
-<div class="agenda-inactive agenda-pre-active">
-<p>Introduction</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>Session 1</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>CGE in R basics</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>Practical Session 2</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>Results visualisation functions</p>
-</div>
-<div class="agenda-inactive agenda-pre-active">
-<p>Practical Session 3</p>
-</div>
-<div class="agenda-active">
-<p>Practical Session 4</p>
-</div>
-</div>
-</section>
-<section id="lists-.mdl-file" class="slide level2">
-<h2>Lists <code>.mdl</code> file</h2>
-</section>
-<section id="sector-specific-equations" class="slide level2">
-<h2>Sector specific equations</h2>
-</section>
-<section id="do-exercise-7-part-1" class="slide level2">
-<h2>Do Exercise 7 part 1</h2>
-</section>
-<section id="graphs-for-sectors" class="slide level2">
-<h2>Graphs for sectors</h2>
-</section>
-<section id="do-exercise-7-part-2" class="slide level2">
-<h2>Do Exercise 7 part 2</h2>
+<!-- # Practical Session 3 -->
+<!-- ## Complete Exercise 5  -->
+<!-- It's ok if not the last question -->
+<!-- ## Making 2_calib_shock files -->
+<!-- ## Possibly changing the baseline calibration 1_calib_baseline -->
+<!-- ## Exercise 6 part 1 -->
+<!-- Look at graphs with multiple scenarios -->
+<!-- ## Exercise 6 part 2 -->
+<!-- # Practical Session 4 -->
+<!-- ## Lists `.mdl` file -->
+<!-- ## Sector specific equations -->
+<!-- ## Do Exercise 7 part 1 -->
+<!-- ## Graphs for sectors -->
+<!-- ## Do Exercise 7 part 2 -->
 
 <div class="quarto-auto-generated-content">
 <p><img src="site_libs/quarto-contrib/quarto-project/ofce/pres/ofce_m.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>CGE in R platform <i class="fa-solid fa-ellipsis" aria-label="ellipsis"></i> </p>
+<p>CGE in R - Practical sessions <i class="fa-solid fa-ellipsis" aria-label="ellipsis"></i> </p>
 </div>
 </div>
-</section></section>
+</section>
+
 
     </div>
   </div>

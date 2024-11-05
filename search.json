@@ -1,164 +1,339 @@
 [
   {
-    "objectID": "program.html",
-    "href": "program.html",
-    "title": "Workshop program information",
-    "section": "",
-    "text": "The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations.\nOver the course of the two days, we will alternate between theoretical and practical teaching on CGE models.\nBelow is a provisional program for the workshop. Please note that it is subject to changes depending on progress made."
+    "objectID": "ThreeME_model_short.html#the-threeme-model",
+    "href": "ThreeME_model_short.html#the-threeme-model",
+    "title": "A short presentation of ThreeME",
+    "section": "The ThreeME model",
+    "text": "The ThreeME model\n\nMulti-sector Macroeconomic Model for the Evaluation of Environmental and Energy policy\nMacroeconomic multi-sector model with neo-keynesian features\n\nAvoid the limitations of standard CGE models\n\nSay something about the medium term (not only the long term)\nMore realistic results for policy makers\n\nSimilar dynamic and long term properties than the macroeconomic models used in Economic ministries and forecasting departments\n\nOpen source model: www.threeme.org\n\nTo avoid usual criticisms on models: black-box, impossible to verify independently the results, too few users\nMake application to other countries and by other institutions easier: EU, Mexico & Indonesia (AFD); Tunisia (UNEP), UK (OECD), Luxembourg (Statec), DG Trésor"
   },
   {
-    "objectID": "program.html#tuesday-november-5th-2024",
-    "href": "program.html#tuesday-november-5th-2024",
-    "title": "Workshop program information",
-    "section": "Tuesday, November 5th 2024",
-    "text": "Tuesday, November 5th 2024\n\nMorning session (from 9am to 12am)\n\nTheory Session 1\n\nIntroduction to CGE models and their usage\nIntroduction of the tools used and developed\n\n\n\nPractice Session 1\n\nTechnical installation (R, RStudio, Quarto)\nIntroduction to Quarto\nBasic presentation of the structure of the simulation platform\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 2\n\nSimple Walrsasian models and their properties\n\n\n\nPractice Session 2\n\nSimulating an existing Walrasian model\nRunning a shock scenario\nBasic analysis of results"
+    "objectID": "ThreeME_model_short.html#multisector-model",
+    "href": "ThreeME_model_short.html#multisector-model",
+    "title": "A short presentation of ThreeME",
+    "section": "Multisector model",
+    "text": "Multisector model\n\nn sectors (e.g. France: n = 37; Tunisia: n = 21, Mexico: n = 24, Luxembourg: n = 26)\nAllows to analyze the effect of transfer of activities from one sector to another on:\n\nEmployment, due to different labor intensity\nInvestment, due to different capital intensity\nEnergy consumption, due to different energy intensity\nTrade balance, due to different propensity to import and export\n\n\nExample of sectoral decomposition\n\nThe economy is disaggregated into 27 sectors, with in particular:\n\n4 transport sectors\n12 energy sectors of which 10 technologies for the production of electricity\n\nand 23 commodities\n\nA commodity can be produced by several sectors. E.g. electricity\n\nThe disaggregation is a compromise between the availability of the national account and energy data and the objective of the model\nSeveral sectors have to be disaggregated\n\nElectricity and gas\nTransport"
   },
   {
-    "objectID": "program.html#wednesday-november-6th-2024",
-    "href": "program.html#wednesday-november-6th-2024",
-    "title": "Workshop program information",
-    "section": "Wednesday, November 6th 2024",
-    "text": "Wednesday, November 6th 2024\n\nMorning session (from 9am to 12am)\n\nTheory Session 3\n\nNeokeynesian models and their properties\n\n\n\nPractice Session 3\n\nSimulating an existing Neokeynesian model\nBringing modifications to an existing model\nComparing two different models\nMore complicated shock scenarii\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 4\n\nInput/Output models\nMore complex models\n\n\n\nPractice Session 4\n\nMultisector models: building a simple input/output model.\nIntegrating an input/output model into an existing CGE model."
+    "objectID": "ThreeME_model_short.html#example-of-sectoral-decomposition-1",
+    "href": "ThreeME_model_short.html#example-of-sectoral-decomposition-1",
+    "title": "A short presentation of ThreeME",
+    "section": "Example of sectoral decomposition",
+    "text": "Example of sectoral decomposition"
   },
   {
-    "objectID": "PS3_shocks_models.html#objectives",
-    "href": "PS3_shocks_models.html#objectives",
-    "title": "neo keynesian and running shocks",
-    "section": "objectives",
-    "text": "objectives\ncreate modify shocks create new shocks multiple shocks analysis compare 2 different models"
+    "objectID": "ThreeME_model_short.html#focus-on-energy",
+    "href": "ThreeME_model_short.html#focus-on-energy",
+    "title": "A short presentation of ThreeME",
+    "section": "Focus on energy",
+    "text": "Focus on energy\n\nThe energy disaggregation allows for analyzing the energy behavior of economic agents:\n\nSectors can arbitrate between different energy investments:\n\nSubstitution between capital & energy when the relative energy price increases\nSubstitution between energy sources\nSubstitution between transports\nEndogenous energy efficiency: technical progress increases when the relative energy price increases\n\nConsumers\n\nSubstitution between capital & energy\nSubstitution between energy sources\nSubstitution between transports\nSubstitution between goods"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#definition",
-    "href": "TS1.1_Intro_CGE_models.html#definition",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Definition",
-    "text": "Definition\n\nComputable: numerical simulation\nGeneral: take into account the interactions between markets.\n\nSupply and demand influence each other\n\nEquilibrium: Supply is equal to demand on all markets (good, production factors)\nStructure of a CGE model (see next Figure):\n\nDemand (Consumption, investment) defines the supply (production)\nSupply defines in return the demand through the incomes generated by the production factors"
+    "objectID": "ThreeME_model_short.html#type-of-simulation-of-the-economic-and-environmental-impact",
+    "href": "ThreeME_model_short.html#type-of-simulation-of-the-economic-and-environmental-impact",
+    "title": "A short presentation of ThreeME",
+    "section": "Type of simulation of the economic and environmental impact",
+    "text": "Type of simulation of the economic and environmental impact\n\nEnergy transition policies\n\nFiscal policies:\n\nCarbon tax with or without redistribution of the tax revenue\nPhasing out subsidies on (fossil fuel) energy\nBonus-malus for cars: subsidies on green cars financed by a tax on other cars\n\nChange in the electricity production mix\n\nEx: more RES in the mix\n\nImpact of green investment\n\nIn buildings, public transport, etc.\nImpact of applying a new standard for buildings, or appliances\n\n\nExternal shock\n\nIncrease in international oil/gas price"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#cge-model",
-    "href": "TS1.1_Intro_CGE_models.html#cge-model",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
+    "objectID": "ThreeME_model_short.html#cge-model",
+    "href": "ThreeME_model_short.html#cge-model",
+    "title": "A short presentation of ThreeME",
+    "section": "CGE model",
+    "text": "CGE model\n\nComputable: numerical simulation\nGeneral: take into account the interactions between markets.\n\nSupply and demand influence each other\n\nEquilibrium: Supply is equal to demand on all markets (good, production factors)\nStructure of a CGE model (see next Figure):\n\nDemand (Consumption, investment) defines the supply (production)\nSupply defines in return the demand through the incomes generated by the production factors"
+  },
+  {
+    "objectID": "ThreeME_model_short.html#cge-model-1",
+    "href": "ThreeME_model_short.html#cge-model-1",
+    "title": "A short presentation of ThreeME",
     "section": "CGE model",
     "text": "CGE model"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#what-does-general-equilibrium-mean",
-    "href": "TS1.1_Intro_CGE_models.html#what-does-general-equilibrium-mean",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "What does « general equilibrium » mean?",
-    "text": "What does « general equilibrium » mean?\n\nGeneral Equilibrium relates to a state where supply is equal to demand in all markets\n2 main approaches to insure this state:\n\nWalrasian models\n\nThe equilibrium force is the price system\nPerfect price flexibility insure the instantaneous equilibrium between supply and demand\nWhen the supply of a commodity goes down, its price tends to go up, thereby stimulating additional supply and depressing demand, until supply and demand are equal again.\nStatic model\n\nNeo-Keynesian models\n\nDemand determines supply\nPrice and quantities are rigid and adjust slowly\nDisequilibrium between notional (optimal) supply and the actual supply in the short run\nDynamic model: transition to the long run"
+    "objectID": "ThreeME_model_short.html#what-does-general-equilibrium-mean",
+    "href": "ThreeME_model_short.html#what-does-general-equilibrium-mean",
+    "title": "A short presentation of ThreeME",
+    "section": "What does general equilibrium mean?",
+    "text": "What does general equilibrium mean?\n\nGeneral Equilibrium relates to a state where supply is equal to demand in all markets\n2 main approaches to insure this state:\n\nWalrasian models\n\nThe equilibrium force is the price system\nPerfect price flexibility insure the instantaneous equilibrium between supply and demand\nWhen the supply of a commodity goes down, its price tends to go up, thereby stimulating additional supply and depressing demand, until supply and demand are equal again.\nStatic model\n\nNeo-Keynesian models\n\nDemand determines supply in the short run\nPrice and quantities are rigid and adjust slowly\nDisequilibrium between notional (optimal) supply and the actual supply in the short run\nDynamic model: transition to the long run"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#a-neo-keynesian-cge-model",
-    "href": "TS1.1_Intro_CGE_models.html#a-neo-keynesian-cge-model",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
+    "objectID": "ThreeME_model_short.html#a-neo-keynesian-cge-model",
+    "href": "ThreeME_model_short.html#a-neo-keynesian-cge-model",
+    "title": "A short presentation of ThreeME",
     "section": "A neo-keynesian CGE model",
-    "text": "A neo-keynesian CGE model\n\nSlow adjustment of price and quantity\n\nAdjustment costs\nEmpirically firms adjust their production to the demand rather than their price\n\nLeads to situation of disequilibrium between the desired supply and demand\nPrices are defined as a mark-up over the firm’s production costs\n\nProduction costs integrate intermediary consumption (material and energy), labor and capital costs"
+    "text": "A neo-keynesian CGE model\n\nSlow adjustment of price and quantity\n\nAdjustment costs\nEmpirically firms adjust their production to the demand rather than their price\n\nLeads to situation of disequilibrium between the desired supply and demand\nPrices are defined as a mark-up over the firm’s production costs\n\nProduction costs integrate intermediary consumption (material and energy), labor and capital costs\n\nWages are determined by a Wage Setting (WS) curve\n\nPhillips curve: wages increase with inflation and decrease with unemployment\nWages do not adjust instantaneously the supply and demand for labor:\n\nPermanent underemployment equilibrium possible\nTheory of the NAIRU (Non Accelerating Inflation Rate of Unemployment) or Equilibrium rate of unemployment\n\n\nThe interest rate does not equilibrate instantaneously saving and investment:\n\nIt is defined by the Central Bank\n« Taylor » reaction function: increases with inflation, decreases with unemployment"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#a-neo-keynesian-cge-model-1",
-    "href": "TS1.1_Intro_CGE_models.html#a-neo-keynesian-cge-model-1",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "A neo-keynesian CGE model",
-    "text": "A neo-keynesian CGE model\n\nWages are determined by a Wage Setting (WS) curve\n\nPhillips curve: wages increase with inflation and decrease with unemployment\nWages do not adjust instantaneously the supply and demand for labor:\n\nPermanent underemployment equilibrium possible\nTheory of the NAIRU (Non Accelerating Inflation Rate of Unemployment) or Equilibrium rate of unemployment\n\n\nThe interest rate does not equilibrate instantaneously saving and investment:\n\nIt is defined by the Central Bank\n« Taylor » reaction function: increases with inflation, decreases with unemployment"
+    "objectID": "ThreeME_model_short.html#key-properties-of-threeme",
+    "href": "ThreeME_model_short.html#key-properties-of-threeme",
+    "title": "A short presentation of ThreeME",
+    "section": "Key properties of ThreeME",
+    "text": "Key properties of ThreeME\n\nGeneral equilibrium effects\n\nSupply influence demand and vice versa\n\nDirect and indirect effects of the energy transition\n\nDirect effects: impact for the energy sectors\nIndirect effects: impact for the rest of the economy (in particular the other sectors, the government, households).\n\nLimited eviction effects\n\nInvestment is not only defined by saving\nThe financing through bank credit does not necessary lead to an increase of the interest rate\nThe augmentation of investment in one sector is not necessary achieved through a decrease of investment in other sectors"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#macroeconomic-versus-multisector-cge-models",
-    "href": "TS1.1_Intro_CGE_models.html#macroeconomic-versus-multisector-cge-models",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Macroeconomic versus multisector CGE models",
-    "text": "Macroeconomic versus multisector CGE models\nComputable General Equilibrium (CGE) models are widely used in economic policy analysis.\nMacroeconomic CGE models focus on understanding how an entire economy responds to shocks or policy changes, such as fiscal or monetary policy adjustments, trade policies, or large-scale events like natural disasters. They analyze key economic indicators like GDP, inflation, employment, and investment, aiming to capture interdependencies among aggregate economic variables.\nMultisector CGE models, on the other hand, break down the economy into specific sectors (e.g., agriculture, industry, services) to analyze the effects of policy changes or shocks on each sector individually. This version is particularly useful in trade policy, environmental regulation, or energy policy, as it highlights how impacts may vary across sectors, thereby allowing for targeted policy insights."
+    "objectID": "ThreeME_model_short.html#the-value-added-compared-to-existing-models",
+    "href": "ThreeME_model_short.html#the-value-added-compared-to-existing-models",
+    "title": "A short presentation of ThreeME",
+    "section": "The value-added compared to existing models",
+    "text": "The value-added compared to existing models\n\nSectorial disaggregation\n\nMake explicit the negative and positive impacts for each sector according to its own specificities.\n\n\nHigh technological disaggregation of the energy system\n\nEx: electricity produced by several technology\nEach technology having their own cost and production function\nLink between economic activity, energy production in physical terms (Mtoe or Mwh) and CO2 emissions more accurate.\n\nGeneral Equilibrium\n\nAllows for taking into account of indirect and feedback effects (rebound effects)\n\nNeo-keynesian features\n\nAllows for studying transition and disequilibrium phases (such underemployment)"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#examples-of-applications-of-the-r-package",
-    "href": "TS1.1_Intro_CGE_models.html#examples-of-applications-of-the-r-package",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Examples of applications of the R package",
-    "text": "Examples of applications of the R package\nSmall size models\n\nSmall CGE model\nToday’s course\n\nLarge size models\n\nMulti-sector ThreeME models : open source model ThreeME (www.threeme.org)\nEconometric models (Opale and Mesange)\n\nQuarterly models for short term forcast\n\n\nOverview of ThreeME\n\nMulti-sector Macroeconomic Model for the Evaluation of Environmental and Energy policy.\nOpen source model\nDownload and documentation: https://www.threeme.org/\nThreeME is neo-Keynesian general equilibrium model."
+    "objectID": "ThreeME_model_short.html#the-value-added-compared-to-existing-models-1",
+    "href": "ThreeME_model_short.html#the-value-added-compared-to-existing-models-1",
+    "title": "A short presentation of ThreeME",
+    "section": "The value-added compared to existing models",
+    "text": "The value-added compared to existing models\n\nHybrid modelling\n\nLink bottom-up and top-down approaches\nDetailed energy technologies and coherent macroeconomic framework\n\nPossibility of combination with an energy system model\n\nThe bottom-up development of the energy sectors makes it possible to combine ThreeME with an energy system model without loss of relevant information\nAssessment of scenarios compatible with the technical constraints regarding the feasible energy mix."
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-versus-identities",
-    "href": "TS1.1_Intro_CGE_models.html#behavior-equations-versus-identities",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Behavior equations versus identities",
-    "text": "Behavior equations versus identities\n\nCGE models have behavioral and identity equations\nBehavioral equations derive from microeconomic theory and economic rationality\n\nEconomic behavior of producers, consumers, and other agents in the model\n\nIdentity equations define a variable according to a definition as a mathematical function (sum, product, etc.) of other variables\n\nAccountancy variables (e.g. GDP, price index), unemployment rate, etc."
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations",
-    "href": "TS1.1_Intro_CGE_models.html#behavior-equations",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Behavior equations",
-    "text": "Behavior equations\nPrices\n\nWe assume oligopolistic competition à la Cournot where each producer defines its price in order to maximize its profit considering the price of the other producers as given:\nThe maximisation program is:\n\n\\[\\begin{equation}\nmax_y Π(y) = p(y).y - c(y)\n\\end{equation}\\]\n\n\nwhere \\(y\\) is the production or demand adressed to the compagny, \\(\\pi(y)\\) is the profit of the compagny, \\(p(y)\\) its price and \\(c(y)\\) the production cost. We assume \\(p′(y)\\) &lt; 0, \\(c′(y)\\) &gt; 0 and \\(c′′(y)\\) &gt; 0\n\nThe result of the program maximization defines the optimum price that is equal to a markup over the production costs:\n\n\n\\[\\begin{equation}\np(y)= [1+ m^{up}].c'(y)\n\\end{equation}\\]\n\nwhere the markup is: \\[\\begin{equation} m^{up}= 1/(\\epsilon -1) \\end{equation}\\] and \\(\\epsilon\\) the (absolute) price elasticity of demand\n\nIn perfect competition, markup is zero: \\[\\begin{equation} m^{up} = 0 \\end{equation}\\] so that the optimal price is equal to the marginal cost of production: \\[\\begin{equation} p(y)= c'(y) \\end{equation}\\]\nGiven that production costs equal total factor payments, the optimal price is therefore equal to the cost of capital and labor:\n\n\n\\[\\begin{equation}\np(y).y= w.L+ p(\\delta+r).K\n\\end{equation}\\]\n\nHouseholds consumption\n\nWe assume that households supply labor and own the capital, for which they get their income (\\(w.L + p.r.K\\)) .\nWe assume that households wish to use a fixed share of their total income for consumption\n\\[\\begin{equation}\nCH = \\left( 1 - \\sigma \\right) . \\frac{\\left( w . L + p . r . K \\right)}{p}\n\\end{equation}\\]\nThe consumer maximize its utility by allocating the income of a given period over several periods.\nThe maximization program is:\n\n\\[\\begin{equation}\n    max_{c_i} U(c_1, c_2, ... c_n)=\\sum_{i=1}^{n} (\\phi_i.c_i^{\\frac{\\rho-1}{\\rho}})^{\\frac{\\rho}{\\rho-1}}\n\\end{equation}\\]\n\\[\\begin{equation}\n   \\ s.t \\ \\sum_{i=1}^{n} p_i.c_i = R\n\\end{equation}\\] where \\(\\rho\\) is the elasticity of substitution, \\(c_i\\) the consumption of good \\(i\\) and \\(R\\) total income.\nThe resolution of this program gives the relationship between households consumption and total income :\n\\[\\begin{equation}\np_i.c_i= (\\Phi_i)^{\\rho}.(\\frac{p_i}{P})^{1-\\rho}.R  \n\\end{equation}\\] where \\((\\Phi_i)^{\\rho}.(\\frac{p_i}{P})^{1-\\rho}\\) is the consumption share.\nConsidering only two periods: \\(i=1\\) (present) and \\(i=2\\) (future) and assuming a CES function with \\(\\rho=1\\), we find that consumption is a constant share of income:\n\\[\\begin{equation*}\np_1.c_1 = \\phi_1.R  \n\\end{equation*}\\] with \\(\\phi_1\\) = (1-\\(\\sigma\\)) and \\(\\sigma\\) the propensity to save.\nDemand for production factors\n\nThe firm determines its demand for labor and capital by maximizing its profit, which is equivalent to minimizing its production cost taking into account the production function.\nAssuming a CES production function, the constrained cost minimization program is:\n\n\n\\[\\begin{equation}\nmin_{x_i} (\\sum_{i=1}^{n} p_i.x_i) \\\\\ns.t \\\\  Q= Q(x_i) = (\\sum_{i=1}^{n} \\Phi_i.x_i^{(\\frac{\\rho-1}{\\rho})})^{(\\frac{\\rho}{\\rho-1})}\n\\end{equation}\\]\n\nwhere \\(\\rho\\) is the elasticity of substitution between inputs.\n\nThe resolution of the program derives demand for factors expressed as follows:\nLabor demand:\n\n\n\\[\\begin{equation}\nL = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho} \\right) . \\left( \\frac{w}{\\left( p . PROG^{L} \\right)} \\right) ^ {\\left( -\\rho \\right)}  \n\\end{equation}\\]\n\nCapital demand:\n\n\\[\\begin{equation}\n  \nK = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho} \\right) . \\left( \\frac{\\left( \\delta + r \\right)}{PROG^{K}} \\right) ^ {\\left( -\\rho \\right)}\n\\end{equation}\\]"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#identities-and-defnitions",
-    "href": "TS1.1_Intro_CGE_models.html#identities-and-defnitions",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Identities and defnitions",
-    "text": "Identities and defnitions\nProduction\n\\[\\begin{equation}\nY = CH + I + G\n\\end{equation}\\]\n\nMarket equilibrium condition between supply and demand\n\nAccountancy equation that states that everything that is being produced (total supply) is « consumed », either as household’s consumption, investment or government spending (total demand)\n\n\nCapital accumulation\n\nGiven an initial capital stock (at \\(t-1\\)), the change in capital stock defines the capital stock in \\(t\\):\n\n\\[\\begin{equation}\n\\varDelta \\left(K\\right) = I_{t-1} - \\delta . K_{t-1}\n\\end{equation}\\]\n\nThe change in capital stock :\n\nIncreases with the investment made in the previous period (\\(I_{t-1}\\))\n\nDecreases with the depreciation of the capital stock (\\(\\delta.K_{t-1}\\))\n\n\n\nCost of capital\nWe assume that the cost of capital is defined as the user cost of capital (or real rental price of capital services or the costs of holding capital) :\n\\[\\begin{equation}\n    c^{K} = p(\\delta + r) \\\\\n\\end{equation}\\]\nwhere \\(\\delta\\) is the depreciation rate of capital, \\(r\\) the interest rate and \\(p\\) the price of the investment.\n\nThis equation may have several interpretations:\n\nIt reflects the opportunity cost of holding capital, that is the cost of not been able to invest an existing financial wealth into another asset\nIt assumes that capital is financed through bank credit and that the reimbursement of the debt corresponds to the depreciation of capital"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#some-definitions",
-    "href": "TS1.1_Intro_CGE_models.html#some-definitions",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Some definitions",
-    "text": "Some definitions\n\nEndogenous variable: defined inside the model, as a result of the model simulation\n\nOne equation for each endogenous variable\nEg. production, consumption, prices, wages, etc.\n\nExogenous variable: defined outside the model\n\nNo equation in the model defining this variable: hypothesis of the model\nEg. population, price of imports (for a one country model)\n\nParameter: from a mathematical point of view, an exogenous variable that is generally constant\n\nEg. elasticities (substitution, indexation, etc.), depreciation rate, tax rate, etc.\n\nRepresentative agent: an average relevant economic agent that follows an optimizing/rational economic behaviour\n\nHouseholds, producers, government\nOptimize an objective: e.g. maximization of profit/utility/social welfare, minimization of cost"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#macroeconomic-closure",
-    "href": "TS1.1_Intro_CGE_models.html#macroeconomic-closure",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Macroeconomic closure",
-    "text": "Macroeconomic closure\n\nA model is a way of explaining endogenous variables as function of exogenous variables.\n\nMaking a choice of what is to be determined within the model (endogenous variables) and what is to be considered external to the model (exogenous variables) is called the model closure. Why does the choice of the model closure matter?\n\nIt may define the direction of causality (which variables determine the others)\n\nIt may have important implications on the properties and results of the model\n\n\nWhat is the impact of an increase in public spending (multiplier of public expenditures) on the endogenous variables of the model depending on the choice of the closure ?\nWe compare the results for two contrasting model closures:\n\nThe Walrasian model\nThe Keynesian model"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#walrasian-versus-keynesian-models",
-    "href": "TS1.1_Intro_CGE_models.html#walrasian-versus-keynesian-models",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Walrasian versus Keynesian models",
-    "text": "Walrasian versus Keynesian models\nCommon features for both models:\n\nGeneral equilibrium: which means that supply equals demand in all markets.\n\nIn both frameworks, the models consist of equations that solve for the endogenous variables, given the exogenous variables and parameters. A change in one or more exogenous variable or parameter will lead to adjustments in the endogenous variables so to solve the system of equations again. These solved values of all endogenous variables, constitute the outcome of the model .\n\nMain difference between both models:\n\nThe choice of endogenous variables. In the Walrasian framework some variables adjust while there are considered fixed in the Keynesian framework and vice-versa.\n\nNote: Our definitions of the Walrasian and Keynesian closures may differ from those found in the literature inspired by the seminal work of Sen (1963). Contrary to this literature that consider a static case, we propose simulations based on a dynamic model including an equation for capital accumulation and where investment is endogenous in both the Walrasian and the Keynesian closure."
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#the-walrasian-model",
-    "href": "TS1.1_Intro_CGE_models.html#the-walrasian-model",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "The Walrasian model",
-    "text": "The Walrasian model\nThe model is based on a set of 7 equations with 7 endogenous variables:\n\nInvestment\n\\[\\begin{equation}\nI = Y - CH - G  \n  \\end{equation}\\]\nProduction\n\\[\\begin{equation}\nY . p = w . L + p . \\left( \\delta + r \\right) . K\n\\end{equation}\\]\nHouseholds’consumption\n\\[\\begin{equation}\nCH = \\left( 1 - \\sigma \\right) . \\frac{\\left( w . L + p . r . K \\right)}{p}\n\\end{equation}\\]\nWage\n\\[\\begin{equation}\nw + L = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho} \\right) . \\left( \\frac{w}{\\left( p . PROG^{L} \\right)} \\right) ^ {\\left( -\\rho \\right)}  + w\n\\end{equation}\\]\nInterest rate\n\\[\\begin{equation}\nr + K = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho} \\right) . \\left( \\frac{\\left( \\delta + r \\right)}{PROG^{K}} \\right) ^ {\\left( -\\rho \\right)} + r\n\\end{equation}\\]\nCapital (from accumulation equation)\n\\[\\begin{equation}\n\\varDelta \\left(K\\right) = I_{t-1} - \\delta . K_{t-1}\n\\end{equation}\\]\nPrice\n\\[\\begin{equation}\np=1\n\\end{equation}\\]\nThe price equation defines the price as numéraire (equal to 1). The price can therefore be seen as an exogenous variable. The model could be written as a set of 6 equations with 6 endogenous variables."
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#comments-on-the-walrasian-model-closure",
-    "href": "TS1.1_Intro_CGE_models.html#comments-on-the-walrasian-model-closure",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Comments on the Walrasian model closure",
-    "text": "Comments on the Walrasian model closure\n\nEndogenous variables: \\(Y\\), \\(I\\), \\(CH\\), \\(K\\), \\(w\\), \\(r\\)\n\nExogenous variables: \\(G\\), \\(L\\), \\(p\\), \\(PROG^{L}\\), \\(PROG^{K}\\)\n\nParameters: \\(\\rho\\), \\(\\varphi^{L}\\), \\(\\varphi^{K}\\), \\(\\delta\\), \\(\\sigma\\)\n\nProduction is determined by the « price equation » because the price is set to 1 (numéraire) and is therefore an exogenous variable.\nInvestment is determined endogenously as the difference between production and (private and public) consumption\nLabor is exogenous so that the « labor demand equation » does not determine labor but the wage\nThe equation that determines capital is the one of capital accumulation, so the « capital demand equation » derived from profit maximization does not determine capital but the interest rate\nIn the Walrasian framework, savings define investment, wages and interest rate adjust to clear the capital and labor markets\n\nNote: we consider a steady state economy (with growth rate = 0%)"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#the-keynesian-model",
-    "href": "TS1.1_Intro_CGE_models.html#the-keynesian-model",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "The Keynesian model",
-    "text": "The Keynesian model\nThe model is based on a set of 6 equations with 6 endogenous variables:\n\nProduction\n\n\\[\\begin{equation}\nY = CH + I + G\n\\end{equation}\\]\n\nPrice\n\n\\[\\begin{equation}\np . Y = w . L + p . \\left( \\delta + r \\right) . K^{n}\n\\end{equation}\\]\n\nHouseholds consumption\n\n\\[\\begin{equation}\nCH = \\left( 1 - \\sigma \\right) . \\frac{\\left( w . L + p . r . K \\right)}{p}\n\\end{equation}\\]\n\nLabor\n\n\\[\\begin{equation}\nL = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho} \\right) . \\left( \\frac{w}{\\left( p . PROG^{L} \\right)} \\right) ^ {\\left( -\\rho \\right)}\n\\end{equation}\\]\n\nCapital (notional level from cost minimization of a CES function )\n\n\\[\\begin{equation}\nK^{n} = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho} \\right) . \\left( \\frac{\\left( \\delta + r \\right)}{PROG^{K}} \\right) ^ {\\left( -\\rho \\right)}\n\\end{equation}\\]\n\nCapital (effective level from capital accumulation)\n\n\\[\\begin{equation}\n\\varDelta \\left(K\\right) = I_{t-1} - \\delta . K_{t-1}\n\\end{equation}\\]\n\nInvestment\n\n\\[\\begin{equation}\n\\varDelta \\left(\\operatorname{log} I\\right) = \\varDelta \\left(\\operatorname{log} K^{n}_{t-1}\\right) + \\alpha^{I,Kn} . \\operatorname{log} \\frac{K^{n}_{t-1}}{K_{t-1}}\n\\end{equation}\\]"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#comments-on-the-keynesian-model-closure",
-    "href": "TS1.1_Intro_CGE_models.html#comments-on-the-keynesian-model-closure",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
-    "section": "Comments on the Keynesian model closure",
-    "text": "Comments on the Keynesian model closure\n\nIn the Keynesian closure, the wage and the interest rate are exogenous whereas labor and capital are endogenous\nTo represent the slow adjustment of price and quantities, it is convenient to distinguish between notional and effective level\n\nThe notional levels are mentioned with the underscore (superscript) « n » in the model They refer to the level of price, consumption, labor and capital the producer and the consumer would like to reach immediately if there were no adjustment constraint"
-  },
-  {
-    "objectID": "TS1.1_Intro_CGE_models.html#data-supply-use-su-and-input-output-io-tables",
-    "href": "TS1.1_Intro_CGE_models.html#data-supply-use-su-and-input-output-io-tables",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
+    "objectID": "ThreeME_model_short.html#data-supply-use-su-and-input-output-io-tables",
+    "href": "ThreeME_model_short.html#data-supply-use-su-and-input-output-io-tables",
+    "title": "A short presentation of ThreeME",
     "section": "Data: Supply-Use (SU) and Input-Output (IO) tables",
     "text": "Data: Supply-Use (SU) and Input-Output (IO) tables\n\nSU table says how much a given commodities is supplied by a given sector (Supply)\n\nGenerally close to a diagonal matrix\n\nIO table says how much a given commodities is purchased by a given sector (Demand)\n\nNot a diagonal matrix"
   },
   {
-    "objectID": "TS1.1_Intro_CGE_models.html#equilibrium-between-supply-and-demand-use",
-    "href": "TS1.1_Intro_CGE_models.html#equilibrium-between-supply-and-demand-use",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage\n",
+    "objectID": "ThreeME_model_short.html#equilibrium-between-supply-and-demand-use",
+    "href": "ThreeME_model_short.html#equilibrium-between-supply-and-demand-use",
+    "title": "A short presentation of ThreeME",
     "section": "Equilibrium between Supply and Demand (use)",
-    "text": "Equilibrium between Supply and Demand (use)\n\nGDP = VA = Y – CI = C + I + X - M\n\n\n\n\n\n\n\n\n\n\nTaller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.1\nIntroduction to CGE models and their usage"
+    "text": "Equilibrium between Supply and Demand (use)\n\nGDP = VA = Y – CI = C + I + X - M\n\n\n\n\n\n\n\n\n\n\nA short presentation of ThreeME"
+  },
+  {
+    "objectID": "install.html",
+    "href": "install.html",
+    "title": "Software installation guide",
+    "section": "",
+    "text": "The following software must be installed in order to run the exercices. The following links contain versions that are current as of november 1st 2024, we highly recommend you upgrade existing software to those versions."
+  },
+  {
+    "objectID": "install.html#basic-sofware-installation",
+    "href": "install.html#basic-sofware-installation",
+    "title": "Software installation guide",
+    "section": "Basic sofware installation",
+    "text": "Basic sofware installation\nFor your operating system, please install in sequence the following software:\n\nWindows systems\n\nR (at least 4.4.1)\nRtools 44\nR Studio (Posit)\nQuarto (at least 1.6.32)\n\n\n\nMacOS systems (M1 and above)\n\nR (at least 4.4.1)\nR Studio (Posit)\nQuarto (at least 1.6.32)"
+  },
+  {
+    "objectID": "install.html#the-cge-in-r-github-repository",
+    "href": "install.html#the-cge-in-r-github-repository",
+    "title": "Software installation guide",
+    "section": "The CGE in R github repository",
+    "text": "The CGE in R github repository\nThe github repository (Ibero branch) is downloadable on the following link :\nGet The repo\nView the repo on GitHub\nFor this workshop, please use the ibero branch. The main branch is used for development and will be updated beyond this workshop if you are interested in using this platform for your own work."
+  },
+  {
+    "objectID": "install.html#r-package-installation",
+    "href": "install.html#r-package-installation",
+    "title": "Software installation guide",
+    "section": "R Package installation",
+    "text": "R Package installation\nIn the repository, you will find in the folder src a file called package_installation.R. To minimize issues, we recommand running it in base R or through the terminal, instead of R Studio. Note that this script has no path dependencies and may thus be run without being within an RProject.\nRunning this script will install a series of CRAN packages on your system as well as a couple package in development on GitHub:\n\nofce: in-house packages containing useful formatting functions (among others) and themes.\ntresthor: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macrœconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE.\nermeeth: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.\npegr: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.\n\nFor those last four package, if the automated installation fails, please use the alt_github_package_install.R script to install a version of them stored on the repository.\n\nInstallation using Base R\n\nOpen R 4.4.1\n\nOn Windows, in the Start Menu, go to R, and select R 4.4.1\nOn MacOS in the Applications folder, there should be and R.app\n\nGo to File –&gt; Open script\nNavigate to the CGE_inR\\src folder to find the package_installation.R file\nSelect all the script (ctrl + A for Windows, command + A for MacOs)\nRun it (through a right click to find the Run option or ctrl + R for Windowscommand + return for MacOs)\nIf necessary repeat the same procedure for the alt_github_package_install.R file\n\n\n\nInstallation using the terminal\n\nFirst locate the full path to the R script you want to run and make a note of it\n\nie for Windows, it will start by C:\\\nfor MacOS it will start with something like /Users/\n\n\nRun the following commands in your terminal or command prompt\n\n\n\nWindows command prompt for executing an R script\n\nWindows command prompt\n\n### say my script location is \"C:\\Users\\Anissa\\Documents\\GitHub\\CGE_in_R\\src\\package_installation.R\"\n\ncd C:\\Program files\\R\\R-4.4.1\\bin\nRscript.exe -e \"source('C:/Users/Anissa/Documents/GitHub/CGE_in_R/src/package_installation.R')\" # note the chage in direction for the slashes\n\n\n\n\n\n\nMacOS Terminal prompts for executing an R script\n\nMacOS Terminal\n\n### say my script location is \"/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R\"\n\nRscript -e  \"source('/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R')\""
+  },
+  {
+    "objectID": "install.html#further-readings",
+    "href": "install.html#further-readings",
+    "title": "Software installation guide",
+    "section": "Further readings",
+    "text": "Further readings\nThis workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the tidyverse) and use Quarto to present your results under different format.\nAt the very least we recommend learning how to use the dplyr R package to manipulate result databases and\n\nQuarto []\nTidyverse []\nggplot2 cheatsheet []\ndplyr cheatsheet []"
+  },
+  {
+    "objectID": "Practical_Sessions.html#foreword-codename-ermeeth-project",
+    "href": "Practical_Sessions.html#foreword-codename-ermeeth-project",
+    "title": "CGE in R - Practical sessions",
+    "section": "Foreword: codename Ermeeth project",
+    "text": "Foreword: codename Ermeeth project\n\n\nThe CGE platform presented today is the a suite of scripts and packages initially developed to run the ThreeME model in R\nThis platform is versatile as even the simplest models can be run\nMultiple system solvers from external applications can be mobilised to solve the model,\n\nThese session will only use a solver written in R that works well on small scale models\n\nThese practical sessions aim at giving you a preview of a workflow of model simulation and result analysis on simple models"
+  },
+  {
+    "objectID": "Practical_Sessions.html#a-standard-workflow-on-the-ermeeth-project-platform",
+    "href": "Practical_Sessions.html#a-standard-workflow-on-the-ermeeth-project-platform",
+    "title": "CGE in R - Practical sessions",
+    "section": "A standard workflow on the Ermeeth project platform",
+    "text": "A standard workflow on the Ermeeth project platform\n\ncreate/edit your model\ncreate/edit your baseline and shock scenarios\nPrepare your config files\nPrepare your main file\nPrepare a simple .qmd output (or use a template!)\nTest it, fix errors (there is always something..)\nRun simulations again.\nDevelope more advance analysis to understand behaviours"
+  },
+  {
+    "objectID": "Practical_Sessions.html#session-objectives",
+    "href": "Practical_Sessions.html#session-objectives",
+    "title": "CGE in R - Practical sessions",
+    "section": "Session objectives",
+    "text": "Session objectives\n\n\nFull software installation\nDownloading the repository\nDiscovering the CGE in R simulation platform\n\nNavigating the repository structure\nMain files presentation\nSimulation output information\nQuarto introduction\n\nMaking sure everything runs!"
+  },
+  {
+    "objectID": "Practical_Sessions.html#download-links",
+    "href": "Practical_Sessions.html#download-links",
+    "title": "CGE in R - Practical sessions",
+    "section": "Download links",
+    "text": "Download links\n\n\nPlease go to https://ThreeME-org.github.io/CGE_inR_iberomex/install\n\nDownload and install the 3/4 softwares linked\nDownload the repository off GitHub (no account necessary)\nPackage installation\n\nWhat are you installing ?\n\nR is the basic R langage software\nRStudio provides a user-friendly IDE to run R]\nRtools for Windows adds advanced functionalities to R1.\nQuarto is a markdown-based software used to combine code elements and text in order to produce reports that depend on code output.\n\nRun the main_test.R script to make sure it all works.\n\nRtools version must match the R version installed"
+  },
+  {
+    "objectID": "Practical_Sessions.html#quarto-introduction",
+    "href": "Practical_Sessions.html#quarto-introduction",
+    "title": "CGE in R - Practical sessions",
+    "section": "Quarto introduction",
+    "text": "Quarto introduction\nFor these works, we heavily re"
+  },
+  {
+    "objectID": "Practical_Sessions.html#basic-folder-strucure-presentation",
+    "href": "Practical_Sessions.html#basic-folder-strucure-presentation",
+    "title": "CGE in R - Practical sessions",
+    "section": "Basic folder strucure presentation",
+    "text": "Basic folder strucure presentation\n\nThe Main_xx.R file: this is the main simulation file\nThe configuration folder contains:\n\nconfig_input_xx.R: file used to prepare the simulation parameters\nconfig_output_xx.R: file used to specify the quarto result templates to be used\nscenarii_calib folder: folder contains the script to prepare the simulation scenarios (baseline and shocks)\n\nThe data folder with the output subfolder: where are stored the simulation results as rds files.\nThe results folder contains the pre-programmed quarto templates. Can be used to store your own results.\nThe src folder contains a few system files and scripts, many of which are not directly of interest to users, with the exception of:\n\nmodel: contains the model files (.mdl), that is the equations and data calibration for models. Users may modify or add mdl files to suit the specifics of their simulations.\nfunctions_src: contains user-made, not yet packaged functions. Users may create their own functions and store them in this folder to call upon them automatically.\nsetup.R: loads packages and user-made functions"
+  },
+  {
+    "objectID": "Practical_Sessions.html#live-demo",
+    "href": "Practical_Sessions.html#live-demo",
+    "title": "CGE in R - Practical sessions",
+    "section": "LIVE DEMO",
+    "text": "LIVE DEMO\nOverview of the project folder structure"
+  },
+  {
+    "objectID": "Practical_Sessions.html#complete-exercise-1",
+    "href": "Practical_Sessions.html#complete-exercise-1",
+    "title": "CGE in R - Practical sessions",
+    "section": "Complete Exercise 1",
+    "text": "Complete Exercise 1\nInstallation and tests {#sec-1_1}\n\nFollow the installation instructions specified in Get Started\nRun the file main_test.R to check if everything is working properly\nFamiliriaze yourself with the folder structure by locating the following files:\n\nMain.R\nconfig_input_MODEL.R and config_output.R\n1_calib_baseline.R\n01-1-eq_one_equation_model.mdl"
+  },
+  {
+    "objectID": "Practical_Sessions.html#the-main.r-file",
+    "href": "Practical_Sessions.html#the-main.r-file",
+    "title": "CGE in R - Practical sessions",
+    "section": "the Main.R file",
+    "text": "the Main.R file\nMain.R script is built on four steps.\nStep 0: Setup\n\nresets the R environment\nloads the necessary libraries and custom functions\nreads the simulation configurations (input and output) into the config list.\n\n\n## 0. Setup\nrm(list = ls())\nsource(file.path(\"src\",\"setup.R\"))\n\n\n  config &lt;- readconfig(input_config_file = file.path(\"configuration\", \"config_input_XXX.R\") ,\n                      output_config_file = file.path(\"configuration\", \"config_output_XXX.R\")\n                     )"
+  },
+  {
+    "objectID": "Practical_Sessions.html#complete-exercise-2-part-1",
+    "href": "Practical_Sessions.html#complete-exercise-2-part-1",
+    "title": "CGE in R - Practical sessions",
+    "section": "Complete Exercise 2 (part 1)",
+    "text": "Complete Exercise 2 (part 1)\n\nCreate a copy of the Main.R file (call it Main_one_eq.R for example) in the root folder\nOn your new Main file, call the the config files : config_input_one_eq.R, and config_output_one_eq.R.\nRun the simulation and generate the results from templates.\n\nFrom the results, what do you think happens in this shock scenario?"
+  },
+  {
+    "objectID": "Practical_Sessions.html#the-output-database-data_full",
+    "href": "Practical_Sessions.html#the-output-database-data_full",
+    "title": "CGE in R - Practical sessions",
+    "section": "The output database : data_full",
+    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1       C_L 2019   &lt;NA&gt;      &lt;NA&gt; 5.509293e+01      ct1 5.509293e+01          0\n2       PVA 2034   &lt;NA&gt;      &lt;NA&gt; 1.345868e+00 baseline 1.345868e+00          1\n3        CH 2029   &lt;NA&gt;      &lt;NA&gt; 1.497064e+06 baseline 1.497064e+06          1\n4        CH 2038   &lt;NA&gt;      &lt;NA&gt; 1.674527e+06 baseline 1.674527e+06          1\n5       EMS 2020   &lt;NA&gt;      &lt;NA&gt; 4.514329e+02 baseline 4.514329e+02          1\n6        PM 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00      ct1 1.195093e+00          0\n7       EMS 2031   &lt;NA&gt;      &lt;NA&gt; 5.176742e+02 baseline 5.176742e+02          1\n8         I 2049   &lt;NA&gt;      &lt;NA&gt; 8.313638e+05      ct1 8.227398e+05          0\n9         X 2024   &lt;NA&gt;      &lt;NA&gt; 7.636426e+05 baseline 7.636426e+05          1\n10      PCH 2042   &lt;NA&gt;      &lt;NA&gt; 1.576899e+00      ct1 1.613840e+00          0\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
+  },
+  {
+    "objectID": "Practical_Sessions.html#data-columns",
+    "href": "Practical_Sessions.html#data-columns",
+    "title": "CGE in R - Practical sessions",
+    "section": "Data columns",
+    "text": "Data columns\ndata_full is made up of 8 columns:\n\nvariableyearsectorcommodityscenariovalues_refvaluesindex_scen\n\n\ntype [string]\nThis column contains the name of the variables. The variables names are always alphanumerical characters (including underscores) in UPPERCASE.\n\n\ntype [integer]\nThis column contains the year of the observation. It serves as the time series identifier, which does not necessarily have to be a calendar year. It could be identified by sequence of integer in any range (ie 1 to 10). The name year is a mainly a legacy feature.\n\n\ntype [string]\nThis is a ThreeME specific item that can be used by any model using a similar list system to identify sectors. This is only a label variable. Its value is by default NA unless the variable is considered to be a sector specific variable, in which case the value reported will be either the sector code or the sector name if a codenames file has been properly configured.\n\n\ntype [string]\nThis is a ThreeME specific item that can be used by any model using a similar list system to identify commodities. This is only a label variable. Its value is by default NA unless the variable is considered to be a commodity specific variable, in which case the value reported will be either the commodity code or the commodity name if a codenames file has been properly configured.\n\n\ntype [string]\nThis is the (short) name of the scenario, as specified in the scenario argument of the config_input file.\n\n\ntype [numeric]\nThis column contains the chosen reference scenario value. The reference scenario is the one specified in the scenario_baseline argument in the config_input.1\n\n\ntype [numeric]\nThis column contains simulated value for the observation. This is where the main outputs are found.\n\n\ntype [dummy]\nThis variable takes the value 1 if the scenario is baseline or 0 otherwise. It’s main purpose is to quickly filter out the baseline scenario from the database. The information given for this variable is essentially redundant with the information from the scenario column.\n\n\n\nOn an unmodified data_full from the simulations, for the baseline scenario the values in values and values_ref are equal."
+  },
+  {
+    "objectID": "Practical_Sessions.html#understanding-the-observations-rows-of-data_full",
+    "href": "Practical_Sessions.html#understanding-the-observations-rows-of-data_full",
+    "title": "CGE in R - Practical sessions",
+    "section": "Understanding the observations (rows of data_full)",
+    "text": "Understanding the observations (rows of data_full)\n\ndata_full is organised as a long-form data.frame, that is all the model variables are listed in a single columns, as well as all the observations values.\nThe minimum observation identifier variables are : the variable, the year and the scenario"
+  },
+  {
+    "objectID": "Practical_Sessions.html#config_input",
+    "href": "Practical_Sessions.html#config_input",
+    "title": "CGE in R - Practical sessions",
+    "section": "config_input",
+    "text": "config_input"
+  },
+  {
+    "objectID": "Practical_Sessions.html#mdl-equation-files",
+    "href": "Practical_Sessions.html#mdl-equation-files",
+    "title": "CGE in R - Practical sessions",
+    "section": "mdl Equation files",
+    "text": "mdl Equation files"
+  },
+  {
+    "objectID": "Practical_Sessions.html#mdl-data-calibration-files",
+    "href": "Practical_Sessions.html#mdl-data-calibration-files",
+    "title": "CGE in R - Practical sessions",
+    "section": "mdl Data calibration files",
+    "text": "mdl Data calibration files"
+  },
+  {
+    "objectID": "Practical_Sessions.html#complete-exercise-2-part-2",
+    "href": "Practical_Sessions.html#complete-exercise-2-part-2",
+    "title": "CGE in R - Practical sessions",
+    "section": "Complete Exercise 2 (part 2)",
+    "text": "Complete Exercise 2 (part 2)\n\nLook into the data_full database (you can do this in the Main_one_eq.R file)\n\nCreate a variable rel_diff that computes the relative difference.\nCompute a data.frame that contains the GDP (Y) growth rate for the baseline and the shock scenario.\nExport as a .csv files this database\n\nLocate where the .rds file containing all the simulations results from this project (project name one_eq) can be found\nCreate a quarto qmd file that :\n\nloads the results from those simulations (project name one_eq)\ncomputes the growth rate for the baseline and shock scenarios\nmakes a graph comparing those two series\n\nIn the config_input_one_eq.R, change the equation .mdl file to use 01.2-eq_basic_mod.mdl file.\n\nRe-run the simulations and the outputs created.\nWhat has changed?"
+  },
+  {
+    "objectID": "Practical_Sessions.html#complete-exercise-3",
+    "href": "Practical_Sessions.html#complete-exercise-3",
+    "title": "CGE in R - Practical sessions",
+    "section": "Complete Exercise 3",
+    "text": "Complete Exercise 3\n\nLocate the Walras model equation et calibration files\nMake a copy of the Main.R, config_input_MODEL.R and config_output_MODEL.R files, with a relevant suffix (ie Main_s.R)\nEdit your newly created config_input file:\n\nChange the project_name argument to something more relevant\nCall the correct mdl files\nCall upon the correct configuration files in your new main file\nKeep the same shock scenario for now\n\nRun the simulations with the basic result template.\nRepeat the procedure, this time using the basic Keynes model files. Compare the outputs from the basic_results template."
+  },
+  {
+    "objectID": "Practical_Sessions.html#config_output-how-to-use-templates",
+    "href": "Practical_Sessions.html#config_output-how-to-use-templates",
+    "title": "CGE in R - Practical sessions",
+    "section": "config_output: How to use templates",
+    "text": "config_output: How to use templates"
+  },
+  {
+    "objectID": "Practical_Sessions.html#results-analysis-simpleplot-function",
+    "href": "Practical_Sessions.html#results-analysis-simpleplot-function",
+    "title": "CGE in R - Practical sessions",
+    "section": "Results analysis: simpleplot function",
+    "text": "Results analysis: simpleplot function\n\nsimpleplot creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:\n\n\nView(ermeeth::simpleplot)\n\n\nThere are 4 options to plot a variable using simpleplot To select an option, we change the argument « transformation » in the simpleplot function:\nOption 1: plot the variable in level (transformation = « level » )\nOption 2: plot the variable in relative difference (transformation = « reldiff » )\nOption 3: plot the variable in difference (transformation = « diff » )\nOption 4: plot the variable in growth rate (transformation = « gr » )"
+  },
+  {
+    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-level-option-1",
+    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-level-option-1",
+    "title": "CGE in R - Practical sessions",
+    "section": "simpleplot: plot the variable « Y » in level (Option 1)",
+    "text": "simpleplot: plot the variable « Y » in level (Option 1)\n\nTo plot the variable « Y » in level to the baseline scenario, set transformation = \"level\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"level\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (level)\", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)\n\n\nDashed line : Baseline simulation\nSolid line : Shock simulation\nlabel_series = \"GDP\" Changes the name of the variable « Y » into « GDP »"
+  },
+  {
+    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
+    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
+    "title": "CGE in R - Practical sessions",
+    "section": "simpleplot: plot the variable « Y » in relative difference (Option 2)",
+    "text": "simpleplot: plot the variable « Y » in relative difference (Option 2)\n\nThe relative difference in the shock compared to the baseline for variable Y is calculated using the following formula: \\[\\begin{equation}\nreldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1\n\\end{equation}\\]\nTo plot the variable « Y » in relative difference to the baseline scenario, set transformation = \"reldiff\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"reldiff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (percentage change)\", unit = \"percent\", decimal = 0.1, custom_x_breaks = 2)\n\n\nOnly one plot here ! This is the (relative) difference between the shock and the baseline"
+  },
+  {
+    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
+    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
+    "title": "CGE in R - Practical sessions",
+    "section": "simpleplot: plot the variable « Y » in absolute difference (Option 3)",
+    "text": "simpleplot: plot the variable « Y » in absolute difference (Option 3)\n\nThe absolute difference in the shock compared to the baseline for variable Y is calculated using the following formula:\nThe variation of Y is calculated using the following formula: \\[\\begin{equation}\ndiff_{t} = Y_{shock_t} - Y_{baseline_{t}}\n\\end{equation}\\]\nTo plot the variable « Y » in absolute difference to the baseline scenario, set transformation = \"diff\" as shown in the following code\n\n\nsimpleplot(data = data_full,  transformation = \"diff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (absolute change)\", unit = 1, decimal = 0.1)"
+  },
+  {
+    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
+    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
+    "title": "CGE in R - Practical sessions",
+    "section": "simpleplot: plot the variable « Y » in growth rate (Option 4)",
+    "text": "simpleplot: plot the variable « Y » in growth rate (Option 4)\n\nThe growth rate (over time) of Y is calculated using the following formula: \\[\\begin{equation}\ngr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}\n\\end{equation}\\] \\[\\begin{equation}\ngr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}\n\\end{equation}\\]\nBy growth rate, we mean annual percentage change\nThe growth rate (over time) of Y is calculated using the following formula: \\[\\begin{equation}\ngr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}\n\\end{equation}\\] \\[\\begin{equation}\ngr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}\n\\end{equation}\\]\nTo plot the variable « Y » in growth rate to the baseline scenario, set transformation = \"gr\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"gr\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (yearly percentage change)\", unit = \"percent\", decimal = 0.01)"
+  },
+  {
+    "objectID": "Practical_Sessions.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
+    "href": "Practical_Sessions.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
+    "title": "CGE in R - Practical sessions",
+    "section": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »",
+    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
+  },
+  {
+    "objectID": "Practical_Sessions.html#making-tables",
+    "href": "Practical_Sessions.html#making-tables",
+    "title": "CGE in R - Practical sessions",
+    "section": "Making tables",
+    "text": "Making tables"
+  },
+  {
+    "objectID": "Practical_Sessions.html#texdoc",
+    "href": "Practical_Sessions.html#texdoc",
+    "title": "CGE in R - Practical sessions",
+    "section": "TeXdoc",
+    "text": "TeXdoc\n\nTeXdoc is function that reads mdl files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.\n\nNot perfect yet!\nQuite sensitive to how mdl files are written, especially when it come to sectionning text\n\nWe added a functionnality that transforms the tex output into a qmd output that can be called upon"
+  },
+  {
+    "objectID": "Practical_Sessions.html#complete-exercise-4",
+    "href": "Practical_Sessions.html#complete-exercise-4",
+    "title": "CGE in R - Practical sessions",
+    "section": "Complete Exercise 4",
+    "text": "Complete Exercise 4\n\nCreate your quarto file and create graphs using shortcut plotting functions\n\nsimple_plot()\ncontrib_plot()\n\nEnable the use of the Texdoc template and model_info templates in the config_output to generate the equations list for your model.\nInclude the equation index generated by TeXdoc in your newly created .qmd\nCreate a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:\nIdentify the year of the shock\nidentify the year that correspond to \\(t+2\\), \\(t+3\\), \\(t+10\\) and \\(t+50\\) where \\(t\\) is the year of the initial shock.\nCreate a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired\nreorginize your data.frame to format nicely\nUse your new .qmd to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs."
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact us",
+    "section": "",
+    "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team\nThe ThreeME team is in charge of developing the ThreeME model in the Department of Economics and Environment at the OFCE."
   },
   {
     "objectID": "TS1.2_Intro_tools.html#software-installation-and-tutorial",
@@ -308,263 +483,172 @@
     "text": "Next steps\n\nApplication of this knowledge to other models\nSimulation of small CGE models with prices\nWalrasian versus Keynesian closure\n\n\n\n\n\nTaller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed"
   },
   {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact us",
-    "section": "",
-    "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team\nThe ThreeME team is in charge of developing the ThreeME model in the Department of Economics and Environment at the OFCE."
+    "objectID": "TS1.1_Intro_CGE_models.html#welcome",
+    "href": "TS1.1_Intro_CGE_models.html#welcome",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Welcome",
+    "text": "Welcome"
   },
   {
-    "objectID": "Practical_Sessions.html#foreword-codename-ermeeth",
-    "href": "Practical_Sessions.html#foreword-codename-ermeeth",
-    "title": "CGE in R platform",
-    "section": "Foreword: codename Ermeeth",
-    "text": "Foreword: codename Ermeeth\n\n\nThe CGE platform presented today is the a suite of scripts and packages initially developed to run the ThreeME model in R\nThis platform is versatile as even the simplest models can be run\nMultiple system solvers from external applications can be mobilised to solve the model,\n\nThese session will only use a solver written in R that works well on small scale models\n\nThese practical sessions aim at giving you a preview of a workflow of model simulation and result analysis on simple models"
+    "objectID": "TS1.1_Intro_CGE_models.html#definition",
+    "href": "TS1.1_Intro_CGE_models.html#definition",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Definition",
+    "text": "Definition\n\nComputable: numerical simulation\nGeneral: take into account the interactions between markets.\n\nSupply and demand influence each other\n\nEquilibrium: Supply is equal to demand on all markets (good, production factors)\nStructure of a CGE model (see next Figure):\n\nDemand (Consumption, investment) defines the supply (production)\nSupply defines in return the demand through the incomes generated by the production factors"
   },
   {
-    "objectID": "Practical_Sessions.html#a-standard-workflow",
-    "href": "Practical_Sessions.html#a-standard-workflow",
-    "title": "CGE in R platform",
-    "section": "A Standard workflow",
-    "text": "A Standard workflow\ncreate/edit your model\ncreate/edit your baseline and shock scenarios\nPrepare your config files\nPrepare your main file\nPrepare a simple .qmd output (or use a template!)\nTest it, fix errors (there is always something..)\nRun again.\nDevelope more advance analysis to understand behaviours"
+    "objectID": "TS1.1_Intro_CGE_models.html#cge-model",
+    "href": "TS1.1_Intro_CGE_models.html#cge-model",
+    "title": "Introduction to CGE models and their usage",
+    "section": "CGE model",
+    "text": "CGE model"
   },
   {
-    "objectID": "Practical_Sessions.html#session-objectives",
-    "href": "Practical_Sessions.html#session-objectives",
-    "title": "CGE in R platform",
-    "section": "Session objectives",
-    "text": "Session objectives\n\n\nFull software installation\nDownloading the repository\nDiscovering the CGE in R simulation platform\n\nNavigating the repository structure\nMain files presentation\nSimulation output information\nQuarto introduction\n\nMaking sure everything runs!"
+    "objectID": "TS1.1_Intro_CGE_models.html#what-does-general-equilibrium-mean",
+    "href": "TS1.1_Intro_CGE_models.html#what-does-general-equilibrium-mean",
+    "title": "Introduction to CGE models and their usage",
+    "section": "What does « general equilibrium » mean?",
+    "text": "What does « general equilibrium » mean?\n\nGeneral Equilibrium relates to a state where supply is equal to demand in all markets\n2 main approaches to insure this state:\n\nWalrasian models\n\nThe equilibrium force is the price system\nPerfect price flexibility insure the instantaneous equilibrium between supply and demand\nWhen the supply of a commodity goes down, its price tends to go up, thereby stimulating additional supply and depressing demand, until supply and demand are equal again.\nStatic model\n\nNeo-Keynesian models\n\nDemand determines supply\nPrice and quantities are rigid and adjust slowly\nDisequilibrium between notional (optimal) supply and the actual supply in the short run\nDynamic model: transition to the long run"
   },
   {
-    "objectID": "Practical_Sessions.html#download-links",
-    "href": "Practical_Sessions.html#download-links",
-    "title": "CGE in R platform",
-    "section": "Download links",
-    "text": "Download links\n\n\nPlease go to https://ThreeME-org.github.io/CGE_inR_iberomex/install\n\nDownload and install the 3/4 softwares linked\nDownload the repository off GitHub (no account necessary)\nPackage installation\n\nWhat are you installing ?\n\nR is the basic R langage software\nRStudio provides a user-friendly IDE to run R]\nRtools for Windows adds advanced functionalities to R1.\nQuarto is a markdown-based software used to combine code elements and text in order to produce reports that depend on code output.\n\nRun the main_test.R script to make sure it all works.\n\nRtools version must match the R version installed"
+    "objectID": "TS1.1_Intro_CGE_models.html#a-neo-keynesian-cge-model",
+    "href": "TS1.1_Intro_CGE_models.html#a-neo-keynesian-cge-model",
+    "title": "Introduction to CGE models and their usage",
+    "section": "A neo-keynesian CGE model",
+    "text": "A neo-keynesian CGE model\n\nSlow adjustment of price and quantity\n\nAdjustment costs\nEmpirically firms adjust their production to the demand rather than their price\n\nLeads to situation of disequilibrium between the desired supply and demand\nPrices are defined as a mark-up over the firm’s production costs\n\nProduction costs integrate intermediary consumption (material and energy), labor and capital costs\n\nWages are determined by a Wage Setting (WS) curve\n\nPhillips curve: wages increase with inflation and decrease with unemployment\nWages do not adjust instantaneously the supply and demand for labor:\n\nPermanent underemployment equilibrium possible\nTheory of the NAIRU (Non Accelerating Inflation Rate of Unemployment) or Equilibrium rate of unemployment\n\n\nThe interest rate does not equilibrate instantaneously saving and investment:\n\nIt is defined by the Central Bank\n« Taylor » reaction function: increases with inflation, decreases with unemployment"
   },
   {
-    "objectID": "Practical_Sessions.html#basic-folder-strucure-presentation",
-    "href": "Practical_Sessions.html#basic-folder-strucure-presentation",
-    "title": "CGE in R platform",
-    "section": "Basic folder strucure presentation",
-    "text": "Basic folder strucure presentation\n\nThe Main_xx.R file: this is the main simulation file\nThe configuration folder contains:\n\nconfig_input_xx.R: file used to prepare the simulation parameters\nconfig_output_xx.R: file used to specify the quarto result templates to be used\nscenarii_calib folder: folder contains the script to prepare the simulation scenarios (baseline and shocks)\n\nThe data folder with the output subfolder: where are stored the simulation results as rds files.\nThe results folder contains the pre-programmed quarto templates. Can be used to store your own results.\nThe src folder contains a few system files and scripts, many of which are not directly of interest to users, with the exception of:\n\nmodel: contains the model files (.mdl), that is the equations and data calibration for models. Users may modify or add mdl files to suit the specifics of their simulations.\nfunctions_src: contains user-made, not yet packaged functions. Users may create their own functions and store them in this folder to call upon them automatically.\nsetup.R: loads packages and user-made functions"
+    "objectID": "TS1.1_Intro_CGE_models.html#macroeconomic-versus-multisector-cge-models",
+    "href": "TS1.1_Intro_CGE_models.html#macroeconomic-versus-multisector-cge-models",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Macroeconomic versus multisector CGE models",
+    "text": "Macroeconomic versus multisector CGE models\nCGE models are widely used in economic policy analysis. Two type of analyses:\n\nMacroeconomic CGE models focus on understanding how an entire economy responds to shocks or policy changes\n\ne.g. fiscal, monetary, trade, innovation policies\nthey aim to capture interdependencies between aggregate economic variables and key economic indicators\n\ne.g. GDP, inflation, employment, and investment\n\n\nMultisector CGE models break down the economy into several sectors to analyze the effects of policy changes or shocks on each sector individually\n\ne.g. energy, agriculture, industry, services\nmain applications: trade policy, environmental regulation, energy policy, large-scale events like natural disasters\nhighlight how impacts may vary across sectors\nallow for simulating sector specific policy"
   },
   {
-    "objectID": "Practical_Sessions.html#live-demo",
-    "href": "Practical_Sessions.html#live-demo",
-    "title": "CGE in R platform",
-    "section": "LIVE DEMO",
-    "text": "LIVE DEMO"
+    "objectID": "TS1.1_Intro_CGE_models.html#examples-of-applications-of-our-r-package",
+    "href": "TS1.1_Intro_CGE_models.html#examples-of-applications-of-our-r-package",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Examples of applications of our R package",
+    "text": "Examples of applications of our R package\nSmall size models\n\nSmall CGE model\nToday’s course\n\nLarge size models\n\nEconometric models (Opale and Mesange)\n\nQuarterly models for short term forcast\n\nMulti-sector models\n\ne.g. open source ThreeME model\nwww.threeme.org"
   },
   {
-    "objectID": "Practical_Sessions.html#complete-exercise-1",
-    "href": "Practical_Sessions.html#complete-exercise-1",
-    "title": "CGE in R platform",
-    "section": "Complete Exercise 1",
-    "text": "Complete Exercise 1\nInstallation and tests {#sec-1_1}\n\nFollow the installation instructions specified in Get Started\nRun the file main_test.R to check if everything is working properly\nFamiliriaze yourself with the folder structure by locating the following files:\n\nMain.R\nconfig_input_MODEL.R and config_output.R\n1_calib_baseline.R\n01-1-eq_one_equation_model.mdl"
+    "objectID": "TS1.1_Intro_CGE_models.html#overview-of-threeme",
+    "href": "TS1.1_Intro_CGE_models.html#overview-of-threeme",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Overview of ThreeME",
+    "text": "Overview of ThreeME\nMulti-sector Macroeconomic Model for the Evaluation of Environmental and Energy policy.\n\nOpen source model\nDownload and documentation: https://www.threeme.org/\nThreeME is neo-Keynesian general equilibrium model.\nDesigned to study scenario involving transfers of activities from one sector to another\n\nType of simulation of the economic and environmental impact\n\nEnergy transition policies\n\nFiscal policies:\n\nCarbon tax with or without redistribution of the tax revenue\nPhasing out subsidies on (fossil fuel) energy\nBonus-malus for cars: subsidies on green cars financed by a tax on other cars\n\nChange in the electricity production mix\n\nEx: more RES in the mix\n\nImpact of green investment\n\nIn buildings, public transport, etc.\nImpact of applying a new standard for buildings, or appliances\n\n\nExternal shock\n\nIncrease in international oil/gas price"
   },
   {
-    "objectID": "Practical_Sessions.html#the-main.r-file",
-    "href": "Practical_Sessions.html#the-main.r-file",
-    "title": "CGE in R platform",
-    "section": "the Main.R file",
-    "text": "the Main.R file\nMain.R script is built on four steps.\nStep 0: Setup\n\nresets the R environment\nloads the necessary libraries and custom functions\nreads the simulation configurations (input and output) into the config list.\n\n\n## 0. Setup\nrm(list = ls())\nsource(file.path(\"src\",\"setup.R\"))\n\n\n  config &lt;- readconfig(input_config_file = file.path(\"configuration\", \"config_input_XXX.R\") ,\n                      output_config_file = file.path(\"configuration\", \"config_output_XXX.R\")\n                     )"
+    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-versus-identities",
+    "href": "TS1.1_Intro_CGE_models.html#behavior-equations-versus-identities",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Behavior equations versus identities",
+    "text": "Behavior equations versus identities\n\nCGE models have behavioral and identity equations\nBehavioral equations derive from microeconomic theory and economic rationality\n\nEconomic behavior of producers, consumers, and other agents in the model\n\nIdentity equations define a variable according to a definition as a mathematical function (sum, product, etc.) of other variables\n\nAccountancy variables (e.g. GDP, price index), unemployment rate, etc."
   },
   {
-    "objectID": "Practical_Sessions.html#complete-exercise-2-part-1",
-    "href": "Practical_Sessions.html#complete-exercise-2-part-1",
-    "title": "CGE in R platform",
-    "section": "Complete Exercise 2 (part 1)",
-    "text": "Complete Exercise 2 (part 1)\n\nCreate a copy of the Main.R file (call it Main_one_eq.R for example) in the root folder\nOn your new Main file, call the the config files : config_input_one_eq.R, and config_output_one_eq.R.\nRun the simulation and generate the results from templates.\n\nFrom the results, what do you think happens in this shock scenario?"
+    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations",
+    "href": "TS1.1_Intro_CGE_models.html#behavior-equations",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Behavior equations",
+    "text": "Behavior equations\nPrices\n\nWe assume oligopolistic competition à la Cournot where each producer defines its price in order to maximize its profit considering the price of the other producers as given:\nThe maximisation program is:\n\n\\[max_y Π(y) = p(y).y - c(y)\\]\nwhere \\(y\\) is the production or demand adressed to the compagny, \\(\\pi(y)\\) is the profit of the compagny, \\(p(y)\\) its price and \\(c(y)\\) the production cost. We assume \\(p′(y)\\) &lt; 0, \\(c′(y)\\) &gt; 0 and \\(c′′(y)\\) &gt; 0\n\nThe result of the program maximization defines the optimum price that is equal to a markup over the production costs:\n\n\\[p(y)= [1+ m^{up}].c'(y)\\]\nwhere the markup is: \\[\\begin{equation} m^{up}= 1/(\\epsilon -1) \\end{equation}\\] and \\(\\epsilon\\) the (absolute) price elasticity of demand\n\nIn perfect competition, markup is zero: \\[\\begin{equation} m^{up} = 0 \\end{equation}\\] so that the optimal price is equal to the marginal cost of production: \\[\\begin{equation} p(y)= c'(y) \\end{equation}\\]\nGiven that production costs equal total factor payments, the optimal price is therefore equal to the cost of capital and labor:\n\n\\[p(y).y= w.L+ p(\\delta+r).K\\]"
   },
   {
-    "objectID": "Practical_Sessions.html#the-output-database-data_full",
-    "href": "Practical_Sessions.html#the-output-database-data_full",
-    "title": "CGE in R platform",
-    "section": "The output database : data_full",
-    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1        PX 2038   &lt;NA&gt;      &lt;NA&gt; 1.456811e+00      ct1 1.484612e+00          0\n2         M 2023   &lt;NA&gt;      &lt;NA&gt; 7.927222e+05      ct1 7.876107e+05          0\n3       PCI 2040   &lt;NA&gt;      &lt;NA&gt; 1.515666e+00 baseline 1.515666e+00          1\n4       PCH 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00 baseline 1.195093e+00          1\n5       PCI 2030   &lt;NA&gt;      &lt;NA&gt; 1.243374e+00      ct1 1.265650e+00          0\n6       PCI 2025   &lt;NA&gt;      &lt;NA&gt; 1.126162e+00      ct1 1.141243e+00          0\n7        LF 2046   &lt;NA&gt;      &lt;NA&gt; 3.152524e+04 baseline 3.152524e+04          1\n8        PM 2037   &lt;NA&gt;      &lt;NA&gt; 1.428246e+00 baseline 1.428246e+00          1\n9        PM 2034   &lt;NA&gt;      &lt;NA&gt; 1.345868e+00 baseline 1.345868e+00          1\n10       PY 2030   &lt;NA&gt;      &lt;NA&gt; 1.243374e+00      ct1 1.264149e+00          0\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
+    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-1",
+    "href": "TS1.1_Intro_CGE_models.html#behavior-equations-1",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Behavior equations",
+    "text": "Behavior equations\nHouseholds consumption\n\nWe assume that households supply labor and own the capital, for which they get their income (\\(w.L + p.r.K\\)) .\nWe assume that households wish to use a fixed share of their total income for consumption\n\n\\[CH = \\left( 1 - \\sigma \\right) . \\frac{\\left( w . L + p . r . K \\right)}{p}\\]\n\nCan be derive from alternative theoretical model of consumption.\nFor instance: let us assume that the consumer maximize its (CES) utility by allocating the income of a given period over several periods.\n\nThe maximization program is:\n\\[max_{c_i} U(c_1, c_2, ... c_n)=\\sum_{i=1}^{n} (\\phi_i.c_i^{\\frac{\\rho-1}{\\rho}})^{\\frac{\\rho}{\\rho-1}}\\] \\[\\ s.t \\ \\sum_{i=1}^{n} p_i.c_i = R\\] where \\(\\rho\\) is the elasticity of substitution, \\(c_i\\) the consumption of good in period \\(i\\) and \\(R\\) total income.\nThe resolution of this program gives the relationship between households consumption and total income :\n\\[p_i.c_i= (\\Phi_i)^{\\rho}.(\\frac{p_i}{P})^{1-\\rho}.R\\] where \\((\\Phi_i)^{\\rho}.(\\frac{p_i}{P})^{1-\\rho}\\) is the consumption share.\nConsidering only two periods: \\(i=1\\) (present) and \\(i=2\\) (future) and assuming a CES function with \\(\\rho=1\\), we find that consumption is a constant share of income:\n\\[p_1.c_1 = \\phi_1.R\\] with \\(\\phi_1\\) = (1-\\(\\sigma\\)) and \\(\\sigma\\) the propensity to save."
   },
   {
-    "objectID": "Practical_Sessions.html#data-columns",
-    "href": "Practical_Sessions.html#data-columns",
-    "title": "CGE in R platform",
-    "section": "Data columns",
-    "text": "Data columns\ndata_full is made up of 8 columns:\n\nvariableyearsectorcommodityscenariovalues_refvaluesindex_scen\n\n\ntype [string]\nThis column contains the name of the variables. The variables names are always alphanumerical characters (including underscores) in UPPERCASE.\n\n\ntype [integer]\nThis column contains the year of the observation. It serves as the time series identifier, which does not necessarily have to be a calendar year. It could be identified by sequence of integer in any range (ie 1 to 10). The name year is a mainly a legacy feature.\n\n\ntype [string]\nThis is a ThreeME specific item that can be used by any model using a similar list system to identify sectors. This is only a label variable. Its value is by default NA unless the variable is considered to be a sector specific variable, in which case the value reported will be either the sector code or the sector name if a codenames file has been properly configured.\n\n\ntype [string]\nThis is a ThreeME specific item that can be used by any model using a similar list system to identify commodities. This is only a label variable. Its value is by default NA unless the variable is considered to be a commodity specific variable, in which case the value reported will be either the commodity code or the commodity name if a codenames file has been properly configured.\n\n\ntype [string]\nThis is the (short) name of the scenario, as specified in the scenario argument of the config_input file.\n\n\ntype [numeric]\nThis column contains the chosen reference scenario value. The reference scenario is the one specified in the scenario_baseline argument in the config_input.1\n\n\ntype [numeric]\nThis column contains simulated value for the observation. This is where the main outputs are found.\n\n\ntype [dummy]\nThis variable takes the value 1 if the scenario is baseline or 0 otherwise. It’s main purpose is to quickly filter out the baseline scenario from the database. The information given for this variable is essentially redundant with the information from the scenario column.\n\n\n\nOn an unmodified data_full from the simulations, for the baseline scenario the values in values and values_ref are equal."
+    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-2",
+    "href": "TS1.1_Intro_CGE_models.html#behavior-equations-2",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Behavior equations",
+    "text": "Behavior equations\nDemand for production factors\n\nThe firm determines its demand for labor and capital by maximizing its profit, which is equivalent to minimizing its production cost taking into account the production function.\nAssuming a CES production function, the constrained cost minimization program is:\n\n\\[min_{x_i} (\\sum_{i=1}^{n} p_i.x_i)\\]\n\\[\\ s.t. \\ Q= Q(x_i) = (\\sum_{i=1}^{n} \\Phi_i.x_i^{(\\frac{\\rho-1}{\\rho})})^{(\\frac{\\rho}{\\rho-1})}\\] where \\(\\rho\\) is the elasticity of substitution between inputs.\n\nThe resolution of the program derives demand for factors expressed as follows:\nLabor demand:\n\n\\[L = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho} \\right) . \\left( \\frac{w}{\\left( p . PROG^{L} \\right)} \\right) ^ {\\left( -\\rho \\right)}\\]\nCapital demand:\n\\[ K = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho} \\right) . \\left( \\frac{\\left( \\delta + r \\right)}{PROG^{K}} \\right) ^ {\\left( -\\rho \\right)} \\]"
   },
   {
-    "objectID": "Practical_Sessions.html#understanding-the-observations-rows-of-data_full",
-    "href": "Practical_Sessions.html#understanding-the-observations-rows-of-data_full",
-    "title": "CGE in R platform",
-    "section": "Understanding the observations (rows of data_full)",
-    "text": "Understanding the observations (rows of data_full)\n\ndata_full is organised as a long-form data.frame, that is all the model variables are listed in a single columns, as well as all the observations values.\nThe minimum observation identifier variables are : the variable, the year and the scenario"
+    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-3",
+    "href": "TS1.1_Intro_CGE_models.html#behavior-equations-3",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Behavior equations",
+    "text": "Behavior equations\nCES function\nThe Constant Elasticity of Substitution (CES) production function proposed by Arrow et al. (1961) offers flexibility in modeling substitutability between production factors\n\\[Y = \\left(\\tilde{\\varphi_1} X_1^{\\frac{\\eta - 1}{\\eta}} + \\tilde{\\varphi}_2 X_2^{\\frac{\\eta - 1}{\\eta}}\\right)^{\\frac{\\eta}{\\eta - 1}}\\]\nwhere:\n\n\\(Y\\) the output,\n\\(\\tilde\\varphi_1\\) and \\(\\tilde\\varphi_2\\) respectively the weights for inputs \\(X_1\\) and \\(X_2\\),\n\\(\\eta\\) the Elasticity of Substitution (ES) taking possibly any value between \\(]0;+\\infty[\\)\n\nThe CES function enables the representation of varying degrees of substitutability:\n\nperfect complementarity \\(\\eta = 0\\) (Leontief function)\nperfect substitutability \\(\\eta \\rightarrow \\infty\\)\nCobb-Douglas function where the ES is unitary \\(\\eta = 1\\)."
   },
   {
-    "objectID": "Practical_Sessions.html#complete-exercise-2-part-2",
-    "href": "Practical_Sessions.html#complete-exercise-2-part-2",
-    "title": "CGE in R platform",
-    "section": "Complete Exercise 2 (part 2)",
-    "text": "Complete Exercise 2 (part 2)\n\nLook into the data_full database (you can do this in the Main_one_eq.R file)\n\nCreate a variable rel_diff that computes the relative difference.\nCreate a new data.frame that contains the GDP (Y) growth rate for the baseline and the shock scenario.\nExport as a .csv files this database\n\nLocate where the .rds file containing all the simulations results from this project (project name one_eq) can be found\nCreate a quarto .qmd file that :\n\nloads the results from those simulations (project name one_eq)\ncomputes the GDP growth rate for the baseline and shock scenarios\nmakes a graph comparing those two series\n\nIn the config_input_one_eq.R, change the equation .mdl file to use 0-2-eq_basic_mod.mdl file.\n\nRe-run the simulations and the outputs created.\nWhat has changed?"
+    "objectID": "TS1.1_Intro_CGE_models.html#behavior-equations-4",
+    "href": "TS1.1_Intro_CGE_models.html#behavior-equations-4",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Behavior equations",
+    "text": "Behavior equations\nCES function for various elasticities of substitution\n\n\n\nCode\nlibrary(ggplot2)\n# CES Function: Q^((eta-1)/eta) = phi1*X1^((eta-1)/eta) + phi2*X2^((eta-1)/eta)\n\n# Interpolation step (for ggplot)\nstep &lt;- 1000\n  \n# Inverse CES function: X1 = f(Q,X2)\nX1 &lt;- function(X2, eta) {\n  # Calibration of the parameters of the CES function\n  Q &lt;- 1\n  phi1 &lt;- 0.5\n  phi2 &lt;- 0.5\n\n  ((Q^((eta-1)/eta) - phi2*X2^((eta-1)/eta))/phi1)^(eta/(eta-1)) \n  }\n\nplot_CES_for_various_elasticity &lt;- ggplot(data.frame(x = c(0,5)), aes(x=x)) +\n  stat_function(fun = X1, args = list(eta = 0.1)  , aes(colour = \"0.1\"), n = step*1000) +\n  stat_function(fun = X1, args = list(eta = 0.5)  , aes(colour = \"0.5\"), n = step) +\n  stat_function(fun = X1, args = list(eta = 0.999), aes(colour = \"1\"  ), n = step, lwd = 1) +\n  stat_function(fun = X1, args = list(eta = 1.6)    , aes(colour = \"1.6\"  ), n = step) +\n  stat_function(fun = X1, args = list(eta = 20)   , aes(colour = \"20\" ), n = step) +\n  scale_colour_manual(name = expression(eta), values = c(\"red\", \"blue\", \"black\", \"green\", \"grey\")) +\n  ylim(0,2.5) +\n  theme(legend.position = \"bottom\") +\n  labs(y = \"X1\", x = \"X2\")\n\nplot_CES_for_various_elasticity\n\nggsave(\"plot_CES_for_various_elasticity.png\", plot = plot_CES_for_various_elasticity, width = 6, height = 4, dpi = 300)"
   },
   {
-    "objectID": "Practical_Sessions.html#config_input",
-    "href": "Practical_Sessions.html#config_input",
-    "title": "CGE in R platform",
-    "section": "config_input",
-    "text": "config_input"
+    "objectID": "TS1.1_Intro_CGE_models.html#identities-and-defnitions",
+    "href": "TS1.1_Intro_CGE_models.html#identities-and-defnitions",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Identities and defnitions",
+    "text": "Identities and defnitions\nProduction\n\\[Y = CH + I + G\\]\n\nMarket equilibrium condition between supply and demand\n\nAccountancy equation that states that everything that is being produced (total supply) is « consumed », either as household’s consumption, investment or government spending (total demand)\n\n\nCapital accumulation\n\nGiven an initial capital stock (at \\(t-1\\)), the change in capital stock defines the capital stock in \\(t\\):\n\n\\[\\varDelta \\left(K\\right) = I_{t-1} - \\delta . K_{t-1}\\]\n\nThe change in capital stock :\n\nIncreases with the investment made in the previous period (\\(I_{t-1}\\))\n\nDecreases with the depreciation of the capital stock (\\(\\delta.K_{t-1}\\))\n\n\n\nCost of capital\nWe assume that the cost of capital is defined as the user cost of capital (or real rental price of capital services or the costs of holding capital) :\n\\[c^{K} = p(\\delta + r)\\]\nwhere \\(\\delta\\) is the depreciation rate of capital, \\(r\\) the interest rate and \\(p\\) the price of the investment.\n\nThis equation may have several interpretations:\n\nIt reflects the opportunity cost of holding capital, that is the cost of not been able to invest an existing financial wealth into another asset\nIt assumes that capital is financed through bank credit and that the reimbursement of the debt corresponds to the depreciation of capital"
   },
   {
-    "objectID": "Practical_Sessions.html#mdl-equation-files",
-    "href": "Practical_Sessions.html#mdl-equation-files",
-    "title": "CGE in R platform",
-    "section": "mdl equation files",
-    "text": "mdl equation files"
+    "objectID": "TS1.1_Intro_CGE_models.html#some-definitions",
+    "href": "TS1.1_Intro_CGE_models.html#some-definitions",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Some definitions",
+    "text": "Some definitions\n\nEndogenous variable: defined inside the model, as a result of the model simulation\n\nOne equation for each endogenous variable\nEg. production, consumption, prices, wages, etc.\n\nExogenous variable: defined outside the model\n\nNo equation in the model defining this variable: hypothesis of the model\nEg. population, price of imports (for a one country model)\n\nParameter: from a mathematical point of view, an exogenous variable that is generally constant\n\nEg. elasticities (substitution, indexation, etc.), depreciation rate, tax rate, etc.\n\nRepresentative agent: an average relevant economic agent that follows an optimizing/rational economic behaviour\n\nHouseholds, producers, government\nOptimize an objective: e.g. maximization of profit/utility/social welfare, minimization of cost"
   },
   {
-    "objectID": "Practical_Sessions.html#mdl-calib-data-files",
-    "href": "Practical_Sessions.html#mdl-calib-data-files",
-    "title": "CGE in R platform",
-    "section": "mdl calib data files",
-    "text": "mdl calib data files\nAdd example of failure to calibrate properly"
+    "objectID": "TS1.1_Intro_CGE_models.html#macroeconomic-closure-1",
+    "href": "TS1.1_Intro_CGE_models.html#macroeconomic-closure-1",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Macroeconomic closure",
+    "text": "Macroeconomic closure\n\nA model is a way of explaining endogenous variables as function of exogenous variables.\n\nMaking a choice of what is to be determined within the model (endogenous variables) and what is to be considered external to the model (exogenous variables) is called the model closure. Why does the choice of the model closure matter?\n\nIt may define the direction of causality (which variables determine the others)\n\nIt may have important implications on the properties and results of the model\n\n\nWhat is the impact of an increase in public spending (multiplier of public expenditures) on the endogenous variables of the model depending on the choice of the closure ?\nWe compare the results for two contrasting model closures:\n\nThe Walrasian model\nThe Keynesian model"
   },
   {
-    "objectID": "Practical_Sessions.html#complete-exercise-3",
-    "href": "Practical_Sessions.html#complete-exercise-3",
-    "title": "CGE in R platform",
-    "section": "Complete Exercise 3",
-    "text": "Complete Exercise 3"
+    "objectID": "TS1.1_Intro_CGE_models.html#walrasian-versus-keynesian-models",
+    "href": "TS1.1_Intro_CGE_models.html#walrasian-versus-keynesian-models",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Walrasian versus Keynesian models",
+    "text": "Walrasian versus Keynesian models\nCommon features for both models:\n\nGeneral equilibrium: which means that supply equals demand in all markets.\n\nIn both frameworks, the models consist of equations that solve for the endogenous variables, given the exogenous variables and parameters. A change in one or more exogenous variable or parameter will lead to adjustments in the endogenous variables so to solve the system of equations again. These solved values of all endogenous variables, constitute the outcome of the model .\n\nMain difference between both models:\n\nThe choice of endogenous variables. In the Walrasian framework some variables adjust while there are considered fixed in the Keynesian framework and vice-versa.\n\nNote: Our definitions of the Walrasian and Keynesian closures may differ from those found in the literature inspired by the seminal work of Sen (1963). Contrary to this literature that consider a static case, we propose simulations based on a dynamic model including an equation for capital accumulation and where investment is endogenous in both the Walrasian and the Keynesian closure."
   },
   {
-    "objectID": "Practical_Sessions.html#results-analysis-simpleplot-function",
-    "href": "Practical_Sessions.html#results-analysis-simpleplot-function",
-    "title": "CGE in R platform",
-    "section": "Results analysis: simpleplot function",
-    "text": "Results analysis: simpleplot function\n\nsimpleplot creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:\n\n\nView(ermeeth::simpleplot)\n\n\nThere are 4 options to plot a variable using simpleplot To select an option, we change the argument « transformation » in the simpleplot function:\nOption 1: plot the variable in level (transformation = « level » )\nOption 2: plot the variable in relative difference (transformation = « reldiff » )\nOption 3: plot the variable in difference (transformation = « diff » )\nOption 4: plot the variable in growth rate (transformation = « gr » )"
+    "objectID": "TS1.1_Intro_CGE_models.html#the-walrasian-model",
+    "href": "TS1.1_Intro_CGE_models.html#the-walrasian-model",
+    "title": "Introduction to CGE models and their usage",
+    "section": "The Walrasian model",
+    "text": "The Walrasian model\nThe model is based on a set of 7 equations with 7 endogenous variables:\n\nInvestment\n\\[I = Y - CH - G\\]\nProduction\n\\[Y . p = w . L + p . \\left( \\delta + r \\right) . K\\]\nHouseholds’consumption\n\\[CH = \\left( 1 - \\sigma \\right) . \\frac{\\left( w . L + p . r . K \\right)}{p}\\]\nWage\n\\[w + L = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho} \\right) . \\left( \\frac{w}{\\left( p . PROG^{L} \\right)} \\right) ^ {\\left( -\\rho \\right)}  + w\\]\nInterest rate\n\\[r + K = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho} \\right) . \\left( \\frac{\\left( \\delta + r \\right)}{PROG^{K}} \\right) ^ {\\left( -\\rho \\right)} + r\\]\nCapital (from accumulation equation)\n\\[\\varDelta \\left(K\\right) = I_{t-1} - \\delta . K_{t-1}\\]\nPrice\n\\[p=1\\]\nThe price equation defines the price as numéraire (equal to 1). The price can therefore be seen as an exogenous variable. The model could be written as a set of 6 equations with 6 endogenous variables."
   },
   {
-    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-level-option-1",
-    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-level-option-1",
-    "title": "CGE in R platform",
-    "section": "simpleplot: plot the variable « Y » in level (Option 1)",
-    "text": "simpleplot: plot the variable « Y » in level (Option 1)\n\nTo plot the variable « Y » in level to the baseline scenario, set transformation = \"level\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"level\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (level)\", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)\n\n\nDashed line : Baseline simulation\nSolid line : Shock simulation\nlabel_series = \"GDP\" Changes the name of the variable « Y » into « GDP »"
+    "objectID": "TS1.1_Intro_CGE_models.html#comments-on-the-walrasian-model-closure",
+    "href": "TS1.1_Intro_CGE_models.html#comments-on-the-walrasian-model-closure",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Comments on the Walrasian model closure",
+    "text": "Comments on the Walrasian model closure\n\nEndogenous variables: \\(Y\\), \\(I\\), \\(CH\\), \\(K\\), \\(w\\), \\(r\\)\nExogenous variables: \\(G\\), \\(L\\), \\(p\\), \\(PROG^{L}\\), \\(PROG^{K}\\)\n\nParameters: \\(\\rho\\), \\(\\varphi^{L}\\), \\(\\varphi^{K}\\), \\(\\delta\\), \\(\\sigma\\)\n\nProduction is determined by the « price equation » because the price is set to 1 (numéraire) and is therefore an exogenous variable.\nInvestment is determined endogenously as the difference between production and (private and public) consumption\nLabor is exogenous so that the « labor demand equation » does not determine labor but the wage\nThe equation that determines capital is the one of capital accumulation, so the « capital demand equation » derived from profit maximization does not determine capital but the interest rate\nIn the Walrasian framework, savings define investment, wages and interest rate adjust to clear the capital and labor markets\n\nNote: we consider a steady state economy (with growth rate = 0%)"
   },
   {
-    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
-    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
-    "title": "CGE in R platform",
-    "section": "simpleplot: plot the variable « Y » in relative difference (Option 2)",
-    "text": "simpleplot: plot the variable « Y » in relative difference (Option 2)\n\nThe relative difference in the shock compared to the baseline for variable Y is calculated using the following formula: \\[\\begin{equation}\nreldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1\n\\end{equation}\\]\nTo plot the variable « Y » in relative difference to the baseline scenario, set transformation = \"reldiff\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"reldiff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (percentage change)\", unit = \"percent\", decimal = 0.1, custom_x_breaks = 2)\n\n\nOnly one plot here ! This is the (relative) difference between the shock and the baseline"
+    "objectID": "TS1.1_Intro_CGE_models.html#the-keynesian-model",
+    "href": "TS1.1_Intro_CGE_models.html#the-keynesian-model",
+    "title": "Introduction to CGE models and their usage",
+    "section": "The Keynesian model",
+    "text": "The Keynesian model\nThe model is based on a set of 6 equations with 6 endogenous variables:\n\nProduction\n\n\\[Y = CH + I + G\\]\n\nPrice\n\n\\[p . Y = w . L + p . \\left( \\delta + r \\right) . K^{n}\\]\n\nHouseholds consumption\n\n\\[CH = \\left( 1 - \\sigma \\right) . \\frac{\\left( w . L + p . r . K \\right)}{p}\\]\n\nLabor\n\n\\[L = \\left( \\frac{Y}{PROG^{L}} \\right) . \\left( \\left( \\varphi^{L} \\right) ^ {\\rho} \\right) . \\left( \\frac{w}{\\left( p . PROG^{L} \\right)} \\right) ^ {\\left( -\\rho \\right)}\\]\n\nCapital (notional level from cost minimization of a CES function )\n\n\\[K^{n} = \\left( \\frac{Y}{PROG^{K}} \\right) . \\left( \\left( \\varphi^{K} \\right) ^ {\\rho} \\right) . \\left( \\frac{\\left( \\delta + r \\right)}{PROG^{K}} \\right) ^ {\\left( -\\rho \\right)}\\]\n\nCapital (effective level from capital accumulation)\n\n\\[\\varDelta \\left(K\\right) = I_{t-1} - \\delta . K_{t-1}\\]\n\nInvestment\n\n\\[\\varDelta \\left(\\operatorname{log} I\\right) = \\varDelta \\left(\\operatorname{log} K^{n}_{t-1}\\right) + \\alpha^{I,Kn} . \\operatorname{log} \\frac{K^{n}_{t-1}}{K_{t-1}}\\]"
   },
   {
-    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
-    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
-    "title": "CGE in R platform",
-    "section": "simpleplot: plot the variable « Y » in absolute difference (Option 3)",
-    "text": "simpleplot: plot the variable « Y » in absolute difference (Option 3)\n\nThe absolute difference in the shock compared to the baseline for variable Y is calculated using the following formula:\nThe variation of Y is calculated using the following formula: \\[\\begin{equation}\ndiff_{t} = Y_{shock_t} - Y_{baseline_{t}}\n\\end{equation}\\]\nTo plot the variable « Y » in absolute difference to the baseline scenario, set transformation = \"diff\" as shown in the following code\n\n\nsimpleplot(data = data_full,  transformation = \"diff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (absolute change)\", unit = 1, decimal = 0.1)"
+    "objectID": "TS1.1_Intro_CGE_models.html#comments-on-the-keynesian-model-closure",
+    "href": "TS1.1_Intro_CGE_models.html#comments-on-the-keynesian-model-closure",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Comments on the Keynesian model closure",
+    "text": "Comments on the Keynesian model closure\n\nIn the Keynesian closure, the wage and the interest rate are exogenous whereas labor and capital are endogenous\nTo represent the slow adjustment of price and quantities, it is convenient to distinguish between notional and effective level\n\nThe notional levels are mentioned with the underscore (superscript) « n » in the model They refer to the level of price, consumption, labor and capital the producer and the consumer would like to reach immediately if there were no adjustment constraint"
   },
   {
-    "objectID": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
-    "href": "Practical_Sessions.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
-    "title": "CGE in R platform",
-    "section": "simpleplot: plot the variable « Y » in growth rate (Option 4)",
-    "text": "simpleplot: plot the variable « Y » in growth rate (Option 4)\n\nThe growth rate (over time) of Y is calculated using the following formula: \\[\\begin{equation}\ngr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}\n\\end{equation}\\] \\[\\begin{equation}\ngr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}\n\\end{equation}\\]\nBy growth rate, we mean annual percentage change\nTo plot the variable « Y » in growth rate to the baseline scenario, set transformation = \"gr\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"gr\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (yearly percentage change)\", unit = \"percent\", decimal = 0.01)"
+    "objectID": "TS1.1_Intro_CGE_models.html#data-supply-use-su-and-input-output-io-tables",
+    "href": "TS1.1_Intro_CGE_models.html#data-supply-use-su-and-input-output-io-tables",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Data: Supply-Use (SU) and Input-Output (IO) tables",
+    "text": "Data: Supply-Use (SU) and Input-Output (IO) tables\n\nSU table says how much a given commodities is supplied by a given sector (Supply)\n\nGenerally close to a diagonal matrix\n\nIO table says how much a given commodities is purchased by a given sector (Demand)\n\nNot a diagonal matrix"
   },
   {
-    "objectID": "Practical_Sessions.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
-    "href": "Practical_Sessions.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
-    "title": "CGE in R platform",
-    "section": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »",
-    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
-  },
-  {
-    "objectID": "Practical_Sessions.html#making-tables",
-    "href": "Practical_Sessions.html#making-tables",
-    "title": "CGE in R platform",
-    "section": "making tables",
-    "text": "making tables"
-  },
-  {
-    "objectID": "Practical_Sessions.html#texdoc",
-    "href": "Practical_Sessions.html#texdoc",
-    "title": "CGE in R platform",
-    "section": "TeXdoc",
-    "text": "TeXdoc\n\nTeXdoc is function that reads mdl files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner."
-  },
-  {
-    "objectID": "Practical_Sessions.html#complete-exercise-4",
-    "href": "Practical_Sessions.html#complete-exercise-4",
-    "title": "CGE in R platform",
-    "section": "Complete Exercise 4",
-    "text": "Complete Exercise 4"
-  },
-  {
-    "objectID": "Practical_Sessions.html#complete-exercise-5",
-    "href": "Practical_Sessions.html#complete-exercise-5",
-    "title": "CGE in R platform",
-    "section": "Complete Exercise 5",
-    "text": "Complete Exercise 5\nIt’s ok if not the last question"
-  },
-  {
-    "objectID": "Practical_Sessions.html#making-2_calib_shock-files",
-    "href": "Practical_Sessions.html#making-2_calib_shock-files",
-    "title": "CGE in R platform",
-    "section": "Making 2_calib_shock files",
-    "text": "Making 2_calib_shock files"
-  },
-  {
-    "objectID": "Practical_Sessions.html#possibly-changing-the-baseline-calibration-1_calib_baseline",
-    "href": "Practical_Sessions.html#possibly-changing-the-baseline-calibration-1_calib_baseline",
-    "title": "CGE in R platform",
-    "section": "Possibly changing the baseline calibration 1_calib_baseline",
-    "text": "Possibly changing the baseline calibration 1_calib_baseline"
-  },
-  {
-    "objectID": "Practical_Sessions.html#exercise-6-part-1",
-    "href": "Practical_Sessions.html#exercise-6-part-1",
-    "title": "CGE in R platform",
-    "section": "Exercise 6 part 1",
-    "text": "Exercise 6 part 1\nLook at graphs with multiple scenarios"
-  },
-  {
-    "objectID": "Practical_Sessions.html#exercise-6-part-2",
-    "href": "Practical_Sessions.html#exercise-6-part-2",
-    "title": "CGE in R platform",
-    "section": "Exercise 6 part 2",
-    "text": "Exercise 6 part 2"
-  },
-  {
-    "objectID": "Practical_Sessions.html#lists-.mdl-file",
-    "href": "Practical_Sessions.html#lists-.mdl-file",
-    "title": "CGE in R platform",
-    "section": "Lists .mdl file",
-    "text": "Lists .mdl file"
-  },
-  {
-    "objectID": "Practical_Sessions.html#sector-specific-equations",
-    "href": "Practical_Sessions.html#sector-specific-equations",
-    "title": "CGE in R platform",
-    "section": "Sector specific equations",
-    "text": "Sector specific equations"
-  },
-  {
-    "objectID": "Practical_Sessions.html#do-exercise-7-part-1",
-    "href": "Practical_Sessions.html#do-exercise-7-part-1",
-    "title": "CGE in R platform",
-    "section": "Do Exercise 7 part 1",
-    "text": "Do Exercise 7 part 1"
-  },
-  {
-    "objectID": "Practical_Sessions.html#graphs-for-sectors",
-    "href": "Practical_Sessions.html#graphs-for-sectors",
-    "title": "CGE in R platform",
-    "section": "Graphs for sectors",
-    "text": "Graphs for sectors"
-  },
-  {
-    "objectID": "Practical_Sessions.html#do-exercise-7-part-2",
-    "href": "Practical_Sessions.html#do-exercise-7-part-2",
-    "title": "CGE in R platform",
-    "section": "Do Exercise 7 part 2",
-    "text": "Do Exercise 7 part 2\n\n\n\n\nCGE in R platform"
+    "objectID": "TS1.1_Intro_CGE_models.html#equilibrium-between-supply-and-demand-use",
+    "href": "TS1.1_Intro_CGE_models.html#equilibrium-between-supply-and-demand-use",
+    "title": "Introduction to CGE models and their usage",
+    "section": "Equilibrium between Supply and Demand (use)",
+    "text": "Equilibrium between Supply and Demand (use)\n\nGDP = VA = Y – CI = C + I + X - M\n\n\n\n\n\n\n\n\n\n\nIntroduction to CGE models and their usage"
   },
   {
     "objectID": "Exercises_short.html#sec-1_1",
@@ -578,90 +662,69 @@
     "href": "Exercises_short.html#sec-1_2",
     "title": "Practical Sessions supporting materials",
     "section": "2 Exercise: The one equation model",
-    "text": "2 Exercise: The one equation model\n\n2.1 Part 1\n\nCreate a copy of the Main.R file (call it Main_one_eq.R for example) in the root folder\nOn your new Main file, call the the config files : config_input_one_eq.R, and config_output_one_eq.R.\nRun the simulation and generate the results from templates.\n\nWhat happens in this shock scenario?\n\n\n\n\n2.2 Part 2\n\nLook into the data_full database (you can do this in the Main_one_eq.R file)\n\nCreate a variable rel_diff that computes the relative difference.\nCompute a data.frame that contains the GDP (Y) growth rate for the baseline and the shock scenario.\nExport as a .csv files this database\n\nLocate where the .rds file containing all the simulations results from this project (project name one_eq) can be found\nCreate a quarto qmd file that :\n\nloads the results from those simulations (project name one_eq)\ncomputes the growth rate for the baseline and shock scenarios\nmakes a graph comparing those two series\n\nIn the config_input_one_eq.R, change the equation .mdl file to use 0-2-eq_basic_mod.mdl file.\n\nRe run the simulations and the outputs created.\nWhat has changed?"
+    "text": "2 Exercise: The one equation model\n\n2.1 Part 1\n\nCreate a copy of the Main.R file (call it Main_one_eq.R for example) in the root folder\nOn your new Main file, call the the config files : config_input_one_eq.R, and config_output_one_eq.R.\nRun the simulation and generate the results from templates.\n\nWhat happens in this shock scenario?\n\n\n\n\n2.2 Part 2\n\nLook into the data_full database (you can do this in the Main_one_eq.R file)\n\nCreate a variable rel_diff that computes the relative difference.\nCompute a data.frame that contains the GDP (Y) growth rate for the baseline and the shock scenario.\nExport as a .csv files this database\n\nLocate where the .rds file containing all the simulations results from this project (project name one_eq) can be found\nCreate a quarto qmd file that :\n\nloads the results from those simulations (project name one_eq)\ncomputes the growth rate for the baseline and shock scenarios\nmakes a graph comparing those two series\n\nIn the config_input_one_eq.R, change the equation .mdl file to use 01.2-eq_basic_mod.mdl file.\n\nRe-run the simulations and the outputs created.\nWhat has changed?"
   },
   {
     "objectID": "Exercises_short.html#sec-2_1",
     "href": "Exercises_short.html#sec-2_1",
     "title": "Practical Sessions supporting materials",
     "section": "3 Exercise: Loading the Walras model",
-    "text": "3 Exercise: Loading the Walras model\n\nLocate the Walras model equation et calibration files\nMake a copy of the Main.R, config_input_model.R and config_output_model.R files, with a relevant suffix (ie Main_s-R)\nEdit your newly created config_input file:\n\nChange the project_name argument to something more relevant\nCall the correct mdl files\nCall upon the correct configuration files in your new main file\nKeep the same shock scenario for now\n\nRun the simulations with the basic result template, check that the results are similar to that of the lecture."
+    "text": "3 Exercise: Loading the Walras model\n\nLocate the Walras model equation et calibration files\nMake a copy of the Main.R, config_input_MODEL.R and config_output_MODEL.R files, with a relevant suffix (ie Main_s.R)\nEdit your newly created config_input file:\n\nChange the project_name argument to something more relevant\nCall the correct mdl files\nCall upon the correct configuration files in your new main file\nKeep the same shock scenario for now\n\nRun the simulations with the basic result template.\nRepeat the procedure, this time using the basic Keynes model files. Compare the outputs from the basic_results template."
   },
   {
     "objectID": "Exercises_short.html#sec-2_2",
     "href": "Exercises_short.html#sec-2_2",
     "title": "Practical Sessions supporting materials",
     "section": "4 Exercise: Further results visualization",
-    "text": "4 Exercise: Further results visualization\n\nCreate your quarto file and create graphs using shortcut plotting functions\n\nsimple_plot()\ncontrib_plot()\n\nAdd the Texdoc function lines to the main to generate the equations list for your model with the following arguments :\nInclude the equation index generated by TeXdoc in your newly created .qmd\nCreate a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:\nIdentify the year of the shock\nidentify the year that correspond to t+2, t+3, t+10 and t+50 where t is the year of the initial shock.\nCreate a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired\nreorginize your data.frame to format nicely"
+    "text": "4 Exercise: Further results visualization\n\nCreate your quarto file and create graphs using shortcut plotting functions\n\nsimple_plot()\ncontrib_plot()\n\nEnable the use of the Texdoc template and model_info templates in the config_output to generate the equations list for your model.\nInclude the equation index generated by TeXdoc in your newly created .qmd\nCreate a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:\nIdentify the year of the shock\nidentify the year that correspond to t+2, t+3, t+10 and t+50 where t is the year of the initial shock.\nCreate a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired\nreorginize your data.frame to format nicely\nUse your new .qmd to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs."
   },
   {
     "objectID": "Exercises_short.html#sec-3_1",
     "href": "Exercises_short.html#sec-3_1",
     "title": "Practical Sessions supporting materials",
     "section": "5 Exercise: Loading the neokeynesian model",
-    "text": "5 Exercise: Loading the neokeynesian model\n\nLocate the basic keynesian model .mdl files\nDo the necessary steps (create and modify the relevant files) run the same shock on public spending as we did for the Walras model.\n\nhint: don’t forget to change the project_name argument\n\nCreate a similar .qmd file as we did for the Walras model. (hint: this can be done very quickly ;) ), complete with the LaTeX equations from TeXdoc.\nLet’s complicate a little bit: in a different .qmd (called comparison.qmd for example) place next to eachother the macrœconomic components graphs for each model simulation and same for the table."
+    "text": "5 Exercise: Loading the neokeynesian model\n\nLocate the Neokeynesian model .mdl files\nDo the necessary steps (create and modify the relevant files) run the same shock on public spending as we did for the Walras model.\n\nhint: don’t forget to change the project_name argument\n\nCreate a similar .qmd file as we did for the Walras model. (hint: this can be done very quickly ;) ), complete with the equations lists from TeXdoc.\nLet’s complicate a little bit: in a different .qmd (called comparison.qmd for example) place next to eachother the macrœconomic components graphs for each model simulation and same for the table."
   },
   {
     "objectID": "Exercises_short.html#sec-3_2",
     "href": "Exercises_short.html#sec-3_2",
     "title": "Practical Sessions supporting materials",
     "section": "6 Exercise: New shocks",
-    "text": "6 Exercise: New shocks\n\n6.1 Part 1\n\nLocate the shock calibration file we have been using so far.\nMake a copy and call it 2_calib_shock_g_bis.R\nMake the necessary changes to the config_input file to be able to run this new shock.\nSee if you can reuse the .qmd file from exercise 5\nTest the following changes on you new shock calibration file :\n\nincrease in public spending of 5% of GDP\n\nChange your config_input file to simulate both the original shock in public spending and this new one and view both results at once ### Part 2\nCreate new shocks from scratch :\n\nA sudden (but temporary) decrease in population of -1% in the year 2022\nA yearly population decrease starting the year 2030 of -0.1%\n\nCreate a new shock calibration file aimed at testing labour productivity shocks (empty for now)\nWhat is the baseline labour productivity growth in this model ?\nWhat variable do we have change to create a shock scenario on labour productivity growth and why can’t it be GR_PROG_L?\nDo the necessary (model, results visualization) to answer this question:\n\nWhat happens if labour productivity growth increases temporarily to 10% in 2023?\n(advanced programmation) : change permanently the labour productivity growth rate starting 2023. (hint: you might have to use the calibration bubble for this one)"
+    "text": "6 Exercise: New shocks\n\n6.1 Part 1\n\nLocate the shock calibration file we have been using so far.\nMake a copy and call it 2_calib_shock_g_bis.R\nMake the necessary changes to the config_input file to be able to run this new shock.\nSee if you can reuse the .qmd file from exercise 5\nTest the following changes on you new shock calibration file :\n\nincrease in public spending of 5% of GDP\n\nChange your config_input file to simulate both the original shock in public spending and this new one and view both results at once\n\n\n\n6.2 Part 2\n\nCreate new shocks from scratch :\n\nA sudden (but temporary) decrease in population of -1% in the year 2022\nA yearly population decrease starting the year 2030 of -0.1%\n\nCreate a new shock calibration file aimed at testing labour productivity shocks (empty for now)\nWhat is the baseline labour productivity growth in this model ?\nWhat variable do we have change to create a shock scenario on labour productivity growth and why can’t it be GR_PROG_L?\nDo the necessary (model, results visualization) to answer this question:\n\nWhat happens if labour productivity growth increases temporarily to 10% in 2023?\n(advanced programmation) : change permanently the labour productivity growth rate starting 2023. (hint: you might have to use the calibration bubble for this one)"
   },
   {
     "objectID": "Exercises_short.html#exercise-a-multisectoral-model",
     "href": "Exercises_short.html#exercise-a-multisectoral-model",
     "title": "Practical Sessions supporting materials",
     "section": "7 Exercise: a multisectoral model",
-    "text": "7 Exercise: a multisectoral model\n\n7.1 Part 1\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario. Activate the multisector template in the config_output file\n\n\n\n7.2 Part 2\n\nMake a .qmd that combines both macrœconomic and sectoral results\nChange the shock scenario to a new one that you will create by designing a shock on sector 1 in the model\n[TO TEST] add one sector in the list :\n\nWhat is the impact on the model (in terms of variables and equations)?"
+    "text": "7 Exercise: a multisectoral model\n\n7.1 Part 1\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario. Activate the multisector template in the config_output file\n\n\n\n7.2 Part 2\n\nMake a .qmd that combines both macrœconomic and sectoral results\nChange the shock scenario to a new one that you will create by designing a shock on sector 1 in the model\nAdd one sector in the list :\n\nWhat is the impact on the model (in terms of variables and equations)?"
   },
   {
-    "objectID": "install.html",
-    "href": "install.html",
-    "title": "Software installation guide",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CGE in R Workshop at Iberoamericana universidad in Mexico",
     "section": "",
-    "text": "The following software must be installed in order to run the exercices. The following links contain versions that are current as of november 1st 2024, we highly recommend you upgrade existing software to those versions."
+    "text": "This workshop is aimed at presenting an overview of CGE model and a tool to run them. The workshop material has been developed by the ThreeME team at the OFCE (Sciences Po Paris).\nThis workshop held by the ThreeME Team is graciously hosted at the Iberoamericana universidad in Mexico, and is conducted under a project between Hacienda (SHCP), OFCE and NEO1, financed by the Agence Française de Développement (AFD).\n1 (Netherlands Economic Observatory)"
   },
   {
-    "objectID": "install.html#basic-sofware-installation",
-    "href": "install.html#basic-sofware-installation",
-    "title": "Software installation guide",
-    "section": "Basic sofware installation",
-    "text": "Basic sofware installation\nFor your operating system, please install in sequence the following software:\n\nWindows systems\n\nR (at least 4.4.1)\nRtools 44\nR Studio (Posit)\nQuarto (at least 1.6.32)\n\n\n\nMacOS systems (M1 and above)\n\nR (at least 4.4.1)\nR Studio (Posit)\nQuarto (at least 1.6.32)"
-  },
-  {
-    "objectID": "install.html#the-cge-in-r-github-repository",
-    "href": "install.html#the-cge-in-r-github-repository",
-    "title": "Software installation guide",
-    "section": "The CGE in R github repository",
-    "text": "The CGE in R github repository\nThe github repository is downloadable on the following link :\n[REPO]\nFor this workshop, please use the ibero branch. The main branch is used for development and will be updated beyond this workshop if you are interested in using this for your own work."
-  },
-  {
-    "objectID": "install.html#r-package-installation",
-    "href": "install.html#r-package-installation",
-    "title": "Software installation guide",
-    "section": "R Package installation",
-    "text": "R Package installation\nIn the repository, you will find in the folder src a file called package_installation.R. To minimize issues, we recommand running it in base R or through the terminal, instead of R Studio. Note that this script has no path dependencies and may thus be run without being within an RProject.\nRunning this script will install a series of CRAN packages on your system as well as a couple package in development on GitHub:\n\nofce: in-house packages containing useful formatting functions (among others) and themes.\ntresthor: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macrœconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE.\nermeeth: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.\npegr: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.\n\nFor those last four package, if the automated installation fails, please use the alt_github_package_install.R script to install a version of them stored on the repository.\n\nInstallation using Base R\n\nOpen R 4.4.1\n\nOn Windows, in the Start Menu, go to R, and select R 4.4.1\nOn MacOS in the Applications folder, there should be and R.app\n\nGo to File –&gt; Open script\nNavigate to the CGE_inR\\src folder to find the package_installation.R file\nSelect all the script (ctrl + A for Windows, command + A for MacOs)\nRun it (through a right click to find the Run option or ctrl + R for Windowscommand + return for MacOs)\nIf necessary repeat the same procedure for the alt_github_package_install.R file\n\n\n\nInstallation using the terminal\n\nFirst locate the full path to the R script you want to run and make a note of it\n\nie for Windows, it will start by C:\\\nfor MacOS it will start with something like /Users/\n\n\nRun the following commands in your terminal or command prompt\n\n\n\nWindows command prompt for executing an R script\n\nWindows command prompt\n\n### say my script location is \"C:\\Users\\Anissa\\Documents\\GitHub\\CGE_in_R\\src\\package_installation.R\"\n\ncd C:\\Program files\\R\\R-4.4.1\\bin\nRscript.exe -e \"source('C:/Users/Anissa/Documents/GitHub/CGE_in_R/src/package_installation.R')\" # note the chage in direction for the slashes\n\n\n\n\n\n\nMacOS Terminal prompts for executing an R script\n\nMacOS Terminal\n\n### say my script location is \"/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R\"\n\nRscript -e  \"source('/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R')\""
-  },
-  {
-    "objectID": "install.html#further-readings",
-    "href": "install.html#further-readings",
-    "title": "Software installation guide",
-    "section": "Further readings",
-    "text": "Further readings\nThis workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the tidyverse) and use Quarto to present your results under different format.\nAt the very least we recommend learning how to use the dplyr R package to manipulate result databases and\n\nQuarto []\nTidyverse []\nggplot2 cheatsheet []\ndplyr cheatsheet []"
-  },
-  {
-    "objectID": "PS2_configuration.html#session-objectives",
-    "href": "PS2_configuration.html#session-objectives",
-    "title": "First steps with the Walras model",
-    "section": "Session objectives",
-    "text": "Session objectives\n\n\nLearn how to configure a simulation\nExplore .mdl files\nAdd graphs on your quarto and such with built-in functions"
-  },
-  {
-    "objectID": "PS2_configuration.html#section",
-    "href": "PS2_configuration.html#section",
-    "title": "First steps with the Walras model",
+    "objectID": "program.html",
+    "href": "program.html",
+    "title": "Workshop program information",
     "section": "",
-    "text": "Session 2 Walrasian model and running a pre-configured shock scenario\nback to practice. Open the repository locate the model files for the walrasian model : calib and equations comment on the calib file : what does it all mean create a copy of the config input file create a copy of the main file, call it main_session2 prepare the config input file and config output to present the macro result template prepare the main file to run the simulations as specified\n\nrun the model\ncreate a new shock file to run a different size of shock"
+    "text": "The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations.\nOver the course of the two days, we will alternate between theoretical and practical teaching on CGE models.\nBelow is a provisional program for the workshop. Please note that it is subject to changes depending on progress made."
+  },
+  {
+    "objectID": "program.html#tuesday-november-5th-2024",
+    "href": "program.html#tuesday-november-5th-2024",
+    "title": "Workshop program information",
+    "section": "Tuesday, November 5th 2024",
+    "text": "Tuesday, November 5th 2024\n\nMorning session (from 9am to 12pm)\n\nTheory Session 1\n\nIntroduction to CGE models and their usage\nIntroduction of the tools used and developed\n\n\n\nPractice Session 1\n\nTechnical installation (R, RStudio, Quarto)\nIntroduction to Quarto\nBasic presentation of the structure of the simulation platform\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 2\n\nSimple Walrsasian models and their properties\n\n\n\nPractice Session 2\n\nSimulating an existing Walrasian model\nRunning a shock scenario\nBasic analysis of results"
+  },
+  {
+    "objectID": "program.html#wednesday-november-6th-2024",
+    "href": "program.html#wednesday-november-6th-2024",
+    "title": "Workshop program information",
+    "section": "Wednesday, November 6th 2024",
+    "text": "Wednesday, November 6th 2024\n\nMorning session (from 9am to 12pm)\n\nTheory Session 3\n\nNeokeynesian models and their properties\n\n\n\nPractice Session 3\n\nSimulating an existing Neokeynesian model\nComparing two different models\nMore complicated shock scenarii\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 4\n\nInput/Output models\nMore complex models\n\n\n\nPractice Session 4\n\nMultisector models: building a simple input/output model.\nIntegrating an input/output model into an existing CGE model."
   }
 ]

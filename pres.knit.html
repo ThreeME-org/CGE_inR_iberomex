@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Albertine Retrouvée">
 
-<title>Software installation guide – CGEs in R - Workshop</title>
+<title>Vers l’infini et au delà – CGEs in R - Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -73,6 +59,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-83dd7ca3ebf81f77e3aa7de15084fd91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,15 +116,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./program.html"> 
 <span class="menu-text">Program</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./install.html" aria-current="page"> 
+    <a class="nav-link" href="./install.html"> 
 <span class="menu-text">Get started</span></a>
   </li>  
   <li class="nav-item">
@@ -166,20 +153,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#basic-sofware-installation" id="toc-basic-sofware-installation" class="nav-link active" data-scroll-target="#basic-sofware-installation">Basic sofware installation</a>
-  <ul class="collapse">
-  <li><a href="#windows-systems" id="toc-windows-systems" class="nav-link" data-scroll-target="#windows-systems">Windows systems</a></li>
-  <li><a href="#macos-systems-m1-and-above" id="toc-macos-systems-m1-and-above" class="nav-link" data-scroll-target="#macos-systems-m1-and-above">MacOS systems (M1 and above)</a></li>
-  </ul></li>
-  <li><a href="#the-cge-in-r-github-repository" id="toc-the-cge-in-r-github-repository" class="nav-link" data-scroll-target="#the-cge-in-r-github-repository">The CGE in R github repository</a></li>
-  <li><a href="#r-package-installation" id="toc-r-package-installation" class="nav-link" data-scroll-target="#r-package-installation">R Package installation</a>
-  <ul class="collapse">
-  <li><a href="#installation-using-base-r" id="toc-installation-using-base-r" class="nav-link" data-scroll-target="#installation-using-base-r">Installation using Base R</a></li>
-  <li><a href="#installation-using-the-terminal" id="toc-installation-using-the-terminal" class="nav-link" data-scroll-target="#installation-using-the-terminal">Installation using the terminal</a></li>
-  </ul></li>
-  <li><a href="#further-readings" id="toc-further-readings" class="nav-link" data-scroll-target="#further-readings">Further readings</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> introduction</a></li>
+  <li><a href="#intertitre" id="toc-intertitre" class="nav-link" data-scroll-target="#intertitre"><span class="header-section-number">2</span> intertitre</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">3</span> Conclusions</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Autres formats</h2><ul><li><a href="pres.knit.html"><i class="bi bi-file-slides"></i>RevealJS (pres)</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -190,14 +168,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Software installation guide</h1>
+<h1 class="title">Vers l’infini et au delà</h1>
+<p class="subtitle lead">Présentation au séminaire lunch</p>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Par</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Albertine Retrouvée <a href="mailto:albertine.retrouvee@sciencespo.fr" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="http://www.ofce.fr">
+            OFCE, Sciences Po Paris
+            </a>
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Publié le</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">5 novembre 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,112 +207,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The following software must be installed in order to run the exercices. The following links contain versions that are current as of november 1st 2024, we highly recommend you upgrade existing software to those versions.</p>
-<section id="basic-sofware-installation" class="level2">
-<h2 class="anchored" data-anchor-id="basic-sofware-installation">Basic sofware installation</h2>
-<p>For your operating system, please install in sequence the following software:</p>
-<section id="windows-systems" class="level3">
-<h3 class="anchored" data-anchor-id="windows-systems">Windows systems</h3>
-<ul>
-<li><a href="https://cran.rstudio.com">R (at least 4.4.1)</a></li>
-<li><a href="https://cran.rstudio.com/bin/windows/Rtools/rtools44/files/rtools44-6335-6327.exe">Rtools 44</a></li>
-<li><a href="https://download1.rstudio.org/electron/windows/RStudio-2024.09.1-394.exe">R Studio (Posit)</a></li>
-<li><a href="https://quarto.org/docs/get-started/">Quarto (at least 1.6.32)</a></li>
-</ul>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> introduction</h1>
+<section id="slide-de-contenu-1.1" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="slide-de-contenu-1.1"><span class="header-section-number">1.1</span> Slide de contenu 1.1</h2>
+<p><br><br> <!--# pour insérer des lignes --></p>
+<section id="remarque" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="remarque"><span class="header-section-number">1.1.1</span> remarque</h3>
+<p>Une table des matières ainsi qu’un rappel du plan sur les slides de niveau 1 est automatiquement inclus.</p>
+<p>C’est pourquoi il ne faut pas mettre de contenu sur les slides de niveau 1</p>
 </section>
-<section id="macos-systems-m1-and-above" class="level3">
-<h3 class="anchored" data-anchor-id="macos-systems-m1-and-above">MacOS systems (M1 and above)</h3>
-<ul>
-<li><a href="https://cran.rstudio.com/index.html">R (at least 4.4.1)</a></li>
-<li><a href="https://download1.rstudio.org/electron/macos/RStudio-2024.09.1-394.dmg">R Studio (Posit)</a></li>
-<li><a href="https://quarto.org/docs/get-started/">Quarto (at least 1.6.32)</a></li>
-</ul>
+<section id="niveaux" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="niveaux"><span class="header-section-number">1.1.2</span> niveaux</h3>
+<p>Les niveaux 3 et au délà sont des intertitres sur une slide</p>
+<p>pour le dépôt voir <i class="fa-brands fa-github" aria-label="github"></i></p>
 </section>
 </section>
-<section id="the-cge-in-r-github-repository" class="level2">
-<h2 class="anchored" data-anchor-id="the-cge-in-r-github-repository">The CGE in R github repository</h2>
-<p>The github repository (Ibero branch) is downloadable on the following <span style="white-space:nowrap">link :</span></p>
-<p><a href="https://github.com/ThreeME-org/CGE_in_R/archive/refs/heads/Ibero.zip">Get The repo</a></p>
-<p><a href="https://github.com/ThreeME-org/CGE_in_R/tree/Ibero">View the repo on GitHub</a></p>
-<p>For this workshop, please use the <code>ibero</code> branch. The <code>main</code> branch is used for development and will be updated beyond this workshop if you are interested in using this platform for your own work.</p>
-</section>
-<section id="r-package-installation" class="level2">
-<h2 class="anchored" data-anchor-id="r-package-installation">R Package installation</h2>
-<p>In the repository, you will find in the folder <code>src</code> a file called <code>package_installation.R</code>. To minimize issues, we recommand running it in base R or through the terminal, instead of <strong>R Studio</strong>. Note that this script has no path dependencies and may thus be run without being within an <em>RProject</em>.</p>
-<p>Running this script will install a series of CRAN packages on your system as well as a couple package in development on GitHub:</p>
-<ul>
-<li><code>ofce</code>: in-house packages containing useful formatting functions (among others) and themes.</li>
-<li><code>tresthor</code>: a package originally developed at the French Directorate of the Treasury (Ministry of Finances) mainly containing a nonlinear system solver for large backwards looking systems used for the macrœconomic forecast for budgetary exercises. This solver has been developed by Anissa Saumtally and is still maintained now at the OFCE.</li>
-<li><code>ermeeth</code>: an in-house package containing a series of functions with useful shortcuts specifically made for the format of our simulation outputs. This ranges from easy data transformation to quick plotting functions.</li>
-<li><code>pegr</code>: a rather old external package used in the functions to generate LaTeX versions of the equations in the model files.</li>
-</ul>
-<p>For those last four package, if the automated installation fails, please use the <code>alt_github_package_install.R</code> script to install a version of them stored on the repository.</p>
-<section id="installation-using-base-r" class="level3">
-<h3 class="anchored" data-anchor-id="installation-using-base-r">Installation using Base R</h3>
-<ul>
-<li><p>Open R 4.4.1</p>
-<ul>
-<li>On Windows, in the Start Menu, go to <code>R</code>, and select R 4.4.1</li>
-<li>On MacOS in the Applications folder, there should be and <code>R.app</code></li>
-</ul></li>
-<li><p>Go to <strong>File</strong> –&gt; <strong>Open script</strong></p></li>
-<li><p>Navigate to the <code>CGE_inR\src</code> folder to find the <code>package_installation.R</code> file</p></li>
-<li><p>Select all the script (<code>ctrl</code> + <code>A</code> for Windows, <code>command</code> + <code>A</code> for MacOs)</p></li>
-<li><p>Run it (through a right click to find the <em>Run</em> option or <code>ctrl</code> + <code>R</code> for Windows<code>command</code> + <code>return</code> for MacOs)</p></li>
-<li><p><em>If necessary</em> repeat the same procedure for the <code>alt_github_package_install.R</code> file</p></li>
-</ul>
-</section>
-<section id="installation-using-the-terminal" class="level3">
-<h3 class="anchored" data-anchor-id="installation-using-the-terminal">Installation using the terminal</h3>
-<ul>
-<li>First locate the full path to the R script you want to run and make a note of it
-<ul>
-<li>ie for Windows, it will start by <code>C:\</code></li>
-<li>for MacOS it will start with something like <code>/Users/</code></li>
-</ul></li>
-</ul>
-<p>Run the following commands in your terminal or command prompt</p>
-<div class="cell" title="Windows command prompt">
-<div class="code-with-filename">
-<details class="code-fold">
-<summary>Windows command prompt for executing an R script</summary>
-<div class="code-with-filename-file">
-<pre><strong>Windows command prompt</strong></pre>
+<section id="slide-de-contenu-1.2" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="slide-de-contenu-1.2"><span class="header-section-number">1.2</span> Slide de contenu 1.2</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-cars" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-pos="htb">
+<figure class="quarto-float quarto-float-fig figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-cars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<strong>Graphique</strong>&nbsp;1<strong>.</strong> Speed versus distance among cars
+</figcaption>
+<div aria-describedby="fig-cars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="pres_files/figure-revealjs/fig-cars-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Graphique&nbsp;1. Speed versus distance among cars"><img src="pres_files/figure-revealjs/fig-cars-1.png" class="img-fluid figure-img" style="width:100.0%" data-fig-pos="htb"></a>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">### say my script location is "C:\Users\Anissa\Documents\GitHub\CGE_in_R\src\package_installation.R"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>cd C<span class="sc">:</span>\Program files\R\R<span class="dv">-4</span>.<span class="fl">4.1</span>\bin</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Rscript.exe <span class="sc">-</span>e <span class="st">"source('C:/Users/Anissa/Documents/GitHub/CGE_in_R/src/package_installation.R')"</span> <span class="co"># note the chage in direction for the slashes</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</figure>
 </div>
-</div>
-<div class="cell" title="MacOS Terminal">
-<div class="code-with-filename">
-<details class="code-fold">
-<summary>MacOS Terminal prompts for executing an R script</summary>
-<div class="code-with-filename-file">
-<pre><strong>MacOS Terminal</strong></pre>
-</div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">### say my script location is "/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Rscript <span class="sc">-</span>e  <span class="st">"source('/Users/Anissa/GitHub/CGE_in_R/src/package_installation.R')"</span> </span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </div>
 </section>
 </section>
-<section id="further-readings" class="level2">
-<h2 class="anchored" data-anchor-id="further-readings">Further readings</h2>
-<p>This workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the <code>tidyverse</code>) and use Quarto to present your results under different format.</p>
-<p>At the very least we recommend learning how to use the <code>dplyr</code> R package to manipulate result databases and</p>
-<ul>
-<li>Quarto []</li>
-<li>Tidyverse []</li>
-<li>ggplot2 cheatsheet []</li>
-<li>dplyr cheatsheet []</li>
-</ul>
+<section id="intertitre" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> intertitre</h1>
+<section id="slide-2.1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="slide-2.1"><span class="header-section-number">2.1</span> Slide 2.1</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor morbi non arcu risus quis varius quam quisque.</p>
+</section>
+<section id="slide-2.2" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="slide-2.2"><span class="header-section-number">2.2</span> Slide 2.2</h2>
+<p>Faucibus turpis in eu mi bibendum. Etiam tempor orci eu lobortis. Sit amet consectetur adipiscing elit pellentesque habitant. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit.</p>
+</section>
+</section>
+<section id="conclusions" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Conclusions</h1>
+<section id="conclusion-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">3.1</span> Conclusion 1</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">2030</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">2050</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>pbbjoi;afjo</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>lkwjf;lsjva</p>
+</div>
+</div>
+</div>
+<p>Ultrices neque ornare ænean euismod elementum nisi quis eleifend. Vivamus arcu felis bibendum ut tristique. Non nisi est sit amet facilisis magna. Consectetur libero id faucibus nisl tincidunt eget. <span class="citation" data-cites="efron1993i">(<a href="#ref-efron1993i" role="doc-biblioref">Efron et Tibshirani, 1993</a>)</span></p>
+</section>
+<section id="références" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="références"><span class="header-section-number">3.2</span> Références</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-efron1993i" class="csl-entry" role="listitem">
+Efron B., Tibshirani R.J. (1993). <em><a href="https://doi.org/10.1007/978-1-4899-4541-9">An Introduction to the Bootstrap</a></em>, Springer US.
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -408,7 +374,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/ThreeME-org\.github\.io\/CGE_inR_iberomex\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -737,6 +703,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

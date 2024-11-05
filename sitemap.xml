@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/pages/installation.html</loc>
-    <lastmod>2024-10-25T13:56:57.001Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/ThreeME_model_short.html</loc>
+    <lastmod>2024-11-05T07:46:12.728Z</lastmod>
   </url>
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/program.html</loc>
-    <lastmod>2024-11-02T20:27:09.699Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/install.html</loc>
+    <lastmod>2024-11-05T07:44:55.230Z</lastmod>
   </url>
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/index.html</loc>
-    <lastmod>2024-11-03T10:35:29.604Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/theory.html</loc>
+    <lastmod>2024-11-05T07:52:17.528Z</lastmod>
   </url>
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/PS3_shocks_models.html</loc>
-    <lastmod>2024-11-02T16:13:22.439Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/TS1.1_Intro_CGE_models.html</loc>
-    <lastmod>2024-11-01T22:10:47.132Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/TS1.2_Intro_tools.html</loc>
-    <lastmod>2024-11-02T21:35:37.525Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/Practical_Sessions.html</loc>
+    <lastmod>2024-11-05T08:01:37.132Z</lastmod>
   </url>
   <url>
     <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/contact.html</loc>
     <lastmod>2024-10-31T10:16:26.321Z</lastmod>
   </url>
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/Practical_Sessions.html</loc>
-    <lastmod>2024-11-02T21:35:34.673Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/TS1.2_Intro_tools.html</loc>
+    <lastmod>2024-11-02T21:35:37.525Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/TS1.1_Intro_CGE_models.html</loc>
+    <lastmod>2024-11-05T10:31:04.595Z</lastmod>
   </url>
   <url>
     <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/Exercises_short.html</loc>
-    <lastmod>2024-11-03T10:41:09.794Z</lastmod>
+    <lastmod>2024-11-05T06:31:24.362Z</lastmod>
   </url>
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/install.html</loc>
-    <lastmod>2024-11-02T15:19:03.765Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/index.html</loc>
+    <lastmod>2024-11-05T10:09:18.430Z</lastmod>
   </url>
   <url>
-    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/PS2_configuration.html</loc>
-    <lastmod>2024-11-02T16:11:19.769Z</lastmod>
+    <loc>https://ThreeME-org.github.io/CGE_inR_iberomex/program.html</loc>
+    <lastmod>2024-11-05T08:02:57.765Z</lastmod>
   </url>
 </urlset>

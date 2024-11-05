@@ -134,6 +134,10 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./program.html"> 
 <span class="menu-text">Program</span></a>
   </li>  
@@ -198,7 +202,7 @@ window.Quarto = {
 <iframe class="slide-deck" src="Practical_Sessions.html" width="100%" height="500">
 </iframe>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">PS 1: Warm-ups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">PS 2: A real model</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">PS 3: Shocking results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">PS 4: multisectoral model</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">PS 1: Warm-ups</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">PS 2: Real models: Walras vs.&nbsp;basic Keynesian</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">PS 3: Shocking results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">PS 4: multisectoral model</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <section id="sec-1_1" class="level2" data-number="1">
@@ -244,9 +248,9 @@ window.Quarto = {
 <li>computes the growth rate for the baseline and shock scenarios</li>
 <li>makes a graph comparing those two series</li>
 </ul></li>
-<li><p>In the <code>config_input_one_eq.R</code>, change the equation <code>.mdl</code> file to use <code>0-2-eq_basic_mod.mdl</code> file.</p>
+<li><p>In the <code>config_input_one_eq.R</code>, change the equation <code>.mdl</code> file to use <code>01.2-eq_basic_mod.mdl</code> file.</p>
 <ul>
-<li>Re run the simulations and the outputs created.</li>
+<li>Re-run the simulations and the outputs created.</li>
 <li>What has changed?</li>
 </ul></li>
 </ul>
@@ -258,7 +262,7 @@ window.Quarto = {
 <h2 data-number="3" class="anchored" data-anchor-id="sec-2_1"><span class="header-section-number">3</span> Exercise: Loading the Walras model</h2>
 <ul>
 <li><p>Locate the Walras model equation et calibration files</p></li>
-<li><p>Make a copy of the <code>Main.R</code>, <code>config_input_model.R</code> and <code>config_output_model.R</code> files, with a relevant suffix (ie <code>Main_s-R</code>)</p></li>
+<li><p>Make a copy of the <code>Main.R</code>, <code>config_input_MODEL.R</code> and <code>config_output_MODEL.R</code> files, with a relevant suffix (ie <code>Main_s.R</code>)</p></li>
 <li><p>Edit your newly created config_input file:</p>
 <ul>
 <li>Change the <code>project_name</code> argument to something more relevant</li>
@@ -266,7 +270,8 @@ window.Quarto = {
 <li>Call upon the correct configuration files in your new main file</li>
 <li>Keep the same shock scenario for now</li>
 </ul></li>
-<li><p>Run the simulations with the basic result template, check that the results are similar to that of the lecture.</p></li>
+<li><p>Run the simulations with the basic result template.</p></li>
+<li><p>Repeat the procedure, this time using the basic Keynes model files. Compare the outputs from the <code>basic_results</code> template.</p></li>
 </ul>
 </section>
 <section id="sec-2_2" class="level2" data-number="4">
@@ -277,13 +282,14 @@ window.Quarto = {
 <li><code>simple_plot()</code></li>
 <li><code>contrib_plot()</code></li>
 </ul></li>
-<li><p>Add the Texdoc function lines to the main to generate the equations list for your model with the following <span style="white-space:nowrap">arguments :</span></p></li>
+<li><p>Enable the use of the Texdoc template and model_info templates in the <code>config_output</code> to generate the equations list for your model.</p></li>
 <li><p>Include the equation index generated by TeXdoc in your newly created <code>.qmd</code></p></li>
 <li><p>Create a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following <span style="white-space:nowrap">variables :</span> GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:</p></li>
-<li><p>Identify the year of the shock</p></li>
-<li><p>identify the year that correspond to <span class="math inline">t+2</span>, <span class="math inline">t+3</span>, <span class="math inline">t+10</span> and <span class="math inline">t+50</span> where <span class="math inline">t</span> is the year of the initial shock.</p></li>
-<li><p>Create a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired</p></li>
-<li><p>reorginize your data.frame to format nicely</p></li>
+<li><p><em>Identify the year of the shock</em></p></li>
+<li><p><em>identify the year that correspond to <span class="math inline">t+2</span>, <span class="math inline">t+3</span>, <span class="math inline">t+10</span> and <span class="math inline">t+50</span> where <span class="math inline">t</span> is the year of the initial shock.</em></p></li>
+<li><p><em>Create a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired</em></p></li>
+<li><p><em>reorginize your data.frame to format nicely</em></p></li>
+<li><p>Use your new <code>.qmd</code> to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.</p></li>
 </ul>
 </section>
 </div>
@@ -291,12 +297,12 @@ window.Quarto = {
 <section id="sec-3_1" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="sec-3_1"><span class="header-section-number">5</span> Exercise: Loading the neokeynesian model</h2>
 <ul>
-<li><p>Locate the basic keynesian model <code>.mdl</code> files</p></li>
+<li><p>Locate the Neokeynesian model <code>.mdl</code> files</p></li>
 <li><p>Do the necessary steps (create and modify the relevant files) run the same shock on public spending as we did for the Walras model.</p>
 <ul>
 <li>hint: don’t forget to change the <code>project_name</code> argument</li>
 </ul></li>
-<li><p>Create a similar <code>.qmd</code> file as we did for the Walras model. (hint: this can be done very <span style="white-space:nowrap">quickly ;)</span> ), complete with the LaTeX equations from TeXdoc.</p></li>
+<li><p>Create a similar <code>.qmd</code> file as we did for the Walras model. (hint: this can be done very <span style="white-space:nowrap">quickly ;)</span> ), complete with the equations lists from TeXdoc.</p></li>
 <li><p>Let’s complicate a little bit: in a different <code>.qmd</code> (called <code>comparison.qmd</code> for example) place next to eachother the macrœconomic components graphs for each model simulation and same for the table.</p></li>
 </ul>
 </section>
@@ -313,7 +319,12 @@ window.Quarto = {
 <ul>
 <li>increase in public spending of 5% of GDP</li>
 </ul></li>
-<li><p>Change your config_input file to simulate both the original shock in public spending and this new one and view both results at once ### Part 2</p></li>
+<li><p>Change your config_input file to simulate both the original shock in public spending and this new one and view both results at once</p></li>
+</ul>
+</section>
+<section id="part-2-1" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="part-2-1"><span class="header-section-number">6.2</span> Part 2</h3>
+<ul>
 <li><p>Create new shocks from <span style="white-space:nowrap">scratch :</span></p>
 <ul>
 <li>A sudden (but temporary) decrease in population of -1% in the year 2022</li>
@@ -341,12 +352,12 @@ window.Quarto = {
 <li>Do the necessary to run simulation on a increase in public expenditure scenario. Activate the multisector template in the <code>config_output</code> file</li>
 </ul>
 </section>
-<section id="part-2-1" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="part-2-1"><span class="header-section-number">7.2</span> Part 2</h3>
+<section id="part-2-2" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="part-2-2"><span class="header-section-number">7.2</span> Part 2</h3>
 <ul>
 <li>Make a <code>.qmd</code> that combines both macrœconomic and sectoral results</li>
 <li>Change the shock scenario to a new one that you will create by designing a shock on sector 1 in the model</li>
-<li>[TO TEST] add one sector in the <span style="white-space:nowrap">list :</span>
+<li>Add one sector in the <span style="white-space:nowrap">list :</span>
 <ul>
 <li>What is the impact on the model (in terms of variables and equations)?</li>
 </ul></li>

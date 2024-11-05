@@ -13,8 +13,9 @@
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.9">
 
-  <meta name="author" content="Frédéric Reynès and Anissa Saumtally">
-  <title>CGEs in R - Workshop – quarto-input4462a9aced5d27a0</title>
+  <meta name="author" content="Frédéric Reynès">
+  <meta name="author" content="Anissa Saumtally">
+  <title>CGEs in R - Workshop – Introduction to CGE models and their usage</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,6 +33,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f3a4a0f9d3cd4c9bb301e3866af5d1bd.css">
   <link rel="stylesheet" href="styles.css">
@@ -330,30 +396,54 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title"><div class="line-block"><span style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;">Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R</span><br>
-<span style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;">Universidad Iberoamericana Ciudad de México</span><br>
-<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Theory Session 1.1</span><br>
-<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Introduction to CGE models and their usage</span><br>
-</div></h1>
+  <h1 class="title">Introduction to CGE models and their usage</h1>
+  <p class="subtitle"></p><div class="line-block"><span style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;">Universidad Iberoamericana Ciudad de México</span><br>
+<span style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;">Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R</span></div><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Frédéric Reynès and Anissa Saumtally 
+Frédéric Reynès 
+</div>
+</div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Anissa Saumtally 
 </div>
 </div>
 </div>
 
-  <p class="date">dimanche 3 novembre 2024</p>
+  <p class="date">mardi 5 novembre 2024</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">Plan de la présentation</h2>
 <ul>
 <li>What is a CGE model?</li>
 <li>Main usage of CGE models</li>
-<li>Micro-economic foundations</li>
+<li>Micro-economic foundations of CGE models</li>
+<li>Macroeconomic closure</li>
+<li>Open economy models</li>
+<li>Multisector models</li>
 </ul>
 </nav>
+</section>
+<section id="welcome" class="slide level2 center">
+<h2>Welcome</h2>
+<div class="columns">
+<div class="column center" style="width:33%;">
+<p><br> <br> <br> <br> <br> <br> <br> <img data-src="pictures/ibero.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"></p>
+</div><div class="column" style="width:33%;">
+<p><img data-src="pictures/equide.jpg" class="quarto-figure quarto-figure-center" data-fig-width="30%"> <img data-src="pictures/geolab.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="pictures/centrud.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<p><br> <br></p>
+<p><img data-src="pictures/ofce_m.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"> <img data-src="pictures/sciencespo.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"></p>
+<p><img data-src="pictures/Logohacienda.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"> <img data-src="pictures/AFD_logo.png" class="quarto-figure quarto-figure-center" data-fig-width="30%"></p>
+</div></div>
 </section>
 <section>
 <section class="title-slide slide level1 agenda-slide center">
@@ -369,11 +459,20 @@ Frédéric Reynès and Anissa Saumtally
 <p>Main usage of CGE models</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Micro-economic foundations</p>
+<p>Micro-economic foundations of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Macroeconomic closure</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Open economy models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Multisector models</p>
 </div>
 </div>
 </section>
-<section id="definition" class="slide level2">
+<section id="definition" class="slide level2 scrollable">
 <h2>Definition</h2>
 <ul>
 <li><p><strong>Computable:</strong> numerical simulation</p></li>
@@ -389,11 +488,11 @@ Frédéric Reynès and Anissa Saumtally
 </ul></li>
 </ul>
 </section>
-<section id="cge-model" class="slide level2">
+<section id="cge-model" class="slide level2 scrollable">
 <h2>CGE model</h2>
 
 <img data-src="pictures/schema.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="what-does-general-equilibrium-mean" class="slide level2">
+<section id="what-does-general-equilibrium-mean" class="slide level2 scrollable">
 <h2>What does « general equilibrium » mean?</h2>
 <ul>
 <li><p>General Equilibrium relates to a state where supply is equal to demand in all markets</p></li>
@@ -416,7 +515,7 @@ Frédéric Reynès and Anissa Saumtally
 </ul></li>
 </ul>
 </section>
-<section id="a-neo-keynesian-cge-model" class="slide level2">
+<section id="a-neo-keynesian-cge-model" class="slide level2 scrollable">
 <h2>A neo-keynesian CGE model</h2>
 <ul>
 <li><p><strong>Slow adjustment</strong> of price and quantity</p>
@@ -429,11 +528,6 @@ Frédéric Reynès and Anissa Saumtally
 <ul>
 <li>Production costs integrate intermediary consumption (material and energy), labor and capital costs</li>
 </ul></li>
-</ul>
-</section>
-<section id="a-neo-keynesian-cge-model-1" class="slide level2">
-<h2>A neo-keynesian CGE model</h2>
-<ul>
 <li><p>Wages are determined by a <strong>Wage Setting (WS) curve</strong></p>
 <ul>
 <li>Phillips curve: wages increase with inflation and decrease with unemployment</li>
@@ -464,18 +558,42 @@ Frédéric Reynès and Anissa Saumtally
 <p>Main usage of CGE models</p>
 </div>
 <div class="agenda-inactive agenda-post-active">
-<p>Micro-economic foundations</p>
+<p>Micro-economic foundations of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Macroeconomic closure</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Open economy models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Multisector models</p>
 </div>
 </div>
 </section>
-<section id="macroeconomic-versus-multisector-cge-models" class="slide level2">
+<section id="macroeconomic-versus-multisector-cge-models" class="slide level2 scrollable">
 <h2>Macroeconomic versus multisector CGE models</h2>
-<p>Computable General Equilibrium (CGE) models are widely used in economic policy analysis.</p>
-<p><strong>Macroeconomic CGE models</strong> focus on understanding how an entire economy responds to shocks or policy changes, such as fiscal or monetary policy adjustments, trade policies, or large-scale events like natural disasters. They analyze key economic indicators like GDP, inflation, employment, and investment, aiming to capture interdependencies among aggregate economic variables.</p>
-<p><strong>Multisector CGE models</strong>, on the other hand, break down the economy into specific sectors (e.g., agriculture, industry, services) to analyze the effects of policy changes or shocks on each sector individually. This version is particularly useful in trade policy, environmental regulation, or energy policy, as it highlights how impacts may vary across sectors, thereby allowing for targeted policy insights.</p>
+<p>CGE models are widely used in economic policy analysis. Two type of analyses:</p>
+<ul>
+<li><p><strong>Macroeconomic CGE models</strong> focus on understanding how an entire economy responds to shocks or policy changes</p>
+<ul>
+<li>e.g.&nbsp;fiscal, monetary, trade, innovation policies</li>
+<li>they aim to capture interdependencies between aggregate economic variables and key economic indicators
+<ul>
+<li>e.g.&nbsp;GDP, inflation, employment, and investment</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Multisector CGE models</strong> break down the economy into several sectors to analyze the effects of policy changes or shocks on each sector individually</p>
+<ul>
+<li>e.g.&nbsp;energy, agriculture, industry, services</li>
+<li>main applications: trade policy, environmental regulation, energy policy, large-scale events like natural disasters</li>
+<li>highlight how impacts may vary across sectors</li>
+<li>allow for simulating sector specific policy</li>
+</ul></li>
+</ul>
 </section>
-<section id="examples-of-applications-of-the-r-package" class="slide level2">
-<h2>Examples of applications of the R package</h2>
+<section id="examples-of-applications-of-our-r-package" class="slide level2 scrollable">
+<h2>Examples of applications of our R package</h2>
 <h3 id="small-size-models">Small size models</h3>
 <ul>
 <li><p>Small CGE model</p></li>
@@ -483,23 +601,55 @@ Frédéric Reynès and Anissa Saumtally
 </ul>
 <h3 id="large-size-models">Large size models</h3>
 <ul>
-<li><p>Multi-sector ThreeME models : open source model ThreeME (www.threeme.org)</p></li>
 <li><p>Econometric models (Opale and Mesange)</p>
 <ul>
 <li>Quarterly models for short term forcast</li>
 </ul></li>
-</ul>
-<h3 id="overview-of-threeme">Overview of ThreeME</h3>
+<li><p>Multi-sector models</p>
 <ul>
-<li><p><strong>M</strong>ulti-sector <strong>M</strong>acroeconomic <strong>M</strong>odel for the <strong>E</strong>valuation of <strong>E</strong>nvironmental and <strong>E</strong>nergy policy.</p></li>
+<li><p>e.g.&nbsp;open source ThreeME model</p></li>
+<li><p>www.threeme.org</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="overview-of-threeme" class="slide level2 scrollable">
+<h2>Overview of ThreeME</h2>
+<h3 id="multi-sector-macroeconomic-model-for-the-evaluation-of-environmental-and-energy-policy."><strong>M</strong>ulti-sector <strong>M</strong>acroeconomic <strong>M</strong>odel for the <strong>E</strong>valuation of <strong>E</strong>nvironmental and <strong>E</strong>nergy policy.</h3>
+<ul>
 <li><p>Open source model</p></li>
 <li><p>Download and documentation: https://www.threeme.org/</p></li>
 <li><p>ThreeME is <strong>neo-Keynesian general equilibrium</strong> model.</p></li>
+<li><p>Designed to study scenario involving transfers of activities from one sector to another</p></li>
+</ul>
+<h3 id="type-of-simulation-of-the-economic-and-environmental-impact">Type of simulation of the economic and environmental impact</h3>
+<ul>
+<li><p><strong>Energy transition policies</strong></p>
+<ul>
+<li>Fiscal policies:
+<ul>
+<li>Carbon tax with or without redistribution of the tax revenue</li>
+<li>Phasing out subsidies on (fossil fuel) energy</li>
+<li>Bonus-malus for cars: subsidies on green cars financed by a tax on other cars</li>
+</ul></li>
+<li>Change in the electricity production mix
+<ul>
+<li>Ex: more RES in the mix</li>
+</ul></li>
+<li>Impact of green investment
+<ul>
+<li>In buildings, public transport, etc.</li>
+<li>Impact of applying a new standard for buildings, or appliances</li>
+</ul></li>
+</ul></li>
+<li><p><strong>External shock</strong></p>
+<ul>
+<li>Increase in international oil/gas price</li>
+</ul></li>
 </ul>
 </section></section>
 <section>
 <section class="title-slide slide level1 agenda-slide center">
-<h1>Micro-economic foundations</h1>
+<h1>Micro-economic foundations of CGE models</h1>
 <div class="agenda-heading">
 
 </div>
@@ -511,11 +661,20 @@ Frédéric Reynès and Anissa Saumtally
 <p>Main usage of CGE models</p>
 </div>
 <div class="agenda-active">
-<p>Micro-economic foundations</p>
+<p>Micro-economic foundations of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Macroeconomic closure</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Open economy models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Multisector models</p>
 </div>
 </div>
 </section>
-<section id="behavior-equations-versus-identities" class="slide level2">
+<section id="behavior-equations-versus-identities" class="slide level2 scrollable">
 <h2>Behavior equations versus identities</h2>
 <ul>
 <li>CGE models have behavioral and identity equations</li>
@@ -531,96 +690,124 @@ Frédéric Reynès and Anissa Saumtally
 <center>
 <p><img data-src="pictures/Behavioreq_Identities.png" style="width:55.0%"></p>
 </center></section>
-<section id="behavior-equations" class="slide level2">
+<section id="behavior-equations" class="slide level2 scrollable">
 <h2>Behavior equations</h2>
 <h3 id="prices"><strong>Prices</strong></h3>
 <ul>
 <li><p>We assume oligopolistic competition <em>à la</em> Cournot where each producer defines its price in order to maximize its profit considering the price of the other producers as given:</p></li>
-<li><p>The <strong>maximisation program</strong> is:</p>
-<center>
-<p><span class="math display">\[\begin{equation}
-max_y Π(y) = p(y).y - c(y)
-\end{equation}\]</span></p></center></li>
+<li><p>The <strong>maximisation program</strong> is:</p></li>
 </ul>
-
+<p><span class="math display">\[max_y Π(y) = p(y).y - c(y)\]</span></p>
 <p>where <span class="math inline">\(y\)</span> is the production or demand adressed to the compagny, <span class="math inline">\(\pi(y)\)</span> is the profit of the compagny, <span class="math inline">\(p(y)\)</span> its price and <span class="math inline">\(c(y)\)</span> the production cost. We assume <span class="math inline">\(p′(y)\)</span> &lt; 0, <span class="math inline">\(c′(y)\)</span> &gt; 0 and <span class="math inline">\(c′′(y)\)</span> &gt; 0</p>
 <ul>
-<li><p>The result of the <strong>program maximization defines the optimum price</strong> that is equal to a markup over the production costs:</p>
-<center></center></li>
+<li>The result of the <strong>program maximization defines the optimum price</strong> that is equal to a markup over the production costs:</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-p(y)= [1+ m^{up}].c'(y)
-\end{equation}\]</span></p>
-
+<p><span class="math display">\[p(y)= [1+ m^{up}].c'(y)\]</span></p>
 <p>where the markup is: <span class="math display">\[\begin{equation} m^{up}= 1/(\epsilon -1) \end{equation}\]</span> and <span class="math inline">\(\epsilon\)</span> the (absolute) price elasticity of demand</p>
 <ul>
 <li><p>In perfect competition, markup is zero: <span class="math display">\[\begin{equation} m^{up} = 0 \end{equation}\]</span> so that the optimal price is equal to the marginal cost of production: <span class="math display">\[\begin{equation} p(y)= c'(y) \end{equation}\]</span></p></li>
 <li><p>Given that production costs equal total factor payments, the <strong>optimal price is therefore equal to the cost of capital and labor</strong>:</p></li>
 </ul>
-<center>
-<span class="math display">\[\begin{equation}
-p(y).y= w.L+ p(\delta+r).K
-\end{equation}\]</span>
-</center>
+<p><span class="math display">\[p(y).y= w.L+ p(\delta+r).K\]</span></p>
+</section>
+<section id="behavior-equations-1" class="slide level2 scrollable">
+<h2>Behavior equations</h2>
 <h3 id="households-consumption"><strong>Households consumption</strong></h3>
 <ul>
 <li><p>We assume that households supply labor and own the capital, for which they get their income (<span class="math inline">\(w.L + p.r.K\)</span>) .</p></li>
-<li><p>We assume that households wish to use a fixed share of their total income for consumption</p>
-<p><span class="math display">\[\begin{equation}
-CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}
-\end{equation}\]</span></p></li>
-<li><p>The consumer maximize its utility by allocating the income of a given period over several periods.<br>
-The <strong>maximization program</strong> is:</p></li>
+<li><p>We assume that households wish to use a fixed share of their total income for consumption</p></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-    max_{c_i} U(c_1, c_2, ... c_n)=\sum_{i=1}^{n} (\phi_i.c_i^{\frac{\rho-1}{\rho}})^{\frac{\rho}{\rho-1}}
-\end{equation}\]</span></p>
-<p><span class="math display">\[\begin{equation}
-   \ s.t \ \sum_{i=1}^{n} p_i.c_i = R
-\end{equation}\]</span> where <span class="math inline">\(\rho\)</span> is the elasticity of substitution, <span class="math inline">\(c_i\)</span> the consumption of good <span class="math inline">\(i\)</span> and <span class="math inline">\(R\)</span> total income.</p>
+<p><span class="math display">\[CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}\]</span></p>
+<ul>
+<li><p>Can be derive from alternative theoretical model of consumption.</p></li>
+<li><p>For instance: let us assume that the consumer maximize its (CES) utility by allocating the income of a given period over several periods.</p></li>
+</ul>
+<p>The <strong>maximization program</strong> is:</p>
+<p><span class="math display">\[max_{c_i} U(c_1, c_2, ... c_n)=\sum_{i=1}^{n} (\phi_i.c_i^{\frac{\rho-1}{\rho}})^{\frac{\rho}{\rho-1}}\]</span> <span class="math display">\[\ s.t \ \sum_{i=1}^{n} p_i.c_i = R\]</span> where <span class="math inline">\(\rho\)</span> is the elasticity of substitution, <span class="math inline">\(c_i\)</span> the consumption of good in period <span class="math inline">\(i\)</span> and <span class="math inline">\(R\)</span> total income.</p>
 <p>The resolution of this program gives the relationship between households consumption and total income :</p>
-<p><span class="math display">\[\begin{equation}
-p_i.c_i= (\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}.R  
-\end{equation}\]</span> where <span class="math inline">\((\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}\)</span> is the consumption share.</p>
+<p><span class="math display">\[p_i.c_i= (\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}.R\]</span> where <span class="math inline">\((\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}\)</span> is the consumption share.</p>
 <p>Considering only two periods: <span class="math inline">\(i=1\)</span> (present) and <span class="math inline">\(i=2\)</span> (future) and assuming a CES function with <span class="math inline">\(\rho=1\)</span>, we find that <strong>consumption is a constant share of income</strong>:</p>
-<p><span class="math display">\[\begin{equation*}
-p_1.c_1 = \phi_1.R  
-\end{equation*}\]</span> with <span class="math inline">\(\phi_1\)</span> = (1-<span class="math inline">\(\sigma\)</span>) and <span class="math inline">\(\sigma\)</span> the propensity to save.</p>
+<p><span class="math display">\[p_1.c_1 = \phi_1.R\]</span> with <span class="math inline">\(\phi_1\)</span> = (1-<span class="math inline">\(\sigma\)</span>) and <span class="math inline">\(\sigma\)</span> the propensity to save.</p>
+</section>
+<section id="behavior-equations-2" class="slide level2 scrollable">
+<h2>Behavior equations</h2>
 <h3 id="demand-for-production-factors"><strong>Demand for production factors</strong></h3>
 <ul>
 <li><p>The firm determines its demand for labor and capital by maximizing its profit, which is equivalent to <strong>minimizing its production cost taking into account the production function</strong>.</p></li>
 <li><p>Assuming a CES production function, the constrained cost minimization program is:</p></li>
 </ul>
-<center>
-<span class="math display">\[\begin{equation}
-min_{x_i} (\sum_{i=1}^{n} p_i.x_i) \\
-s.t \\  Q= Q(x_i) = (\sum_{i=1}^{n} \Phi_i.x_i^{(\frac{\rho-1}{\rho})})^{(\frac{\rho}{\rho-1})}
-\end{equation}\]</span>
-</center>
-<p>where <span class="math inline">\(\rho\)</span> is the elasticity of substitution between inputs.</p>
+<p><span class="math display">\[min_{x_i} (\sum_{i=1}^{n} p_i.x_i)\]</span></p>
+<p><span class="math display">\[\ s.t. \ Q= Q(x_i) = (\sum_{i=1}^{n} \Phi_i.x_i^{(\frac{\rho-1}{\rho})})^{(\frac{\rho}{\rho-1})}\]</span> where <span class="math inline">\(\rho\)</span> is the elasticity of substitution between inputs.</p>
 <ul>
-<li><p>The resolution of the program derives demand for factors expressed as follows:<br>
-<strong>Labor demand</strong>:</p>
-<center></center></li>
+<li>The resolution of the program derives demand for factors expressed as follows:<br>
+<strong>Labor demand</strong>:</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  
-\end{equation}\]</span></p>
-
+<p><span class="math display">\[L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}\]</span></p>
 <p><strong>Capital demand</strong>:</p>
-<center>
-<span class="math display">\[\begin{equation}
-  
-K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)}
-\end{equation}\]</span>
-</center>
+<p><span class="math display">\[ K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} \]</span></p>
 </section>
-<section id="identities-and-defnitions" class="slide level2">
+<section id="behavior-equations-3" class="slide level2 scrollable">
+<h2>Behavior equations</h2>
+<h3 id="ces-function"><strong>CES function</strong></h3>
+<p>The Constant Elasticity of Substitution (CES) production function proposed by Arrow et al.&nbsp;(1961) offers flexibility in modeling substitutability between production factors</p>
+<p><span class="math display">\[Y = \left(\tilde{\varphi_1} X_1^{\frac{\eta - 1}{\eta}} + \tilde{\varphi}_2 X_2^{\frac{\eta - 1}{\eta}}\right)^{\frac{\eta}{\eta - 1}}\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(Y\)</span> the output,</p></li>
+<li><p><span class="math inline">\(\tilde\varphi_1\)</span> and <span class="math inline">\(\tilde\varphi_2\)</span> respectively the weights for inputs <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>,</p></li>
+<li><p><span class="math inline">\(\eta\)</span> the Elasticity of Substitution (ES) taking possibly any value between <span class="math inline">\(]0;+\infty[\)</span></p></li>
+</ul>
+<p>The CES function enables the representation of varying degrees of substitutability:</p>
+<ul>
+<li>perfect complementarity <span class="math inline">\(\eta = 0\)</span> (Leontief function)</li>
+<li>perfect substitutability <span class="math inline">\(\eta \rightarrow \infty\)</span></li>
+<li>Cobb-Douglas function where the ES is unitary <span class="math inline">\(\eta = 1\)</span>.</li>
+</ul>
+</section>
+<section id="behavior-equations-4" class="slide level2 scrollable">
+<h2>Behavior equations</h2>
+<h3 id="ces-function-for-various-elasticities-of-substitution"><strong>CES function for various elasticities of substitution</strong></h3>
+
+<img data-src="pictures/plot_CES_for_various_elasticity.png" style="width:100.0%" class="r-stretch"><div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a></a><span class="co"># CES Function: Q^((eta-1)/eta) = phi1*X1^((eta-1)/eta) + phi2*X2^((eta-1)/eta)</span></span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="co"># Interpolation step (for ggplot)</span></span>
+<span id="cb1-5"><a></a>step <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-6"><a></a>  </span>
+<span id="cb1-7"><a></a><span class="co"># Inverse CES function: X1 = f(Q,X2)</span></span>
+<span id="cb1-8"><a></a>X1 <span class="ot">&lt;-</span> <span class="cf">function</span>(X2, eta) {</span>
+<span id="cb1-9"><a></a>  <span class="co"># Calibration of the parameters of the CES function</span></span>
+<span id="cb1-10"><a></a>  Q <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-11"><a></a>  phi1 <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb1-12"><a></a>  phi2 <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a>  ((Q<span class="sc">^</span>((eta<span class="dv">-1</span>)<span class="sc">/</span>eta) <span class="sc">-</span> phi2<span class="sc">*</span>X2<span class="sc">^</span>((eta<span class="dv">-1</span>)<span class="sc">/</span>eta))<span class="sc">/</span>phi1)<span class="sc">^</span>(eta<span class="sc">/</span>(eta<span class="dv">-1</span>)) </span>
+<span id="cb1-15"><a></a>  }</span>
+<span id="cb1-16"><a></a></span>
+<span id="cb1-17"><a></a>plot_CES_for_various_elasticity <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">5</span>)), <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span></span>
+<span id="cb1-18"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> X1, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">eta =</span> <span class="fl">0.1</span>)  , <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"0.1"</span>), <span class="at">n =</span> step<span class="sc">*</span><span class="dv">1000</span>) <span class="sc">+</span></span>
+<span id="cb1-19"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> X1, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">eta =</span> <span class="fl">0.5</span>)  , <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"0.5"</span>), <span class="at">n =</span> step) <span class="sc">+</span></span>
+<span id="cb1-20"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> X1, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">eta =</span> <span class="fl">0.999</span>), <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"1"</span>  ), <span class="at">n =</span> step, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb1-21"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> X1, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">eta =</span> <span class="fl">1.6</span>)    , <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"1.6"</span>  ), <span class="at">n =</span> step) <span class="sc">+</span></span>
+<span id="cb1-22"><a></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> X1, <span class="at">args =</span> <span class="fu">list</span>(<span class="at">eta =</span> <span class="dv">20</span>)   , <span class="fu">aes</span>(<span class="at">colour =</span> <span class="st">"20"</span> ), <span class="at">n =</span> step) <span class="sc">+</span></span>
+<span id="cb1-23"><a></a>  <span class="fu">scale_colour_manual</span>(<span class="at">name =</span> <span class="fu">expression</span>(eta), <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"black"</span>, <span class="st">"green"</span>, <span class="st">"grey"</span>)) <span class="sc">+</span></span>
+<span id="cb1-24"><a></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb1-25"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span></span>
+<span id="cb1-26"><a></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"X1"</span>, <span class="at">x =</span> <span class="st">"X2"</span>)</span>
+<span id="cb1-27"><a></a></span>
+<span id="cb1-28"><a></a>plot_CES_for_various_elasticity</span>
+<span id="cb1-29"><a></a></span>
+<span id="cb1-30"><a></a><span class="fu">ggsave</span>(<span class="st">"plot_CES_for_various_elasticity.png"</span>, <span class="at">plot =</span> plot_CES_for_various_elasticity, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="identities-and-defnitions" class="slide level2 scrollable">
 <h2>Identities and defnitions</h2>
 <h3 id="production"><strong>Production</strong></h3>
-<p><span class="math display">\[\begin{equation}
-Y = CH + I + G
-\end{equation}\]</span></p>
+<p><span class="math display">\[Y = CH + I + G\]</span></p>
 <ul>
 <li>Market equilibrium condition between supply and demand<br>
 </li>
@@ -631,9 +818,7 @@ Y = CH + I + G
 <ul>
 <li>Given an initial capital stock (at <span class="math inline">\(t-1\)</span>), the change in capital stock defines the capital stock in <span class="math inline">\(t\)</span>:</li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}
-\end{equation}\]</span></p>
+<p><span class="math display">\[\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}\]</span></p>
 <ul>
 <li>The change in capital stock :
 <ul>
@@ -645,9 +830,7 @@ Y = CH + I + G
 <p><br></p>
 <h3 id="cost-of-capital"><strong>Cost of capital</strong></h3>
 <p>We assume that the cost of capital is defined as the user cost of capital (or real rental price of capital services or the costs of holding capital) :</p>
-<p><span class="math display">\[\begin{equation}
-    c^{K} = p(\delta + r) \\
-\end{equation}\]</span></p>
+<p><span class="math display">\[c^{K} = p(\delta + r)\]</span></p>
 <p>where <span class="math inline">\(\delta\)</span> is the depreciation rate of capital, <span class="math inline">\(r\)</span> the interest rate and <span class="math inline">\(p\)</span> the price of the investment.</p>
 <ul>
 <li>This equation may have several interpretations:
@@ -656,8 +839,35 @@ Y = CH + I + G
 <li>It assumes that capital is financed through bank credit and that the reimbursement of the debt corresponds to the depreciation of capital</li>
 </ul></li>
 </ul>
+</section></section>
+<section>
+<section class="title-slide slide level1 agenda-slide center">
+<h1>Macroeconomic closure</h1>
+<div class="agenda-heading">
+
+</div>
+<div class="agenda">
+<div class="agenda-inactive agenda-pre-active">
+<p>What is a CGE model?</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Main usage of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Micro-economic foundations of CGE models</p>
+</div>
+<div class="agenda-active">
+<p>Macroeconomic closure</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Open economy models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Multisector models</p>
+</div>
+</div>
 </section>
-<section id="some-definitions" class="slide level2">
+<section id="some-definitions" class="slide level2 scrollable">
 <h2>Some definitions</h2>
 <ul>
 <li><span style="color: brown;"><strong>Endo</strong></span><strong>genous variable</strong>: defined <span style="color: brown;"><strong>inside</strong></span> the model, as a result of the model simulation
@@ -681,7 +891,7 @@ Y = CH + I + G
 </ul></li>
 </ul>
 </section>
-<section id="macroeconomic-closure" class="slide level2">
+<section id="macroeconomic-closure-1" class="slide level2 scrollable">
 <h2>Macroeconomic closure</h2>
 <ul>
 <li>A <span style="color: brown;"><strong>model</strong></span> is a way of explaining endogenous variables as function of exogenous variables.<br>
@@ -700,7 +910,7 @@ Y = CH + I + G
 <li><span style="color: brown;"><strong>The Keynesian model</strong></span></li>
 </ul>
 </section>
-<section id="walrasian-versus-keynesian-models" class="slide level2">
+<section id="walrasian-versus-keynesian-models" class="slide level2 scrollable">
 <h2>Walrasian versus Keynesian models</h2>
 <p><span style="color: brown;"><strong>Common features for both models</strong></span>:</p>
 <ul>
@@ -714,46 +924,31 @@ Y = CH + I + G
 </ul>
 <p><em>Note</em>: Our definitions of the Walrasian and Keynesian closures may differ from those found in the literature inspired by the seminal work of Sen (1963). Contrary to this literature that consider a <strong>static</strong> case, we propose simulations based on a <strong>dynamic</strong> model including an equation for <strong>capital accumulation</strong> and where investment is endogenous in both the Walrasian and the Keynesian closure.</p>
 </section>
-<section id="the-walrasian-model" class="slide level2">
+<section id="the-walrasian-model" class="slide level2 scrollable">
 <h2>The Walrasian model</h2>
 <p>The model is based on a set of <strong>7 equations</strong> with <strong>7 endogenous variables</strong>:</p>
 <ul>
 <li><p><span style="color: blue;">Investment</span><br>
-<span class="math display">\[\begin{equation}
-I = Y - CH - G  
-  \end{equation}\]</span></p></li>
+<span class="math display">\[I = Y - CH - G\]</span></p></li>
 <li><p><span style="color: blue;">Production</span><br>
-<span class="math display">\[\begin{equation}
-Y . p = w . L + p . \left( \delta + r \right) . K
-\end{equation}\]</span></p></li>
+<span class="math display">\[Y . p = w . L + p . \left( \delta + r \right) . K\]</span></p></li>
 <li><p><span style="color: blue;">Households’consumption</span><br>
-<span class="math display">\[\begin{equation}
-CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}
-\end{equation}\]</span></p></li>
+<span class="math display">\[CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}\]</span></p></li>
 <li><p><span style="color: blue;">Wage</span><br>
-<span class="math display">\[\begin{equation}
-w + L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  + w
-\end{equation}\]</span></p></li>
+<span class="math display">\[w + L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  + w\]</span></p></li>
 <li><p><span style="color: blue;">Interest rate</span><br>
-<span class="math display">\[\begin{equation}
-r + K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} + r
-\end{equation}\]</span></p></li>
+<span class="math display">\[r + K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} + r\]</span></p></li>
 <li><p><span style="color: blue;">Capital (from accumulation equation)</span><br>
-<span class="math display">\[\begin{equation}
-\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}
-\end{equation}\]</span></p></li>
+<span class="math display">\[\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}\]</span></p></li>
 <li><p><span style="color: blue;">Price</span><br>
-<span class="math display">\[\begin{equation}
-p=1
-\end{equation}\]</span></p></li>
+<span class="math display">\[p=1\]</span></p></li>
 <li><p>The price equation defines the price as <em>numéraire</em> (equal to 1). The price can therefore be seen as an <strong>exogenous variable</strong>. The model could be written as a set of <strong>6 equations</strong> with <strong>6 endogenous variables</strong>.</p></li>
 </ul>
 </section>
-<section id="comments-on-the-walrasian-model-closure" class="slide level2">
+<section id="comments-on-the-walrasian-model-closure" class="slide level2 scrollable">
 <h2>Comments on the Walrasian model closure</h2>
 <ul>
-<li><strong>Endogenous variables</strong>: <span class="math inline">\(Y\)</span>, <span class="math inline">\(I\)</span>, <span class="math inline">\(CH\)</span>, <span class="math inline">\(K\)</span>, <span class="math inline">\(w\)</span>, <span class="math inline">\(r\)</span><br>
-</li>
+<li><strong>Endogenous variables</strong>: <span class="math inline">\(Y\)</span>, <span class="math inline">\(I\)</span>, <span class="math inline">\(CH\)</span>, <span class="math inline">\(K\)</span>, <span class="math inline">\(w\)</span>, <span class="math inline">\(r\)</span></li>
 <li><strong>Exogenous variables</strong>: <span class="math inline">\(G\)</span>, <span class="math inline">\(L\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(PROG^{L}\)</span>, <span class="math inline">\(PROG^{K}\)</span>
 <ul>
 <li><strong>Parameters</strong>: <span class="math inline">\(\rho\)</span>, <span class="math inline">\(\varphi^{L}\)</span>, <span class="math inline">\(\varphi^{K}\)</span>, <span class="math inline">\(\delta\)</span>, <span class="math inline">\(\sigma\)</span></li>
@@ -766,53 +961,39 @@ p=1
 </ul>
 <p><em>Note</em>: we consider a <strong>steady state economy</strong> (with growth rate = 0%)</p>
 </section>
-<section id="the-keynesian-model" class="slide level2">
+<section id="the-keynesian-model" class="slide level2 scrollable">
 <h2>The Keynesian model</h2>
 <p>The model is based on a set of <strong>6 equations</strong> with <strong>6 endogenous variables</strong>:</p>
 <ul>
 <li><span style="color: blue;">Production</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-Y = CH + I + G
-\end{equation}\]</span></p>
+<p><span class="math display">\[Y = CH + I + G\]</span></p>
 <ul>
 <li><span style="color: blue;">Price</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-p . Y = w . L + p . \left( \delta + r \right) . K^{n}
-\end{equation}\]</span></p>
+<p><span class="math display">\[p . Y = w . L + p . \left( \delta + r \right) . K^{n}\]</span></p>
 <ul>
 <li><span style="color: blue;">Households consumption</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}
-\end{equation}\]</span></p>
+<p><span class="math display">\[CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}\]</span></p>
 <ul>
 <li><span style="color: blue;">Labor</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}
-\end{equation}\]</span></p>
+<p><span class="math display">\[L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}\]</span></p>
 <ul>
 <li><span style="color: blue;">Capital (notional level from cost minimization of a CES function )</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)}
-\end{equation}\]</span></p>
+<p><span class="math display">\[K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)}\]</span></p>
 <ul>
 <li><span style="color: blue;">Capital (effective level from capital accumulation)</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}
-\end{equation}\]</span></p>
+<p><span class="math display">\[\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}\]</span></p>
 <ul>
 <li><span style="color: blue;">Investment</span></li>
 </ul>
-<p><span class="math display">\[\begin{equation}
-\varDelta \left(\operatorname{log} I\right) = \varDelta \left(\operatorname{log} K^{n}_{t-1}\right) + \alpha^{I,Kn} . \operatorname{log} \frac{K^{n}_{t-1}}{K_{t-1}}
-\end{equation}\]</span></p>
+<p><span class="math display">\[\varDelta \left(\operatorname{log} I\right) = \varDelta \left(\operatorname{log} K^{n}_{t-1}\right) + \alpha^{I,Kn} . \operatorname{log} \frac{K^{n}_{t-1}}{K_{t-1}}\]</span></p>
 </section>
-<section id="comments-on-the-keynesian-model-closure" class="slide level2">
+<section id="comments-on-the-keynesian-model-closure" class="slide level2 scrollable">
 <h2>Comments on the Keynesian model closure</h2>
 <ul>
 <li>In the Keynesian closure, the wage and the interest rate are exogenous whereas labor and capital are endogenous</li>
@@ -820,8 +1001,64 @@ K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ 
 </li>
 <li>The notional levels are mentioned with the underscore (superscript) « n » in the model They refer to the level of price, consumption, labor and capital the producer and the consumer would like to reach immediately if there were no adjustment constraint</li>
 </ul>
+</section></section>
+<section class="title-slide slide level1 agenda-slide center">
+<h1>Open economy models</h1>
+<div class="agenda-heading">
+
+</div>
+<div class="agenda">
+<div class="agenda-inactive agenda-pre-active">
+<p>What is a CGE model?</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Main usage of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Micro-economic foundations of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Macroeconomic closure</p>
+</div>
+<div class="agenda-active">
+<p>Open economy models</p>
+</div>
+<div class="agenda-inactive agenda-post-active">
+<p>Multisector models</p>
+</div>
+</div>
+<!-- FRED: add equations -->
 </section>
-<section id="data-supply-use-su-and-input-output-io-tables" class="slide level2">
+
+<section>
+<section class="title-slide slide level1 agenda-slide center">
+<h1>Multisector models</h1>
+<div class="agenda-heading">
+
+</div>
+<div class="agenda">
+<div class="agenda-inactive agenda-pre-active">
+<p>What is a CGE model?</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Main usage of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Micro-economic foundations of CGE models</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Macroeconomic closure</p>
+</div>
+<div class="agenda-inactive agenda-pre-active">
+<p>Open economy models</p>
+</div>
+<div class="agenda-active">
+<p>Multisector models</p>
+</div>
+</div>
+<!-- FRED: add equations -->
+</section>
+<section id="data-supply-use-su-and-input-output-io-tables" class="slide level2 scrollable">
 <h2>Data: Supply-Use (SU) and Input-Output (IO) tables</h2>
 <ul>
 <li><p>SU table says how much a given commodities is supplied by a given sector (Supply)</p>
@@ -835,7 +1072,7 @@ K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ 
 </ul>
 
 <img data-src="pictures/Simplified_SU_IO.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="equilibrium-between-supply-and-demand-use" class="slide level2">
+<section id="equilibrium-between-supply-and-demand-use" class="slide level2 scrollable">
 <h2>Equilibrium between Supply and Demand (use)</h2>
 <ul>
 <li>GDP = VA = Y – CI = C + I + X - M</li>
@@ -849,11 +1086,7 @@ K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ 
 <div class="quarto-auto-generated-content">
 <p><img src="site_libs/quarto-contrib/quarto-project/ofce/pres/ofce_m.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><span style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;">Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R</span><br>
-<span style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;">Universidad Iberoamericana Ciudad de México</span><br>
-<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Theory Session 1.1</span><br>
-<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Introduction to CGE models and their usage</span><br>
-<i class="fa-solid fa-ellipsis" aria-label="ellipsis"></i> </p>
+<p>Introduction to CGE models and their usage <i class="fa-solid fa-ellipsis" aria-label="ellipsis"></i> </p>
 </div>
 </div>
 </section></section>
