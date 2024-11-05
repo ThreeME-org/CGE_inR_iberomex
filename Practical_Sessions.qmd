@@ -1,6 +1,9 @@
 ---
-title: "CGE in R platform"
-subtitle: "Practical sessions - Supporting materials "
+title: "CGE in R - Practical sessions"
+subtitle:  |
+  | [Universidad Iberoamericana Ciudad de México]{style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
+  | [Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R]{style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
+date: "`r format(Sys.Date(), '%d %B %y')`"
 author: 
   - Frédéric Reynès 
   - Anissa Saumtally
@@ -9,9 +12,6 @@ toc: false
 eval: false
 ---
 
-
-Running your first simulation and getting the results with the one equation model
-presenting the datafull output database 
 
 
 # Introduction 
@@ -85,7 +85,9 @@ presenting the datafull output database
 - Run the `main_test.R` script to make sure it all works.
 
 
-    
+## Quarto introduction
+
+For these works, we heavily re
 
 
 ## Basic folder strucure presentation  {.scrollable}
@@ -108,7 +110,7 @@ presenting the datafull output database
 
 ## LIVE DEMO
 
-Overview of the project folders
+**Overview of the project folder structure**
 
 ## Complete Exercise 1 
 
@@ -376,9 +378,11 @@ This variable takes the value **1** if the scenario is baseline or **0** otherwi
 ## `config_input` 
 
 
-## `mdl` equation files
+## `mdl` Equation files
 
-## `mdl` calib data files
+## `mdl` Data calibration files
+
+
 
 ## Complete Exercise 2 (part 2)
 
@@ -559,6 +563,9 @@ ggarrange(A,B,
 ## TeXdoc
 
 - TeXdoc is function that reads `mdl` files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.
+  + Not perfect yet!
+  + Quite sensitive to how `mdl` files are written, especially when it come to sectionning text
+- We added a functionnality that transforms the `tex` output into a `qmd` output that can be called upon 
   
 ```{r}
 #| eval: false

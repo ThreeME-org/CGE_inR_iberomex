@@ -13,6 +13,8 @@ website:
       - href: contact.qmd
         text: Contact
     left:
+      - href: index.qmd
+        text: Home
       - href: program.qmd
         text: Program
       - href: install.qmd

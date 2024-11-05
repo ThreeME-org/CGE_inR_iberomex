@@ -1,7 +1,23 @@
 ---
-title: "CGE_R_ibero"
+title: "CGE in R Workshop at Iberoamericana universidad in Mexico"
+author: 
+  - Frédéric Reynès 
+  - Anissa Saumtally
 format:
   ofce-html: default
 ---
 
-![](Modelos%20de%20equilibrio_VF.pdf){fig-align="center"}
+
+
+
+*This workshop is aimed at presenting an overview of CGE model and a tool to run them. The workshop material has been developed by the ThreeME team at the OFCE (Sciences Po Paris).*
+
+*This workshop held by the ThreeME Team is graciously hosted at the Iberoamericana universidad in Mexico, and is conducted under a project between Hacienda (SHCP), OFCE and NEO[^1], financed by the Agence Française de Développement (AFD).*
+
+
+[^1]: (Netherlands Economic Observatory) 
+
+![](pictures/p1.png){fig-align="center"}
+
+
+

@@ -3,7 +3,9 @@ title: Introduction to CGE models and their usage
 subtitle:  |
   | [Universidad Iberoamericana Ciudad de México]{style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
   | [Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R]{style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
-author: "Frédéric Reynès and Anissa Saumtally"
+author: 
+  - Frédéric Reynès 
+  - Anissa Saumtally
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
   pres-revealjs:
@@ -23,16 +25,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 # What is a CGE model?
 
 ## Definition {.scrollable}
 
 -   **Computable:** numerical simulation
+
 -   **General:** take into account the interactions between markets.
 
     -   Supply and demand influence each other
-    
+
 -   **Equilibrium:** Supply is equal to demand on all markets (good, production factors)
 
 -   Structure of a CGE model (see next Figure):
@@ -47,13 +49,16 @@ knitr::opts_chunk$set(
 ## What does "general equilibrium" mean? {.scrollable}
 
 -   General Equilibrium relates to a state where supply is equal to demand in all markets
+
 -   2 main approaches to insure this state:
 
     -   **Walrasian** models
         -   The equilibrium force is the price system
+
         -   Perfect price flexibility insure the instantaneous equilibrium between supply and demand
+
         -   When the supply of a commodity goes down, its price tends to go up, thereby stimulating additional supply and depressing demand, until supply and demand are equal again.
-        
+
         -   Static model
     -   **Neo-Keynesian** models
         -   Demand determines supply
@@ -61,7 +66,7 @@ knitr::opts_chunk$set(
         -   Disequilibrium between notional (optimal) supply and the actual supply in the short run
         -   Dynamic model: transition to the long run
 
-## A neo-keynesian CGE model  {.scrollable}
+## A neo-keynesian CGE model {.scrollable}
 
 -   **Slow adjustment** of price and quantity
 
@@ -80,16 +85,15 @@ knitr::opts_chunk$set(
     -   Wages do not adjust instantaneously the supply and demand for labor:
         -   Permanent underemployment equilibrium possible
         -   Theory of the NAIRU (Non Accelerating Inflation Rate of Unemployment) or Equilibrium rate of unemployment
-        
+
 -   The **interest rate** does not equilibrate instantaneously saving and investment:
 
     -   It is defined by the Central Bank
     -   "Taylor" reaction function: increases with inflation, decreases with unemployment
 
-
 # Main usage of CGE models
 
-## Macroeconomic versus multisector CGE models  {.scrollable}
+## Macroeconomic versus multisector CGE models {.scrollable}
 
 CGE models are widely used in economic policy analysis. Two type of analyses:
 
@@ -97,7 +101,7 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
 
     -   e.g. fiscal, monetary, trade, innovation policies
     -   they aim to capture interdependencies between aggregate economic variables and key economic indicators
-        -   e.g.  GDP, inflation, employment, and investment
+        -   e.g. GDP, inflation, employment, and investment
 
 -   **Multisector CGE models** break down the economy into several sectors to analyze the effects of policy changes or shocks on each sector individually
 
@@ -106,8 +110,7 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
     -   highlight how impacts may vary across sectors
     -   allow for simulating sector specific policy
 
-
-## Examples of applications of our R package  {.scrollable}
+## Examples of applications of our R package {.scrollable}
 
 ### Small size models
 
@@ -127,8 +130,7 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
 
     -   www.threeme.org
 
-
-## Overview of ThreeME  {.scrollable}
+## Overview of ThreeME {.scrollable}
 
 ### **M**ulti-sector **M**acroeconomic **M**odel for the **E**valuation of **E**nvironmental and **E**nergy policy.
 
@@ -141,6 +143,7 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
 -   Designed to study scenario involving transfers of activities from one sector to another
 
 ### Type of simulation of the economic and environmental impact
+
 -   **Energy transition policies**
 
     -   Fiscal policies:
@@ -152,14 +155,14 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
     -   Impact of green investment
         -   In buildings, public transport, etc.
         -   Impact of applying a new standard for buildings, or appliances
-        
+
 -   **External shock**
 
     -   Increase in international oil/gas price
 
 # Micro-economic foundations of CGE models
 
-## Behavior equations versus identities  {.scrollable}
+## Behavior equations versus identities {.scrollable}
 
 -   CGE models have behavioral and identity equations
 -   **Behavioral equations** derive from microeconomic theory and economic rationality
@@ -171,7 +174,7 @@ CGE models are widely used in economic policy analysis. Two type of analyses:
 
 ![](pictures/Behavioreq_Identities.png){width="55%"}
 
-## Behavior equations  {.scrollable}
+## Behavior equations {.scrollable}
 
 ### **Prices**
 
@@ -183,10 +186,9 @@ $$max_y Π(y) = p(y).y - c(y)$$
 
 where $y$ is the production or demand adressed to the compagny, $\pi(y)$ is the profit of the compagny, $p(y)$ its price and $c(y)$ the production cost. We assume $p′(y)$ \< 0, $c′(y)$ \> 0 and $c′′(y)$ \> 0
 
-
 -   The result of the **program maximization defines the optimum price** that is equal to a markup over the production costs:
 
-$$p(y)= [1+ m^{up}].c'(y)$$ 
+$$p(y)= [1+ m^{up}].c'(y)$$
 
 where the markup is: \begin{equation} m^{up}= 1/(\epsilon -1) \end{equation} and $\epsilon$ the (absolute) price elasticity of demand
 
@@ -196,7 +198,7 @@ where the markup is: \begin{equation} m^{up}= 1/(\epsilon -1) \end{equation} and
 
 $$p(y).y= w.L+ p(\delta+r).K$$
 
-## Behavior equations  {.scrollable}
+## Behavior equations {.scrollable}
 
 ### **Households consumption**
 
@@ -209,24 +211,20 @@ $$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 -   Can be derive from alternative theoretical model of consumption.
 
 -   For instance: let us assume that the consumer maximize its (CES) utility by allocating the income of a given period over several periods.
-    
+
 The **maximization program** is:
 
-$$max_{c_i} U(c_1, c_2, ... c_n)=\sum_{i=1}^{n} (\phi_i.c_i^{\frac{\rho-1}{\rho}})^{\frac{\rho}{\rho-1}}$$ 
-$$\ s.t \ \sum_{i=1}^{n} p_i.c_i = R$$
-where $\rho$ is the elasticity of substitution, $c_i$ the consumption of good in period $i$ and $R$ total income.
+$$max_{c_i} U(c_1, c_2, ... c_n)=\sum_{i=1}^{n} (\phi_i.c_i^{\frac{\rho-1}{\rho}})^{\frac{\rho}{\rho-1}}$$ $$\ s.t \ \sum_{i=1}^{n} p_i.c_i = R$$ where $\rho$ is the elasticity of substitution, $c_i$ the consumption of good in period $i$ and $R$ total income.
 
 The resolution of this program gives the relationship between households consumption and total income :
 
-$$p_i.c_i= (\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}.R$$
-where $(\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}$ is the consumption share.
+$$p_i.c_i= (\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}.R$$ where $(\Phi_i)^{\rho}.(\frac{p_i}{P})^{1-\rho}$ is the consumption share.
 
 Considering only two periods: $i=1$ (present) and $i=2$ (future) and assuming a CES function with $\rho=1$, we find that **consumption is a constant share of income**:
 
-$$p_1.c_1 = \phi_1.R$$
-with $\phi_1$ = (1-$\sigma$) and $\sigma$ the propensity to save.
+$$p_1.c_1 = \phi_1.R$$ with $\phi_1$ = (1-$\sigma$) and $\sigma$ the propensity to save.
 
-## Behavior equations  {.scrollable}
+## Behavior equations {.scrollable}
 
 ### **Demand for production factors**
 
@@ -236,44 +234,40 @@ with $\phi_1$ = (1-$\sigma$) and $\sigma$ the propensity to save.
 
 $$min_{x_i} (\sum_{i=1}^{n} p_i.x_i)$$
 
-$$\ s.t. \ Q= Q(x_i) = (\sum_{i=1}^{n} \Phi_i.x_i^{(\frac{\rho-1}{\rho})})^{(\frac{\rho}{\rho-1})}$$
-where $\rho$ is the elasticity of substitution between inputs.
+$$\ s.t. \ Q= Q(x_i) = (\sum_{i=1}^{n} \Phi_i.x_i^{(\frac{\rho-1}{\rho})})^{(\frac{\rho}{\rho-1})}$$ where $\rho$ is the elasticity of substitution between inputs.
 
 -   The resolution of the program derives demand for factors expressed as follows:\
     **Labor demand**:
 
-$$L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}$$  
+$$L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}$$
 
 **Capital demand**:
 
 $$ K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} $$
 
-
-## Behavior equations  {.scrollable}
+## Behavior equations {.scrollable}
 
 ### **CES function**
 
 The Constant Elasticity of Substitution (CES) production function proposed by Arrow et al. (1961) offers flexibility in modeling substitutability between production factors
 
-
 $$Y = \left(\tilde{\varphi_1} X_1^{\frac{\eta - 1}{\eta}} + \tilde{\varphi}_2 X_2^{\frac{\eta - 1}{\eta}}\right)^{\frac{\eta}{\eta - 1}}$$
 
 where:
 
-- $Y$ the output,
+-   $Y$ the output,
 
-- $\tilde\varphi_1$ and $\tilde\varphi_2$ respectively the weights for inputs $X_1$ and $X_2$,
+-   $\tilde\varphi_1$ and $\tilde\varphi_2$ respectively the weights for inputs $X_1$ and $X_2$,
 
-- $\eta$ the Elasticity of Substitution (ES) taking possibly any value between $]0;+\infty[$
-
+-   $\eta$ the Elasticity of Substitution (ES) taking possibly any value between $]0;+\infty[$
 
 The CES function enables the representation of varying degrees of substitutability:
 
-  -   perfect complementarity $\eta = 0$ (Leontief function)
-  -   perfect substitutability $\eta \rightarrow \infty$
-  -   Cobb-Douglas function where the ES is unitary $\eta = 1$.
+-   perfect complementarity $\eta = 0$ (Leontief function)
+-   perfect substitutability $\eta \rightarrow \infty$
+-   Cobb-Douglas function where the ES is unitary $\eta = 1$.
 
-## Behavior equations  {.scrollable}
+## Behavior equations {.scrollable}
 
 ### **CES function for various elasticities of substitution**
 
@@ -318,8 +312,7 @@ plot_CES_for_various_elasticity
 ggsave("plot_CES_for_various_elasticity.png", plot = plot_CES_for_various_elasticity, width = 6, height = 4, dpi = 300)
 ```
 
-
-## Identities and defnitions  {.scrollable}
+## Identities and defnitions {.scrollable}
 
 ### **Production**
 
@@ -370,10 +363,10 @@ where $\delta$ is the depreciation rate of capital, $r$ the interest rate and $p
     -   Households, producers, government
     -   Optimize an objective: e.g. maximization of profit/utility/social welfare, minimization of cost
 
-## Macroeconomic closure  {.scrollable}
+## Macroeconomic closure {.scrollable}
 
--   A [ **model** ]{style="color: brown;"} is a way of explaining endogenous variables as function of exogenous variables.\
--   Making a choice of what is to be determined within the model [ **(endogenous variables)** ]{style="color: brown;"} and what is to be considered external to the model [ **(exogenous variables)** ]{style="color: brown;"} is called the [ **model closure** ]{style="color: brown;"}. Why does the choice of the model closure matter?
+-   A [**model**]{style="color: brown;"} is a way of explaining endogenous variables as function of exogenous variables.\
+-   Making a choice of what is to be determined within the model [**(endogenous variables)**]{style="color: brown;"} and what is to be considered external to the model [**(exogenous variables)**]{style="color: brown;"} is called the [**model closure**]{style="color: brown;"}. Why does the choice of the model closure matter?
     -   It may define the direction of causality (which variables determine the others)\
     -   It may have important implications on the properties and results of the model
 
@@ -381,29 +374,28 @@ where $\delta$ is the depreciation rate of capital, $r$ the interest rate and $p
 
 We compare the results for two contrasting model closures:
 
--   [ **The Walrasian model** ]{style="color: brown;"} 
--   [ **The Keynesian model** ]{style="color: brown;"} 
+-   [**The Walrasian model**]{style="color: brown;"}
+-   [**The Keynesian model**]{style="color: brown;"}
 
-## Walrasian versus Keynesian models  {.scrollable}
+## Walrasian versus Keynesian models {.scrollable}
 
-[ **Common features for both models** ]{style="color: brown;"}:
+[**Common features for both models**]{style="color: brown;"}:
 
--   [ **General equilibrium** ]{style="color: blue;"}: which means that supply equals demand in all markets.\
--   In both frameworks, the models consist of equations that solve for the endogenous variables, given the exogenous variables and parameters. A change in one or more exogenous variable or parameter will lead to adjustments in the endogenous variables so to solve the system of equations again. These [ **solved values of all endogenous variables**]{style="color: blue;"}, constitute the [ **outcome of the model**]{style="color: blue;"} .
+-   [**General equilibrium**]{style="color: blue;"}: which means that supply equals demand in all markets.\
+-   In both frameworks, the models consist of equations that solve for the endogenous variables, given the exogenous variables and parameters. A change in one or more exogenous variable or parameter will lead to adjustments in the endogenous variables so to solve the system of equations again. These [**solved values of all endogenous variables**]{style="color: blue;"}, constitute the [**outcome of the model**]{style="color: blue;"} .
 
-[ **Main difference between both models**]{style="color: brown;"}:
+[**Main difference between both models**]{style="color: brown;"}:
 
--   The [ **choice of endogenous variables** ]{style="color: blue;"}. In the Walrasian framework some variables adjust while there are considered fixed in the Keynesian framework and vice-versa.
+-   The [**choice of endogenous variables**]{style="color: blue;"}. In the Walrasian framework some variables adjust while there are considered fixed in the Keynesian framework and vice-versa.
 
 *Note*: Our definitions of the Walrasian and Keynesian closures may differ from those found in the literature inspired by the seminal work of Sen (1963). Contrary to this literature that consider a **static** case, we propose simulations based on a **dynamic** model including an equation for **capital accumulation** and where investment is endogenous in both the Walrasian and the Keynesian closure.
 
-## The Walrasian model  {.scrollable}
+## The Walrasian model {.scrollable}
 
 The model is based on a set of **7 equations** with **7 endogenous variables**:
 
 -   [Investment]{style="color: blue;"}\
-    $$I = Y - CH - G$$  
-
+    $$I = Y - CH - G$$
 
 -   [Production]{style="color: blue;"}\
     $$Y . p = w . L + p . \left( \delta + r \right) . K$$
@@ -411,10 +403,10 @@ The model is based on a set of **7 equations** with **7 endogenous variables**:
 -   [Households'consumption]{style="color: blue;"}\
     $$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 
--   [Wage ]{style="color: blue;"}\
+-   [Wage]{style="color: blue;"}\
     $$w + L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}  + w$$
 
--   [Interest rate ]{style="color: blue;"}\
+-   [Interest rate]{style="color: blue;"}\
     $$r + K = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)} + r$$
 
 -   [Capital (from accumulation equation)]{style="color: blue;"}\
@@ -425,7 +417,7 @@ The model is based on a set of **7 equations** with **7 endogenous variables**:
 
 -   The price equation defines the price as *numéraire* (equal to 1). The price can therefore be seen as an **exogenous variable**. The model could be written as a set of **6 equations** with **6 endogenous variables**.
 
-## Comments on the Walrasian model closure  {.scrollable}
+## Comments on the Walrasian model closure {.scrollable}
 
 -   **Endogenous variables**: $Y$, $I$, $CH$, $K$, $w$, $r$
 -   **Exogenous variables**: $G$, $L$, $p$, $PROG^{L}$, $PROG^{K}$
@@ -438,7 +430,7 @@ The model is based on a set of **7 equations** with **7 endogenous variables**:
 
 *Note*: we consider a **steady state economy** (with growth rate = 0%)
 
-## The Keynesian model  {.scrollable}
+## The Keynesian model {.scrollable}
 
 The model is based on a set of **6 equations** with **6 endogenous variables**:
 
@@ -458,7 +450,7 @@ $$CH = \left( 1 - \sigma \right) . \frac{\left( w . L + p . r . K \right)}{p}$$
 
 $$L = \left( \frac{Y}{PROG^{L}} \right) . \left( \left( \varphi^{L} \right) ^ {\rho} \right) . \left( \frac{w}{\left( p . PROG^{L} \right)} \right) ^ {\left( -\rho \right)}$$
 
--   [Capital (notional level from cost minimization of a CES function ) ]{style="color: blue;"}
+-   [Capital (notional level from cost minimization of a CES function )]{style="color: blue;"}
 
 $$K^{n} = \left( \frac{Y}{PROG^{K}} \right) . \left( \left( \varphi^{K} \right) ^ {\rho} \right) . \left( \frac{\left( \delta + r \right)}{PROG^{K}} \right) ^ {\left( -\rho \right)}$$
 
@@ -470,7 +462,7 @@ $$\varDelta \left(K\right) = I_{t-1} - \delta . K_{t-1}$$
 
 $$\varDelta \left(\operatorname{log} I\right) = \varDelta \left(\operatorname{log} K^{n}_{t-1}\right) + \alpha^{I,Kn} . \operatorname{log} \frac{K^{n}_{t-1}}{K_{t-1}}$$
 
-## Comments on the Keynesian model closure  {.scrollable}
+## Comments on the Keynesian model closure {.scrollable}
 
 -   In the Keynesian closure, the wage and the interest rate are exogenous whereas labor and capital are endogenous
 -   To represent the slow adjustment of price and quantities, it is convenient to distinguish between notional and effective level\
@@ -484,21 +476,20 @@ $$\varDelta \left(\operatorname{log} I\right) = \varDelta \left(\operatorname{lo
 
 <!-- FRED: add equations -->
 
-## Data: Supply-Use (SU) and Input-Output (IO) tables  {.scrollable}
+## Data: Supply-Use (SU) and Input-Output (IO) tables {.scrollable}
 
 -   SU table says how much a given commodities is supplied by a given sector (Supply)
 
     -   Generally close to a diagonal matrix
-    
+
 -   IO table says how much a given commodities is purchased by a given sector (Demand)
 
     -   Not a diagonal matrix
 
 ![](pictures/Simplified_SU_IO.png){fig-align="center" width="80%"}
 
-## Equilibrium between Supply and Demand (use)  {.scrollable}
+## Equilibrium between Supply and Demand (use) {.scrollable}
 
 -   GDP = VA = Y -- CI = C + I + X - M
 
 ![](pictures/schema3.png){fig-align="center" width="80%"}
-
