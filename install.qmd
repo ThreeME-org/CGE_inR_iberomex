@@ -13,24 +13,26 @@ For your operating system, please install in sequence the following software:
 
 ### Windows systems
 
--   R (at least 4.4.1)
--   Rtools 44
--   R Studio (Posit)
--   Quarto (at least 1.6.32)
+-   [R (at least 4.4.1)](https://cran.rstudio.com)
+-   [Rtools 44](https://cran.rstudio.com/bin/windows/Rtools/rtools44/files/rtools44-6335-6327.exe)
+-   [R Studio (Posit)](https://download1.rstudio.org/electron/windows/RStudio-2024.09.1-394.exe)
+-   [Quarto (at least 1.6.32)](https://quarto.org/docs/get-started/)
 
 ### MacOS systems (M1 and above)
 
--   R (at least 4.4.1)
--   R Studio (Posit)
--   Quarto (at least 1.6.32)
+-   [R (at least 4.4.1)](https://cran.rstudio.com/index.html)
+-   [R Studio (Posit)](https://download1.rstudio.org/electron/macos/RStudio-2024.09.1-394.dmg)
+-   [Quarto (at least 1.6.32)](https://quarto.org/docs/get-started/)
 
 ## The CGE in R github repository
 
-The github repository is downloadable on the following link :
+The github repository (Ibero branch) is downloadable on the following link :
 
-\[REPO\]
+[Get The repo](https://github.com/ThreeME-org/CGE_in_R/archive/refs/heads/Ibero.zip)
 
-For this workshop, please use the `ibero` branch. The `main` branch is used for development and will be updated beyond this workshop if you are interested in using this for your own work.
+[View the repo on GitHub](https://github.com/ThreeME-org/CGE_in_R/tree/Ibero)
+
+For this workshop, please use the `ibero` branch. The `main` branch is used for development and will be updated beyond this workshop if you are interested in using this platform for your own work.
 
 ## R Package installation
 

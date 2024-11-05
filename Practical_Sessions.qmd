@@ -16,7 +16,7 @@ presenting the datafull output database
 
 # Introduction 
 
-## Foreword: codename *Ermeeth*
+## Foreword: codename *Ermeeth project*
 
 <br>
 
@@ -26,38 +26,42 @@ presenting the datafull output database
   + These session will only use a solver written in R that works well on small scale models
 - These practical sessions aim at giving you a preview of a workflow of model simulation and result analysis on simple models
 
-## A Standard workflow
+## A standard workflow on the Ermeeth project platform
 
-create/edit your model 
+- create/edit your model 
 
-create/edit your baseline and shock scenarios
+- create/edit your baseline and shock scenarios
 
-Prepare your config files
+- Prepare your config files
 
-Prepare your main file
+- Prepare your main file
 
-Prepare a simple .qmd output (or use a template!)
+- Prepare a simple .qmd output (or use a template!)
 
-Test it, fix errors (there is always something..)
+- Test it, fix errors (there is always something..)
 
-Run again.
+- Run simulations again.
 
-Develope more advance analysis to understand behaviours
+- Develope more advance analysis to understand behaviours
 
 
-# Session 1 
+# Practical Session 1 
 
 ## Session objectives
 
 <br>
 
 - Full software installation
+
 - Downloading the repository
+
 - Discovering the CGE in R simulation platform 
+
   + Navigating the repository structure
   + Main files presentation
   + Simulation output information
   + Quarto introduction 
+  
 - Making sure everything runs!
 
 ## Download links
@@ -83,9 +87,8 @@ Develope more advance analysis to understand behaviours
 
     
 
-# CGE in R basics
 
-## Basic folder strucure presentation 
+## Basic folder strucure presentation  {.scrollable}
 
 - The `Main_xx.R` file: this is the main simulation file
 
@@ -104,6 +107,8 @@ Develope more advance analysis to understand behaviours
   + `setup.R`: loads packages and user-made functions 
 
 ## LIVE DEMO
+
+Overview of the project folders
 
 ## Complete Exercise 1 
 
@@ -175,7 +180,11 @@ source(file.path("src","setup.R"))
 ```{r}
 #| eval: false
 #| echo: true
-#| 
+
+
+## 2. Running simulations
+
+
 data_full <- run_simulations(configuration = config)
 ```
 
@@ -186,17 +195,19 @@ data_full <- run_simulations(configuration = config)
 
 ------------------------------------------------------------------------
 
-### Step 3: Produce selected result templates (**OPTIONAL**)
+### Step 3.A: Produce selected result templates (**OPTIONAL**)
 
--   **Optional** : will run predefined quarto templates to explore simulation results
+-   **Optional**: will run predefined quarto templates to explore simulation results
 
 ```{r}
 #| eval: false
 #| echo: true
 #| 
-## 3. Produce results via quarto templates
+### 3.A Using templates 
 
 produce_quartos(Show = TRUE)
+cleanup_output(render_dir = ".") # to clean older html renders, keeping the last versions only
+
 ```
 
 -   Templates are selected in the `config_output` file
@@ -204,17 +215,24 @@ produce_quartos(Show = TRUE)
 
 ------------------------------------------------------------------------
 
-### Step 4: Render your own quarto document
+### Step 3.B: Render your own quarto document (**OPTIONAL**)
 
--   **optional**: to render a user-made quarto file to view and analyze your results.
+-   **Optional**: to render a user-made quarto file to view and analyze your results.
 
 ```{r}
 #| eval: false
 #| echo: true
-## 4. Run your own quarto here
 
-# quarto::quarto_render("wp.qmd")
+### 3.B Your own quarto file
+output_file = paste0("Results_",config$input$project_name,".html")
 
+quarto::quarto_render(input = file.path("my_quarto.qmd"),
+                      output_file = output_file,
+                      output_format = "html",
+                      execute_params = list(scenario = config$input$scenario)
+                      )
+
+browseURL(file.path("results/quarto_render/", output_file) )
 
 ```
 
@@ -222,8 +240,8 @@ produce_quartos(Show = TRUE)
 In order to use it :
 
 -   create, edit and save your own `.qmd` file (ie `my_quarto.qmd`). **Save it at the root of the folder**
--   replace `wp.qmd` by `my_quarto.qmd` in the script line
 -   execute the line to render the file.
+-   `browseURL` line will open the rendered output in your web browser
 
 
 ## Complete Exercise 2 (part 1) 
@@ -248,9 +266,10 @@ The structure of output simulations is standardised as a simple `data.frame` obj
 #| include: false
 
 library(tidyverse)
-# data_full <- readRDS("sampledata/standard_shocks.rds") |> filter(variable %in% c("GDP","LF","PVA", "PCH", "PY", "PX", "DISPINC_AT","EMS","I","X","W","CH","PM","M","I_SNF","PYM","PCI","C_L","F_L_Q","F_L_NQ","VA_SM","DISPINC_AT"))
-# saveRDS(data_full, file = "standard_shocks_lite.rds")
+
+
 data_full <- readRDS("sampledata/standard_shocks_lite.rds") 
+
 ```
 
 
@@ -354,24 +373,30 @@ This variable takes the value **1** if the scenario is baseline or **0** otherwi
 
 **The minimum observation identifier variables are : the `variable`, the `year` and the `scenario`**
 
+## `config_input` 
+
+
+## `mdl` equation files
+
+## `mdl` calib data files
 
 ## Complete Exercise 2 (part 2)
 
 -   Look into the data_full database (you can do this in the `Main_one_eq.R` file)
 
     -   Create a variable rel_diff that computes the relative difference.
-    -   Create a new data.frame that contains the GDP (`Y`) growth rate for the baseline and the shock scenario.
+    -   Compute a data.frame that contains the GDP (`Y`) growth rate for the baseline and the shock scenario.
     -   Export as a `.csv` files this database
 
 -   Locate where the `.rds` file containing all the simulations results from this project (project name `one_eq`) can be found
 
--   Create a quarto `.qmd` file that :
+-   Create a quarto `qmd` file that :
 
     -   loads the results from those simulations (project name `one_eq`)
-    -   computes the GDP growth rate for the baseline and shock scenarios
+    -   computes the growth rate for the baseline and shock scenarios
     -   makes a graph comparing those two series
 
--   In the `config_input_one_eq.R`, change the equation `.mdl` file to use `0-2-eq_basic_mod.mdl` file.
+-   In the `config_input_one_eq.R`, change the equation `.mdl` file to use `01.2-eq_basic_mod.mdl` file.
 
     -   Re-run the simulations and the outputs created.
     -   What has changed?
@@ -380,20 +405,27 @@ This variable takes the value **1** if the scenario is baseline or **0** otherwi
 
 # Practical Session 2
 
-## `config_input` 
-
-
-## `mdl` equation files
-
-## `mdl` calib data files
-
-Add example of failure to calibrate properly
 
 ## Complete Exercise 3
 
+-   Locate the Walras model equation et calibration files
+
+-   Make a copy of the `Main.R`, `config_input_MODEL.R` and `config_output_MODEL.R` files, with a relevant suffix (ie `Main_s.R`)
+
+-   Edit your newly created config_input file:
+
+    -   Change the `project_name` argument to something more relevant
+    -   Call the correct `mdl` files
+    -   Call upon the correct configuration files in your new main file
+    -   Keep the same shock scenario for now
+
+-   Run the simulations with the basic result template.
+
+- Repeat the procedure, this time using the basic Keynes model files. Compare the outputs from the `basic_results` template.
 
 # Results visualisation functions
 
+## `config_output`: How to use templates
 
 ## Results analysis: `simpleplot` function
 
@@ -456,7 +488,7 @@ simpleplot(data = data_full,  transformation = "diff", series = "Y", label_serie
 
 ```
 
-## *`simpleplot`*: plot the variable "Y" in [growth rate]{style="color:red;"} (Option 4)
+## *`simpleplot`*: plot the variable "Y" in [growth rate]{style="color:red;"} (Option 4) {.scrollable}
 
 -   The growth rate (over time) of Y is calculated using the following formula: \begin{equation}
     gr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}
@@ -465,6 +497,14 @@ simpleplot(data = data_full,  transformation = "diff", series = "Y", label_serie
     \end{equation}
 
 -   By growth rate, we mean annual percentage change
+
+
+-   The growth rate (over time) of Y is calculated using the following formula: \begin{equation}
+    gr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}
+    \end{equation} \begin{equation}
+    gr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}
+    \end{equation}
+
 
 -   To plot the variable "Y" in growth rate to the baseline scenario, set `transformation = "gr"` as shown in the following code:
 
@@ -514,7 +554,7 @@ ggarrange(A,B,
 
 ```
 
-## making tables
+## Making tables
 
 ## TeXdoc
 
@@ -540,40 +580,61 @@ make_eq_qmd(preface = file.path("results_side_files",  "model-eq_preface.tex"),
 ```
 
 
-## Complete Exercise 4
+## Complete Exercise 4 {.scrollable}
+
+-   Create your quarto file and create graphs using shortcut plotting functions
+
+    -   `simple_plot()`
+    -   `contrib_plot()`
+
+-   Enable the use of the Texdoc template and model_info templates in the `config_output` to generate the equations list for your model.
+
+-   Include the equation index generated by TeXdoc in your newly created `.qmd`
+
+-   Create a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here's a few steps to help you achieve this:
+
+-   *Identify the year of the shock*
+
+-   *identify the year that correspond to $t+2$, $t+3$, $t+10$ and $t+50$ where $t$ is the year of the initial shock.*
+
+-   *Create a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired*
+
+-   *reorginize your data.frame to format nicely*
+
+- Use your new `.qmd` to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.
+
+# Workshop day one completed !
 
 
+<!-- # Practical Session 3 -->
+
+<!-- ## Complete Exercise 5  -->
+
+<!-- It's ok if not the last question -->
 
 
-# Practical Session 3
+<!-- ## Making 2_calib_shock files -->
 
-## Complete Exercise 5 
+<!-- ## Possibly changing the baseline calibration 1_calib_baseline -->
 
-It's ok if not the last question
+<!-- ## Exercise 6 part 1 -->
 
+<!-- Look at graphs with multiple scenarios -->
 
-## Making 2_calib_shock files
+<!-- ## Exercise 6 part 2 -->
 
-## Possibly changing the baseline calibration 1_calib_baseline
+<!-- # Practical Session 4 -->
 
-## Exercise 6 part 1
+<!-- ## Lists `.mdl` file -->
 
-Look at graphs with multiple scenarios
+<!-- ## Sector specific equations -->
 
-## Exercise 6 part 2
-
-# Practical Session 4
-
-## Lists `.mdl` file
-
-## Sector specific equations
-
-## Do Exercise 7 part 1
+<!-- ## Do Exercise 7 part 1 -->
 
 
-## Graphs for sectors
+<!-- ## Graphs for sectors -->
 
-## Do Exercise 7 part 2
+<!-- ## Do Exercise 7 part 2 -->
 
 
 
