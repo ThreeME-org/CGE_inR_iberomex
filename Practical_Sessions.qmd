@@ -8,6 +8,7 @@ author:
   - Frédéric Reynès 
   - Anissa Saumtally
 format: pres-revealjs
+    
 toc: false
 eval: false
 ---
@@ -27,6 +28,8 @@ eval: false
 - These practical sessions aim at giving you a preview of a workflow of model simulation and result analysis on simple models
 
 ## A standard workflow on the Ermeeth project platform
+
+<br>
 
 - create/edit your model 
 
@@ -68,7 +71,7 @@ eval: false
 
 <br>
 
-- Please go to [https://ThreeME-org.github.io/CGE_inR_iberomex/install]() 
+- Please go to (https://ThreeME-org.github.io/CGE_inR_iberomex/install)[]
   + Download and install the 3/4 softwares linked
   + Download the repository  off GitHub (no account necessary)
   + Package installation 
@@ -87,8 +90,22 @@ eval: false
 
 ## Quarto introduction
 
-For these works, we heavily re
 
+For result analysis, we use [Quarto](https://quarto.org/docs/guide/). It's a markdownbased format that allows to easily integrate code and text with additional syntax for more complex content, like code blocks, citations, and equations, which makes it accessible for both technical and non-technical users.
+
+  - **Open-source Publishing Tool**: Quarto is an open-source, next-generation publishing tool that allows users to create and publish documents, reports, presentations, websites, blogs, and more.
+  
+  - **Supports Multiple Formats**: It seamlessly integrates with a variety of output formats, including HTML, PDF (typst, $\LaTeX$), Word, and ePub, making it versatile for creating different types of content.
+  
+  - **Multiple programming languages **: While it has strong support for R and Python, Quarto also works well with other programming languages.
+  
+  - **Data Visualization and Analysis**: It enables the integration of live code, allowing users to generate and update visualizations and analyses directly in the document, which is ideal for reproducible research.
+  
+- **Customizable and Extensible**: With options for custom styling, templates, and themes, 
+
+## LIVE DEMO {.center}
+
+**Basic steps to creating a quarto file**
 
 ## Basic folder strucure presentation  {.scrollable}
 
@@ -108,7 +125,7 @@ For these works, we heavily re
   + `functions_src`: contains user-made, not yet packaged functions. Users may create their own functions and store them in this folder to call upon them automatically.
   + `setup.R`: loads packages and user-made functions 
 
-## LIVE DEMO
+## LIVE DEMO {.center}
 
 **Overview of the project folder structure**
 
@@ -375,12 +392,323 @@ This variable takes the value **1** if the scenario is baseline or **0** otherwi
 
 **The minimum observation identifier variables are : the `variable`, the `year` and the `scenario`**
 
-## `config_input` 
+- to extract data use `dplyr::filter`
 
+```{r}
+#| echo: true
+#| code-fold: true
+#| 
+data_full |> filter(variable %in% "CH") |>  filter(scenario %in% "ct1")
+
+
+```
+
+- to create new variable, transform the data in *wide format*, make your transformations, and turn it back into *long format* [Advanced, for next session]
+ 
+
+
+## `config_input`: to specify the parameters of the simulation {.center}
+
+- To configure the simulation, use the `config_input_MODEL.R` found in the `configuration` folder.
+
+ `config_input_MODEL.R` is meant to be a template, so it is advised to make a copy for your own usage.
+ 
+
+## `config_input`: Structure of the file - Basic parameters {.scrollable}
+
+
+
+The first section of the `config_input` file contains the basic parameters that need to be adapted for each simulation :
+
+  - `iso3`: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question          
+  - `classification`: if using a ThreeME model number of commodities and sectors with the following format `cx_sy` where `x` is the number of commodities and `x` the number of sectors. Check that the desired classification exists in the mdl files
+  - `model_folder`: the folder where to find the `mdl` files (either `training` or `threeme` usually)
+  - `project_name`: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only
+  - `scenario_baseline` : Name of the baseline scenario. By default it is "baseline-steady". It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables.  All scenarii files are located in configuration/scenarii_calib
+  - `scenario`: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the `configuration/scenarii_calib` folders. Scenario naes must be alphanumeric and underscores in lowercase only. The `scenario` parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.: 
+  
+```{r}
+  scenario = c("ct1", "expg1") |> 
+  set_names(c("Increase of carbon tax  ","Increase in government spending of 1% of GDP"))
+```
+  
+
+  - `baseyear`: Input the base year used for the calibration data 
+  - `lastyear`: Last year of the simulations
+  - `shockyear`: year of the shock. This is an optional parameter that can be called upon when calibrating shocks
+  - `max_lags`: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.
+  - `firstyear`: By default this is `baseyear - max_lags` (rarely needs to be modified)
+  - `automated_shocks`: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (*needs further documentation*)
+ - `variables_to_keep`: Vector of variables to keep in the output. Input an empty vector (`c()`) in order to keep all variables.
+
+## `config_input`: Structure of the file - Model file lists 
+
+The second sections contains `mdl` file lists. In three parts, there are:
+
+  - `list_files` : basic files (maily for ThreeME, does not need to be modified)
+  - `calib_files`: `mdl` files that contain data calibration equations
+  - `model_files`: `mdl` files that contain the models equations. 
+  
+  
+
+::: {.panel-tabset}
+
+#### Training model 
+
+```{r}
+#| echo: true
+#| code-overflow: scroll
+#| 
+lists_files <- c(
+  "lists.mdl" 
+)
+
+## Calibration files
+calib_files <- c(lists_files,
+                 "03.1-calib.mdl",     # Close economy
+                 "03.2-calib.mdl",     # Open economy
+                 
+                 "ENDOFLINE.mdl"       # ALL VERSIONS: empty file
+                 
+)
+
+# Model files 
+model_files = c(lists_files,
+                
+                "03.1-eq.mdl",         # Close economy 
+                "03.2-eq.mdl",         # Close economy
+                
+                "ENDOFLINE.mdl"        # ALL VERSIONS: empty file
+                
+)
+```
+
+
+
+#### ThreeME model
+
+```{r}
+#| echo: true
+#| code-overflow: scroll
+#| 
+
+## Lists files (warning: if more than one, place "lists.mdl" last)
+lists_files = c(
+    str_c("R_lists_", iso3,"_",classification, ".mdl"),             # ALL VERSIONS
+    "lists.mdl"                                                     # ALL VERSIONS
+  )
+
+## Calibration files (used to initialize variables)
+calib_files = c(lists_files,
+  str_c("data/R_Calibration_", iso3,"_",classification,"_",baseyear, ".mdl"),   # ALL VERSIONS
+  "data/parameters.mdl",                     # ALL VERSIONS
+     
+  ## Calibration of elasticity of substitutions (Producer)
+  "data/elasticities.mdl",                   # ALL VERSIONS
+  "data/Exception_NestedCES_data.mdl",     # NESTED CES (PRODUCER) VERSION
+  "data/round0.mdl",                         # ALL VERSIONS
+  "data/Prices_data.mdl",                    # ALL VERSIONS
+  "data/SU_data.mdl",                        # ALL VERSIONS
+  "data/Special_data.mdl",                   # ALL VERSIONS
+  "data/Other_data.mdl",                     # ALL VERSIONS
+  "data/Exception_taxes_prices_data.mdl",    # ALL VERSIONS (when commodity tax rate per user)
+  
+  ## Optional Consumer blocks
+  # "data/Exception_ConsumerNested_data.mdl",  # NESTED CES (CONSUMER) VERSION
+
+  "data/Exception_Other_data.mdl",           # ALL VERSIONS
+  # "data/Exception_energybalance_simple.mdl",  # ALL VERSIONS: Only net energy production (Y_TOE). Gross primary energy 
+  
+  "ENDOFLINE.mdl"                          # ALL VERSIONS
+)
+
+# Model files 
+model_files = c(lists_files,
+  "SU.mdl",                     # ALL VERSIONS 
+  "Prices.mdl",                 # ALL VERSIONS
+  "Producer.mdl",               # ALL VERSIONS
+  "Consumer.mdl",               # ALL VERSIONS
+  "Government.mdl",             # ALL VERSIONS
+  "Trade_inter.mdl",            # ALL VERSIONS
+  "Demography.mdl",             # ALL VERSIONS
+  "Adjustments.mdl",            # ALL VERSIONS
+  "Verif.mdl",                  # ALL VERSIONS
+  "ghg_emissions.mdl",          # ALL VERSIONS
+  
+  # Option energy balance blocks
+  "energybalance.mdl",          # ALL VERSIONS
+
+  ## Exception files ALWAYS at the end because of the @overs
+  # "Exception_taxes_prices.mdl",           # ALL VERSIONS
+  "Exception_taxes_prices_new.mdl",           # New version where taxes are divided by different users
+  # "Exception_NestedCES.mdl",            # NESTED CES (PRODUCER) VERSION
+  # "Exception_ConsumerNested.mdl",       # NESTED CES (CONSUMER) VERSION
+
+  "Exception_Other.mdl",                   # ALL VERSIONS
+  
+  
+  "ENDOFLINE.mdl"                          # ALL VERSIONS
+)
+
+```
+
+:::
+
+## `config_output`: to specify output templates  to analyse the simulation resutls
+<br>
+
+`config_output.R` is used to produce pre-programmed result templates. The templates are located in the `results/quarto_templates`. 
+
+-Quarto templates are not meant to be rendered directly due to their location in the folder, which makes accessing dependencies rather complicated. Instead, to use templates, we use the function `produce_quartos()` that calls upon the parameters found in the `config_output` file.
+
+- To configure the simulation, use the `config_output_MODEL.R` found in the `configuration` folder.
+
+- `config_output_MODEL.R` is meant to be a template, so it is advised to make a copy for your own usage.
+ 
+## `config_output` -  File Structure
+
+Divided in two parts:
+
+#### designation of templates to produce
+
+  
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Templates to call"
+quartos_to_render <-list(
+  
+  basic_results = FALSE,
+  texdoc = FALSE,
+  model_info = TRUE,
+  sectoral_results = FALSE
+  
+)
+
+```
+
+#### Templates parameters
+
+For each template available, each parameters from their respective YAML is listed and can be modified as such. Objects from the input configuration can be used by simply stating their name as in the example for `basic_results`.
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Templates parameters"
+#| code-overflow: scroll
+#| 
+
+
+quartos_parameters <- list(
+  
+  basic_results = list(
+    project_name = project_name,
+    startyear = 2019,
+    shockyear = shockyear,
+    endyear = lastyear,
+    scenarios = unname(scenario)  # List of scenarii to be plotted
+  ),
+  
+  texdoc = list(
+    
+    project_name = project_name,
+    texdoc_mdls = "default",
+    texdoc_exovar = "03.2-exovar.mdl",
+    model_files = model_files,
+    mdl_folder = model_folder
+  ),
+  
+  model_info = list(
+    baseyear =  baseyear,
+    lastyear = lastyear,
+    classification = classification,
+    scenario_baseline = scenario_baseline,
+    shocks = scenario,
+    calib_files = calib_files,
+    model_files = model_files,
+    rsolver =  Rsolver,
+    project_name = project_name
+  ),
+  
+  
+  sectoral_results = list(
+    project_name = project_name
+  )
+
+  
+  
+  )
+```
 
 ## `mdl` Equation files
 
+<br>
+
+  - They contain the equations of the model
+  - can be organised in any order
+  - first variable that appears on the LHS is the endogenous variable determined by the model
+  - simple syntax
+  - can be organised in sections
+  
+```{r}
+#| echo: true
+#| code-overflow: scroll
+
+##### Endogenous variables' equations
+
+##! Investement
+I = Y - CH - G
+
+##! Production (GDP)
+Y * p = w*L + p*(delta + r)*K
+# Y = ((Phi_L * (L*PROG_L) ^ ((rho-1)/rho )) + (Phi_K * (K*PROG_K) ^ ((rho-1)/rho )))^(rho/(rho-1))
+# Mettre alternative possible: Fonction de production directement
+
+##! Households'consumption
+ CH = (1 - sigma) * (w*L + p*r*K) / p
+# d(log(CH)) = d(log(Y{-1}))
+
+##! Wage (from cost minimization assuming a CES function)
+w + L = ((Y / PROG_L) * ((Phi_L) ^ rho) * (w/(p * PROG_L)) ^ (-rho)) + w
+# w / (p * PROG_L) = Phi_L * (Y / (L * PROG_L)) ^ (1 / rho)
+ 
+
+##! Interest rate (from cost minimization assuming a CES function)
+r + K = ((Y / PROG_K) * ((Phi_K) ^ rho) * ((delta + r)/PROG_K) ^ (-rho)) + r
+# (r + delta)/PROG_K  = Phi_K * (Y / (K * PROG_K)) ^ (1/rho)
+
+##! Capital (from accumulation equation)
+d(K) = I{-1} - delta * K{-1}
+
+##! Price 
+p = 1
+
+
+```
+  
+  
+
 ## `mdl` Data calibration files
+
+<br>
+
+- Data calibration files are used to determine the value at the baseyear of endogenous variables, and the default values of exogenous variables
+
+
+
+
+
+## Calibration error
+
+<br>
+
+Change the calibration for public expenditure and have a look at the calibration error.
+
+-   Change in the calibration file "01.1-calib.mdl" the value of G. Put **G := 26** instead of **G : = 15**\
+-   Save the calibration file.
+-   Run the `main`
+
+**What do you notice?**
 
 
 
@@ -531,7 +859,7 @@ simpleplot(data = data_full,  transformation = "gr", series = "Y", label_series 
 contrib_comp <- c( "CH", "I", "G")
 contrib_comp_label <- c("Households consumption", "Investment", "Public spending")
 
-data_plot <-  contrib(data_full,"Y", contrib_comp, scenar = c("baseline",scenario_name))
+data_plot <-  contrib_longformat(data_full,"Y", contrib_comp, scenar = c("baseline",scenario_name))
 
 A <- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,
              startyear = 2020, titleplot = "Contributions to change in GDP", line_tot = TRUE)
@@ -558,21 +886,61 @@ ggarrange(A,B,
 
 ```
 
-## Making tables
+## Summary tables
+
+<br>
+
+With the `dplyr` package, it can be easy to modify `data_full` in order to synthetize results.
+
+<br>
+We provide two functions `table_macro()` and `table_reference()` that yield automated raw tables (`tibbles`) that can later on be formatted with packages such as `gt` or `flextable`.
+
+  - `table_reference()`  produces results for a given scenario independently (growth rates, levels...)
+  - `table_macro()`  produces results for a given scenario in relative to the `baseline` scenario
+  
+
+See `basic_results` template for examples of usage.
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "table_macro arguments"
+
+
+table_macro <- function(data,
+                        shock = "ct1",
+                        relative_variation = NULL,
+                        level_diff = NULL,
+                        percent_diff = NULL,
+                        order = NULL,
+                        time_vector = if(exists("time_waypoints")){time_waypoints}else{c(1,2,3,5,10,30,60)},
+                        end_year = 2050,
+                        shock_year = 2021,
+                        digits_numb = 2
+)
+
+```
 
 ## TeXdoc
 
 - TeXdoc is function that reads `mdl` files to translate the equations into LaTeX code in order to retranscribe them in documents is a more legible manner.
+
   + Not perfect yet!
   + Quite sensitive to how `mdl` files are written, especially when it come to sectionning text
-- We added a functionnality that transforms the `tex` output into a `qmd` output that can be called upon 
+  
+- We added a functionnality that transforms the `tex` output into a `qmd` output that can be called upon in qmd
+
+
   
 ```{r}
 #| eval: false
+#| echo: true
+#| code-fold: true
+#| code-summary: "TeXdoc syntax"
 
-# 4. Compile the documentation of the model from equations
 
-teXdoc(sources   = c("02.1-eq.mdl"),
+teXdoc(     sources   = c("02.1-eq.mdl"),
             exo       = c("02.1-exovar.mdl"),
             base.path = file.path("src","model","training"),
             out       = "model-eq",
@@ -585,6 +953,22 @@ make_eq_qmd(preface = file.path("results_side_files",  "model-eq_preface.tex"),
 
 
 ```
+
+The output generated are $\LaTeX$ files as well as `.qmd` that may be included in other reports, found in the `results\quarto_render` folder:
+  
+    - equation file
+    - exogenous file
+    - glossary file
+
+To facilitate the usage, quarto template is available that can be called from `config_output`
+
+
+## Live Demo {.center}
+
+**TeXdoc files**
+
+**TeXdoc quarto template**
+
 
 
 ## Complete Exercise 4 {.scrollable}
