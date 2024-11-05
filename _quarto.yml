@@ -19,7 +19,7 @@ website:
         text: Program
       - href: install.qmd
         text: Get started 
-      - href: team.qmd
+      - href: theory.qmd
         text: Lectures slides
       - href: Exercises_short.qmd
         text: Practical exercices
