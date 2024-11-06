@@ -1255,22 +1255,19 @@ c in %list_com
 
 ```
 
-## Classification
-
-*Optional*
-
-When using multiple sectors, the `classification` parameter tells the model where to find the sector and commodities names, if the suffixes used start with `c` or `s` 
 
 ## Do Exercise 7 part 1
+
+<br>
+
 - Using the `01.1_eq_one_eq.mdl` model, add an equation to allow for 2 types of goods to be consumed.
 - Check that the simulations run for a `c2_s2` classification, and then a `c4_s4` classification.
 - What do you notice in terms of model size?
 
-### Part 2
-
-
 
 ## Do Exercise 7 part 2
+
+<br>
 
 - Locate the mutlisectoral `.mdl` files. 
 - Do the necessary to run simulation on a increase in public expenditure scenario in this scenario
