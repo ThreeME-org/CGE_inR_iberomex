@@ -27,6 +27,53 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Welcome {.center} 
+
+:::: {.columns}
+
+::: {.column width="40%" .center}
+
+<br>
+
+![](pictures/Logohacienda.png){fig-align="center" fig-width=30%}
+
+:::
+
+::: {.column width="30%"}
+
+<br>
+<br>
+<br>
+<br>
+
+![](pictures/AFD_logo.png){fig-align="center" fig-width=30%}
+
+
+
+
+:::
+
+::: {.column width="30%"}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+![](pictures/ofce_m.png){fig-align="center" fig-width=30%}
+![](pictures/sciencespo.png){fig-align="center" fig-width=30%}
+
+:::
+
+::::
+
+
+
 ## The ThreeME model   {.scrollable}
 
 -   **M**ulti-sector **M**acroeconomic **M**odel for the **E**valuation of **E**nvironmental and **E**nergy policy
