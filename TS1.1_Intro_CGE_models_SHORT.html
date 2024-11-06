@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="fr"><head>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/tabby.min.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-html-68b329da9893e34099c7d8ad5cb9c940.min.css" rel="stylesheet" append-hash="true" data-mode="light">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.9">
+<link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-contrib/reveal-auto-agenda-0.0.1/reveal-auto-agenda.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.53">
 
-  <title>CGEs in R - Workshop – neo keynesian and running shocks</title>
+  <meta name="author" content="Frédéric Reynès and Anissa Saumtally">
+  <title>CGEs in R - Workshop – quarto-inputf3e7a61836150b98</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,7 +33,8 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2e34f1876057a9fdd171e1a563180e8c.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -325,19 +330,304 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">neo keynesian and running shocks</h1>
+  <h1 class="title"><div class="line-block"><span style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;">Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R</span><br>
+<span style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;">Universidad Iberoamericana Ciudad de México</span><br>
+<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Theory Session 1.1</span><br>
+<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Introduction to CGE models and their usage</span><br>
+</div></h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Frédéric Reynès and Anissa Saumtally 
+</div>
+</div>
 </div>
 
+  <p class="date">lundi 4 novembre 2024</p>
 </section>
-<section id="objectives" class="slide level2">
-<h2>objectives</h2>
-<p>create modify shocks create new shocks multiple shocks analysis compare 2 different models</p>
+<section id="the-threeme-model" class="slide level2">
+<h2>The ThreeME model</h2>
+<ul>
+<li><p><strong>M</strong>ulti-sector <strong>M</strong>acroeconomic <strong>M</strong>odel for the <strong>E</strong>valuation of <strong>E</strong>nvironmental and <strong>E</strong>nergy policy</p></li>
+<li><p>Macroeconomic multi-sector model with neo-keynesian features</p>
+<ul>
+<li>Avoid the limitations of standard CGE models
+<ul>
+<li>Say something about the medium term (not only the long term)</li>
+<li>More realistic results for policy makers</li>
+</ul></li>
+<li>Similar dynamic and long term properties than the macroeconomic models used in Economic ministries and forecasting departments</li>
+</ul></li>
+<li><p><strong>Open source</strong> model: www.threeme.org</p>
+<ul>
+<li>To avoid usual criticisms on models: black-box, impossible to verify independently the results, too few users</li>
+<li>Make application to other countries and by other institutions easier: EU, Mexico &amp; Indonesia (AFD); Tunisia (UNEP), UK (OECD), Luxembourg (Statec), DG Trésor</li>
+</ul></li>
+</ul>
+</section>
+<section id="multisector-model" class="slide level2">
+<h2>Multisector model</h2>
+<ul>
+<li><p>n sectors (e.g.&nbsp;France: n = 37; Tunisia: n = 21, Mexico: n = 24, Luxembourg: n = 26)</p></li>
+<li><p>Allows to analyze the effect of transfer of activities from one sector to another on:</p>
+<ul>
+<li>Employment, due to different labor intensity</li>
+<li>Investment, due to different capital intensity</li>
+<li>Energy consumption, due to different energy intensity</li>
+<li>Trade balance, due to different propensity to import and export</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-of-sectoral-decomposition" class="slide level2">
+<h2>Example of sectoral decomposition</h2>
+<ul>
+<li><p>The economy is disaggregated into 27 sectors, with in particular:</p>
+<ul>
+<li>4 transport sectors</li>
+<li>12 energy sectors
+<ul>
+<li>Of which 10 technologies for the production of electricity</li>
+</ul></li>
+</ul></li>
+<li><p>And 23 commodities</p>
+<ul>
+<li>A commodity can be produced by several sectors
+<ul>
+<li>Ex: electricity</li>
+</ul></li>
+</ul></li>
+<li><p>The disaggregation is a compromise between the availability of the national account and energy data and the objective of the model</p></li>
+<li><p>Several sectors have to be disaggregated</p>
+<ul>
+<li>Electricity and gas</li>
+<li>Transport</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-of-sectoral-decomposition-1" class="slide level2">
+<h2>Example of sectoral decomposition</h2>
+
+<img data-src="pictures/desagregation.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="focus-on-energy" class="slide level2">
+<h2>Focus on energy</h2>
+<ul>
+<li><p>The energy disaggregation allows for analyzing the energy behavior of economic agents:</p>
+<ul>
+<li><strong>Sectors</strong> can arbitrate between different energy investments:
+<ul>
+<li>Substitution between capital &amp; energy when the relative energy price increases</li>
+<li>Substitution between energy sources</li>
+<li>Substitution between transports</li>
+<li>Endogenous energy efficiency: technical progress increases when the relative energy price increases</li>
+</ul></li>
+<li><strong>Consumers</strong>
+<ul>
+<li>Substitution between capital &amp; energy</li>
+<li>Substitution between energy sources</li>
+<li>Substitution between transports</li>
+<li>Substitution between goods</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="type-of-simulation-of-the-economic-and-environmental-impact" class="slide level2">
+<h2>Type of simulation of the economic and environmental impact</h2>
+<ul>
+<li><p>Energy transition policies</p>
+<ul>
+<li>Fiscal policies:
+<ul>
+<li>Carbon tax with or without redistribution of the tax revenue</li>
+<li>Phasing out subsidies on (fossil fuel) energy</li>
+<li>Bonus-malus for cars: subsidies on green cars financed by a tax on other cars</li>
+</ul></li>
+<li>Change in the electricity production mix
+<ul>
+<li>Ex: more RES in the mix</li>
+</ul></li>
+<li>Impact of green investment
+<ul>
+<li>In buildings, public transport, etc.</li>
+<li>Impact of applying a new standard for buildings, or appliances</li>
+</ul></li>
+</ul></li>
+<li><p>External shock</p>
+<ul>
+<li>Increase in international oil/gas price</li>
+</ul></li>
+</ul>
+</section>
+<section id="cge-model" class="slide level2">
+<h2>CGE model</h2>
+<ul>
+<li><p><strong>Computable:</strong> numerical simulation</p></li>
+<li><p><strong>General:</strong> take into account the interactions between markets.</p>
+<ul>
+<li>Supply and demand influence each other</li>
+</ul></li>
+<li><p><strong>Equilibrium:</strong> Supply is equal to demand on all markets (good, production factors)</p></li>
+<li><p>Structure of a CGE model (see next Figure):</p>
+<ul>
+<li>Demand (Consumption, investment) defines the supply (production)</li>
+<li>Supply defines in return the demand through the incomes generated by the production factors</li>
+</ul></li>
+</ul>
+</section>
+<section id="cge-model-1" class="slide level2">
+<h2>CGE model</h2>
+
+<img data-src="pictures/schema.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="what-does-general-equilibrium-mean" class="slide level2">
+<h2>What does « general equilibrium » mean?</h2>
+<ul>
+<li><p>General Equilibrium relates to a state where supply is equal to demand in all markets</p></li>
+<li><p>2 main approaches to insure this state:</p>
+<ul>
+<li><strong>Walrasian</strong> models
+<ul>
+<li><p>The equilibrium force is the price system</p></li>
+<li><p>Perfect price flexibility insure the instantaneous equilibrium between supply and demand</p></li>
+<li><p>When the supply of a commodity goes down, its price tends to go up, thereby stimulating additional supply and depressing demand, until supply and demand are equal again.</p></li>
+<li><p>Static model</p></li>
+</ul></li>
+<li><strong>Neo-Keynesian</strong> models
+<ul>
+<li>Demand determines supply</li>
+<li>Price and quantities are rigid and adjust slowly</li>
+<li>Disequilibrium between notional (optimal) supply and the actual supply in the short run</li>
+<li>Dynamic model: transition to the long run</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="a-neo-keynesian-cge-model" class="slide level2">
+<h2>A neo-keynesian CGE model</h2>
+<ul>
+<li><p><strong>Slow adjustment</strong> of price and quantity</p>
+<ul>
+<li>Adjustment costs</li>
+<li>Empirically firms adjust their production to the demand rather than their price</li>
+</ul></li>
+<li><p>Leads to situation of <strong>disequilibrium</strong> between the desired supply and demand</p></li>
+<li><p><strong>Prices</strong> are defined as a mark-up over the firm’s production costs</p>
+<ul>
+<li>Production costs integrate intermediary consumption (material and energy), labor and capital costs</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-neo-keynesian-cge-model-1" class="slide level2">
+<h2>A neo-keynesian CGE model</h2>
+<ul>
+<li><p>Wages are determined by a <strong>Wage Setting (WS) curve</strong></p>
+<ul>
+<li>Phillips curve: wages increase with inflation and decrease with unemployment</li>
+<li>Wages do not adjust instantaneously the supply and demand for labor:
+<ul>
+<li>Permanent underemployment equilibrium possible</li>
+<li>Theory of the NAIRU (Non Accelerating Inflation Rate of Unemployment) or Equilibrium rate of unemployment</li>
+</ul></li>
+</ul></li>
+<li><p>The <strong>interest rate</strong> does not equilibrate instantaneously saving and investment:</p>
+<ul>
+<li>It is defined by the Central Bank</li>
+<li>« Taylor » reaction function: increases with inflation, decreases with unemployment</li>
+</ul></li>
+</ul>
+</section>
+<section id="key-properties-of-threeme" class="slide level2">
+<h2>Key properties of ThreeME</h2>
+<ul>
+<li><p><strong>General equilibrium effects</strong></p>
+<ul>
+<li>Supply influence demand and vice versa</li>
+</ul></li>
+<li><p><strong>Direct and indirect effects</strong> of the energy transition</p>
+<ul>
+<li>Direct effects: impact for the energy sectors</li>
+<li>Indirect effects: impact for the rest of the economy (in particular the other sectors, the government, households).</li>
+</ul></li>
+<li><p><strong>Limited eviction effects</strong></p>
+<ul>
+<li>Investment is not only defined by saving</li>
+<li>The financing through bank credit does not necessary lead to an increase of the interest rate</li>
+<li>The augmentation of investment in one sector is not necessary achieved through a decrease of investment in other sectors</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-value-added-compared-to-existing-models" class="slide level2">
+<h2>The value-added compared to existing models</h2>
+<ul>
+<li><p>Sectorial disaggregation</p>
+<ul>
+<li>Make explicit the negative and positive impacts for each sector according to its own specificities.<br>
+</li>
+</ul></li>
+<li><p>High technological disaggregation of the energy system</p>
+<ul>
+<li>Ex: electricity produced by several technology</li>
+<li>Each technology having their own cost and production function</li>
+<li>Link between economic activity, energy production in physical terms (Mtoe or Mwh) and CO2 emissions more accurate.</li>
+</ul></li>
+<li><p>General Equilibrium</p>
+<ul>
+<li>Allows for taking into account of indirect and feedback effects (rebound effects)</li>
+</ul></li>
+<li><p>Neo-keynesian features</p>
+<ul>
+<li>Allows for studying transition and disequilibrium phases (such underemployment)</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-value-added-compared-to-existing-models-1" class="slide level2">
+<h2>The value-added compared to existing models</h2>
+<ul>
+<li><p>Hybrid modelling</p>
+<ul>
+<li>Link bottom-up and top-down approaches</li>
+<li>Detailed energy technologies and coherent macroeconomic framework</li>
+</ul></li>
+<li><p>Possibility of combination with an energy system model</p>
+<ul>
+<li>The bottom-up development of the energy sectors makes it possible to combine ThreeME with an energy system model without loss of relevant information</li>
+<li>Assessment of scenarios compatible with the technical constraints regarding the feasible energy mix.</li>
+</ul></li>
+</ul>
+
+<img data-src="pictures/schema2.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="data-supply-use-su-and-input-output-io-tables" class="slide level2">
+<h2>Data: Supply-Use (SU) and Input-Output (IO) tables</h2>
+<ul>
+<li><p>SU table says how much a given commodities is supplied by a given sector (Supply)</p>
+<ul>
+<li>Generally close to a diagonal matrix</li>
+</ul></li>
+<li><p>IO table says how much a given commodities is purchased by a given sector (Demand)</p>
+<ul>
+<li>Not a diagonal matrix</li>
+</ul></li>
+</ul>
+
+<img data-src="pictures/Simplified_SU_IO.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="equilibrium-between-supply-and-demand-use" class="slide level2">
+<h2>Equilibrium between Supply and Demand (use)</h2>
+<ul>
+<li>GDP = VA = Y – CI = C + I + X - M</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="pictures/schema3.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
 
 <div class="quarto-auto-generated-content">
+<p><img src="_extensions/ofce/pres/ofce_m.png" class="slide-logo"></p>
 <div class="footer footer-default">
-
+<p><span style="color: blue;font-size: 0.5em;letter-spacing: 1px;line-height: 0.25;">Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R</span><br>
+<span style="color: grey;font-size: 0.35em;letter-spacing: 1px;line-height: 0.25;">Universidad Iberoamericana Ciudad de México</span><br>
+<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Theory Session 1.1</span><br>
+<span style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;">Introduction to CGE models and their usage</span><br>
+<i class="fa-solid fa-ellipsis" aria-label="ellipsis"></i> </p>
 </div>
 </div>
 </section>
@@ -392,7 +682,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -497,10 +787,10 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+        transitionSpeed: 'fast',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
@@ -551,6 +841,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
@@ -591,12 +957,12 @@
         // flash "checked"
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
+        button.setAttribute("title", "Copié");
         let tooltip;
         if (window.bootstrap) {
           button.setAttribute("data-bs-toggle", "tooltip");
           button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
+          button.setAttribute("data-bs-title", "Copié");
           tooltip = new bootstrap.Tooltip(button, 
             { trigger: "manual", 
               customClass: "code-copy-button-tooltip",
@@ -640,7 +1006,7 @@
       }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/ThreeME-org\.github\.io\/CGE_inR_iberomex\/");
+          var filterRegex = new RegExp('/' + window.location.host + '/');
         var isInternal = (href) => {
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }

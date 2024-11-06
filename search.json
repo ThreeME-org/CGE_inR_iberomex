@@ -1,5 +1,152 @@
 [
   {
+    "objectID": "TS1.2_Intro_tools.html#software-installation-and-tutorial",
+    "href": "TS1.2_Intro_tools.html#software-installation-and-tutorial",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Software installation and tutorial",
+    "text": "Software installation and tutorial\nPlease refer to the instruction page for this session to access the different links\nGithub (optional)\nR\nRtools43 (if using windows)\nQuarto"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#understanding-the-main.r-script-structure",
+    "href": "TS1.2_Intro_tools.html#understanding-the-main.r-script-structure",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Understanding the Main.R script structure",
+    "text": "Understanding the Main.R script structure\nMain.R script is built on four steps.\nStep 0: Setup\n\nresets the R environment\nloads the necessary libraries and custom functions\nreads the simulation configurations (input and output) into the config list.\n\n\n## 0. Setup\nrm(list = ls())\nsource(file.path(\"src\",\"setup.R\"))\n\n\n  config &lt;- readconfig(input_config_file = file.path(\"configuration\", \"config_input_threeme.R\") ,\n                      output_config_file = file.path(\"configuration\", \"config_output_threeme.R\")\n                     )\n\nStep 1: Calibration bubble\n\noptional: by default deactivated\nFacilitate the calibration of scenarios\n\n\n## 1. OPTIONAL Prepare the baseline and/or shock calibration file , uncomment the lines\n\n# ## &gt;&gt;&gt;&gt;&gt;&gt;&gt; uncomment start\n# calibration_bubble &lt;- calibration_environment(baseline_calibration = FALSE)\n# list2env(calibration_bubble, envir = globalenv())\n# ### You may now open the relevant scenario config file to edit and test it\n# rm(list = names(calibration_bubble))\n# ## &lt;&lt;&lt;&lt;&lt;&lt;&lt; uncomment end"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#structure-of-the-config_input-file",
+    "href": "TS1.2_Intro_tools.html#structure-of-the-config_input-file",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Structure of the config_input file",
+    "text": "Structure of the config_input file\nBasic parameters\nThe first section defines the basic parameters that need to be adapted for each simulation :\n\niso3: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question\n\nclassification: if using a ThreeME model number of commodities and sectors with the following format cx_sy where x is the number of commodities and x the number of sectors. Check that the desired classification exists in the mdl files\nmodel_folder: the folder where to find the mdl files (either training or threeme usually)\nproject_name: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only\nscenario_baseline : Name of the baseline scenario. By default it is « baseline-steady ». It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables. All scenarii files are located in configuration/scenarii_calib\nscenario: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the configuration/scenarii_calib folders. Scenario naes must be alphanumeric and underscores in lowercase only. See this page for more info on scenario calibration. The scenario parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.:\n\n\n  scenario = c(\"ct1\", \"expg1\") |&gt; \n  set_names(c(\"Increase of carbon tax  \",\"Increase in government spending of 1% of GDP\"))\n\n\nbaseyear: Input the base year used for the calibration data\nlastyear: Last year of the simulations\nshockyear: year of the shock. This is an optional parameter that can be called upon when calibrating shocks\nmax_lags: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.\nfirstyear: By default this is baseyear - max_lags (rarely needs to be modified)\nautomated_shocks: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (needs further documentation)\nvariables_to_keep: Vector of variables to keep in the output. Input an empty vector (c()) in order to keep all variables.\n\nModel file lists\nThe second sections contains mdl file lists. In three parts, there is: - list_files : basic files (maily for ThreeME, does not need to be modified) - calib_files: mdl files that contain data calibration equations - model_files: mdl files that contain the models equations.\nmdl files are usually organised by blocs. For ThreeME some are required to function but other can be activated or switched out with alternate versions to test out different model structures. Usually, an mdl file that starts with Exception is a model block that will be specific to a shock or scenario that requires additional equations to function. ENDOFLINE.mdl is an empty mdl that must be inserted last in the vector.\n\nlists_files &lt;- c(\n  \"lists.mdl\" \n)\n\n## Calibration files\ncalib_files &lt;- c(lists_files,\n                 \"03.1-calib.mdl\",     # Close economy\n                 \"03.2-calib.mdl\",     # Open economy\n                 \n                 \"ENDOFLINE.mdl\"       # ALL VERSIONS: empty file\n                 \n)\n\n# Model files \nmodel_files = c(lists_files,\n                \n                \"03.1-eq.mdl\",         # Close economy \n                \"03.2-eq.mdl\",         # Close economy\n                \n                \"ENDOFLINE.mdl\"        # ALL VERSIONS: empty file\n                \n)\n\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\n\nconfiguration/config_training.R : It is the file where the main options to configure the simulation are loacted.\n\n\n# file.edit(\"configuration/config_training.R\")\nsource(\"configuration/config_training.R\")"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#model-1-one-equation",
+    "href": "TS1.2_Intro_tools.html#model-1-one-equation",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Model 1: one equation",
+    "text": "Model 1: one equation\nThe model is found in Github/CGE_inR_iberomex/src/model/training/01.1-eq.mdl . It is called in the « config_training.R » file in the section « Model files ».\nThe model we consider is a simple one with only one equation:\n\\[\\begin{equation}\n    Y_{t} = CH_{t} + I_{t} + G_{t}   \n  \\end{equation}\\]\n\nEndogenous variable:\nY: GDP\nExogenous variables:\nCH: Households Consumption\nI: Investment\nG: Public spendings\nCalibration :\nY = 100\nCH = 60\nI = 25\nG = 15"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#baseline-and-shock-scenarios-example-of-a-shock-on-g",
+    "href": "TS1.2_Intro_tools.html#baseline-and-shock-scenarios-example-of-a-shock-on-g",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Baseline and shock scenarios: example of a shock on G",
+    "text": "Baseline and shock scenarios: example of a shock on G\n\nThe baseline and shock scenario are found in the config_training.R file in the section « Calibration scripts to use ».\n\nBaseline scenario is the reference scenario, the benchmark to which all the other scenarios will be compared.\n\nFound in : Github/CGE_inR_iberomex/configuration/scenarii_calib/1_calib_baseline-steady.R\n\nShock scenarios are alternative scenarios that are compared to the baseline scenario.\n\nFound in : Github/CGE_inR_iberomex/configuration/scenarii_calib/2_calib_shock_g.R\n\nWe introduce a shock on « G » of one GDP-point:\n\nG increases by 1 compared to the baseline since GDP (Y is calibrated to 100).\n\n\n\nshock_ch &lt;- mutate(selection,\n                    g =   ifelse(year &gt;= 2021, g + 1, g)\n                   )"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#your-turn-run-the-simulations-on-the-basic-model",
+    "href": "TS1.2_Intro_tools.html#your-turn-run-the-simulations-on-the-basic-model",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Your turn: Run the simulations on the basic model",
+    "text": "Your turn: Run the simulations on the basic model\nRefer to the instruction page to run the one equation model, up to and including section 3."
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#results-analysis-the-data_full-table",
+    "href": "TS1.2_Intro_tools.html#results-analysis-the-data_full-table",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Results analysis: the data_full table",
+    "text": "Results analysis: the data_full table\n\nYou can have a look on your data in data_full\ndata_full is a table where you can see the values taken by your variables in the baseline scenario and in the shock scenario.\nit is a long format data.frame that can be manipulated to create other outputs, such as graphs and table. You may use ggplot2 to create graphs on it, or the simpleplot function that generates predefined ggplot objects tailored to those models and simulation outputs\n\nTo view it in R studio type in the console:\n\n\n\n    view(data_full)\n\n-   You can then filter by year or by variable."
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#data_full-table",
+    "href": "TS1.2_Intro_tools.html#data_full-table",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "data_full table",
+    "text": "data_full table\n\nFor three consecutive years\n\n\nA &lt;- data_full %&gt;% \n  filter(year %in% (c(2020,2021,2022))) %&gt;% \n  filter(variable %in% (c(\"CH\",\"Y\", \"G\"))) %&gt;% \n  #filter(variable != \"MU\") %&gt;% \n  select(-sector, -commodity) %&gt;% \n  rename(shock = scenario_name)\nflextable(A)\nvariables over two yearsyearvariableshockbaseline2,020Y1001002,020G15152,020CH60602,021Y1011002,021G16152,021CH60602,022Y1011002,022G16152,022CH6060"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#results-analysis-simpleplot-function",
+    "href": "TS1.2_Intro_tools.html#results-analysis-simpleplot-function",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Results analysis: simpleplot function",
+    "text": "Results analysis: simpleplot function\n\nsimpleplot creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:\n\n\nView(ermeeth::simpleplot)\n\n\nThere are 4 options to plot a variable using simpleplot To select an option, we change the argument « transformation » in the simpleplot function:\nOption 1: plot the variable in level (transformation = « level » )\nOption 2: plot the variable in relative difference (transformation = « reldiff » )\nOption 3: plot the variable in difference (transformation = « diff » )\nOption 4: plot the variable in growth rate (transformation = « gr » )"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-level-option-1",
+    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-level-option-1",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "simpleplot: plot the variable « Y » in level (Option 1)",
+    "text": "simpleplot: plot the variable « Y » in level (Option 1)\n\nTo plot the variable « Y » in level to the baseline scenario, set transformation = \"level\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"level\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (level)\", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)\n\n\n\nDashed line : Baseline simulation\nSolid line : Shock simulation\nlabel_series = \"GDP\" Changes the name of the variable « Y » into « GDP »"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
+    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "simpleplot: plot the variable « Y » in relative difference (Option 2)",
+    "text": "simpleplot: plot the variable « Y » in relative difference (Option 2)\n\nThe relative difference in the shock compared to the baseline for variable Y is calculated using the following formula: \\[\\begin{equation}\nreldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1\n\\end{equation}\\]\nTo plot the variable « Y » in relative difference to the baseline scenario, set transformation = \"reldiff\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"reldiff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (percentage change)\", unit = \"percent\", decimal = 0.1, custom_x_breaks = 2)\n\n\n\nOnly one plot here ! This is the (relative) difference between the shock and the baseline"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
+    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "simpleplot: plot the variable « Y » in absolute difference (Option 3)",
+    "text": "simpleplot: plot the variable « Y » in absolute difference (Option 3)\n\nThe absolute difference in the shock compared to the baseline for variable Y is calculated using the following formula:\nThe variation of Y is calculated using the following formula: \\[\\begin{equation}\ndiff_{t} = Y_{shock_t} - Y_{baseline_{t}}\n\\end{equation}\\]\nTo plot the variable « Y » in absolute difference to the baseline scenario, set transformation = \"diff\" as shown in the following code\n\n\nsimpleplot(data = data_full,  transformation = \"diff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (absolute change)\", unit = 1, decimal = 0.1)"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
+    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "simpleplot: plot the variable « Y » in growth rate (Option 4)",
+    "text": "simpleplot: plot the variable « Y » in growth rate (Option 4)\n\nThe growth rate (over time) of Y is calculated using the following formula: \\[\\begin{equation}\ngr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}\n\\end{equation}\\] \\[\\begin{equation}\ngr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}\n\\end{equation}\\]\nBy growth rate, we mean annual percentage change\nTo plot the variable « Y » in growth rate to the baseline scenario, set transformation = \"gr\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"gr\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (yearly percentage change)\", unit = \"percent\", decimal = 0.01)"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
+    "href": "TS1.2_Intro_tools.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »",
+    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#your-turn-modify-the-quarto-markdown-file-to-add-suggested-plots",
+    "href": "TS1.2_Intro_tools.html#your-turn-modify-the-quarto-markdown-file-to-add-suggested-plots",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Your turn: Modify the quarto markdown file to add suggested plots",
+    "text": "Your turn: Modify the quarto markdown file to add suggested plots\nSee section 4.1 of the instructions file for this session."
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#calibration-error",
+    "href": "TS1.2_Intro_tools.html#calibration-error",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Calibration error",
+    "text": "Calibration error\nChange the calibration for public expenditure and have a look at the calibration error.\n\nChange in the calibration file « 01.1-calib.mdl » the value of G. Put G := 26 instead of G : = 15\n\nSave the calibration file\n\nRun the main\n\nWhat do you notice?\n\nA message : « The following equations are not well calibrated for the baseline scenario »\n\nEven with an error in your calibration, the model shows the results. But they are different from the ones with no calibration error !!."
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#now-lets-change-the-model-i-and-ch-become-endogenous",
+    "href": "TS1.2_Intro_tools.html#now-lets-change-the-model-i-and-ch-become-endogenous",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Now let’s change the model: I and CH become endogenous",
+    "text": "Now let’s change the model: I and CH become endogenous\nIn the previous model we had only one equation:\n\nProduction\n\\[\\begin{equation}\nY_{t} = CH_{t} + I_{t} + G_{t}   \n  \\end{equation}\\]\n\nThe new file used for calibration is found in Github/CGE_inR_iberomex/src/model/training/01.2-eq.mdl\nIn the new model, we add two other equations that make I and CH endogenous now (without changing the calibration).\n\nHouseholds consumption\n\\[\\begin{equation}\n  CH_{t} = 0.6 * Y_{t-1}   \n\\end{equation}\\]\nInvestment\n\\[\\begin{equation}\n  I_{t} = 0.25 * Y_{t}   \n\\end{equation}\\]"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#your-turn-generate-the-same-plots-with-the-new-model",
+    "href": "TS1.2_Intro_tools.html#your-turn-generate-the-same-plots-with-the-new-model",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Your turn: generate the same plots with the new model",
+    "text": "Your turn: generate the same plots with the new model\nSee section 4.3 on the instruction page\nTo get your new results when changing in the config_training.R file the equations of the model from 01.1-eq.mdl to 01.2-eq.mdl, you need to:\n\nSave the config_training.R file.\n\nRun the main.R file.\n\nNow you can see changes in the values of your variables in data_full and visualize these changes in the plots."
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#here-are-some-main-changes",
+    "href": "TS1.2_Intro_tools.html#here-are-some-main-changes",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Here are some main changes:",
+    "text": "Here are some main changes:\n\nThe shape of the series look different (non linear shape) in the shock scenario\n\nThe baseline scenario is constant\n\nAll variables have different yearly values in the shock scenario whereas only G and Y changed in the previous model.\nFor the same shock, the % change in Y is different in the two models\nWe can see the contribution of each variable in GDP change. Public spendings is the component of GDP with the highest change compared to the baseline but it is households consumption that contributes most to change in GDP."
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#assuming-a-growing-economy",
+    "href": "TS1.2_Intro_tools.html#assuming-a-growing-economy",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Assuming a growing economy",
+    "text": "Assuming a growing economy\n(see section 4.4 on the instruction page)\nChange in the « config_training.R » file the calibration of the model from 01.1-calib.mdl to 01.2-calib.mdl\nThe new file used for calibration is found in Github/CGE_inR_iberomex/src/model/training/01.2-calib.mdl\nWhat changes from the previous model?\n\nThe calibration changes the shape of some series in the shock scenario\nVariables in the baseline scenario are not constant anymore"
+  },
+  {
+    "objectID": "TS1.2_Intro_tools.html#next-steps",
+    "href": "TS1.2_Intro_tools.html#next-steps",
+    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
+    "section": "Next steps",
+    "text": "Next steps\n\nApplication of this knowledge to other models\nSimulation of small CGE models with prices\nWalrasian versus Keynesian closure"
+  },
+  {
     "objectID": "ThreeME_model_short.html#the-threeme-model",
     "href": "ThreeME_model_short.html#the-threeme-model",
     "title": "A short presentation of ThreeME",
@@ -95,7 +242,28 @@
     "href": "ThreeME_model_short.html#equilibrium-between-supply-and-demand-use",
     "title": "A short presentation of ThreeME",
     "section": "Equilibrium between Supply and Demand (use)",
-    "text": "Equilibrium between Supply and Demand (use)\n\nGDP = VA = Y – CI = C + I + X - M\n\n\n\n\n\n\n\n\n\n\nA short presentation of ThreeME"
+    "text": "Equilibrium between Supply and Demand (use)\n\nGDP = VA = Y – CI = C + I + X - M"
+  },
+  {
+    "objectID": "program.html",
+    "href": "program.html",
+    "title": "Workshop program information",
+    "section": "",
+    "text": "The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations.\nOver the course of the two days, we will alternate between theoretical and practical teaching on CGE models.\nBelow is a provisional program for the workshop. Please note that it is subject to changes depending on progress made."
+  },
+  {
+    "objectID": "program.html#tuesday-november-5th-2024",
+    "href": "program.html#tuesday-november-5th-2024",
+    "title": "Workshop program information",
+    "section": "Tuesday, November 5th 2024",
+    "text": "Tuesday, November 5th 2024\n\nMorning session (from 9am to 12pm)\n\nTheory Session 1\n\nIntroduction to CGE models and their usage\nIntroduction of the tools used and developed\n\n\n\nPractice Session 1\n\nTechnical installation (R, RStudio, Quarto)\nIntroduction to Quarto\nBasic presentation of the structure of the simulation platform\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 2\n\nSimple Walrsasian models and their properties\n\n\n\nPractice Session 2\n\nSimulating an existing Walrasian model\nRunning a shock scenario\nBasic analysis of results"
+  },
+  {
+    "objectID": "program.html#wednesday-november-6th-2024",
+    "href": "program.html#wednesday-november-6th-2024",
+    "title": "Workshop program information",
+    "section": "Wednesday, November 6th 2024",
+    "text": "Wednesday, November 6th 2024\n\nMorning session (from 9am to 12pm)\n\nTheory Session 3\n\nNeokeynesian models and their properties\n\n\n\nPractice Session 3\n\nSimulating an existing Neokeynesian model\nComparing two different models\nMore complicated shock scenarii\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 4\n\nInput/Output models\nMore complex models\n\n\n\nPractice Session 4\n\nMultisector models: building a simple input/output model.\nIntegrating an input/output model into an existing CGE model."
   },
   {
     "objectID": "install.html",
@@ -131,6 +299,69 @@
     "title": "Software installation guide",
     "section": "Further readings",
     "text": "Further readings\nThis workshop is aimed at teaching you how to build and simulate simple CGE models using our platform. While we make use of R and Quarto capabilities, we will not go in too much details regarding their workings. The links below can help you learn more about how to program in R (mainly through the tidyverse) and use Quarto to present your results under different format.\nAt the very least we recommend learning how to use the dplyr R package to manipulate result databases and reading through a basic Quarto introduction.\n\nquartodplyrggplot2"
+  },
+  {
+    "objectID": "Exercises_short.html#sec-1_1",
+    "href": "Exercises_short.html#sec-1_1",
+    "title": "Practical Sessions supporting materials",
+    "section": "1 Exercise: Installation and tests",
+    "text": "1 Exercise: Installation and tests\n\nFollow the installation instructions specified in Get Started\nRun the file main_test.R to check if everything is working properly\nFamiliriaze yourself with the folder structure by locating the following files:\n\nMain.R\nconfig_input_MODEL.R and config_output.R\n1_calib_baseline.R\n01-1-eq_one_equation_model.mdl"
+  },
+  {
+    "objectID": "Exercises_short.html#sec-1_2",
+    "href": "Exercises_short.html#sec-1_2",
+    "title": "Practical Sessions supporting materials",
+    "section": "2 Exercise: The one equation model",
+    "text": "2 Exercise: The one equation model\n\n2.1 Part 1\n\nCreate a copy of the Main.R file (call it Main_one_eq.R for example) in the root folder\nOn your new Main file, call the the config files : config_input_one_eq.R, and config_output_one_eq.R.\nRun the simulation and generate the results from templates.\n\nWhat happens in this shock scenario?\n\n\n\n\n2.2 Part 2\n\nLook into the data_full database (you can do this in the Main_one_eq.R file)\n\nCreate a variable rel_diff that computes the relative difference.\nCompute a data.frame that contains the GDP (Y) growth rate for the baseline and the shock scenario.\nExport as a .csv files this database\n\nLocate where the .rds file containing all the simulations results from this project (project name one_eq) can be found\nCreate a quarto qmd file that :\n\nloads the results from those simulations (project name one_eq)\ncomputes the growth rate for the baseline and shock scenarios\nmakes a graph comparing those two series\n\nIn the config_input_one_eq.R, change the equation .mdl file to use 01.2-eq_basic_mod.mdl file.\n\nRe-run the simulations and the outputs created.\nWhat has changed?"
+  },
+  {
+    "objectID": "Exercises_short.html#sec-2_1",
+    "href": "Exercises_short.html#sec-2_1",
+    "title": "Practical Sessions supporting materials",
+    "section": "3 Exercise: Loading the Walras model",
+    "text": "3 Exercise: Loading the Walras model\n\nLocate the Walras model equation et calibration files\nMake a copy of the Main.R, config_input_MODEL.R and config_output_MODEL.R files, with a relevant suffix (ie Main_s.R)\nEdit your newly created config_input file:\n\nChange the project_name argument to something more relevant\nCall the correct mdl files\nCall upon the correct configuration files in your new main file\nKeep the same shock scenario for now\n\nRun the simulations with the basic result template.\nRepeat the procedure, this time using the basic Keynes model files. Compare the outputs from the basic_results template."
+  },
+  {
+    "objectID": "Exercises_short.html#sec-2_2",
+    "href": "Exercises_short.html#sec-2_2",
+    "title": "Practical Sessions supporting materials",
+    "section": "4 Exercise: Further results visualization",
+    "text": "4 Exercise: Further results visualization\n\nCreate your quarto file and create graphs using shortcut plotting functions\n\nsimple_plot()\ncontrib_plot()\n\nEnable the use of the Texdoc template and model_info templates in the config_output to generate the equations list for your model.\nInclude the equation index generated by TeXdoc in your newly created .qmd\nCreate a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:\nIdentify the year of the shock\nidentify the year that correspond to t+2, t+3, t+10 and t+50 where t is the year of the initial shock.\nCreate a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired\nreorginize your data.frame to format nicely\nUse your new .qmd to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.\n\n\n4.1 Correction\n\n\nSample .qmd file\n## Copy and uncomment from here\n# \n# ---\n# title: \"Exercise 4\"\n# format: html\n# ---\n# \n# \n# ```{r}\n# #| echo: false\n# #| include: false\n# #| label: setup\n# \n# \n# \n# knitr::opts_chunk$set(\n#   echo = FALSE,\n#   message = FALSE,\n#   warning = FALSE,\n#   results = \"hide\"\n# )\n# \n# \n# source(\"src/setup.R\")\n# options(ofce.base_family = \"Arial\")\n# \n# \n# project_name &lt;- \"walras\"\n# scenario &lt;- \"g\"\n# \n# data_full &lt;- readRDS(file.path(\"data\",\"output\",paste0(project_name,\".rds\")))\n# \n# \n# ```\n# \n# \n# # Easy graphs\n# \n# ```{r}\n# #| label: simpleplot\n# \n# \n# data_full |&gt; simple_plot(variables = c(\"Y\",\"CH\",\"I\"),)\n# ```\n# \n# ```{r}\n# #| label: contrib_plot\n# \n# contrib_data &lt;- contrib_longformat(data_full,var1 = \"Y\",var2 = c(\"CH\",\"I\",\"G\"), scenar = c(\"baseline\",scenario))\n# contrib_data |&gt; contrib.plot( series = c(\"CH\",\"I\",\"G\"),\n#              startyear = 2020, titleplot = NULL, line_tot = TRUE,\n#              template = \"ofce\",\n#              decimal = 0.01\n#              )\n#```\n# \n# # Model equations\n# \n# {{&lt; include results/quarto_render/equations.qmd &gt;}}\n#  \n# {{&lt; include results/quarto_render/exogenous.qmd &gt;}}\n#  \n# \n# # Summary table custom made\n# \n# ```{r}\n# #| label: tbl-reldiff\n# #| tbl-cap: \"Relative difference from the baseline\"\n# \n# \n# vars &lt;- c(\"Y\",\"CH\",\"G\",\"I\")\n# years &lt;- c(2020, 2021, 2022, 2023, 2030, 2050)\n# \n# data_treated &lt;- data_full |&gt; \n#   filter (scenario == \"g\") |&gt; \n#   filter(variable %in% vars) |&gt; \n#   filter(year %in% years) |&gt;\n#   mutate(rel_diff = round((values/values_ref -1)*100,2) ) |&gt; \n#   \n#   select(year, variable, rel_diff) |&gt; \n#   pivot_wider(id_cols = \"variable\", names_from = \"year\", values_from = rel_diff)\n#   \n# \n# data_treated |&gt; gt()\n# \n# ```\n# \n# ## Compare models\n# \n#```{r}\n# #| eval: false\n# data_walras &lt;- readRDS(file.path(\"data\",\"output\",paste0(\"walras\",\".rds\")))\n# data_keynes &lt;- readRDS(file.path(\"data\",\"output\",paste0(\"keynes\",\".rds\")))\n#\n#```"
+  },
+  {
+    "objectID": "Exercises_short.html#sec-3_1",
+    "href": "Exercises_short.html#sec-3_1",
+    "title": "Practical Sessions supporting materials",
+    "section": "5 Exercise: Loading the neokeynesian model",
+    "text": "5 Exercise: Loading the neokeynesian model\n\nLocate the Neokeynesian model .mdl files\nDo the necessary steps (create and modify the relevant files) run the same shock on public spending as we did for the Walras model.\n\nhint: don’t forget to change the project_name argument\n\nCreate a similar .qmd file as we did for the Walras model. (hint: this can be done very quickly ;) ), complete with the equations lists from TeXdoc.\nLet’s complicate a little bit: on the qmd, place next to eachother the macrœconomic components graphs for each model simulation and same for the table."
+  },
+  {
+    "objectID": "Exercises_short.html#sec-3_2",
+    "href": "Exercises_short.html#sec-3_2",
+    "title": "Practical Sessions supporting materials",
+    "section": "6 Exercise: New shocks",
+    "text": "6 Exercise: New shocks\n\n6.1 Part 1\n\nLocate the shock calibration file we have been using so far.\nMake a copy and call it 2_calib_shock_g_bis.R\nMake the necessary changes to the config_input file to be able to run this new shock.\nSee if you can reuse the .qmd file from exercise 5\nTest the following changes on you new shock calibration file :\n\nincrease in public spending of 5% of GDP\n\nChange your config_input file to simulate both the original shock in public spending and this new one and view both results at once\n\n\n\n6.2 Part 2\n\nCreate new shocks from scratch :\n\nA sudden (but temporary) decrease in population of -1% in the year 2022\nA yearly population decrease starting the year 2030 of -0.1%\n\nCreate a new shock calibration file aimed at testing labour productivity shocks (empty for now)\nWhat is the baseline labour productivity growth in this model ?\nWhat variable do we have change to create a shock scenario on labour productivity growth and why can’t it be GR_PROG_L?\nDo the necessary (model, results visualization) to answer this question:\n\nWhat happens if labour productivity growth increases temporarily to 10% in 2023?\n(advanced programmation) : change permanently the labour productivity growth rate starting 2023. (hint: you might have to use the calibration bubble for this one)"
+  },
+  {
+    "objectID": "Exercises_short.html#exercise-a-multisectoral-model",
+    "href": "Exercises_short.html#exercise-a-multisectoral-model",
+    "title": "Practical Sessions supporting materials",
+    "section": "7 Exercise: a multisectoral model",
+    "text": "7 Exercise: a multisectoral model\n\n7.1 Part 1\n\nUsing the 01.1_eq_one_eq.mdl model, add an equation to allow for 2 types of goods to be consumed.\nCheck that the simulations run for a c2_s2 classification, and then a c4_s4 classification.\nWhat do you notice in terms of model size?\n\n\n\n7.2 Part 2\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario in this scenario"
+  },
+  {
+    "objectID": "contact.html",
+    "href": "contact.html",
+    "title": "Contact us",
+    "section": "",
+    "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team\nThe ThreeME team is in charge of developing the ThreeME model in the Department of Economics and Environment at the OFCE."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CGE in R Workshop at Iberoamericana universidad in Mexico",
+    "section": "",
+    "text": "This workshop is aimed at presenting an overview of CGE model and a tool to run them. The workshop material has been developed by the ThreeME team at the OFCE (Sciences Po Paris).\nThis workshop held by the ThreeME Team is graciously hosted at the Iberoamericana universidad in Mexico, and is conducted under a project between Hacienda (SHCP), OFCE and NEO1, financed by the Agence Française de Développement (AFD).\n1 (Netherlands Economic Observatory)"
   },
   {
     "objectID": "Practical_Sessions.html#foreword-codename-ermeeth-project",
@@ -214,7 +445,7 @@
     "href": "Practical_Sessions.html#the-output-database-data_full",
     "title": "CGE in R - Practical sessions",
     "section": "The output database : data_full",
-    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1       EMS 2026   &lt;NA&gt;      &lt;NA&gt; 4.864383e+02 baseline 4.864383e+02          1\n2       GDP 2029   &lt;NA&gt;      &lt;NA&gt; 2.770298e+06 baseline 2.770298e+06          1\n3        PM 2026   &lt;NA&gt;      &lt;NA&gt; 1.148686e+00 baseline 1.148686e+00          1\n4        LF 2023   &lt;NA&gt;      &lt;NA&gt; 2.976581e+04      ct1 2.976581e+04          0\n5       PCH 2037   &lt;NA&gt;      &lt;NA&gt; 1.428246e+00 baseline 1.428246e+00          1\n6       PVA 2039   &lt;NA&gt;      &lt;NA&gt; 1.485947e+00      ct1 1.515397e+00          0\n7       C_L 2028   &lt;NA&gt;      &lt;NA&gt; 7.200950e+01 baseline 7.200950e+01          1\n8         W 2034   &lt;NA&gt;      &lt;NA&gt; 6.902424e+01      ct1 7.024582e+01          0\n9         M 2019   &lt;NA&gt;      &lt;NA&gt; 7.542199e+05      ct1 7.542199e+05          0\n10      EMS 2036   &lt;NA&gt;      &lt;NA&gt; 5.509159e+02      ct1 5.086947e+02          0\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
+    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1       PCI 2032   &lt;NA&gt;      &lt;NA&gt; 1.293607e+00      ct1 1.318194e+00          0\n2        LF 2046   &lt;NA&gt;      &lt;NA&gt; 3.152524e+04      ct1 3.152524e+04          0\n3        LF 2038   &lt;NA&gt;      &lt;NA&gt; 3.090177e+04 baseline 3.090177e+04          1\n4        PX 2027   &lt;NA&gt;      &lt;NA&gt; 1.171659e+00 baseline 1.171659e+00          1\n5        LF 2036   &lt;NA&gt;      &lt;NA&gt; 3.074784e+04      ct1 3.074784e+04          0\n6       PVA 2030   &lt;NA&gt;      &lt;NA&gt; 1.243374e+00 baseline 1.243374e+00          1\n7       PCI 2045   &lt;NA&gt;      &lt;NA&gt; 1.673418e+00      ct1 1.708319e+00          0\n8       PCH 2032   &lt;NA&gt;      &lt;NA&gt; 1.293607e+00 baseline 1.293607e+00          1\n9         M 2030   &lt;NA&gt;      &lt;NA&gt; 8.648908e+05 baseline 8.648908e+05          1\n10      PCH 2024   &lt;NA&gt;      &lt;NA&gt; 1.104081e+00 baseline 1.104081e+00          1\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
   },
   {
     "objectID": "Practical_Sessions.html#data-columns",
@@ -452,161 +683,7 @@
     "href": "Practical_Sessions.html#do-exercise-7-part-2",
     "title": "CGE in R - Practical sessions",
     "section": "Do Exercise 7 part 2",
-    "text": "Do Exercise 7 part 2\n\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario in this scenario\n\n\n\n\n\nCGE in R - Practical sessions"
-  },
-  {
-    "objectID": "contact.html",
-    "href": "contact.html",
-    "title": "Contact us",
-    "section": "",
-    "text": "CGE Workshop in R at Ibero\n\nTo get in touch or give feedback, please do not hesitate to contact us.\n\nOrganisation\nGissela Landa Rivera: gissela.landa[at]sciencespo.fr\n\n\nTeaching\nFrédéric Reynès: frederic.reynes[at]sciencespo.fr\nAnissa Saumtally: anissa.saumtally[at]sciencespo.fr\n\n\n\n\nAbout ThreeME and its team\nThe ThreeME team is in charge of developing the ThreeME model in the Department of Economics and Environment at the OFCE."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#software-installation-and-tutorial",
-    "href": "TS1.2_Intro_tools.html#software-installation-and-tutorial",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Software installation and tutorial",
-    "text": "Software installation and tutorial\nPlease refer to the instruction page for this session to access the different links\nGithub (optional)\nR\nRtools43 (if using windows)\nQuarto"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#understanding-the-main.r-script-structure",
-    "href": "TS1.2_Intro_tools.html#understanding-the-main.r-script-structure",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Understanding the Main.R script structure",
-    "text": "Understanding the Main.R script structure\nMain.R script is built on four steps.\nStep 0: Setup\n\nresets the R environment\nloads the necessary libraries and custom functions\nreads the simulation configurations (input and output) into the config list.\n\n\n## 0. Setup\nrm(list = ls())\nsource(file.path(\"src\",\"setup.R\"))\n\n\n  config &lt;- readconfig(input_config_file = file.path(\"configuration\", \"config_input_threeme.R\") ,\n                      output_config_file = file.path(\"configuration\", \"config_output_threeme.R\")\n                     )\n\nStep 1: Calibration bubble\n\noptional: by default deactivated\nFacilitate the calibration of scenarios\n\n\n## 1. OPTIONAL Prepare the baseline and/or shock calibration file , uncomment the lines\n\n# ## &gt;&gt;&gt;&gt;&gt;&gt;&gt; uncomment start\n# calibration_bubble &lt;- calibration_environment(baseline_calibration = FALSE)\n# list2env(calibration_bubble, envir = globalenv())\n# ### You may now open the relevant scenario config file to edit and test it\n# rm(list = names(calibration_bubble))\n# ## &lt;&lt;&lt;&lt;&lt;&lt;&lt; uncomment end"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#structure-of-the-config_input-file",
-    "href": "TS1.2_Intro_tools.html#structure-of-the-config_input-file",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Structure of the config_input file",
-    "text": "Structure of the config_input file\nBasic parameters\nThe first section defines the basic parameters that need to be adapted for each simulation :\n\niso3: the country code, useful if using a ThreeME model, make sure ta version of ThreeME exists for the country in question\n\nclassification: if using a ThreeME model number of commodities and sectors with the following format cx_sy where x is the number of commodities and x the number of sectors. Check that the desired classification exists in the mdl files\nmodel_folder: the folder where to find the mdl files (either training or threeme usually)\nproject_name: name to give your project, must be alphanumeric and underscore characters only. No accents. lowercase only\nscenario_baseline : Name of the baseline scenario. By default it is « baseline-steady ». It may be modified if the baseline needs to integrate some user-specified trajectories of exogenous variables. All scenarii files are located in configuration/scenarii_calib\nscenario: Name of scenario(s) to run. Make sure a file 2_calib_shock_NAMEOFSCENARIO exists in the configuration/scenarii_calib folders. Scenario naes must be alphanumeric and underscores in lowercase only. See this page for more info on scenario calibration. The scenario parameter can be a named vector in order to give more information about the scenario that can be reused in results outputs, e.g.:\n\n\n  scenario = c(\"ct1\", \"expg1\") |&gt; \n  set_names(c(\"Increase of carbon tax  \",\"Increase in government spending of 1% of GDP\"))\n\n\nbaseyear: Input the base year used for the calibration data\nlastyear: Last year of the simulations\nshockyear: year of the shock. This is an optional parameter that can be called upon when calibrating shocks\nmax_lags: maximum lags used in the model, to know how far back the database must go in order for the solver to evaluate all model equations.\nfirstyear: By default this is baseyear - max_lags (rarely needs to be modified)\nautomated_shocks: Set to TRUE if you want to use automated shocks, that will read one unique shock scenario file that can run different calibrations according to the scenario name (needs further documentation)\nvariables_to_keep: Vector of variables to keep in the output. Input an empty vector (c()) in order to keep all variables.\n\nModel file lists\nThe second sections contains mdl file lists. In three parts, there is: - list_files : basic files (maily for ThreeME, does not need to be modified) - calib_files: mdl files that contain data calibration equations - model_files: mdl files that contain the models equations.\nmdl files are usually organised by blocs. For ThreeME some are required to function but other can be activated or switched out with alternate versions to test out different model structures. Usually, an mdl file that starts with Exception is a model block that will be specific to a shock or scenario that requires additional equations to function. ENDOFLINE.mdl is an empty mdl that must be inserted last in the vector.\n\nlists_files &lt;- c(\n  \"lists.mdl\" \n)\n\n## Calibration files\ncalib_files &lt;- c(lists_files,\n                 \"03.1-calib.mdl\",     # Close economy\n                 \"03.2-calib.mdl\",     # Open economy\n                 \n                 \"ENDOFLINE.mdl\"       # ALL VERSIONS: empty file\n                 \n)\n\n# Model files \nmodel_files = c(lists_files,\n                \n                \"03.1-eq.mdl\",         # Close economy \n                \"03.2-eq.mdl\",         # Close economy\n                \n                \"ENDOFLINE.mdl\"        # ALL VERSIONS: empty file\n                \n)\n\nGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG\n\nconfiguration/config_training.R : It is the file where the main options to configure the simulation are loacted.\n\n\n# file.edit(\"configuration/config_training.R\")\nsource(\"configuration/config_training.R\")"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#model-1-one-equation",
-    "href": "TS1.2_Intro_tools.html#model-1-one-equation",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Model 1: one equation",
-    "text": "Model 1: one equation\nThe model is found in Github/CGE_inR_iberomex/src/model/training/01.1-eq.mdl . It is called in the « config_training.R » file in the section « Model files ».\nThe model we consider is a simple one with only one equation:\n\\[\\begin{equation}\n    Y_{t} = CH_{t} + I_{t} + G_{t}   \n  \\end{equation}\\]\n\nEndogenous variable:\nY: GDP\nExogenous variables:\nCH: Households Consumption\nI: Investment\nG: Public spendings\nCalibration :\nY = 100\nCH = 60\nI = 25\nG = 15"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#baseline-and-shock-scenarios-example-of-a-shock-on-g",
-    "href": "TS1.2_Intro_tools.html#baseline-and-shock-scenarios-example-of-a-shock-on-g",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Baseline and shock scenarios: example of a shock on G",
-    "text": "Baseline and shock scenarios: example of a shock on G\n\nThe baseline and shock scenario are found in the config_training.R file in the section « Calibration scripts to use ».\n\nBaseline scenario is the reference scenario, the benchmark to which all the other scenarios will be compared.\n\nFound in : Github/CGE_inR_iberomex/configuration/scenarii_calib/1_calib_baseline-steady.R\n\nShock scenarios are alternative scenarios that are compared to the baseline scenario.\n\nFound in : Github/CGE_inR_iberomex/configuration/scenarii_calib/2_calib_shock_g.R\n\nWe introduce a shock on « G » of one GDP-point:\n\nG increases by 1 compared to the baseline since GDP (Y is calibrated to 100).\n\n\n\nshock_ch &lt;- mutate(selection,\n                    g =   ifelse(year &gt;= 2021, g + 1, g)\n                   )"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#your-turn-run-the-simulations-on-the-basic-model",
-    "href": "TS1.2_Intro_tools.html#your-turn-run-the-simulations-on-the-basic-model",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Your turn: Run the simulations on the basic model",
-    "text": "Your turn: Run the simulations on the basic model\nRefer to the instruction page to run the one equation model, up to and including section 3."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#results-analysis-the-data_full-table",
-    "href": "TS1.2_Intro_tools.html#results-analysis-the-data_full-table",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Results analysis: the data_full table",
-    "text": "Results analysis: the data_full table\n\nYou can have a look on your data in data_full\ndata_full is a table where you can see the values taken by your variables in the baseline scenario and in the shock scenario.\nit is a long format data.frame that can be manipulated to create other outputs, such as graphs and table. You may use ggplot2 to create graphs on it, or the simpleplot function that generates predefined ggplot objects tailored to those models and simulation outputs\n\nTo view it in R studio type in the console:\n\n\n\n    view(data_full)\n\n-   You can then filter by year or by variable."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#data_full-table",
-    "href": "TS1.2_Intro_tools.html#data_full-table",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "data_full table",
-    "text": "data_full table\n\nFor three consecutive years\n\n\nA &lt;- data_full %&gt;% \n  filter(year %in% (c(2020,2021,2022))) %&gt;% \n  filter(variable %in% (c(\"CH\",\"Y\", \"G\"))) %&gt;% \n  #filter(variable != \"MU\") %&gt;% \n  select(-sector, -commodity) %&gt;% \n  rename(shock = scenario_name)\nflextable(A)\nvariables over two yearsyearvariableshockbaseline2,020Y1001002,020G15152,020CH60602,021Y1011002,021G16152,021CH60602,022Y1011002,022G16152,022CH6060"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#results-analysis-simpleplot-function",
-    "href": "TS1.2_Intro_tools.html#results-analysis-simpleplot-function",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Results analysis: simpleplot function",
-    "text": "Results analysis: simpleplot function\n\nsimpleplot creates graphs based on a vector of variables of a database. By default, the function plots one serie. To see the function syntax in the Rstudio console:\n\n\nView(ermeeth::simpleplot)\n\n\nThere are 4 options to plot a variable using simpleplot To select an option, we change the argument « transformation » in the simpleplot function:\nOption 1: plot the variable in level (transformation = « level » )\nOption 2: plot the variable in relative difference (transformation = « reldiff » )\nOption 3: plot the variable in difference (transformation = « diff » )\nOption 4: plot the variable in growth rate (transformation = « gr » )"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-level-option-1",
-    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-level-option-1",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "simpleplot: plot the variable « Y » in level (Option 1)",
-    "text": "simpleplot: plot the variable « Y » in level (Option 1)\n\nTo plot the variable « Y » in level to the baseline scenario, set transformation = \"level\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"level\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (level)\", unit = 1, decimal = 0.1, custom_x_breaks = 1, percent_label = TRUE)\n\n\n\nDashed line : Baseline simulation\nSolid line : Shock simulation\nlabel_series = \"GDP\" Changes the name of the variable « Y » into « GDP »"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
-    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-relative-difference-option-2",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "simpleplot: plot the variable « Y » in relative difference (Option 2)",
-    "text": "simpleplot: plot the variable « Y » in relative difference (Option 2)\n\nThe relative difference in the shock compared to the baseline for variable Y is calculated using the following formula: \\[\\begin{equation}\nreldiff_{t} = (Y_{shock_{t}}-Y_{baseline_{t}})/Y_{baseline_{t}} = Y_{shock_{t}}/Y_{baseline_{t}}-1\n\\end{equation}\\]\nTo plot the variable « Y » in relative difference to the baseline scenario, set transformation = \"reldiff\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"reldiff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (percentage change)\", unit = \"percent\", decimal = 0.1, custom_x_breaks = 2)\n\n\n\nOnly one plot here ! This is the (relative) difference between the shock and the baseline"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
-    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-absolute-difference-option-3",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "simpleplot: plot the variable « Y » in absolute difference (Option 3)",
-    "text": "simpleplot: plot the variable « Y » in absolute difference (Option 3)\n\nThe absolute difference in the shock compared to the baseline for variable Y is calculated using the following formula:\nThe variation of Y is calculated using the following formula: \\[\\begin{equation}\ndiff_{t} = Y_{shock_t} - Y_{baseline_{t}}\n\\end{equation}\\]\nTo plot the variable « Y » in absolute difference to the baseline scenario, set transformation = \"diff\" as shown in the following code\n\n\nsimpleplot(data = data_full,  transformation = \"diff\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (absolute change)\", unit = 1, decimal = 0.1)"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
-    "href": "TS1.2_Intro_tools.html#simpleplot-plot-the-variable-y-in-growth-rate-option-4",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "simpleplot: plot the variable « Y » in growth rate (Option 4)",
-    "text": "simpleplot: plot the variable « Y » in growth rate (Option 4)\n\nThe growth rate (over time) of Y is calculated using the following formula: \\[\\begin{equation}\ngr_{shock_{t}} = (Y_{shock_{t}}-Y_{shock_{t-1}})/Y_{shock_{t-1}}\n\\end{equation}\\] \\[\\begin{equation}\ngr_{baseline_{t}} = (Y_{baseline_{t}}-Y_{baseline_{t-1}})/Y_{baseline_{t-1}}\n\\end{equation}\\]\nBy growth rate, we mean annual percentage change\nTo plot the variable « Y » in growth rate to the baseline scenario, set transformation = \"gr\" as shown in the following code:\n\n\nsimpleplot(data = data_full,  transformation = \"gr\", series = \"Y\", label_series = \"GDP\", startyear = 2020, endyear = 2035, \n           titleplot = \"Gross Domestic Product (yearly percentage change)\", unit = \"percent\", decimal = 0.01)"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
-    "href": "TS1.2_Intro_tools.html#plot-a-graph-with-the-contribution-of-ch-i-and-g-on-gdp",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »",
-    "text": "Plot a graph with the contribution of « CH », « I » and « G » on « GDP »\n\nThe contribution of each variable to the relative change Y in the shock compared the baseline is calculated using the following formula: \\[\\begin{equation}\n\\frac{Y_{shock}}{Y_{baseline}}-1= (\\frac{CH_{shock}}{CH_{baseline}}-1)*(\\frac{CH_{baseline}}{Y_{baseline}}) +\n(\\frac{I_{shock}}{I_{baseline}}-1)*(\\frac{I_{baseline}}{Y_{baseline}}) +  (\\frac{G_{shock}}{G_{baseline}}-1)*(\\frac{G_{baseline}}{Y_{baseline}})\n\\end{equation}\\]\nThe relative change of Y is the weighed average of the relative change of its components\n\n\ncontrib_comp &lt;- c( \"CH\", \"I\", \"G\")\ncontrib_comp_label &lt;- c(\"Households consumption\", \"Investment\", \"Public spending\")\n\ndata_plot &lt;-  contrib(data_full,\"Y\", contrib_comp, scenar = c(\"baseline\",scenario_name))\n\nA &lt;- contrib.plot(data_plot, series = contrib_comp,label_series = contrib_comp_label,\n             startyear = 2020, titleplot = \"Contributions to change in GDP\", line_tot = TRUE)\n\nB &lt;- simpleplot(data_full,c(\"CH\", \"I\", \"G\"), contrib_comp_label, startyear, endyear, titleplot = \"Components of the GDP (in difference from baseline)\")\n\nggarrange(A,B,\n          labels = c(\"(a)\", \"(b)\"),\n          hjust = -0.5, vjust = 1.5,\n          ncol = 2, nrow = 1,\n          widths = 2,  heights = 1)"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#your-turn-modify-the-quarto-markdown-file-to-add-suggested-plots",
-    "href": "TS1.2_Intro_tools.html#your-turn-modify-the-quarto-markdown-file-to-add-suggested-plots",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Your turn: Modify the quarto markdown file to add suggested plots",
-    "text": "Your turn: Modify the quarto markdown file to add suggested plots\nSee section 4.1 of the instructions file for this session."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#calibration-error",
-    "href": "TS1.2_Intro_tools.html#calibration-error",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Calibration error",
-    "text": "Calibration error\nChange the calibration for public expenditure and have a look at the calibration error.\n\nChange in the calibration file « 01.1-calib.mdl » the value of G. Put G := 26 instead of G : = 15\n\nSave the calibration file\n\nRun the main\n\nWhat do you notice?\n\nA message : « The following equations are not well calibrated for the baseline scenario »\n\nEven with an error in your calibration, the model shows the results. But they are different from the ones with no calibration error !!."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#now-lets-change-the-model-i-and-ch-become-endogenous",
-    "href": "TS1.2_Intro_tools.html#now-lets-change-the-model-i-and-ch-become-endogenous",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Now let’s change the model: I and CH become endogenous",
-    "text": "Now let’s change the model: I and CH become endogenous\nIn the previous model we had only one equation:\n\nProduction\n\\[\\begin{equation}\nY_{t} = CH_{t} + I_{t} + G_{t}   \n  \\end{equation}\\]\n\nThe new file used for calibration is found in Github/CGE_inR_iberomex/src/model/training/01.2-eq.mdl\nIn the new model, we add two other equations that make I and CH endogenous now (without changing the calibration).\n\nHouseholds consumption\n\\[\\begin{equation}\n  CH_{t} = 0.6 * Y_{t-1}   \n\\end{equation}\\]\nInvestment\n\\[\\begin{equation}\n  I_{t} = 0.25 * Y_{t}   \n\\end{equation}\\]"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#your-turn-generate-the-same-plots-with-the-new-model",
-    "href": "TS1.2_Intro_tools.html#your-turn-generate-the-same-plots-with-the-new-model",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Your turn: generate the same plots with the new model",
-    "text": "Your turn: generate the same plots with the new model\nSee section 4.3 on the instruction page\nTo get your new results when changing in the config_training.R file the equations of the model from 01.1-eq.mdl to 01.2-eq.mdl, you need to:\n\nSave the config_training.R file.\n\nRun the main.R file.\n\nNow you can see changes in the values of your variables in data_full and visualize these changes in the plots."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#here-are-some-main-changes",
-    "href": "TS1.2_Intro_tools.html#here-are-some-main-changes",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Here are some main changes:",
-    "text": "Here are some main changes:\n\nThe shape of the series look different (non linear shape) in the shock scenario\n\nThe baseline scenario is constant\n\nAll variables have different yearly values in the shock scenario whereas only G and Y changed in the previous model.\nFor the same shock, the % change in Y is different in the two models\nWe can see the contribution of each variable in GDP change. Public spendings is the component of GDP with the highest change compared to the baseline but it is households consumption that contributes most to change in GDP."
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#assuming-a-growing-economy",
-    "href": "TS1.2_Intro_tools.html#assuming-a-growing-economy",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Assuming a growing economy",
-    "text": "Assuming a growing economy\n(see section 4.4 on the instruction page)\nChange in the « config_training.R » file the calibration of the model from 01.1-calib.mdl to 01.2-calib.mdl\nThe new file used for calibration is found in Github/CGE_inR_iberomex/src/model/training/01.2-calib.mdl\nWhat changes from the previous model?\n\nThe calibration changes the shape of some series in the shock scenario\nVariables in the baseline scenario are not constant anymore"
-  },
-  {
-    "objectID": "TS1.2_Intro_tools.html#next-steps",
-    "href": "TS1.2_Intro_tools.html#next-steps",
-    "title": "Taller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed\n",
-    "section": "Next steps",
-    "text": "Next steps\n\nApplication of this knowledge to other models\nSimulation of small CGE models with prices\nWalrasian versus Keynesian closure\n\n\n\n\n\nTaller: Modelos de Equilibrio General Neokeynesianos Dinámicos en R\nUniversidad Iberoamericana Ciudad de México\nTheory Session 1.2\nIntroduction of the tools used and developed"
+    "text": "Do Exercise 7 part 2\n\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario in this scenario"
   },
   {
     "objectID": "TS1.1_Intro_CGE_models.html#welcome",
@@ -851,7 +928,7 @@
     "href": "TS1.1_Intro_CGE_models.html#new-equations-for-open-economy",
     "title": "Introduction to CGE models and their usage",
     "section": "New equations for open economy",
-    "text": "New equations for open economy\n\nProduction\n\n\\[Y + M = CH + I + G + X\\]\n\nAverage user price\n\n\\[p . \\left( Y + M \\right) = py . Y + pm . M\\]\n\nNotional production price  \\[py^{n} . Y = c^{Y} . Y . \\left( 1 + m^{up} + dm^{up} \\right)\\]\nInternational trade\n\nImports\n\\[M = \\left( Y + M \\right) . \\varphi^{M} . \\left( \\frac{pm}{p} \\right) ^ {\\left( -\\rho^{M} \\right)}\\]\nExports \\[X = WD . \\left( \\frac{py}{pw} \\right) ^ {\\left( -\\rho^{X} \\right)}\\]\nSaving of the Rest of the World\n\\[SAV^{ROW} = pm . M - py . X\\]"
+    "text": "New equations for open economy\n\nProduction\n\n\\[Y + M = CH + I + G + X\\]\n\nAverage user price\n\n\\[p . \\left( Y + M \\right) = py . Y + pm . M\\]\n\nNotional production price \n\n\\[py^{n} . Y = c^{Y} . Y . \\left( 1 + m^{up} + dm^{up} \\right)\\]\n\nInternational trade\n\nImports\n\\[M = \\left( Y + M \\right) . \\varphi^{M} . \\left( \\frac{pm}{p} \\right) ^ {\\left( -\\rho^{M} \\right)}\\]\nExports \\[X = WD . \\left( \\frac{py}{pw} \\right) ^ {\\left( -\\rho^{X} \\right)}\\]\nSaving of the Rest of the World\n\\[SAV^{ROW} = pm . M - py . X\\]"
   },
   {
     "objectID": "TS1.1_Intro_CGE_models.html#data-supply-use-su-and-input-output-io-tables",
@@ -872,83 +949,6 @@
     "href": "TS1.1_Intro_CGE_models.html#supply-use-and-input-output-model",
     "title": "Introduction to CGE models and their usage",
     "section": "Supply-Use and Input-Output model",
-    "text": "Supply-Use and Input-Output model\nSU-IO block\nProduction of commodity \\(c\\) \\[Y_{c} = CI_{c} + CH_{c} + I_{c} + G_{c}\\]\nProduction of commodity \\(c\\) by sector \\(s\\) \\[Y_{c, s} = \\varphi^{Y}_{c, s} \\; Y_{c}\\]\nTotal production of sector \\(s\\) \\[Y_{s} = \\sum_{c} Y_{c, s}\\]\nIntermediate consumption \\(c\\) consumed by sector \\(s\\) \\[CI_{c, s} = \\varphi^{CI}_{c, s} \\; Y_{s}\\]\nFinal use\nHouseholds consumption in commodity \\(c\\) \\[CH_{c} = \\varphi^{CH}_{c} \\; CH\\]\nInvestment in commodity \\(c\\) \\[I_{c} = \\varphi^{I}_{c} \\; I\\]\nPublic expenditures in commodity \\(c\\) \\[G_{c} = \\varphi^{G}_{c} \\; G\\]\nAgregates\nIntermediate consumption of commodity \\(c\\) (aggregation over \\(s\\)) \\[CI_{c} = \\sum_{s} CI_{c, s}\\]\nIntermediate consumption consumed by sector \\(s\\) (aggregation over \\(c\\)) \\[CI_{s} = \\sum_{c} CI_{c, s}\\]\nTotal intermediate consumption (aggregation over commodities) \\[CI = \\sum_{c} CI_{c}\\]\nTotal intermediate consumption (aggregation over sector) \\[CI^{bis} = \\sum_{s} CI_{s}\\]\nTotal production (aggregation over commodities) \\[Y = \\sum_{c} Y_{c}\\]\nTotal production (aggregation over sectors) \\[Y^{bis} = \\sum_{s} Y_{s}\\]\nTotal production (aggregation over aggregated uses) \\[Y^{ter} = CI + CH + I + G\\]\nGross Domestic Product (GDP)\nValue added of sector \\(s\\) \\[VA_{s} = Y_{s} - CI_{s}\\]\nValue added or GDP (production or supply definition) \\[VA = \\sum_{s} VA_{s}\\]\nValue added or GDP (expenditure or use definition) \\[VA^{bis} = CH + I + G\\]\n\n\n\n\nIntroduction to CGE models and their usage"
-  },
-  {
-    "objectID": "Exercises_short.html#sec-1_1",
-    "href": "Exercises_short.html#sec-1_1",
-    "title": "Practical Sessions supporting materials",
-    "section": "1 Exercise: Installation and tests",
-    "text": "1 Exercise: Installation and tests\n\nFollow the installation instructions specified in Get Started\nRun the file main_test.R to check if everything is working properly\nFamiliriaze yourself with the folder structure by locating the following files:\n\nMain.R\nconfig_input_MODEL.R and config_output.R\n1_calib_baseline.R\n01-1-eq_one_equation_model.mdl"
-  },
-  {
-    "objectID": "Exercises_short.html#sec-1_2",
-    "href": "Exercises_short.html#sec-1_2",
-    "title": "Practical Sessions supporting materials",
-    "section": "2 Exercise: The one equation model",
-    "text": "2 Exercise: The one equation model\n\n2.1 Part 1\n\nCreate a copy of the Main.R file (call it Main_one_eq.R for example) in the root folder\nOn your new Main file, call the the config files : config_input_one_eq.R, and config_output_one_eq.R.\nRun the simulation and generate the results from templates.\n\nWhat happens in this shock scenario?\n\n\n\n\n2.2 Part 2\n\nLook into the data_full database (you can do this in the Main_one_eq.R file)\n\nCreate a variable rel_diff that computes the relative difference.\nCompute a data.frame that contains the GDP (Y) growth rate for the baseline and the shock scenario.\nExport as a .csv files this database\n\nLocate where the .rds file containing all the simulations results from this project (project name one_eq) can be found\nCreate a quarto qmd file that :\n\nloads the results from those simulations (project name one_eq)\ncomputes the growth rate for the baseline and shock scenarios\nmakes a graph comparing those two series\n\nIn the config_input_one_eq.R, change the equation .mdl file to use 01.2-eq_basic_mod.mdl file.\n\nRe-run the simulations and the outputs created.\nWhat has changed?"
-  },
-  {
-    "objectID": "Exercises_short.html#sec-2_1",
-    "href": "Exercises_short.html#sec-2_1",
-    "title": "Practical Sessions supporting materials",
-    "section": "3 Exercise: Loading the Walras model",
-    "text": "3 Exercise: Loading the Walras model\n\nLocate the Walras model equation et calibration files\nMake a copy of the Main.R, config_input_MODEL.R and config_output_MODEL.R files, with a relevant suffix (ie Main_s.R)\nEdit your newly created config_input file:\n\nChange the project_name argument to something more relevant\nCall the correct mdl files\nCall upon the correct configuration files in your new main file\nKeep the same shock scenario for now\n\nRun the simulations with the basic result template.\nRepeat the procedure, this time using the basic Keynes model files. Compare the outputs from the basic_results template."
-  },
-  {
-    "objectID": "Exercises_short.html#sec-2_2",
-    "href": "Exercises_short.html#sec-2_2",
-    "title": "Practical Sessions supporting materials",
-    "section": "4 Exercise: Further results visualization",
-    "text": "4 Exercise: Further results visualization\n\nCreate your quarto file and create graphs using shortcut plotting functions\n\nsimple_plot()\ncontrib_plot()\n\nEnable the use of the Texdoc template and model_info templates in the config_output to generate the equations list for your model.\nInclude the equation index generated by TeXdoc in your newly created .qmd\nCreate a table that summarizes the results in relative difference from the baseline for one year after the initial shock, then 2, 3, 10 and 50 for the following variables : GDP, household consumption, public spending and investment. Here’s a few steps to help you achieve this:\nIdentify the year of the shock\nidentify the year that correspond to t+2, t+3, t+10 and t+50 where t is the year of the initial shock.\nCreate a new data.frame from data_full that contains only the relevant variables, compute the relative difference, and keep only the information desired\nreorginize your data.frame to format nicely\nUse your new .qmd to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.\n\n\n4.1 Correction\n\n\nSample .qmd file\n## Copy and uncomment from here\n# \n# ---\n# title: \"Exercise 4\"\n# format: html\n# ---\n# \n# \n# ```{r}\n# #| echo: false\n# #| include: false\n# #| label: setup\n# \n# \n# \n# knitr::opts_chunk$set(\n#   echo = FALSE,\n#   message = FALSE,\n#   warning = FALSE,\n#   results = \"hide\"\n# )\n# \n# \n# source(\"src/setup.R\")\n# options(ofce.base_family = \"Arial\")\n# \n# \n# project_name &lt;- \"walras\"\n# scenario &lt;- \"g\"\n# \n# data_full &lt;- readRDS(file.path(\"data\",\"output\",paste0(project_name,\".rds\")))\n# \n# \n# ```\n# \n# \n# # Easy graphs\n# \n# ```{r}\n# #| label: simpleplot\n# \n# \n# data_full |&gt; simple_plot(variables = c(\"Y\",\"CH\",\"I\"),)\n# ```\n# \n# ```{r}\n# #| label: contrib_plot\n# \n# contrib_data &lt;- contrib_longformat(data_full,var1 = \"Y\",var2 = c(\"CH\",\"I\",\"G\"), scenar = c(\"baseline\",scenario))\n# contrib_data |&gt; contrib.plot( series = c(\"CH\",\"I\",\"G\"),\n#              startyear = 2020, titleplot = NULL, line_tot = TRUE,\n#              template = \"ofce\",\n#              decimal = 0.01\n#              )\n#```\n# \n# # Model equations\n# \n# {{&lt; include results/quarto_render/equations.qmd &gt;}}\n#  \n# {{&lt; include results/quarto_render/exogenous.qmd &gt;}}\n#  \n# \n# # Summary table custom made\n# \n# ```{r}\n# #| label: tbl-reldiff\n# #| tbl-cap: \"Relative difference from the baseline\"\n# \n# \n# vars &lt;- c(\"Y\",\"CH\",\"G\",\"I\")\n# years &lt;- c(2020, 2021, 2022, 2023, 2030, 2050)\n# \n# data_treated &lt;- data_full |&gt; \n#   filter (scenario == \"g\") |&gt; \n#   filter(variable %in% vars) |&gt; \n#   filter(year %in% years) |&gt;\n#   mutate(rel_diff = round((values/values_ref -1)*100,2) ) |&gt; \n#   \n#   select(year, variable, rel_diff) |&gt; \n#   pivot_wider(id_cols = \"variable\", names_from = \"year\", values_from = rel_diff)\n#   \n# \n# data_treated |&gt; gt()\n# \n# ```\n# \n# ## Compare models\n# \n#```{r}\n# #| eval: false\n# data_walras &lt;- readRDS(file.path(\"data\",\"output\",paste0(\"walras\",\".rds\")))\n# data_keynes &lt;- readRDS(file.path(\"data\",\"output\",paste0(\"keynes\",\".rds\")))\n#\n#```"
-  },
-  {
-    "objectID": "Exercises_short.html#sec-3_1",
-    "href": "Exercises_short.html#sec-3_1",
-    "title": "Practical Sessions supporting materials",
-    "section": "5 Exercise: Loading the neokeynesian model",
-    "text": "5 Exercise: Loading the neokeynesian model\n\nLocate the Neokeynesian model .mdl files\nDo the necessary steps (create and modify the relevant files) run the same shock on public spending as we did for the Walras model.\n\nhint: don’t forget to change the project_name argument\n\nCreate a similar .qmd file as we did for the Walras model. (hint: this can be done very quickly ;) ), complete with the equations lists from TeXdoc.\nLet’s complicate a little bit: on the qmd, place next to eachother the macrœconomic components graphs for each model simulation and same for the table."
-  },
-  {
-    "objectID": "Exercises_short.html#sec-3_2",
-    "href": "Exercises_short.html#sec-3_2",
-    "title": "Practical Sessions supporting materials",
-    "section": "6 Exercise: New shocks",
-    "text": "6 Exercise: New shocks\n\n6.1 Part 1\n\nLocate the shock calibration file we have been using so far.\nMake a copy and call it 2_calib_shock_g_bis.R\nMake the necessary changes to the config_input file to be able to run this new shock.\nSee if you can reuse the .qmd file from exercise 5\nTest the following changes on you new shock calibration file :\n\nincrease in public spending of 5% of GDP\n\nChange your config_input file to simulate both the original shock in public spending and this new one and view both results at once\n\n\n\n6.2 Part 2\n\nCreate new shocks from scratch :\n\nA sudden (but temporary) decrease in population of -1% in the year 2022\nA yearly population decrease starting the year 2030 of -0.1%\n\nCreate a new shock calibration file aimed at testing labour productivity shocks (empty for now)\nWhat is the baseline labour productivity growth in this model ?\nWhat variable do we have change to create a shock scenario on labour productivity growth and why can’t it be GR_PROG_L?\nDo the necessary (model, results visualization) to answer this question:\n\nWhat happens if labour productivity growth increases temporarily to 10% in 2023?\n(advanced programmation) : change permanently the labour productivity growth rate starting 2023. (hint: you might have to use the calibration bubble for this one)"
-  },
-  {
-    "objectID": "Exercises_short.html#exercise-a-multisectoral-model",
-    "href": "Exercises_short.html#exercise-a-multisectoral-model",
-    "title": "Practical Sessions supporting materials",
-    "section": "7 Exercise: a multisectoral model",
-    "text": "7 Exercise: a multisectoral model\n\n7.1 Part 1\n\nUsing the 01.1_eq_one_eq.mdl model, add an equation to allow for 2 types of goods to be consumed.\nCheck that the simulations run for a c2_s2 classification, and then a c4_s4 classification.\nWhat do you notice in terms of model size?\n\n\n\n7.2 Part 2\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario in this scenario"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CGE in R Workshop at Iberoamericana universidad in Mexico",
-    "section": "",
-    "text": "This workshop is aimed at presenting an overview of CGE model and a tool to run them. The workshop material has been developed by the ThreeME team at the OFCE (Sciences Po Paris).\nThis workshop held by the ThreeME Team is graciously hosted at the Iberoamericana universidad in Mexico, and is conducted under a project between Hacienda (SHCP), OFCE and NEO1, financed by the Agence Française de Développement (AFD).\n1 (Netherlands Economic Observatory)"
-  },
-  {
-    "objectID": "program.html",
-    "href": "program.html",
-    "title": "Workshop program information",
-    "section": "",
-    "text": "The aim of this workshop is to provide an introduction to CGE models and present a tool developed in R that helps building models and running simulations.\nOver the course of the two days, we will alternate between theoretical and practical teaching on CGE models.\nBelow is a provisional program for the workshop. Please note that it is subject to changes depending on progress made."
-  },
-  {
-    "objectID": "program.html#tuesday-november-5th-2024",
-    "href": "program.html#tuesday-november-5th-2024",
-    "title": "Workshop program information",
-    "section": "Tuesday, November 5th 2024",
-    "text": "Tuesday, November 5th 2024\n\nMorning session (from 9am to 12pm)\n\nTheory Session 1\n\nIntroduction to CGE models and their usage\nIntroduction of the tools used and developed\n\n\n\nPractice Session 1\n\nTechnical installation (R, RStudio, Quarto)\nIntroduction to Quarto\nBasic presentation of the structure of the simulation platform\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 2\n\nSimple Walrsasian models and their properties\n\n\n\nPractice Session 2\n\nSimulating an existing Walrasian model\nRunning a shock scenario\nBasic analysis of results"
-  },
-  {
-    "objectID": "program.html#wednesday-november-6th-2024",
-    "href": "program.html#wednesday-november-6th-2024",
-    "title": "Workshop program information",
-    "section": "Wednesday, November 6th 2024",
-    "text": "Wednesday, November 6th 2024\n\nMorning session (from 9am to 12pm)\n\nTheory Session 3\n\nNeokeynesian models and their properties\n\n\n\nPractice Session 3\n\nSimulating an existing Neokeynesian model\nComparing two different models\nMore complicated shock scenarii\n\n\n\n\nAfternoon session (from 1pm to 4pm)\n\nTheory Session 4\n\nInput/Output models\nMore complex models\n\n\n\nPractice Session 4\n\nMultisector models: building a simple input/output model.\nIntegrating an input/output model into an existing CGE model."
+    "text": "Supply-Use and Input-Output model\nSU-IO block\nProduction of commodity \\(c\\) \\[Y_{c} = CI_{c} + CH_{c} + I_{c} + G_{c}\\]\nProduction of commodity \\(c\\) by sector \\(s\\) \\[Y_{c, s} = \\varphi^{Y}_{c, s} \\; Y_{c}\\]\nTotal production of sector \\(s\\) \\[Y_{s} = \\sum_{c} Y_{c, s}\\]\nIntermediate consumption \\(c\\) consumed by sector \\(s\\) \\[CI_{c, s} = \\varphi^{CI}_{c, s} \\; Y_{s}\\]\nFinal use\nHouseholds consumption in commodity \\(c\\) \\[CH_{c} = \\varphi^{CH}_{c} \\; CH\\]\nInvestment in commodity \\(c\\) \\[I_{c} = \\varphi^{I}_{c} \\; I\\]\nPublic expenditures in commodity \\(c\\) \\[G_{c} = \\varphi^{G}_{c} \\; G\\]\nAgregates\nIntermediate consumption of commodity \\(c\\) (aggregation over \\(s\\)) \\[CI_{c} = \\sum_{s} CI_{c, s}\\]\nIntermediate consumption consumed by sector \\(s\\) (aggregation over \\(c\\)) \\[CI_{s} = \\sum_{c} CI_{c, s}\\]\nTotal intermediate consumption (aggregation over commodities) \\[CI = \\sum_{c} CI_{c}\\]\nTotal intermediate consumption (aggregation over sector) \\[CI^{bis} = \\sum_{s} CI_{s}\\]\nTotal production (aggregation over commodities) \\[Y = \\sum_{c} Y_{c}\\]\nTotal production (aggregation over sectors) \\[Y^{bis} = \\sum_{s} Y_{s}\\]\nTotal production (aggregation over aggregated uses) \\[Y^{ter} = CI + CH + I + G\\]\nGross Domestic Product (GDP)\nValue added of sector \\(s\\) \\[VA_{s} = Y_{s} - CI_{s}\\]\nValue added or GDP (production or supply definition) \\[VA = \\sum_{s} VA_{s}\\]\nValue added or GDP (expenditure or use definition) \\[VA^{bis} = CH + I + G\\]"
   }
 ]
