@@ -214,7 +214,7 @@
     "href": "Practical_Sessions.html#the-output-database-data_full",
     "title": "CGE in R - Practical sessions",
     "section": "The output database : data_full",
-    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1         I 2050   &lt;NA&gt;      &lt;NA&gt; 8.417766e+05      ct1 8.329646e+05          0\n2         W 2037   &lt;NA&gt;      &lt;NA&gt; 7.546859e+01 baseline 7.546859e+01          1\n3         I 2029   &lt;NA&gt;      &lt;NA&gt; 6.481507e+05      ct1 6.435077e+05          0\n4       GDP 2031   &lt;NA&gt;      &lt;NA&gt; 2.840128e+06 baseline 2.840128e+06          1\n5       C_L 2048   &lt;NA&gt;      &lt;NA&gt; 1.305632e+02      ct1 1.329740e+02          0\n6       GDP 2026   &lt;NA&gt;      &lt;NA&gt; 2.668758e+06 baseline 2.668758e+06          1\n7        CH 2048   &lt;NA&gt;      &lt;NA&gt; 1.896486e+06      ct1 1.881219e+06          0\n8        PM 2019   &lt;NA&gt;      &lt;NA&gt; 1.000000e+00 baseline 1.000000e+00          1\n9         W 2035   &lt;NA&gt;      &lt;NA&gt; 7.110877e+01 baseline 7.110877e+01          1\n10       PX 2028   &lt;NA&gt;      &lt;NA&gt; 1.195093e+00 baseline 1.195093e+00          1\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
+    "text": "The output database : data_full\nThe structure of output simulations is standardised as a simple data.frame object with standardised column names in order to facilitate the usage of functions and templates on the outputs.\nBelow is a random sample of the data_full database created from the run_simulations() command.\n\n\n   variable year sector commodity   values_ref scenario       values index_scen\n1         X 2029   &lt;NA&gt;      &lt;NA&gt; 8.126788e+05      ct1 8.045883e+05          0\n2        LF 2027   &lt;NA&gt;      &lt;NA&gt; 3.006458e+04      ct1 3.006458e+04          0\n3         M 2045   &lt;NA&gt;      &lt;NA&gt; 1.042432e+06      ct1 1.037381e+06          0\n4        PX 2042   &lt;NA&gt;      &lt;NA&gt; 1.576899e+00 baseline 1.576899e+00          1\n5         M 2047   &lt;NA&gt;      &lt;NA&gt; 1.068708e+06      ct1 1.063425e+06          0\n6       PCI 2023   &lt;NA&gt;      &lt;NA&gt; 1.082432e+00      ct1 1.094065e+00          0\n7        PX 2045   &lt;NA&gt;      &lt;NA&gt; 1.673418e+00      ct1 1.705873e+00          0\n8       PVA 2030   &lt;NA&gt;      &lt;NA&gt; 1.243374e+00      ct1 1.262678e+00          0\n9       GDP 2030   &lt;NA&gt;      &lt;NA&gt; 2.804996e+06 baseline 2.804996e+06          1\n10       CH 2038   &lt;NA&gt;      &lt;NA&gt; 1.674527e+06 baseline 1.674527e+06          1\n\n\nBy default the table is sorted by variable, year and scenario in this order.\n\n\n  variable year sector commodity values_ref scenario   values index_scen\n1      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293 baseline 55.09293          1\n2      C_L 2019   &lt;NA&gt;      &lt;NA&gt;   55.09293      ct1 55.09293          0\n3      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674 baseline 56.75674          1\n4      C_L 2020   &lt;NA&gt;      &lt;NA&gt;   56.75674      ct1 56.75674          0\n5      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079 baseline 58.47079          1\n6      C_L 2021   &lt;NA&gt;      &lt;NA&gt;   58.47079      ct1 58.45938          0"
   },
   {
     "objectID": "Practical_Sessions.html#data-columns",
@@ -441,25 +441,18 @@
     "text": "lists\nLists of sectors/commodities/ are defined in the model folder in the lists.mdl file\n\n# Sectors and commodities\n%list_sec := s001 s002\n%list_com := c001 c002\n\n# Default iterators\ns in %list_sec\nc in %list_com"
   },
   {
-    "objectID": "Practical_Sessions.html#classification",
-    "href": "Practical_Sessions.html#classification",
-    "title": "CGE in R - Practical sessions",
-    "section": "Classification",
-    "text": "Classification\nOptional\nWhen using multiple sectors, the classification parameter tells the model where to find the sector and commodities names, if the suffixes used start with c or s"
-  },
-  {
     "objectID": "Practical_Sessions.html#do-exercise-7-part-1",
     "href": "Practical_Sessions.html#do-exercise-7-part-1",
     "title": "CGE in R - Practical sessions",
     "section": "Do Exercise 7 part 1",
-    "text": "Do Exercise 7 part 1\n\nUsing the 01.1_eq_one_eq.mdl model, add an equation to allow for 2 types of goods to be consumed.\nCheck that the simulations run for a c2_s2 classification, and then a c4_s4 classification.\nWhat do you notice in terms of model size?\n\nPart 2"
+    "text": "Do Exercise 7 part 1\n\n\nUsing the 01.1_eq_one_eq.mdl model, add an equation to allow for 2 types of goods to be consumed.\nCheck that the simulations run for a c2_s2 classification, and then a c4_s4 classification.\nWhat do you notice in terms of model size?"
   },
   {
     "objectID": "Practical_Sessions.html#do-exercise-7-part-2",
     "href": "Practical_Sessions.html#do-exercise-7-part-2",
     "title": "CGE in R - Practical sessions",
     "section": "Do Exercise 7 part 2",
-    "text": "Do Exercise 7 part 2\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario in this scenario\n\n\n\n\n\nCGE in R - Practical sessions"
+    "text": "Do Exercise 7 part 2\n\n\nLocate the mutlisectoral .mdl files.\nDo the necessary to run simulation on a increase in public expenditure scenario in this scenario\n\n\n\n\n\nCGE in R - Practical sessions"
   },
   {
     "objectID": "contact.html",
