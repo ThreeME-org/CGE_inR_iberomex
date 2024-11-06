@@ -867,8 +867,6 @@ $$SAV^{ROW} = pm . M - py . X$$
 
 # Multisector models
 
-<!-- FRED: add equations -->
-
 ## Data: Supply-Use (SU) and Input-Output (IO) tables {.scrollable}
 
 -   SU table says how much a given commodities is supplied by a given sector (Supply)
@@ -886,3 +884,64 @@ $$SAV^{ROW} = pm . M - py . X$$
 -   GDP = VA = Y -- CI = C + I + X - M
 
 ![](pictures/schema3.png){fig-align="center" width="80%"}
+
+## Supply-Use and Input-Output model {.scrollable}
+
+### SU-IO block
+
+**Production of commodity $c$** 
+$$Y_{c} = CI_{c} + CH_{c} + I_{c} + G_{c}$$
+
+**Production of commodity $c$ by sector $s$** 
+$$Y_{c, s} = \varphi^{Y}_{c, s} \; Y_{c}$$
+
+**Total production of sector $s$** 
+$$Y_{s} = \sum_{c} Y_{c, s}$$
+
+**Intermediate consumption $c$ consumed by sector $s$** 
+$$CI_{c, s} = \varphi^{CI}_{c, s} \; Y_{s}$$
+
+### Final use
+
+**Households consumption in commodity $c$** 
+$$CH_{c} = \varphi^{CH}_{c} \; CH$$
+
+**Investment in commodity $c$** 
+$$I_{c} = \varphi^{I}_{c} \; I$$
+
+**Public expenditures in commodity $c$** 
+$$G_{c} = \varphi^{G}_{c} \; G$$
+
+### Agregates
+
+**Intermediate consumption of commodity $c$ (aggregation over $s$)** 
+$$CI_{c} = \sum_{s} CI_{c, s}$$
+
+**Intermediate consumption consumed by sector $s$ (aggregation over $c$)** 
+$$CI_{s} = \sum_{c} CI_{c, s}$$
+
+**Total intermediate consumption (aggregation over commodities)** 
+$$CI = \sum_{c} CI_{c}$$
+
+**Total intermediate consumption (aggregation over sector)** 
+$$CI^{bis} = \sum_{s} CI_{s}$$
+
+**Total production (aggregation over commodities)** 
+$$Y = \sum_{c} Y_{c}$$
+
+**Total production (aggregation over sectors)** 
+$$Y^{bis} = \sum_{s} Y_{s}$$
+
+**Total production (aggregation over aggregated uses)** 
+$$Y^{ter} = CI + CH + I + G$$
+
+### Gross Domestic Product (GDP)
+
+**Value added of sector $s$** 
+$$VA_{s} = Y_{s} - CI_{s}$$
+
+**Value added or GDP (production or supply definition)** 
+$$VA = \sum_{s} VA_{s}$$
+
+**Value added or GDP (expenditure or use definition)** 
+$$VA^{bis} = CH + I + G$$
