@@ -413,7 +413,7 @@ Anissa Saumtally
 </div>
 </div>
 
-  <p class="date">mardi 5 novembre 2024</p>
+  <p class="date">mercredi 6 novembre 2024</p>
 </section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">Plan de la présentation</h2>
@@ -1454,7 +1454,6 @@ t^{inc} = \alpha^{t,inc} . t^{inc,n} + \left( 1 - \alpha^{t,inc} \right) . t^{in
 <p>Multisector models</p>
 </div>
 </div>
-<!-- FRED: add equations -->
 </section>
 <section id="data-supply-use-su-and-input-output-io-tables" class="slide level2 scrollable">
 <h2>Data: Supply-Use (SU) and Input-Output (IO) tables</h2>
@@ -1475,11 +1474,31 @@ t^{inc} = \alpha^{t,inc} . t^{inc,n} + \left( 1 - \alpha^{t,inc} \right) . t^{in
 <ul>
 <li>GDP = VA = Y – CI = C + I + X - M</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="pictures/schema3.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
-</figure>
-</div>
+
+<img data-src="pictures/schema3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="supply-use-and-input-output-model" class="slide level2 scrollable">
+<h2>Supply-Use and Input-Output model</h2>
+<h3 id="su-io-block">SU-IO block</h3>
+<p><strong>Production of commodity <span class="math inline">\(c\)</span></strong> <span class="math display">\[Y_{c} = CI_{c} + CH_{c} + I_{c} + G_{c}\]</span></p>
+<p><strong>Production of commodity <span class="math inline">\(c\)</span> by sector <span class="math inline">\(s\)</span></strong> <span class="math display">\[Y_{c, s} = \varphi^{Y}_{c, s} \; Y_{c}\]</span></p>
+<p><strong>Total production of sector <span class="math inline">\(s\)</span></strong> <span class="math display">\[Y_{s} = \sum_{c} Y_{c, s}\]</span></p>
+<p><strong>Intermediate consumption <span class="math inline">\(c\)</span> consumed by sector <span class="math inline">\(s\)</span></strong> <span class="math display">\[CI_{c, s} = \varphi^{CI}_{c, s} \; Y_{s}\]</span></p>
+<h3 id="final-use">Final use</h3>
+<p><strong>Households consumption in commodity <span class="math inline">\(c\)</span></strong> <span class="math display">\[CH_{c} = \varphi^{CH}_{c} \; CH\]</span></p>
+<p><strong>Investment in commodity <span class="math inline">\(c\)</span></strong> <span class="math display">\[I_{c} = \varphi^{I}_{c} \; I\]</span></p>
+<p><strong>Public expenditures in commodity <span class="math inline">\(c\)</span></strong> <span class="math display">\[G_{c} = \varphi^{G}_{c} \; G\]</span></p>
+<h3 id="agregates">Agregates</h3>
+<p><strong>Intermediate consumption of commodity <span class="math inline">\(c\)</span> (aggregation over <span class="math inline">\(s\)</span>)</strong> <span class="math display">\[CI_{c} = \sum_{s} CI_{c, s}\]</span></p>
+<p><strong>Intermediate consumption consumed by sector <span class="math inline">\(s\)</span> (aggregation over <span class="math inline">\(c\)</span>)</strong> <span class="math display">\[CI_{s} = \sum_{c} CI_{c, s}\]</span></p>
+<p><strong>Total intermediate consumption (aggregation over commodities)</strong> <span class="math display">\[CI = \sum_{c} CI_{c}\]</span></p>
+<p><strong>Total intermediate consumption (aggregation over sector)</strong> <span class="math display">\[CI^{bis} = \sum_{s} CI_{s}\]</span></p>
+<p><strong>Total production (aggregation over commodities)</strong> <span class="math display">\[Y = \sum_{c} Y_{c}\]</span></p>
+<p><strong>Total production (aggregation over sectors)</strong> <span class="math display">\[Y^{bis} = \sum_{s} Y_{s}\]</span></p>
+<p><strong>Total production (aggregation over aggregated uses)</strong> <span class="math display">\[Y^{ter} = CI + CH + I + G\]</span></p>
+<h3 id="gross-domestic-product-gdp">Gross Domestic Product (GDP)</h3>
+<p><strong>Value added of sector <span class="math inline">\(s\)</span></strong> <span class="math display">\[VA_{s} = Y_{s} - CI_{s}\]</span></p>
+<p><strong>Value added or GDP (production or supply definition)</strong> <span class="math display">\[VA = \sum_{s} VA_{s}\]</span></p>
+<p><strong>Value added or GDP (expenditure or use definition)</strong> <span class="math display">\[VA^{bis} = CH + I + G\]</span></p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="site_libs/quarto-contrib/quarto-project/ofce/pres/ofce_m.png" class="slide-logo"></p>
