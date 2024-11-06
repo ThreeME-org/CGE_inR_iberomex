@@ -852,17 +852,18 @@ $$p . \left( Y + M \right) = py . Y + pm . M$$
 
 $$py^{n} . Y = c^{Y} . Y . \left( 1 + m^{up} + dm^{up} \right)$$
 
-- **International trade**
+### **International trade**
 
 
-**Imports**
+-   **Imports**
 
 $$M = \left( Y + M \right) . \varphi^{M} . \left( \frac{pm}{p} \right) ^ {\left( -\rho^{M} \right)}$$
 
-**Exports**
+-   **Exports**
+
 $$X = WD . \left( \frac{py}{pw} \right) ^ {\left( -\rho^{X} \right)}$$
 
-**Saving of the Rest of the World**
+-   **Saving of the Rest of the World**
 
 $$SAV^{ROW} = pm . M - py . X$$
 
