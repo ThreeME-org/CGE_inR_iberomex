@@ -1085,6 +1085,8 @@ To facilitate the usage, quarto template is available that can be called from `c
 
 - Use your new `.qmd` to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.
 
+
+
 # Workshop day one completed !
 
 

@@ -108,6 +108,114 @@ format:
 - Use your new `.qmd` to compare simulation results of a shock on public expenditure in a basic Walras model vs a basic Keynesian model by generating two different simulation outputs.
 
 
+### Correction 
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-summary: Sample .qmd file 
+#| code-fold: true
+
+## Copy and uncomment from here
+# 
+# ---
+# title: "Exercise 4"
+# format: html
+# ---
+# 
+# 
+# ```{r}
+# #| echo: false
+# #| include: false
+# #| label: setup
+# 
+# 
+# 
+# knitr::opts_chunk$set(
+#   echo = FALSE,
+#   message = FALSE,
+#   warning = FALSE,
+#   results = "hide"
+# )
+# 
+# 
+# source("src/setup.R")
+# options(ofce.base_family = "Arial")
+# 
+# 
+# project_name <- "walras"
+# scenario <- "g"
+# 
+# data_full <- readRDS(file.path("data","output",paste0(project_name,".rds")))
+# 
+# 
+# ```
+# 
+# 
+# # Easy graphs
+# 
+# ```{r}
+# #| label: simpleplot
+# 
+# 
+# data_full |> simple_plot(variables = c("Y","CH","I"),)
+# ```
+# 
+# ```{r}
+# #| label: contrib_plot
+# 
+# contrib_data <- contrib_longformat(data_full,var1 = "Y",var2 = c("CH","I","G"), scenar = c("baseline",scenario))
+# contrib_data |> contrib.plot( series = c("CH","I","G"),
+#              startyear = 2020, titleplot = NULL, line_tot = TRUE,
+#              template = "ofce",
+#              decimal = 0.01
+#              )
+#```
+# 
+# # Model equations
+# 
+# {{< include results/quarto_render/equations.qmd >}}
+#  
+# {{< include results/quarto_render/exogenous.qmd >}}
+#  
+# 
+# # Summary table custom made
+# 
+# ```{r}
+# #| label: tbl-reldiff
+# #| tbl-cap: "Relative difference from the baseline"
+# 
+# 
+# vars <- c("Y","CH","G","I")
+# years <- c(2020, 2021, 2022, 2023, 2030, 2050)
+# 
+# data_treated <- data_full |> 
+#   filter (scenario == "g") |> 
+#   filter(variable %in% vars) |> 
+#   filter(year %in% years) |>
+#   mutate(rel_diff = round((values/values_ref -1)*100,2) ) |> 
+#   
+#   select(year, variable, rel_diff) |> 
+#   pivot_wider(id_cols = "variable", names_from = "year", values_from = rel_diff)
+#   
+# 
+# data_treated |> gt()
+# 
+# ```
+# 
+# ## Compare models
+# 
+#```{r}
+# #| eval: false
+# data_walras <- readRDS(file.path("data","output",paste0("walras",".rds")))
+# data_keynes <- readRDS(file.path("data","output",paste0("keynes",".rds")))
+#
+#```
+
+
+```
+
+
 
 # PS 3: Shocking results
 
