@@ -838,7 +838,7 @@ t^{inc} = \alpha^{t,inc} . t^{inc,n} + \left( 1 - \alpha^{t,inc} \right) . t^{in
 
 # Open economy models
 
-## New equations for open economy
+## New equations for open economy  {.scrollable}
 
 - **Production**
 
@@ -849,6 +849,7 @@ $$Y + M = CH + I + G + X$$
 $$p . \left( Y + M \right) = py . Y + pm . M$$
 
 - **Notional production price **
+
 $$py^{n} . Y = c^{Y} . Y . \left( 1 + m^{up} + dm^{up} \right)$$
 
 - **International trade**
