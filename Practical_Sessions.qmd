@@ -1088,35 +1088,191 @@ To facilitate the usage, quarto template is available that can be called from `c
 # Workshop day one completed !
 
 
-<!-- # Practical Session 3 -->
+# Practical Session 3
 
-<!-- ## Complete Exercise 5  -->
+## Complete Exercise 5
 
-<!-- It's ok if not the last question -->
+Exercise 5 : Loading the neokeynesian model
 
+-   Locate the Neokeynesian model `.mdl` files
 
-<!-- ## Making 2_calib_shock files -->
+-   Do the necessary steps (create and modify the relevant files) run the same shock on public spending as we did for the Walras model.
 
-<!-- ## Possibly changing the baseline calibration 1_calib_baseline -->
+    -   hint: don't forget to change the `project_name` argument
 
-<!-- ## Exercise 6 part 1 -->
+-   Create a similar `.qmd` file as we did for the Walras model. (hint: this can be done very quickly ;) ), complete with the equations lists from TeXdoc.
 
-<!-- Look at graphs with multiple scenarios -->
+-   Let's complicate a little bit: on the qmd, place next to eachother the macroeconomic components graphs for each model simulation and same for the table.
 
-<!-- ## Exercise 6 part 2 -->
-
-<!-- # Practical Session 4 -->
-
-<!-- ## Lists `.mdl` file -->
-
-<!-- ## Sector specific equations -->
-
-<!-- ## Do Exercise 7 part 1 -->
+## Making 2_calib_shock files
 
 
-<!-- ## Graphs for sectors -->
+  -   Shock Calibration are found in the folder **configuration/scenarii_calib**. 
+  -   Inside you would find two main types of R scripts:
+    
+    + the ones that are used to calibrate baselines (start with **1_calib_**)
+    + the ones used to calibrate shocks.(start with **2_calib_shock**) 
+    
+  - After these common name basis, you would find the baseline name or the shock code called in `config_input`.
+  
+  
+Shocks are defined in two main different ways:
 
-<!-- ## Do Exercise 7 part 2 -->
+  + Loading and xlsx or csv file containing the evolution of the variable that we want to shock over the time
+  + Coding the shock in R in the same file
+  
+## Structure of a `2_calib_shock_` file (1)
 
+### A two step process
+
+  - Loading `calib_new_base`
+    
+    +  `calib_new_base` : a calibration data_frame built on the calibration `mdl` files that incorporate potential changes to the baseline
+    + cannot be seen in the environment, have to rely on the *calibration bubble* tool
+    
+  - Creating a  `shock_ch` data.frame that contains the modified version of the exogenous variables used for the shock
+      + must be called `shock_ch`
+      + must include the `year` column at the end
+      + last operation of the script mst be defining `shock_ch`
+      
+    - How you achieve this modified series is up to you (R code, loading csv, fetching data online etc)
+
+## Structure of a `2_calib_shock_` file (2)
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Load the selected series for the range baseyear:lastyear
+selection <- calib_new_base %>% select(year, y,g)
+
+## Change in exogenous variables
+#(1) Using formulas
+shock_ch <- mutate(selection,
+                   g = ifelse(year >= 2021, g + 0.01*y, g)
+
+                   )  %>% select(-y)
+
+
+```
+
+## Possibly changing the baseline calibration 1_calib_baseline
+
+The baseline calibration file is changed in a similar way :
+
+- Loading `OGcalib`
+    
+    +  `OGcalib` : the calibration data_frame built on the calibration `mdl` files direclty
+    + cannot be seen in the environment, have to rely on the *calibration bubble* tool (option baseline_calibration `TRUE`)
+    
+  - Creating a  `baseline_ch` data.frame that contains the modified version of the exogenous variables used for the shock
+      + must be called `baseline_ch`
+      + must include the `year` column at the end
+      + last operation of the script mst be defining `baseline_ch`
+      
+    - How you achieve this modified series is up to you (R code, loading csv, fetching data online etc)
+
+
+## Exercise 6 part 1
+
+-   Locate the shock calibration file we have been using so far.
+
+-   Make a copy and call it `2_calib_shock_g_bis.R`
+
+-   Make the necessary changes to the `config_input` file to be able to run this new shock.
+
+-   See if you can reuse the `.qmd` file from @sec-3_1
+
+-   Test the following changes on you new shock calibration file :
+      
+      - increase in public spending of 5% of GDP
+    
+- Change your config_input file to simulate both the original shock in public spending and this new one and view both results at once 
+
+## Exercise 6 part 2
+
+- Create new shocks from scratch :
+  
+    - A sudden (but temporary) decrease in population of -1% in the year 2022
+    - A yearly population decrease starting the year 2030 of -0.1% 
+    
+- Create a new shock calibration file aimed at testing labour productivity shocks (empty for now)
+
+- What is the baseline labour productivity growth in this model ?
+
+- What variable do we have change to create a shock scenario on labour productivity growth and why can't it be `GR_PROG_L`?
+  
+- Do the necessary (model, results visualization) to answer this question: 
+  - **What happens if labour productivity growth increases temporarily to 10% in 2023?**
+  
+  
+# Practical Session 4
+
+## equations over lists
+
+So far we have seen mainly what happens in macro models, assuming the economy is one unique sector. 
+
+Equations can become multisectoral using the following syntax :
+
+```{r}
+#| echo: true
+#| eval: false
+
+## BEFORE
+CH = 50 ## means all CH is 50
+
+## AFTER
+CH[c] = 50 ## means CH for each commodity c will be 50
+```
+
+When using list variables, an aggregated variable should be added :
+
+```{r}
+#| echo: true
+#| eval: false
+
+## BEFORE
+CH = sum(CH[c] on c)
+
+```
+
+## lists 
+
+Lists of sectors/commodities/ are defined in the `model` folder in the `lists.mdl` file
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Sectors and commodities
+%list_sec := s001 s002
+%list_com := c001 c002
+
+# Default iterators
+s in %list_sec
+c in %list_com
+
+
+```
+
+## Classification
+
+*Optional*
+
+When using multiple sectors, the `classification` parameter tells the model where to find the sector and commodities names, if the suffixes used start with `c` or `s` 
+
+## Do Exercise 7 part 1
+- Using the `01.1_eq_one_eq.mdl` model, add an equation to allow for 2 types of goods to be consumed.
+- Check that the simulations run for a `c2_s2` classification, and then a `c4_s4` classification.
+- What do you notice in terms of model size?
+
+### Part 2
+
+
+
+## Do Exercise 7 part 2
+
+- Locate the mutlisectoral `.mdl` files. 
+- Do the necessary to run simulation on a increase in public expenditure scenario in this scenario
 
 

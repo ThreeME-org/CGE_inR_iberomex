@@ -121,7 +121,7 @@ format:
 
 -   Create a similar `.qmd` file as we did for the Walras model. (hint: this can be done very quickly ;) ), complete with the equations lists from TeXdoc.
 
--   Let's complicate a little bit: in a different `.qmd` (called `comparison.qmd` for example) place next to eachother the macroeconomic components graphs for each model simulation and same for the table.
+-   Let's complicate a little bit: on the qmd, place next to eachother the macroeconomic components graphs for each model simulation and same for the table.
 
 ## Exercise: New shocks {#sec-3_2}
 
@@ -164,18 +164,18 @@ format:
 
 ## Exercise: a multisectoral model
 
-### Part 1 
+### Part 1
+
+- Using the `01.1_eq_one_eq.mdl` model, add an equation to allow for 2 types of goods to be consumed.
+- Check that the simulations run for a `c2_s2` classification, and then a `c4_s4` classification.
+- What do you notice in terms of model size?
+
+### Part 2
 
 - Locate the mutlisectoral `.mdl` files. 
-- Do the necessary to run simulation on a increase in public expenditure scenario. Activate the multisector template in the `config_output` file
+- Do the necessary to run simulation on a increase in public expenditure scenario in this scenario
 
-### Part 2 
 
-- Make a `.qmd` that combines both macroeconomic and sectoral results
-- Change the shock scenario to a new one that you will create by designing a shock on sector 1 in the model
-- Add one sector in the list :
-  - What is the impact on the model (in terms of variables and equations)?
-  
 
 
 
