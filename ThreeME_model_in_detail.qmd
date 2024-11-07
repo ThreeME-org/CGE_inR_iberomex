@@ -2,12 +2,14 @@
 title: |
   | [A presentation of ThreeME]{style="font-size: 0.75em;letter-spacing: 2px;line-height: 0.8;"}
 subtitle:  |
-  | [Place]{style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
-  | [Seminar XXXX]{style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
-author: "ThreeME Team"
+  | [Mexico]{style="color: grey;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
+  | [HACIENDA seminar]{style="color: blue;font-size: 0.95em;letter-spacing: 1px;line-height: 0.25;"}
+author: "Gissela Landa & Frédéric Reynès"
+institute: "OFCE" 
 date: "`r format(Sys.Date(), '%d %B %y')`"
 format: 
   pres-revealjs:
+    self-contained: true
     toc-depth: 1
     css: styles.css
 transition: slide
@@ -92,7 +94,7 @@ knitr::opts_chunk$set(
 
 ## Multisector model   {.scrollable}
 
--   n sectors (e.g. France: n = 37; Tunisia: n = 21, Mexico: n = 24, Luxembourg: n = 26)
+-   n sectors (e.g. France: n = 37; Tunisia: n = 21, Mexico: n = 29, Luxembourg: n = 26)
 
 -   Allows to analyze the effect of transfer of activities from one sector to another on:
 
@@ -668,6 +670,46 @@ $CO_2$ emissions from decarbonation during the production process for the non mi
 
 ## Energy balance  {.scrollable}
 
+- The energy demand is segmented by type of end use between intermediate consumption $(CI_{toe})$, households final consumption $(CH_{toe})$ and exports $(X_{toe})$: 
+
+$$\varDelta \left(\operatorname{log} CI^{toe}_{ce, s}\right) = \varDelta \left(\operatorname{log} CI_{ce, s}\right)$$
+
+- The **net energy supply** equals energy use and is consistent with the national account concept of production, that is the physical quantity actually bought by the end user:
+
+$$Y^{toe}_{ce} + M^{toe}_{ce} = CI^{toe}_{ce} + CH^{toe}_{ce} + X^{toe}_{ce}$$
+
+- Each sector $s$ produces a share of energy $ce$ 
+
+$$Y^{toe}_{ce, s} = \varphi^{Y^{toe}}_{ce, s} \; Y^{toe}_{ce}$$
+where $\varphi_{ce,s}^{Y^{toe}}$ is the share energy $ce$ produced by sector $s$
+
+
+- Share of energy $ce$ produced by sector $s$ (monetary definition): 
+
+$$\varphi^{Y}_{ce, s} = \frac{PY^{toe}_{ce, s, t_0} \; \varphi^{Y^{toe}}_{ce, s}}{\sum_{ss} \left( PY^{toe}_{ce, ss, t_0} \; \varphi^{Y^{toe}}_{ce, ss} \right)}$$
+<!--
+- In order to account for the distribution losses and the auto-consumption, we introduce another layer in the national accounting energy production definition which add these components. The gross production of energy $ce$ by sector $s$ expressed in physical units is: 
+
+$$YG^{toe}_{ce, s} = Y^{toe}_{ce, s} + DLY^{toe}_{ce, s} + AC^{toe}_{ce, s}$$
+
+
+- The **distribution losses** are strictly proportional to the end use of this commodity: 
+
+$$\varDelta \left(\operatorname{log} DL^{toe}_{ce}\right) = \varDelta \left(\operatorname{log} \left(CI^{toe}_{ce} + CH^{toe}_{ce} + X^{toe}_{ce}\right)\right)$$
+
+- The distribution losses are then disaggregated among producers of energy $ce$ proportionally to their share into the total domestic and foreign net production
+
+$$DLY^{toe}_{ce, s} = DL^{toe}_{ce} \; \frac{Y^{toe}_{ce, s}}{\left( Y^{toe}_{ce} + M^{toe}_{ce} \right)}$$
+
+- The **auto-consumption** mainly concerns the electricity consumption by electricity producers, which are differentiated by sector $s$ in the equation, allowing for taking into account their heterogeneity in production technology
+
+$$\varDelta \left(\operatorname{log} AC^{toe}_{ce, s}\right) = \varDelta \left(\operatorname{log} Y^{toe}_{ce, s}\right)$$
+
+
+
+
+## Energy balance  {.scrollable}
+
 ###  Energy balance versus economic equilibrium
 
 The energy module of ThreeME is based on a reformulation of the energy balance into meaningful economic concepts. The energy balance published by Eurostat uses the following definition for energy supply:
@@ -675,7 +717,7 @@ The energy module of ThreeME is based on a reformulation of the energy balance i
 - Total Primary Energy Supply (TPES) = Primary production + Imports - Exports + Change in stock (energy balance definition)
 
 
-*Energy intermediate consumptions* as defined in the national accounts correspond to three different concepts in the energy balance:
+*Energy intermediate consumption* as defined in the national accounts correspond to three different concepts in the energy balance:
 
 - Energy transformation input
 - *Energy sector own use* **excluding** the auto-consumptions
@@ -695,3 +737,4 @@ With this definition, we can rewrite the energy balance in an economically consi
 
 - Net supply = Energy transformation input + Energy sector own use (excluding auto-consumption) + Final consumption + Exports +  Change in stock (national account definition) 
 
+-->
