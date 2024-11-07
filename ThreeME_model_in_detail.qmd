@@ -422,97 +422,276 @@ $$ES_{K, L, s} = \frac{\eta^{NEST^{KE,L}}_{s} - \eta^{NEST^{MAT,KEL}}_{s} \; \va
 
 ## Investment and capital {.scrollable}
 
-Investment in ThreeME depends on the anticipated production, on its past dynamic, on substitution phenomena and on a correction mechanism, which guaranties that companies reach their level of long-term notional capital stock. The stock of capital is deducted from the investment according to the standard capital accumulation equation:
+-   Investment depends:
 
-\begin{equation}
-\small
-\begin{split}
-\varDelta \left(\operatorname{log} IA_{s}\right) = \alpha^{IA,Ye}_{s} \; \varDelta \left(\operatorname{log} Y^{e}_{s}\right) + \alpha^{IA,IA1}_{s} \; \varDelta \left(\operatorname{log} IA_{s, t-1}\right) \\
+    -   on the anticipated production, on its past dynamic
+    -   on substitution phenomena
+    -   on a correction mechanism, which guaranties that the level of notional capital stock is reached in the long-term 
+
+$$\varDelta \left(\operatorname{log} IA_{s}\right) = \alpha^{IA,Ye}_{s} \; \varDelta \left(\operatorname{log} Y^{e}_{s}\right) + \alpha^{IA,IA1}_{s} \; \varDelta \left(\operatorname{log} IA_{s, t-1}\right) \\
 + \alpha^{IA,SUBST}_{s} \; \varDelta \left(SUBST^{F}_{K, s}\right) \\
-+ \alpha^{IA,Kn}_{s} \; \left( \operatorname{log} F^{n}_{K, s, t-1} - \operatorname{log} F_{K, s, t-1} \right)
-\end{split}
-\end{equation}
++ \alpha^{IA,Kn}_{s} \; \left( \operatorname{log} F^{n}_{K, s, t-1} - \operatorname{log} F_{K, s, t-1} \right)$$
 
-\begin{equation}
-\small
-F_{K, s} = \left( 1 - \delta_{s} \right) \; F_{K, s, t-1} + IA_{s}
-\end{equation}
+-   Stock of capital deducted from investment according to the standard capital accumulation equation:
+
+
+$$F_{K, s} = \left( 1 - \delta_{s} \right) \; F_{K, s, t-1} + IA_{s}$$
+
 
 ## Price setting {.scrollable}
 
-The production price for each sector is set by applying a mark-up over the unit cost of
-production (which includes labor, capital, energy and other intermediate consumption
-costs):
+-   The **notional production price** for each sector is set by applying a mark-up over the unit cost of production
 
-\begin{equation}
-\small
-PY^{n}_{s} = CU^{n}_{s} \; \left( 1 + \mu_{s} \right)
-\end{equation}
+    -   Costs include labor, capital, energy and other intermediate consumption costs
+
+$$PY^{n}_{s} = CU^{n}_{s} \; \left( 1 + \mu_{s} \right)$$
 
 Where $PY^n$ is the notional price, $CU^n_s$ the unitary cost of production and $\mu_{s}$ is the mark-up.
 
-## Price setting {.scrollable}
 
-**Notional mark-up of the sector $s$**: the default notional mark-up is a positive function of the capacity utilization ratio.
+-   **Notional mark-up** of each sector depends on the capacity utilization ratio:
 
-\begin{equation}
-\small
-\varDelta \left(\operatorname{log} \left(1 + \mu^{n}_{s}\right)\right) = \rho^{\mu,Y} . \varDelta \left(\operatorname{log} CUR_{s}\right)
-\end{equation}
+$$\varDelta \left(\operatorname{log} \left(1 + \mu^{n}_{s}\right)\right) = \rho^{\mu,Y} . \varDelta \left(\operatorname{log} CUR_{s}\right)$$
+-   **capacity utilization ratio**
+$$CUR_{s} = \frac{Y_{s}}{YCAP_{s}}$$
+-   **Production capacity**
 
-\begin{equation}
-\small
-CUR_{s} = \frac{Y_{s}}{YCAP_{s}}
-\end{equation}
+$$\varDelta \left(\operatorname{log} YCAP_{s}\right) = \sum_{f} \varphi_{f, s, t-1} \; \varDelta \left(\operatorname{log} \left(F_{f, s} \; PROG_{f, s}\right)\right) $$
 
-\begin{equation}
-\small
-\begin{split}
-\varDelta \left(\operatorname{log} YCAP_{s}\right) = \sum_{f} \varphi_{f, s, t-1} \; \varDelta \left(\operatorname{log} \left(F_{f, s} \; PROG_{f, s}\right)\right) \\
-+ \alpha^{YCAP,Y}_{s} \; \left( \operatorname{log} Y_{s, t-1} - \operatorname{log} \left(YCAP_{s, t-1} \; CUR_{s, t_0}\right) \right)
-\end{split}
-\end{equation}
+
+<!--
+FRED: A rajouter? verifier = 0 ?
+$$
+\\
++ \alpha^{YCAP,Y}_{s} \; \left( \operatorname{log} Y_{s, t-1} - \operatorname{log} \left(YCAP_{s, t-1} \; CUR_{s, t_0}\right) \right)$$
+
+-->
 
 ## Wage setting {.scrollable}
 
-In ThreeME, we choose a general specification that includes the Phillips and Wage Setting (WS) curves. It assumes that the notional nominal wage ($W^n_s$) positively depends on the anticipated consumption price ($P^e$) and on the labor productivity ($PROG^L_s$), and negatively on the unemployment rate ($UnR$): 
+- The notional nominal wage ($W^n_s$) positively depends on the anticipated consumption price ($P^e$) and on the labor productivity ($PROG^L_s$), and negatively on the unemployment rate ($UnR$): 
+
+$$\varDelta \left(\operatorname{log} W^{n}_{s}\right) = \rho^{W,Cons}_{s} + \rho^{W,P}_{s} \; \varDelta \left(\operatorname{log} P\right) + \rho^{W,Pe}_{s} \; \varDelta \left(\operatorname{log} P^{e}\right) \\
++ \rho^{W,PROG}_{s} \; \varDelta \left(\operatorname{log} PROG^{L}_{s}\right) - \rho^{W,U}_{s} \; \left( UnR - DNAIRU \right) \\
+- \rho^{W,DU}_{s} \; \varDelta \left(UnR\right) + \rho^{W,L}_{s} \; \varDelta \left(\operatorname{log} F_{L, s} - \operatorname{log} F_{L}\right)$$
+
+
+- General specification that includes the Phillips and Wage Setting (WS) curves depending on the value of the selected parameters (Heyer et al., 2007; Reynès, 2010)
+
+    - Phillips curve if $\rho^{W,U}_{s}\neq 0$
+    - WS curve if $\rho^{W,U}_{s} = 0$
+      - Constraints of the specification proposed by Layard *et al.*
+        - Unitary indexation of wages on inflation ( $\rho^{W,P}_{s}+\rho^{W,Pe}_{s}=1$), and on labor productivity ($\rho^{W,PROG}_{s}=1$)
+        - $\rho^{W,Cons}_{s}=0$ 
+
+
+
+## Interest rate {.scrollable}
+
+-   In the neo-Keynesian framework, it is standard to assume that the interest rate is set by the Central Bank (CB) according to a Taylor rule (Taylor, 1993).
+-   The CB maximizes an objective function by making a trade-off between inflation and economic activity (unemployment)
+-   The real interest rate is 
+
+    -   a **positive** function of **inflation**
+    -   a **negative** function of the **unemployment rate** (proxi of the output gap)
+
+$$\varDelta \left(R^{n}\right) = \rho^{Rn,P} . \varDelta \left(\frac{\varDelta \left(P\right)}{P_{t-1}}\right) - \rho^{Rn,UnR} . \varDelta \left(UnR\right)$$
+
+## Aggregate households’ consumption {.scrollable}
+
+- The notional (optimal) aggregate households consumption corresponds to a share of their current income:
+
+$$CH^{n,VAL} = DISPINC^{AT,VAL} . \left( 1 - MPS^{n} \right)$$
+
+Where $CH^{n,VAL}$ is the  aggregate notional households final consumption expressed in value, $DISPINC^{AT,VAL}$ is the households’ disposable income 
+- The notional marginal propensity to save ($MPS^n$ their ) depends on the real interest rate and on the unemployment rate:
+
+$$\varDelta \left(MPS^{n}\right) = \rho^{MPS,R} . \varDelta \left(R - \frac{\varDelta \left(P\right)}{P_{t-1}}\right) + \rho^{MPS,UnR} . \varDelta \left(UnR\right)$$
+
+
+## Households’ consumption per commodity {.scrollable}
+
+
+ThreeME includes three model variants for the allocation of the aggregate consumption between the different commodities:
+
+- Variant 1: LES utility function
+- Variant 2: Nested utility function
+- Variant 3: Hybrid approach
+
+## Variant 1: LES utility function  {.scrollable}
+
+- In the standard version of the model, consumption decisions between commodities are modeled through a **Linear Expenditure System** (LES) utility function generalized to the case of a non-unitary elasticity of substitution between the commodities (Brown and Heien, 1972). 
+- A LES specification assumes that a share of the base year consumption ($NCH_c$) is incompressible: the relation between income and consumption is not linear
+- This specification allows for the distinction between the consumption of necessity and luxurious goods
+
+- Notional consumption of commodity $c$:
+$$\left( CH^{n}_{c} - NCH_{c} \right) \; PCH_{c} = \varphi^{MCH}_{c} \; \left( CH^{n,VAL} - PNCH . NCH \right)$$
+
+- Share of consumption of commodity $c$:
+
+$$\varDelta \left(\operatorname{log} \varphi^{MCH}_{c}\right) = \left( 1 - \eta^{LESCES} \right) . \varDelta \left(\operatorname{log} \frac{PCH_{c}}{PCH^{CES}}\right)$$
+
+- CES consumer price index:
+
+$$PCH^{CES} = \left( \sum_{c} \varphi^{MCH}_{c, t_0} \; PCH_{c} ^ {\left( 1 - \eta^{LESCES} \right)} \right) ^ {\left( \frac{1}{\left( 1 - \eta^{LESCES} \right)} \right)}$$
+
+
+## Variant 2: Nested utility function  {.scrollable}
+
+![](pictures/nested_structure_hh.jpg)
+
+
+## Variant 3: Hybrid approach  {.scrollable}
+
+- Calibrated for the French version of ThreeME
+- Bottom-up modeling of the stock of buildings and automobiles per energy label and type of fuel
+
+<!--
+![](pictures/structure_expenditure_hh.jpg)
+
+
+**Building stock dynamic**
 
 \begin{equation}
 \small
 \begin{split}
-\varDelta \left(\operatorname{log} W^{n}_{s}\right) = \rho^{W,Cons}_{s} + \rho^{W,P}_{s} \; \varDelta \left(\operatorname{log} P\right) + \rho^{W,Pe}_{s} \; \varDelta \left(\operatorname{log} P^{e}\right) \\
-+ \rho^{W,PROG}_{s} \; \varDelta \left(\operatorname{log} PROG^{L}_{s}\right) - \rho^{W,U}_{s} \; \left( UnR - DNAIRU \right) \\
-- \rho^{W,DU}_{s} \; \varDelta \left(UnR\right) + \rho^{W,L}_{s} \; \varDelta \left(\operatorname{log} F_{L, s} - \operatorname{log} F_{L}\right)
+\varDelta \left(BUIL_{ecl}\right)  = NewBUIL_{ecl} + \sum_{ecl2} REHAB_{ecl2, ecl} \\
++ \sum_{ecl2} DEP^{BUIL}_{ecl2, ecl} - \left( \sum_{ecl2} REHAB_{ecl, ecl2} \right) \\
+- \left( \sum_{bcl} DEP^{BUIL}_{ecl, bcl} \right)
 \end{split}
 \end{equation}
 
-This relation can alternatively be identical, either to the Phillips curve, or to the WS curve depending on the value of the selected parameters (Heyer et al., 2007; Reynès, 2010).
+\begin{equation}
+\small
+REHAB_{ecl, ecl2}  = \varphi^{REHAB}_{ecl, ecl2} \; \tau^{REHAB}_{ecl} \; BUIL_{ecl, t-1}
+\end{equation}
 
-## Interest rate {.scrollable}
+\begin{equation}
+\tiny
+\tau^{REHAB,N}_{ecl} = \tau^{REHAB,MAX}_{ecl} + \frac{\tau^{REHAB,MIN}_{ecl} - \tau^{REHAB,MAX}_{ecl}}{1 + e^{\tau_{ecl} - \sigma_{ecl} \; Payback^{REHAB}_{ecl}}}
+\end{equation}
 
-In the neo-Keynesian framework, it is standard to assume that the interest rate is set
-by the Central Bank (CB) according to a Taylor rule (Taylor, 1993). The real interest
-rate is a positive function of inflation and a negative function of unemployment rate
-(here used as a proxi of the output gap):
+\begin{equation}
+\tiny
+Payback^{REHAB}_{ecl} = \frac{UC^{K,REHAB}_{ecl} \; BUIL^{D}_{ecl} - UC^{K}_{ecl} \; BUIL^{D}_{ecl}}{UC^{E}_{ecl} - UC^{E,REHAB}_{ecl}}
+\end{equation}
+
+
+![](pictures/building_structure.jpg)
+
+-->
+
+## Foreign trade  {.scrollable}
+
+- **Exports** are determined by the external demand addressed to domestic products and the ratio between the export and world prices:
+
+$$\varDelta \left(\operatorname{log} X_{c}\right) = \varDelta \left(\operatorname{log} WD_{c}\right) + \varDelta \left(SUBST^{X}_{c}\right)$$
+
+$$\varDelta \left(SUBST^{X,n}_{c}\right) = -\eta^{X}_{c} \; \varDelta \left(\operatorname{log} PX_{c} - \operatorname{log} \left(EXR . PWD_{c}\right)\right)$$
+
+Where $WD_{c}$ is the world demand, $PWD_{c}$ its price. $PX_{c}$ is the export price that depends on the production costs and which reflects the price-competitiveness of the domestic products. $EXR$ is the exchange rate; $\sigma^{X}_{c}$ is the price-elasticity (assumed constant).
+
+- **Imports** are modeled per use (intermediate consumption per commodity and sector, households consumption, investment, public expenditure)
+- We assume imperfect substitution between domestic and imported goods (Armington, 1969)
+- Demand for domestic and imported products of use $A$:
+
+$$AM_{c} = \varphi^{AM}_{c} \; A_{c}$$
+
+$$AD_{c} = \left( 1 - \varphi^{AM}_{c} \right) \; A_{c}$$
+
+- Import share for use $A$:
+
+$$\varphi^{AM}_{c} = \frac{1}{\left( 1 + \frac{AD_{c}}{AM_{c}, t_0} \; \operatorname{exp} SUBST^{AM}_{c} \right)}$$
+$$\varDelta \left(SUBST^{AM,n}_{c}\right) = -\sigma^{AM}_{c} \; \varDelta \left(\operatorname{log} PAD_{c} - \operatorname{log} PAM_{c}\right)$$
+
+$$SUBST^{AM}_{c} = \alpha^{{6},AM}_{c} \; SUBST^{AM,n}_{c} + \left( 1 - \alpha^{{6},AM}_{c} \right) \; SUBST^{AM}_{c, t-1}$$
+
+
+## Government  {.scrollable}
+
+- According to the national accounts, public administrations generally refer to the central and regional government services and social security administration. 
+- In ThreeME, three components are aggregated in order to focus on transfers between public administrations, household and sectors.
+
+### Government's resources ($INC^{G,VAL}$) :
+
+$$INC^{G,VAL} = PNTAXC . NTAXC + NTAXS^{VAL} + INC^{SOC,TAX,VAL} \\
++ PRSC . RSC + PROP^{INC,G,VAL}$$
+
+with:
+
+- The aggregate net taxes on commodity $c$ expressed in value: $PNTAXC.NTAXC$
+- The aggregate net taxes on production of sectors expressed in value: $NTAXS^VAL$
+- The income and social taxes expressed in value: $INS^{SOC,TAX,VAL}$
+- The aggregate employers' social security contribution paid by sector: $PRSC.RSC$
+- The property income of the Government expressed in value: $PROP^{INC,G,VAL}$
+
+
+### Government's expenditures ($SPEND^{G,VAL}$):
+
+$$SPEND^{G,VAL} = PG . G + SOC^{BENF,VAL} + DEBT^{G,VAL}_{t-1} \; \left( \varphi^{RD^{G}}_{t-1} + r^{DEBT,G}_{t-1} \right)$$
+
+with: 
+
+- The government final consumption: $PG.G$
+- The Social benefits expressed in value: $SOC^{BENF,VAL}$
+- The interest paid by the government on its debt plus the share of debt reimbursed every year: $DEBT^{G,VAL}_{t-1}\left(\varphi^{RD^G}_{t-1} + r^{DEBT,G}_{t-1}\right)$
+
+## Greenhouse gases emissions  {.scrollable}
+
+- Energy consumption detailed by economic agents (households and economic sectors) for each energy source (coal, oil, gas, electricity).
+- This allows for simulating GHG emissions per agents and per energy source 
+- The calculation of emissions level consists in multiplying the fossil energy demand by the corresponding emission coefficients. These coefficients are specific for each economic actor, each sector and each energy sources depending on their carbon intensity. 
+
+**Emissions of the greenhouse gas $ghg$ related to the intermediary consumption of commodity $c$ by sector $s$**
+
+$$\varDelta \left(\operatorname{log} EMS^{CI}_{ghg, c, s}\right) = \varDelta \left(\operatorname{log} \left(CI_{c, s} \; IEMS^{CI}_{ghg, c, s}\right)\right)$$
+
+where $IEMS^{CI}_{ghg, c, s}$ is the corresponding emission intensity calibrated to 1 in the base year. It may change over time because of the increase of the share of biofuels.
+
+**Emissions of the greenhouse gas $ghg$ related to the household consumption $c$**
+
+$$\varDelta \left(\operatorname{log} EMS^{CH}_{ghg, c}\right) = \varDelta \left(\operatorname{log} \left(CH_{c} \; IEMS^{CH}_{ghg, c}\right)\right)$$
+
+
+**Emissions of the greenhouse gas $ghg$  related to the final production of sector $s$**
+
+$$\varDelta \left(\operatorname{log} EMS^{Y}_{ghg, s}\right) = \varDelta \left(\operatorname{log} \left(Y_{s} \; IEMS^{Y}_{ghg, s}\right)\right)$$
+
+**Emissions of the greenhouse gas $ghg$ related to the  materials consumption of sector $s$**
 
 \begin{equation}
 \small
-\varDelta \left(R^{n}\right) = \rho^{Rn,P} . \varDelta \left(\frac{\varDelta \left(P\right)}{P_{t-1}}\right) - \rho^{Rn,UnR} . \varDelta \left(UnR\right)
+\varDelta \left(\operatorname{log} EMS^{MAT}_{ghg, s}\right) = \varDelta \left(\operatorname{log} \left(F_{MAT, s} \; IEMS^{MAT}_{ghg, s}\right)\right)
 \end{equation}
 
-## Households’ consumption {.scrollable}
+$CO_2$ emissions from decarbonation during the production process for the non mineral metallic products, as the glass or ceramic sectors, is assumed proportional to the quantity of intermediate raw material used in the production process.
 
-We assume that the notional (optimal) aggregate households consumption corresponds to a share of their current income:
+## Energy balance  {.scrollable}
 
-\begin{equation}
-\small
-CH^{n,VAL} = DISPINC^{AT,VAL} . \left( 1 - MPS^{n} \right)
-\end{equation}
+###  Energy balance versus economic equilibrium
 
-Where $CH^{n,VAL}$ is the  aggregate notional households final consumption expressed in value, $DISPINC^{AT,VAL}$ is the households’ disposable income and $MPS^n$ their notional marginal propensity to save, defined as follows:
+The energy module of ThreeME is based on a reformulation of the energy balance into meaningful economic concepts. The energy balance published by Eurostat uses the following definition for energy supply:
 
-\begin{equation}
-\small
-\varDelta \left(MPS^{n}\right) = \rho^{MPS,R} . \varDelta \left(R - \frac{\varDelta \left(P\right)}{P_{t-1}}\right) + \rho^{MPS,UnR} . \varDelta \left(UnR\right)
-\end{equation}
+- Total Primary Energy Supply (TPES) = Primary production + Imports - Exports + Change in stock (energy balance definition)
+
+
+*Energy intermediate consumptions* as defined in the national accounts correspond to three different concepts in the energy balance:
+
+- Energy transformation input
+- *Energy sector own use* **excluding** the auto-consumptions
+- *Final consumption* of non-energy sectors (*final* in the sense of the energy balance).
+
+
+In order to facilitate the link between the energy balance in physical units to the national accounts equilibrium defined in ThreeME, we have to rewrite the energy balance consistently. For this, we first need to make a distinction between the *gross supply* and the *net supply* of an energy commodity. The *gross supply* includes the domestic and imported primary and secondary production (as defined in the energy balance):
+
+- Gross supply = Primary production + Energy transformation output (secondary production) + Imports
+
+
+The *gross supply* is not relevant economically for the end user because it includes distribution losses and auto-consumption. What is relevant for the end user is what she actually purchases, i.e. the domestic and imported supply net from distribution losses and auto-consumption:   
+
+- Net supply = Domestic net production + Imported net production = Gross supply - Distribution losses - Auto-consumption
+
+With this definition, we can rewrite the energy balance in an economically consistent way where the net supply of an energy commodity should be equal to its end use:
+
+- Net supply = Energy transformation input + Energy sector own use (excluding auto-consumption) + Final consumption + Exports +  Change in stock (national account definition) 
 
