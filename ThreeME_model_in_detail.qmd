@@ -417,18 +417,18 @@ $$\varDelta \left(SUBST^{F,n}_{f, s}\right) = \sum_{ff} -ES_{f, ff, s} \; \varph
 <!-- FRED: ajouter les démonstrations d'optimisation à la fin de chaque section-->
 
 
-##  Nested CES production function {.schrollable}
+##  Nested CES production function structure {.schrollable}
 
 
 ![](pictures/nested_CES.jpg)
 
-##  Nested CES production function {.schrollable}
+##  Nested CES production function constraints {.schrollable}
 
 - At the first level, material (M) can be substituted with the aggregate capital/energy/labor (KEL) with an ES of $\sigma^{NEST^{MAT,KEL}}$ . 
 - At the second level, the aggregate capital/energy (KE) is a substitute to labor (L) with an ES of $\sigma^{NEST^{KE,L}}$. 
 - At the third level, capital (K) can be substituted to energy (E) with an ES of $\sigma^{NEST^{K,E}}$. 
 
-$$ES_{K, E, s} = \frac{\eta^{NEST^{K,E}}_{s}}{\left( 1 - \varphi_{MAT, s} - \varphi_{L, s} \right) - \frac{\eta^{NEST^{MAT,KEL}}_{s}}{\left( 1 - \varphi_{MAT, s} \right) - \eta^{NEST^{KE,L}}_{s} \; \frac{\varphi_{L, s}}{\frac{1 - \varphi_{MAT, s}}{1 - \varphi_{MAT, s} - \varphi_{L, s}}}}}$$
+$$ES_{K, E, s} = \frac{\eta^{NEST^{K,E}}_{s}}{\left( 1 - \varphi_{MAT, s} - \varphi_{L, s} \right) - \frac{\eta^{NEST^{MAT,KEL}}_{s}}{\left( 1 - \varphi_{MAT, s} \right)} -  \frac{\eta^{NEST^{KE,L}}_{s} \;\varphi_{L, s}}{{(1 - \varphi_{MAT, s})}{(1 - \varphi_{MAT, s} - \varphi_{L, s})}}}$$
 
 $$ES_{K, L, s} = \frac{\eta^{NEST^{KE,L}}_{s} - \eta^{NEST^{MAT,KEL}}_{s} \; \varphi_{MAT, s}}{1 - \varphi_{MAT, s}}$$
 
@@ -465,8 +465,10 @@ Where $PY^n$ is the notional price, $CU^n_s$ the unitary cost of production and 
 -   **Notional mark-up** of each sector depends on the capacity utilization ratio:
 
 $$\varDelta \left(\operatorname{log} \left(1 + \mu^{n}_{s}\right)\right) = \rho^{\mu,Y} . \varDelta \left(\operatorname{log} CUR_{s}\right)$$
+
 -   **capacity utilization ratio**
 $$CUR_{s} = \frac{Y_{s}}{YCAP_{s}}$$
+
 -   **Production capacity**
 
 $$\varDelta \left(\operatorname{log} YCAP_{s}\right) = \sum_{f} \varphi_{f, s, t-1} \; \varDelta \left(\operatorname{log} \left(F_{f, s} \; PROG_{f, s}\right)\right) $$
